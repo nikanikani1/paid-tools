@@ -1,0 +1,27 @@
+/**
+ * Wrangler 配置：apps/headshot（AI 职业头像站）
+ *
+ * 部署命令（Linux/Workers Builds）：
+ *   npx opennextjs-cloudflare build
+ *   npx wrangler deploy
+ *
+ * 自定义域：域名 NS 托管到 Cloudflare 后放开 routes（或后台 Domains & Routes 添加）。
+ * name 必须全账号唯一，不能和 voice 或已有 Worker 重名。
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "paid-tools-headshot",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "workers_dev": true
+  // 正式域名（付款/域名到位后放开）：
+  // "routes": [{ "pattern": "headshot.example.com", "custom_domain": true }]
+}

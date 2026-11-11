@@ -1,0 +1,295 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import GeneratorForm from "./components/generator-form";
+import {
+  CtaBand,
+  FaqList,
+  FeatureGrid,
+  JsonLd,
+  KeyFacts,
+  PageHero,
+  PlanCards,
+  RelatedLinks,
+  SampleGrid,
+  Section,
+  StepGrid,
+  StyleTable,
+} from "./components/ui";
+import { STYLE_DETAILS, TRUST_POINTS, USE_CASES, HOME_FAQ, STYLES } from "./lib/site";
+import {
+  breadcrumbJsonLd,
+  buildMetadata,
+  faqPageJsonLd,
+  productJsonLd,
+  webApplicationJsonLd,
+} from "./lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "AI Headshot Generator — Professional Headshots from Selfies",
+  description:
+    "Upload 5 selfies and get 40–100 studio-quality AI headshots for LinkedIn, résumés and team pages. One-time pricing from $35, free preview, free redo if you do not look like you.",
+  path: "/",
+  keywords: ["ai headshot generator", "ai headshots", "professional headshot", "linkedin headshot"],
+});
+
+const HOME_DESCRIPTION =
+  "Upload five selfies and get 40–100 studio-quality AI headshots for LinkedIn, résumés, team pages and clinic directories. One-time pricing from $35, free preview, one free redo.";
+
+export default function HomePage() {
+  return (
+    <main>
+      <JsonLd
+        data={webApplicationJsonLd({
+          name: "PortraitLab AI Headshot Generator",
+          description: HOME_DESCRIPTION,
+          path: "/",
+        })}
+      />
+      <JsonLd data={faqPageJsonLd(HOME_FAQ)} />
+      <JsonLd data={productJsonLd({ path: "/" })} />
+      <JsonLd
+        data={breadcrumbJsonLd([{ name: "Home", path: "/" }])}
+      />
+
+      <section className="mx-auto grid max-w-6xl items-start gap-10 px-6 pb-10 pt-12 md:grid-cols-2">
+        <div>
+          <p className="sans mb-4 inline-flex rounded-full border border-orange-300 bg-orange-50 px-3 py-1 text-xs uppercase tracking-wide text-orange-800">
+            AI headshots · 40–100 photos · from $35
+          </p>
+          <h1 className="text-4xl font-extrabold leading-[1.08] tracking-tight md:text-6xl">
+            AI Headshot Generator — Professional Headshots from Your Selfies
+          </h1>
+          <p className="sans mt-5 max-w-xl text-base leading-relaxed text-stone-700">
+            Upload five phone selfies, choose a style and download a full set of studio-quality headshots in minutes.
+            No photographer, no studio booking, no subscription — one payment, a commercial licence and one free redo.
+          </p>
+          <ul className="sans mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-stone-600">
+            <li>✓ Free 1-image preview</li>
+            <li>✓ 1024px delivery</li>
+            <li>✓ Redo within 48 h</li>
+            <li>✓ Deleted after 30 days</li>
+          </ul>
+        </div>
+        <GeneratorForm heading="Start your headshot set" />
+      </section>
+
+      <Section
+        eyebrow="See examples"
+        title="What a generated set looks like"
+        intro={
+          <p>
+            Every order produces four things: the same face, several expressions, at least two backdrop options and
+            crops that survive being shrunk to a 96-pixel avatar. The four presets below are the ones most people pick
+            first.
+          </p>
+        }
+      >
+        <SampleGrid />
+      </Section>
+
+      <Section
+        eyebrow="How it works"
+        title="From selfie to headshot in three steps"
+        intro={
+          <p>
+            The whole job is roughly five minutes of your time and two to four minutes of machine time. There is no
+            calendar booking, no call sheet, no waiting for a photographer to send a gallery link three days later.
+          </p>
+        }
+      >
+        <StepGrid
+          steps={[
+            {
+              title: "Upload 3–8 selfies",
+              body: "Front-facing, good light, no sunglasses or hats. One straight-on frame plus two slightly turned frames and one smile is enough for a strong set.",
+              detail: "Quality gate rejects blurry, tilted or multi-person photos before any generation runs.",
+            },
+            {
+              title: "Pick a style and package",
+              body: "Corporate, creative, actor, medical or real estate presets, each with its own backdrop, wardrobe and lighting profile. Choose 40, 60 or 100 final images.",
+              detail: "You see the price before generating: $35 / $45 / $75, one-time.",
+            },
+            {
+              title: "Download your set",
+              body: "Generation starts immediately. Watch live progress, then download individual files or the whole ZIP. One free redo within 48 hours if the first set misses.",
+              detail: "Files stay available in your order for 30 days; originals are deleted on the same schedule.",
+            },
+          ]}
+        />
+      </Section>
+
+      <Section
+        eyebrow="Styles"
+        title="Style presets built for actual job titles"
+        intro={
+          <p>
+            Generic “AI portrait” styles break down when the photo has to work on a hospital directory or a real estate
+            yard sign. Each preset below fixes the backdrop, wardrobe, light direction and crop instead of leaving them
+            to a text prompt.
+          </p>
+        }
+      >
+        <StyleTable styles={STYLE_DETAILS} />
+      </Section>
+
+      <Section
+        eyebrow="Pricing"
+        title="One-time packages, no subscription"
+        intro={
+          <p>
+            Three packages, identical pipeline, different volume. The 60-image package is the most common choice
+            because it gives you enough expressions to swap your profile photo seasonally without repeating.
+          </p>
+        }
+      >
+        <PlanCards />
+      </Section>
+
+      <Section
+        eyebrow="Why ours"
+        title="Redo policy, face privacy and honest pricing"
+        intro={
+          <p>
+            Most complaints about AI headshots are about two things: the result not looking like the person, and
+            unclear data handling. Both are policy problems before they are model problems, so we wrote the policy
+            first.
+          </p>
+        }
+        tone="raised"
+      >
+        <FeatureGrid items={TRUST_POINTS} />
+        <div className="sans mt-6 rounded-2xl border border-stone-300 bg-white/60 p-6 text-sm leading-relaxed text-stone-700">
+          <h3 className="font-serif text-lg font-bold text-stone-900">What “identity preservation” means here</h3>
+          <p className="mt-2">
+            Generation runs in two stages. First, an identity-conditioned diffusion model renders the portrait from your
+            photo and the chosen preset. Second, a face-comparison pass merges your original facial features back into
+            the generated frame. The second stage is what keeps a set from drifting into a generic stock person after
+            the tenth image — a failure mode you can spot immediately in competing tools.
+          </p>
+          <p className="mt-3">
+            We do not train on customer photos. Uploads are used for your order only, are never published, and are
+            deleted from storage after 30 days. You can ask for earlier deletion any time from your order email.
+          </p>
+        </div>
+      </Section>
+
+      <Section
+        eyebrow="Use cases"
+        title="What people actually order"
+        intro={
+          <p>
+            The same pipeline serves very different jobs. These pages go deeper on framing, sizing and expectations
+            for each one.
+          </p>
+        }
+      >
+        <div className="sans grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {USE_CASES.map((useCase) => (
+            <Link
+              key={useCase.href}
+              href={useCase.href}
+              className="rounded-2xl border border-stone-300 bg-white/60 p-5 transition hover:border-orange-500"
+            >
+              <span className="block text-base font-semibold text-stone-900">{useCase.title}</span>
+              <span className="mt-2 block text-sm leading-relaxed text-stone-600">{useCase.body}</span>
+              <span className="mt-3 block text-xs font-semibold uppercase tracking-wide text-orange-700">
+                Read more →
+              </span>
+            </Link>
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="Details" title="AI headshots, explained without the marketing">
+        <div className="sans grid gap-8 lg:grid-cols-[1.4fr_1fr]">
+          <div className="space-y-4 text-base leading-relaxed text-stone-700">
+            <p>
+              An AI headshot generator is not a filter. A filter takes one photo and edits it; a generator builds a new
+              photograph from your identity, a style preset and a text prompt. That difference matters when you need
+              forty usable images: a filter gives you forty variations of the same frame, while a generator gives you
+              forty different frames of the same person.
+            </p>
+            <p>
+              The trade-off is that generation can drift. Diffusion models are very good at producing plausible faces
+              and less good at preserving the specific face you gave them. This is why single-model tools often return
+              images that look excellent in isolation but wrong in context — the eyes are slightly off, the jawline is
+              narrower, the skin tone has shifted. Our pipeline addresses it in the second stage described above, and
+              the free redo exists precisely because no automated identity check is perfect.
+            </p>
+            <p>
+              Practical advice for better input: use a phone camera at chest height, stand near a window, take five
+              photos across two minutes so the light does not change, and keep your expression neutral in at least
+              three of them. Avoid sunglasses, hats with brims, heavy filters and group photos. The quality gate will
+              reject the worst inputs before spending anything on them, but good inputs also produce better variety.
+            </p>
+            <p>
+              What you get is a set — not one hero image. Most customers keep two or three headshots in rotation: a
+              formal version for LinkedIn and company pages, a slightly warmer one for speaker bios, and a neutral one
+              for résumés and visa-style applications where a plain background is expected.
+            </p>
+          </div>
+          <div className="space-y-4">
+            <KeyFacts
+              facts={[
+                { label: "Input photos", value: "3–8 (5 recommended)" },
+                { label: "Generation time", value: "2–4 minutes" },
+                { label: "Delivery size", value: "1024px, JPG" },
+                { label: "Redo window", value: "48 hours, 1 free" },
+              ]}
+            />
+            <div className="rounded-2xl border border-stone-300 bg-white/60 p-5 text-sm leading-relaxed text-stone-700">
+              <h3 className="font-serif text-base font-bold text-stone-900">Style presets available at checkout</h3>
+              <ul className="mt-2 space-y-1">
+                {STYLES.map((style) => (
+                  <li key={style}>· {style}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section eyebrow="FAQ" title="Questions people ask before ordering">
+        <FaqList items={HOME_FAQ} />
+      </Section>
+
+      <RelatedLinks
+        title="Start from the page that matches your job"
+        links={[
+          {
+            href: "/free-ai-headshot-generator",
+            label: "Free AI headshot generator",
+            body: "Render one preview from your own selfies before paying anything.",
+          },
+          {
+            href: "/ai-professional-headshot",
+            label: "AI professional headshot",
+            body: "Business-ready portraits for résumés, press pages and company directories.",
+          },
+          {
+            href: "/linkedin-headshot",
+            label: "LinkedIn headshot",
+            body: "Sizing, backdrop and expression advice for recruiter-facing profiles.",
+          },
+          {
+            href: "/team-headshots",
+            label: "Team headshots",
+            body: "Ten or more people, one style guide, invoicing included.",
+          },
+          {
+            href: "/real-estate-agent-headshots",
+            label: "Real estate agent headshots",
+            body: "Portraits that survive being shrunk onto a listing card.",
+          },
+          {
+            href: "/doctor-headshots",
+            label: "Doctor & clinic headshots",
+            body: "Clinical, approachable portraits for medical directories.",
+          },
+        ]}
+      />
+
+      <CtaBand />
+    </main>
+  );
+}

@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #1b1714;
+  --paper: #f7f2ea;
+  --brand: #c2410c;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+}
+
+.sans {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}

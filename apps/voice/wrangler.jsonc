@@ -1,0 +1,28 @@
+/**
+ * Wrangler 配置：apps/voice（人声/伴奏分离站）
+ *
+ * 部署命令（Linux/Workers Builds）：
+ *   npx opennextjs-cloudflare build     # 先 next build --webpack + 生成 .open-next/
+ *   npx wrangler deploy                 # 读本文件
+ *
+ * 自定义域：域名 NS 托管到 Cloudflare 后，把下方 routes 注释放开（或用
+ * `npx wrangler deploy --route ...` / 后台 Workers → Settings → Domains & Routes 添加）。
+ * 注意 name 不能和账号里已有 Worker 重名（重名报 "A project with that name already exists"）。
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "paid-tools-voice",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "workers_dev": true
+  // 正式域名（付款/域名到位后放开）：
+  // "routes": [{ "pattern": "voice.example.com", "custom_domain": true }]
+}

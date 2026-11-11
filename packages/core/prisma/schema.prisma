@@ -1,0 +1,191 @@
+// ---------------------------------------------------------------------------
+// paid-tools 共享 Prisma schema（两站共用表结构，每站一个 Neon 项目）
+// ---------------------------------------------------------------------------
+// 为什么「一套 schema + 两个库」：
+//   两站共享 core 代码（r2 / cost / waffo / 任务状态机），表结构完全同构；
+//   但数据要隔离、Neon 免费额度按项目算（每项目 1GB / 100 CU-hrs/月），
+//   所以 voice 用 DATABASE_URL_VOICE、headshot 用 DATABASE_URL_HEADSHOT 各跑一次 migrate（见 prisma/README.md）。
+//
+// Prisma 版本：6.x（site-eng-stack 基线）。Workers 运行时用 @prisma/adapter-neon 的
+//   PrismaNeonHttp（HTTP 驱动，不能用 WebSocket Pool，不能事务，全部写操作用唯一键做幂等），
+//   客户端必须懒创建（模块顶层建连接会让请求挂住）。
+//
+// 迁移命令（在仓库根执行；DATABASE_URL 指向对应 Neon pooler 连接串）：
+//   npx prisma generate --schema packages/core/prisma/schema.prisma
+//   npx prisma migrate dev   --schema packages/core/prisma/schema.prisma --name init        # 开发
+//   npx prisma migrate deploy --schema packages/core/prisma/schema.prisma                  # 生产/CI
+//   npx prisma db push       --schema packages/core/prisma/schema.prisma                   # 仅临时联调
+// 每站各跑一次 migrate deploy（voice 库、headshot 库）。详细步骤见 packages/core/prisma/README.md。
+// ---------------------------------------------------------------------------
+
+generator client {
+  provider = "prisma-client-js"
+  // Workers 必须用 driver adapter（PrismaNeonHttp）。若安装的 Prisma 6.x 已 GA，可删 previewFeatures。
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Site {
+  voice
+  headshot
+}
+
+enum JobStatus {
+  queued
+  running
+  done
+  failed
+  canceled
+}
+
+enum OrderStatus {
+  pending
+  paid
+  failed
+  refunded
+}
+
+enum CreditReason {
+  grant // 支付成功/补偿
+  deduct // job 扣减
+  refund // 退款回滚
+  adjust // 人工调整
+}
+
+/// 一次 AI 任务（人声分离一首歌 / 一单头像生成）
+model Job {
+  id     String    @id @default(cuid())
+  site   Site
+  /// 业务细分：voice => "stems"，headshot => "headshots"（细分值放这里，避免频繁改枚举）
+  kind   String
+  status JobStatus @default(queued)
+  /// 0-100，轮询接口直接回给前端
+  progress Int @default(0)
+
+  /// 原始输入（时长/文件名/张数/风格…），只存元数据，不存文件内容
+  input  Json    @default("{}")
+  /// 输出：stems 或图片 R2 key 列表（数组），由 provider 回调写入
+  output Json?
+  /// 失败原因（给用户看的短文案 + 内部错误分开建议：error 给用户，meta.debug 给内部）
+  error  String?
+
+  /// AI provider 归属与外部任务 id（replicate prediction id / fal request id）
+  provider      String?
+  providerJobId String?
+
+  /// 本 job 累计 provider 成本（美元），由 cost.ts 汇总；明细在 meta.costRecords（JSON）
+  providerCostUsd Decimal @default(0) @db.Decimal(12, 6)
+  /// 本 job 扣掉的额度（voice=分钟，headshot=张数）
+  unitsCharged    Int     @default(0)
+  /// 匿名/邮箱维度的 owner key（邮箱小写或 access token 的 sha256，禁止存明文 token）
+  ownerKey        String?
+  /// 其它运营字段（webhook 原始用量、重试次数、退款标记…），保持可演进
+  meta            Json?
+
+  orderId String?
+  order   Order?  @relation(fields: [orderId], references: [id], onDelete: SetNull)
+
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  startedAt  DateTime?
+  finishedAt DateTime?
+
+  @@index([site, status, createdAt])
+  @@index([orderId])
+  @@index([providerJobId])
+  @@index([ownerKey, createdAt])
+}
+
+/// 一次支付（Waffo MoR）。金额一律「美分」存整数，避免浮点误差。
+model Order {
+  id     String      @id @default(cuid())
+  site   Site
+  status OrderStatus @default(pending)
+
+  /// 站内套餐 id（core/pricing.ts 的 VOICE_PLANS / HEADSHOT_PLANS）
+  planId    String
+  /// Waffo 商户后台的产品 id（PROD_xxx，可选；按产品建 checkout 时用）
+  productId String?
+
+  amountCents Int
+  currency    String @default("USD")
+  email       String?
+
+  provider        String  @default("waffo")
+  /// Waffo checkout/订单 id：webhook 回来靠它或 metadata.orderId 找到这笔单
+  providerOrderId String? @unique
+  checkoutUrl     String?
+  /// 本单发放额度（voice=分钟，headshot=张数）
+  unitsGranted    Int     @default(0)
+  /// 本单 AI 成本汇总（冗余，便于离线算毛利；明细在 Job.providerCostUsd）
+  providerCostUsd Decimal @default(0) @db.Decimal(12, 6)
+  metadata        Json?
+
+  paidAt     DateTime?
+  refundedAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  jobs    Job[]
+  credits Credit[]
+
+  @@index([site, status, createdAt])
+  @@index([email])
+}
+
+/// 额度流水（append-only）。余额 = SUM(delta)，同时缓存 balance 方便读。
+/// 注意：PrismaNeonHttp 无事务 → 必须靠 idempotencyKey 唯一键防重复发放/重复扣减；
+///       balance 字段是「写时快照」，冲突时以 SUM(delta) 为准。
+model Credit {
+  id       String       @id @default(cuid())
+  site     Site
+  ownerKey String
+  /// 计量单位：minutes | images
+  unit     String       @default("minutes")
+  delta    Int
+  /// 本次变更后的余额快照（可为空；对账以 SUM(delta) 为准）
+  balance  Int?
+  reason   CreditReason
+
+  orderId String?
+  order   Order?  @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  jobId   String?
+
+  /// 幂等键：如 credit:grant:<orderId>、credit:deduct:<jobId>，重复 webhook/重试只生效一次
+  idempotencyKey String? @unique
+  note           String?
+
+  createdAt DateTime @default(now())
+
+  @@index([site, ownerKey, unit])
+  @@index([orderId])
+  @@index([jobId])
+}
+
+/// webhook 事件收件箱（Waffo / Replicate / fal 共用）
+/// 先落库再处理 → 重复投递靠 idempotencyKey 唯一键直接返回 duplicate；
+/// 验签失败的也落库（verified=false）便于排查刷单/伪造。
+model WebhookEvent {
+  id       String @id @default(cuid())
+  site     Site
+  /// waffo | replicate | fal
+  provider String
+  eventType String?
+  externalId String?
+
+  /// provider event id；没有就用 sha256(rawBody)
+  idempotencyKey String @unique
+
+  payload Json
+  verified Boolean @default(false)
+  processedAt DateTime?
+  error     String?
+
+  receivedAt DateTime @default(now())
+
+  @@index([site, provider, receivedAt])
+}

@@ -1,0 +1,309 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0b1020;
+  --panel: #131a30;
+  --panel-2: #0f1528;
+  --line: #253055;
+  --line-soft: #1b2340;
+  --text: #eef2ff;
+  --muted: #9aa7c7;
+  --accent: #6d5cff;
+  --accent-2: #22d3ee;
+  --accent-3: #c084fc;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(1100px 620px at 15% -10%, #1a2350 0%, transparent 62%),
+    radial-gradient(900px 520px at 90% 8%, #251743 0%, transparent 58%),
+    var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(109, 92, 255, 0.4);
+  color: #fff;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---------- surfaces ---------- */
+
+.card {
+  background: color-mix(in srgb, var(--panel) 88%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.card-soft {
+  background: color-mix(in srgb, var(--panel-2) 82%, transparent);
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+}
+
+.card-hover {
+  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.card-hover:hover {
+  border-color: #3d4d82;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px -28px rgba(109, 92, 255, 0.9);
+}
+
+.hairline {
+  border-top: 1px solid var(--line-soft);
+}
+
+/* ---------- typography ---------- */
+
+.display {
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+.gradient-text {
+  background: linear-gradient(92deg, #c4b5fd 0%, #a78bfa 38%, #67e8f9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #a5b4fc;
+}
+
+/* ---------- buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 12px;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+  border: 1px solid transparent;
+  transition: filter 140ms ease, background-color 140ms ease, border-color 140ms ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6d5cff 0%, #8b5cf6 55%, #d946ef 100%);
+  color: #fff;
+  box-shadow: 0 12px 32px -16px rgba(109, 92, 255, 0.95);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+.btn-ghost {
+  background: color-mix(in srgb, var(--panel) 70%, transparent);
+  border-color: var(--line);
+  color: #dbe2ff;
+}
+
+.btn-ghost:hover {
+  border-color: #4b5a90;
+  background: color-mix(in srgb, var(--panel) 95%, transparent);
+}
+
+.btn-sm {
+  border-radius: 10px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8rem;
+}
+
+/* ---------- badges / chips ---------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(139, 92, 246, 0.42);
+  background: rgba(109, 92, 255, 0.12);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #ddd6fe;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(19, 26, 48, 0.6);
+  padding: 0.35rem 0.7rem;
+  font-size: 0.75rem;
+  color: #cbd5e1;
+}
+
+/* ---------- forms ---------- */
+
+.input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(10, 14, 28, 0.75);
+  padding: 0.7rem 0.9rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.input::placeholder {
+  color: #64748b;
+}
+
+.dropzone {
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  border: 1px dashed #39456f;
+  background: rgba(11, 16, 32, 0.45);
+  padding: 2.25rem 1.25rem;
+  text-align: center;
+  transition: border-color 140ms ease, background-color 140ms ease;
+}
+
+.dropzone:hover,
+.dropzone:focus-within {
+  border-color: #8b5cf6;
+  background: rgba(109, 92, 255, 0.08);
+}
+
+/* ---------- FAQ accordion ---------- */
+
+details.faq > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+details.faq > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.faq .faq-icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: #c7d2fe;
+  transition: transform 160ms ease;
+}
+
+details.faq[open] .faq-icon {
+  transform: rotate(45deg);
+}
+
+details.faq[open] {
+  border-color: #3d4d82;
+}
+
+/* ---------- table ---------- */
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 0.8rem 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.compare-table thead th {
+  color: #c7d2fe;
+  font-weight: 600;
+  background: rgba(19, 26, 48, 0.7);
+}
+
+.compare-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---------- decoration ---------- */
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 35%, transparent 75%);
+}
+
+.wave-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 38px;
+}
+
+.wave-bars span {
+  display: block;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #67e8f9, #8b5cf6);
+  opacity: 0.85;
+  animation: wave 1.4s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .wave-bars span {
+    animation: none;
+  }
+
+  .card-hover:hover {
+    transform: none;
+  }
+}

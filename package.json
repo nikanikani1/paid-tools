@@ -1,0 +1,31 @@
+{
+  "name": "paid-tools",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:voice": "npm run dev --workspace=@paid/voice",
+    "dev:headshot": "npm run dev --workspace=@paid/headshot",
+    "build:voice": "npm run build --workspace=@paid/voice",
+    "build:headshot": "npm run build --workspace=@paid/headshot",
+    "build": "npm run build:voice && npm run build:headshot",
+    "typecheck": "tsc --noEmit -p apps/voice/tsconfig.json && tsc --noEmit -p apps/headshot/tsconfig.json",
+    "cf:build:voice": "npm run cf:build --workspace=@paid/voice",
+    "cf:build:headshot": "npm run cf:build --workspace=@paid/headshot",
+    "cf:deploy:voice": "npm run cf:deploy --workspace=@paid/voice",
+    "cf:deploy:headshot": "npm run cf:deploy --workspace=@paid/headshot",
+    "cf:preview:voice": "npm run cf:preview --workspace=@paid/voice",
+    "cf:preview:headshot": "npm run cf:preview --workspace=@paid/headshot",
+    "db:generate": "prisma generate --schema packages/core/prisma/schema.prisma",
+    "db:migrate:deploy": "prisma migrate deploy --schema packages/core/prisma/schema.prisma"
+  },
+  "overrides": {
+    "magic-string": "0.30.21"
+  },
+  "devDependencies": {
+    "magic-string": "0.30.21"
+  }
+}
