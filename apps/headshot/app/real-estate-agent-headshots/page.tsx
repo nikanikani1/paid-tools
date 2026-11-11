@@ -17,7 +17,7 @@ import { breadcrumbJsonLd, buildMetadata, faqPageJsonLd, webApplicationJsonLd } 
 export const metadata: Metadata = buildMetadata({
   title: "Real Estate Agent Headshots — Trust-Building Portraits",
   description:
-    "AI headshots for real estate agents: portraits that stay sharp on MLS cards, yard signs, business cards and brokerage pages. 40–100 images from $35, free preview.",
+    "AI headshots for real estate agents: portraits that stay sharp on MLS cards, yard signs, business cards and brokerage pages. Paid packages from the $9 Sample Pack (5 images) to 100 images.",
   path: "/real-estate-agent-headshots",
   keywords: [
     "real estate agent headshots",
@@ -203,9 +203,9 @@ export default function RealEstateAgentHeadshotsPage() {
           { href: "/ai-professional-headshot", label: "AI professional headshot", body: "Formal business presets and licensing." },
           { href: "/team-headshots", label: "Team headshots", body: "Brokerage-wide consistency, invoicing, 10+ people." },
           { href: "/linkedin-headshot", label: "LinkedIn headshot", body: "Recruiter-facing profile framing." },
-          { href: "/pricing", label: "Pricing", body: "$35 / $45 / $75 one-time packages." },
+          { href: "/pricing", label: "Pricing", body: "$9 sample, then $35 / $45 / $75 one-time packages." },
           { href: "/how-it-works", label: "How it works", body: "The pipeline from selfie to download." },
-          { href: "/", label: "AI headshot generator", body: "All five style presets and the free preview." },
+          { href: "/", label: "AI headshot generator", body: "All five style presets and paid package options." },
         ]}
       />
 

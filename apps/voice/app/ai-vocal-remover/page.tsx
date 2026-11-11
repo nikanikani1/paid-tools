@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "AI Vocal Remover — Isolate Vocals with AI",
   description:
-    "Use an AI vocal remover to isolate the acapella and instrumental from any song. 4-stem AI separation, free 3-minute preview, no signup, no install.",
+    "Use an AI vocal remover to isolate the acapella and instrumental from any song. 4-stem AI separation — start with the $2.90 Trial Pack: 15 minutes, one-time payment, no subscription.",
   path: "/ai-vocal-remover",
 });
 
@@ -13,15 +13,15 @@ const data: ToolPageData = {
   crumb: "AI vocal remover",
   title: "AI Vocal Remover — Isolate Vocals with AI",
   description:
-    "Use an AI vocal remover to isolate the acapella and instrumental from any song. 4-stem AI separation, free 3-minute preview, no signup, no install.",
+    "Use an AI vocal remover to isolate the acapella and instrumental from any song. 4-stem AI separation — start with the $2.90 Trial Pack: 15 minutes, one-time payment, no subscription.",
   h1: "AI Vocal Remover — Isolate Vocals with AI",
-  badge: "AI model · htdemucs · 4 stems",
+  badge: "AI model · htdemucs · $2.90 trial",
   intro: [
     "An AI vocal remover does not subtract a channel — it listens to the whole mix and predicts which part of the sound belongs to the singer. That is why the result sounds like a performance instead of a hollow karaoke file.",
-    "Upload an MP3, WAV, M4A or FLAC below and get vocals, instrumental, drums, bass and other stems back in minutes. Free 3-minute preview, no account needed.",
+    "Upload an MP3, WAV, M4A or FLAC below and get vocals, instrumental, drums, bass and other stems back in minutes. Runs are paid: the one-time $2.90 Trial Pack includes 15 minutes and the full 4-stem output.",
   ],
   toolCta: "Isolate vocals with AI",
-  quickFacts: ["AI stem separation", "4 stems + instrumental", "Free 3 minutes", "Browser only"],
+  quickFacts: ["AI stem separation", "4 stems + instrumental", "$2.90 trial · 15 min", "Browser only"],
   sections: [
     {
       h2: "Why AI separation beats the old center-channel trick",
@@ -48,11 +48,11 @@ const data: ToolPageData = {
     {
       h2: "AI vocal remover vs. EQ and phase cancellation",
       paragraphs: [
-        "If you only need a rough karaoke backing track and you already use a DAW, the free phase trick can be good enough — especially on simple stereo recordings where the vocal is dead center. It takes seconds and costs nothing. But it is a blunt instrument: it cannot tell a vocal from a bass guitar if both are centered, and it removes the low end of the mix along with the singer.",
-        "For acapellas, sampling, remixes or anything you plan to publish, AI separation is the only option that produces a full-spectrum result. The trade-off is processing time and, above the free tier, cost. If you are choosing between the two, use phase cancellation for quick scratch work and AI separation for anything a listener will hear.",
+        "If you only need a rough karaoke backing track and you already use a DAW, the phase trick can be good enough — especially on simple stereo recordings where the vocal is dead center. It takes seconds and adds no cost. But it is a blunt instrument: it cannot tell a vocal from a bass guitar if both are centered, and it removes the low end of the mix along with the singer.",
+        "For acapellas, sampling, remixes or anything you plan to publish, AI separation is the only option that produces a full-spectrum result. The trade-off is processing time and cost: the $2.90 Trial Pack buys 15 minutes of full 4-stem separation, which is roughly five three-minute songs. Use phase cancellation for quick scratch work and AI separation for anything a listener will hear.",
       ],
       bullets: [
-        "Phase cancellation: instant, free, but loses centered instruments and struggles with stereo vocals.",
+        "Phase cancellation: instant and zero-cost, but loses centered instruments and struggles with stereo vocals.",
         "EQ carving: removes a frequency band, not an instrument — vocals and other midrange content both suffer.",
         "AI separation: slower, but keeps the full arrangement and returns individual stems.",
       ],
@@ -61,12 +61,12 @@ const data: ToolPageData = {
       h2: "Quality depends on the source file — how to help the model",
       paragraphs: [
         "No separator can recover detail that is not present in the file. A 128kbps stream rip, a clipped phone recording or a heavily limited master gives the model less to work with, and artifacts become more likely. The single biggest improvement you can make is uploading the highest-quality copy of the track you have.",
-        "Trim silence and count-ins before uploading where possible. Shorter clips process faster and use less of your free minutes. If you are working with a live recording, expect bleed between stems — a vocal mic that captured the drums will put some drums in the vocal stem, and no model currently solves that perfectly.",
+        "Trim silence and count-ins before uploading where possible. Shorter clips process faster and use less of your paid minutes. If you are working with a live recording, expect bleed between stems — a vocal mic that captured the drums will put some drums in the vocal stem, and no model currently solves that perfectly.",
       ],
       bullets: [
         "Prefer WAV or 320kbps MP3 over low-bitrate streams.",
         "Avoid files that clip or peak above 0dBFS.",
-        "Trim long intros and outros to save processing time.",
+        "Trim long intros and outros to save paid minutes.",
         "Live and mono recordings are harder than studio mixes — expect some bleed.",
       ],
       bulletsColumns: 2,
@@ -75,18 +75,22 @@ const data: ToolPageData = {
       h2: "Where the AI still struggles",
       paragraphs: [
         "AI vocal removal is excellent on modern studio productions and good on most older stereo recordings. It is weaker on mono masters from the 1960s, dense distorted mixes where every instrument occupies the same frequencies, orchestral recordings with many overlapping sources, and spoken-word tracks where speech and background noise are entangled.",
-        "When the result is not clean enough, try the high-quality model on a paid plan, process a shorter section, or use the stems for editing rather than as a final master. For remix and karaoke work, small artifacts are usually masked by the new arrangement; for critical listening, always compare the result against the original.",
+        "When the result is not clean enough, try the high-quality model on Pro, process a shorter section, or use the stems for editing rather than as a final master. For remix and karaoke work, small artifacts are usually masked by the new arrangement; for critical listening, always compare the result against the original.",
       ],
     },
     {
-      h2: "Free AI vocal remover vs. paid plans",
+      h2: "Trial Pack, Starter or Pro: what to buy",
       paragraphs: [
-        "The free tier gives you a real AI separation of up to 3 minutes with 2 stems in MP3 320 — enough to test the quality on your own music. Paid plans add the full 4-stem output, WAV downloads, batch uploads, longer tracks, the high-quality model and a priority queue.",
-        "If you are just making a karaoke track for yourself, the free tier may be all you need. If you are producing content, remixing or processing several songs a week, the Starter plan at $5/month covers 90 minutes — roughly 30 three-minute tracks — and the annual plan works out to about $3.25/month.",
+        "There is no free-of-charge allowance — every run is paid, which keeps the queue short and the model quality consistent. The entry point is the one-time $2.90 Trial Pack: 15 minutes, 4 stems, MP3 320 and WAV, no subscription. Fifteen minutes covers roughly five three-minute songs and never expires.",
+        "If you process more than that, Starter at $5/month includes 90 minutes with batch upload; Pro at $9/month raises it to 200 minutes and adds the 6-stem model, high-quality mode and a priority queue. The annual plan is $39 — five months of Starter for twelve months of access.",
       ],
     },
   ],
   faqs: [
+    {
+      q: "Can I try before paying?",
+      a: "No. There is no free-of-charge processing tier and no complimentary preview — every separation costs GPU time, so every run is paid. The cheapest entry point is the one-time $2.90 Trial Pack: 15 minutes, 4 stems, WAV + MP3, no subscription.",
+    },
     {
       q: "Is AI vocal removal legal?",
       a: "Separating a song you own or have licensed is generally fine, and we grant you a commercial-use license for the processing service. We cannot grant rights to the underlying recording. Uploading someone else's copyrighted song and publishing the stems may infringe their rights, so only process audio you are allowed to use.",
@@ -105,7 +109,7 @@ const data: ToolPageData = {
     },
     {
       q: "Can I get six stems instead of four?",
-      a: "The Pro plan includes the 6-stem model in addition to the standard 4-stem output. It separates the 'other' bucket further for more detailed production work. The free and Starter tiers return the standard 4 stems.",
+      a: "The Pro plan includes the 6-stem model in addition to the standard 4-stem output. It separates the 'other' bucket further for more detailed production work. The Trial Pack and Starter return the standard 4 stems.",
     },
   ],
   related: [
@@ -127,7 +131,7 @@ const data: ToolPageData = {
   ],
   finalCta: {
     title: "Hear what the AI does with your own track",
-    body: "Upload a 3-minute excerpt for free and compare the acapella and instrumental with the original before you pay anything.",
+    body: "Buy the $2.90 Trial Pack, upload up to about five songs and compare the acapella and instrumental with the original. 15 minutes, one-time payment, no subscription.",
   },
 };
 

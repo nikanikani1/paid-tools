@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Karaoke Maker — Remove Vocals, Keep the Music",
   description:
-    "Make a karaoke track from any song: the AI karaoke maker removes the vocals and keeps the full band. Free 3-minute preview, no signup, MP3 or WAV download.",
+    "Make a karaoke track from any song: the AI karaoke maker removes the vocals and keeps the full band. Start with the $2.90 Trial Pack — 15 minutes, one-time payment, MP3 or WAV.",
   path: "/karaoke-maker",
 });
 
@@ -13,15 +13,15 @@ const data: ToolPageData = {
   crumb: "Karaoke maker",
   title: "Karaoke Maker — Remove Vocals, Keep the Music",
   description:
-    "Make a karaoke track from any song: the AI karaoke maker removes the vocals and keeps the full band. Free 3-minute preview, no signup, MP3 or WAV download.",
+    "Make a karaoke track from any song: the AI karaoke maker removes the vocals and keeps the full band. Start with the $2.90 Trial Pack — 15 minutes, one-time payment, MP3 or WAV.",
   h1: "Karaoke Maker — Remove Vocals, Keep the Music",
-  badge: "Karaoke track maker · instant backing track",
+  badge: "Karaoke track maker · $2.90 trial",
   intro: [
     "A karaoke maker turns any song into a backing track by removing the lead vocal while keeping the instruments exactly where they are. That is what this page does: upload a track, get a karaoke version in about a minute, and sing over it.",
-    "Unlike karaoke videos on streaming sites, you are not limited to the songs someone else chose to produce. Any track you have the rights to use can become your backing track, in its original key and arrangement.",
+    "Unlike karaoke videos on streaming sites, you are not limited to the songs someone else chose to produce. Any track you have the rights to use can become your backing track, in its original key and arrangement. Runs are paid — the one-time $2.90 Trial Pack covers 15 minutes.",
   ],
   toolCta: "Make my karaoke track",
-  quickFacts: ["Any song, original key", "Full band preserved", "MP3 320 or WAV", "Free 3 minutes"],
+  quickFacts: ["Any song, original key", "Full band preserved", "MP3 320 or WAV", "$2.90 trial · 15 min"],
   sections: [
     {
       h2: "Make a karaoke track from any song",
@@ -47,15 +47,15 @@ const data: ToolPageData = {
     {
       h2: "How to make a karaoke version in three steps",
       paragraphs: [
-        "Upload the song with the tool at the top of this page. The AI model separates the mix into vocals and instrumental, and a typical three-minute track is finished in around a minute. Download the instrumental — that file is your karaoke backing track.",
-        "If you also want the acapella for harmony practice, it is in the same download. On paid plans you get the individual drums and bass stems too, which is useful if you want to build a custom arrangement or change the energy of a section.",
+        "First, buy the $2.90 Trial Pack — 15 minutes, one-time payment, no subscription. Then upload the song with the tool at the top of this page. The AI model separates the mix into vocals and instrumental, and a typical three-minute track is finished in around a minute. Download the instrumental — that file is your karaoke backing track.",
+        "If you also want the acapella for harmony practice, it is in the same download. Every paid run returns drums and bass too, which is useful if you want to build a custom arrangement or change the energy of a section.",
       ],
     },
     {
       h2: "Karaoke maker vs. karaoke apps and videos",
       paragraphs: [
         "Karaoke apps and video platforms offer a catalogue of tracks that someone else produced. They are convenient, but the catalogue is limited, the key is fixed and the arrangement may be a re-recording rather than the original. If your song is not in the catalogue, you are stuck.",
-        "A karaoke maker gives you the original recording as a backing track, for any song you have the rights to process. You are not limited to a catalogue, and you can edit the backing track afterwards — loop a chorus, cut a bridge, or export it into a recording app. The trade-off is that you have to process the song yourself, which takes about a minute.",
+        "A karaoke maker gives you the original recording as a backing track, for any song you have the rights to process. You are not limited to a catalogue, and you can edit the backing track afterwards — loop a chorus, cut a bridge, or export it into a recording app. The trade-off is that you have to process the song yourself, which takes about a minute and a small one-time fee.",
       ],
       bullets: [
         "Catalogue karaoke: instant, but limited song choice and fixed arrangements.",
@@ -89,6 +89,10 @@ const data: ToolPageData = {
   ],
   faqs: [
     {
+      q: "Is there a free karaoke maker here?",
+      a: "No. There is no free-of-charge allowance: every separation costs GPU time, so every run is paid. The $2.90 Trial Pack is the cheapest entry point — 15 minutes, one-time payment, about five three-minute songs — and it returns the instrumental plus the other stems.",
+    },
+    {
       q: "Can I make a karaoke version of any song?",
       a: "You can process any song you have the rights to use. The tool works best on studio recordings with a clear arrangement; dense or live recordings may leave some vocal bleed in the backing track.",
     },
@@ -106,7 +110,7 @@ const data: ToolPageData = {
     },
     {
       q: "What download format do I get?",
-      a: "Free and Starter plans deliver MP3 320kbps instrumentals; paid plans also offer WAV. WAV is the better choice if you plan to edit, transpose or record over the track.",
+      a: "Every paid run delivers MP3 320kbps and WAV — the Trial Pack included. WAV is the better choice if you plan to edit, transpose or record over the track.",
     },
   ],
   related: [
@@ -128,7 +132,7 @@ const data: ToolPageData = {
   ],
   finalCta: {
     title: "Turn your song into a karaoke track",
-    body: "Upload a track, download the instrumental and start singing. Free 3-minute preview, no signup, original key and arrangement.",
+    body: "Buy the $2.90 Trial Pack, upload a track and download the instrumental. 15 minutes, one-time payment, original key and arrangement.",
   },
 };
 

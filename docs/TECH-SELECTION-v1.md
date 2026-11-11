@@ -41,8 +41,8 @@
 | 支付 | 现有 **Waffo** 商户（MoR） | 官网价 3.9% + $0.50/笔；实际合同费率待商户后台核实 |
 | 邮件 | Resend HTTP API | 免费 3,000 封/月（100 封/天）；2000 单/月时升 Pro $20 |
 | 认证 | 订单 access token + 邮箱 magic link（订阅用） | 不做密码/第三方登录，降低摩擦 |
-| 防滥用 | Turnstile 免费 + CF 限流 1 条（`POST /api/jobs`）+ 应用层配额 | 免费档/试用额度硬限制 |
-| 部署 | Render（Hobby workspace，2×$7 Web Service） | 免费档 15 分钟休眠，不能生产；上线先验 `/api/version` |
+| 防滥用 | Turnstile 免费 + CF 限流 1 条（`POST /api/jobs`）+ 应用层额度 | 试用包/订阅额度硬限制，**无免费处理额度** |
+| 部署 | **Cloudflare Workers**（OpenNext，$5/账号） | 两站两个 Worker；按 site-eng-deploy 2.3 修 4 处；上线先验 `/api/version` |
 | 监控 | `/api/version` + 服务端成本日志（每 job 记录 provider 费用）+ 飞书日报（复用 site-eng-monitor 三件套） | 先记成本，再谈优化 |
 
 ### 1.1 单仓结构（npm workspaces）
@@ -120,22 +120,22 @@ D:\ai-workspace\paid-tools\
 
 | 套餐 | 价格 | AI COGS（满额） | Waffo 费 | 贡献毛利 | 毛利率 |
 |---|---|---|---|---|---|
-| 免费体验 | $0（3 分钟/首，1 天 1 次） | $0.014/人 | — | 获客成本 | — |
+| Trial Pack 15 分钟（一次性） | **$2.90** | $0.07 | $0.613 | $2.217 | **76.4%** |
 | Starter 90 分钟/月 | **$5/月** | $0.42 | $0.695 | $3.885 | **77.7%** |
 | Pro 200 分钟/月 | **$9/月** | $0.93 | $0.851 | $7.219 | **80.2%** |
 | 按量包 60 分钟 | **$5** | $0.28 | $0.695 | $4.025 | 80.5% |
 | **年付 90 分钟/月** | **$39/年** | $5.04/年 | $2.02 | $31.94 | **81.9%** |
 
-> 关键：**低客单被 Waffo 的 $0.50/笔固定费吃掉 10–14%**。所以首屏主推**年付 $39**（折 $3.25/月，比 lalal $7.5 年付便宜 57%），月付 $5 做入口。
+> 关键：**不提供免费额度**；入口是 $2.90/15 分钟 Trial Pack（一次性付费）。低客单被 Waffo 的 $0.50/笔固定费吃掉 10–14%，年付 $39 折 $3.25/月，适合做留存；年费按访谈「5 个月月费」口径应在真实 CAC/留存数据后复核（$5×5=$25–29，不排除后续调整）。
 
 ### 2.4 流量与用量成本
 
 | 场景 | API 成本 | R2 存储 | 说明 |
 |---|---|---|---|
-| 100 分钟/月 | $0.47 | $0（免额） | 免费体验/小流量 |
+| 100 分钟/月 | $0.47 | $0（免额） | Trial Pack/小流量 |
 | 1,000 分钟/月 | $4.67 | $0.03–0.48 | 约 333 首 |
 | 5,000 分钟/月 | $23.33 | $0.75–3.03 | 约 1,667 首 |
-| 10,000 免费用户（3 分钟/人） | $140 | 0 | **免费额度必须限流**（否则烧钱） |
+| 无免费额度 | $0 | $0 | **不提供免费处理**；Trial 15min/单 = $0.07/单 |
 
 ---
 
@@ -256,7 +256,7 @@ D:\ai-workspace\paid-tools\
 | 任务 | Owner | 写作用域 | 交付 |
 |---|---|---|---|
 | 共享底座 | platform-builder | `paid-tools/packages/core`、`packages/ui` | R2 预签名、task 状态机、provider 客户端、Waffo webhook、邮件、限流、埋点 |
-| A 站 | voice-builder | `paid-tools/apps/voice` | 上传/任务/下载/定价/SEO 子页/免费额度 |
+| A 站 | voice-builder | `paid-tools/apps/voice` | 上传/任务/下载/定价/付费 Trial/SEO 子页 |
 | B 站 | headshot-builder | `paid-tools/apps/headshot` | 人脸质量门/订单/生成/交付/退款/SEO 子页 |
 | 集成与验收 | Lead | `paid-tools/docs`、根配置、部署 | 骨架、环境变量、E2E、部署、GSC、成本日志 |
 
@@ -266,11 +266,11 @@ D:\ai-workspace\paid-tools\
 |---|---|
 | D1 | 建 monorepo、共享 core 骨架、两个 Next app、CI/build 通过 |
 | D2–3 | R2 预签名、task 表、Replicate/fal 客户端、webhook 验签（两站共用） |
-| D2–5 | A 站：上传→分离→下载全链路跑通（免费 3 分钟） |
+| D2–5 | A 站：上传→分离→下载全链路跑通（$2.90 Trial Pack 付费流程） |
 | D3–7 | B 站：人脸质量门→40 张生成→face-swap→zip 交付跑通（内部测试单） |
 | D5–7 | Waffo checkout + webhook + 额度扣减/开通；两站 E2E 真支付测试 |
 | D8–10 | 定价页/年付/退款政策/隐私条款；A/B 长尾页面 + i18n + sitemap/hreflang |
-| D11–12 | 压测并发/成本日志/错误告警；Render 部署 + `/api/version` |
+| D11–12 | 压测并发/成本日志/错误告警；Cloudflare Workers 部署 + `/api/version` |
 | D13–14 | GSC 验证 + sitemap 提交 + 假门页/小预算投放；开始收录 |
 
 ### 5.3 验收（每站）
@@ -280,7 +280,7 @@ D:\ai-workspace\paid-tools\
 - [ ] Waffo 测试支付→webhook→额度生效→退款路径
 - [ ] `/api/version` 返回 commit；`/api/cost`（或日志）能查每单 AI 成本
 - [ ] 首页唯一 H1、canonical、hreflang 三语、sitemap 条数 = 路由 × 语言
-- [ ] Turnstile + IP 限流 + 免费额度防刷
+- [ ] Turnstile + IP 限流 + 试用包/订阅额度防刷（**无免费额度**）
 - [ ] 隐私政策/服务条款/DMCA/退款页齐全
 - [ ] 30 天 R2 生命周期；Replicate 产物转存成功（1 小时删除兜底）
 

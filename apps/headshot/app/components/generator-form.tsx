@@ -7,14 +7,15 @@ type JobFile = { name: string; url: string };
 type Job = { id: string; status: string; progress: number; files: JobFile[]; error?: string };
 
 const PACKAGES = [
-  { images: 40, label: "40 headshots — $35" },
-  { images: 60, label: "60 headshots — $45" },
-  { images: 100, label: "100 headshots — $75" },
+  { images: 5, label: "Sample Pack — 5 headshots — $9" },
+  { images: 40, label: "Starter — 40 headshots — $35" },
+  { images: 60, label: "Professional — 60 headshots — $45" },
+  { images: 100, label: "Executive — 100 headshots — $75" },
 ];
 
 export type GeneratorFormProps = {
   id?: string;
-  variant?: "full" | "compact" | "free";
+  variant?: "full" | "compact" | "sample";
   defaultStyle?: string;
   defaultPlan?: number;
   heading?: string;
@@ -25,7 +26,7 @@ export default function GeneratorForm({
   id = "generator",
   variant = "full",
   defaultStyle = STYLES[0],
-  defaultPlan = 40,
+  defaultPlan = 5,
   heading,
   note,
 }: GeneratorFormProps) {
@@ -35,6 +36,7 @@ export default function GeneratorForm({
   const [job, setJob] = useState<Job | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [checkoutRequired, setCheckoutRequired] = useState(false);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const stop = useCallback(() => {
@@ -61,6 +63,8 @@ export default function GeneratorForm({
 
   useEffect(() => () => stop(), [stop]);
 
+  const selected = PACKAGES.find((pkg) => pkg.images === images) ?? PACKAGES[0];
+
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (files.length < 3) {
@@ -69,17 +73,24 @@ export default function GeneratorForm({
     }
     setBusy(true);
     setError(null);
+    setCheckoutRequired(false);
     setJob(null);
     try {
       const res = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          files: files.length,
-          style,
-          images: variant === "free" ? 1 : images,
-        }),
+        body: JSON.stringify({ files: files.length, style, images, package: selected.label }),
       });
+      if (res.status === 402) {
+        const payload = (await res.json().catch(() => null)) as { message?: string } | null;
+        setCheckoutRequired(true);
+        setError(
+          payload?.message ??
+            "Checkout required. Every order is paid — start with the $9 Sample Pack once payments are connected.",
+        );
+        setBusy(false);
+        return;
+      }
       if (!res.ok) throw new Error((await res.text()) || "Could not create the order");
       const created = (await res.json()) as Job;
       setJob(created);
@@ -90,8 +101,6 @@ export default function GeneratorForm({
       setBusy(false);
     }
   }
-
-  const isFree = variant === "free";
 
   return (
     <div id={id} className="sans scroll-mt-24 rounded-2xl border border-stone-300 bg-white/75 p-5 shadow-sm">
@@ -113,7 +122,7 @@ export default function GeneratorForm({
             onChange={(e) => setFiles([...(e.target.files ?? [])])}
           />
         </label>
-        <div className={`mt-4 grid gap-3 ${isFree ? "" : "sm:grid-cols-2"}`}>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <label className="text-sm text-stone-700">
             Style
             <select
@@ -126,31 +135,42 @@ export default function GeneratorForm({
               ))}
             </select>
           </label>
-          {!isFree && (
-            <label className="text-sm text-stone-700">
-              Package
-              <select
-                value={images}
-                onChange={(e) => setImages(Number(e.target.value))}
-                className="mt-1 w-full rounded-lg border border-stone-300 bg-white p-2 text-stone-900"
-              >
-                {PACKAGES.map((pkg) => (
-                  <option key={pkg.images} value={pkg.images}>
-                    {pkg.label}
-                  </option>
-                ))}
-              </select>
-            </label>
-          )}
+          <label className="text-sm text-stone-700">
+            Package
+            <select
+              value={images}
+              onChange={(e) => setImages(Number(e.target.value))}
+              className="mt-1 w-full rounded-lg border border-stone-300 bg-white p-2 text-stone-900"
+            >
+              {PACKAGES.map((pkg) => (
+                <option key={pkg.images} value={pkg.images}>
+                  {pkg.label}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
         <button
           type="submit"
           disabled={busy}
           className="mt-4 w-full rounded-xl bg-orange-700 px-5 py-3 font-semibold text-white hover:bg-orange-600 disabled:opacity-40"
         >
-          {busy ? "Generating…" : isFree ? "Render my free preview" : "Generate my headshots"}
+          {busy ? "Starting your order…" : `Continue — ${selected.label.split(" — ").at(-1)} one-time`}
         </button>
-        {error && (
+        <p className="mt-2 text-xs text-stone-500">
+          Paid order required. No free tier and no free preview — every set is generated after payment, with one free
+          redo if the likeness misses.
+        </p>
+        {checkoutRequired && (
+          <div className="mt-3 rounded-lg border border-amber-300 bg-amber-50 px-3 py-3 text-sm text-amber-900">
+            <p className="font-semibold">Checkout required</p>
+            <p className="mt-1">
+              This build has no payment provider connected, so no order can be created. In production you would be sent
+              to checkout for the {selected.images}-image package.
+            </p>
+          </div>
+        )}
+        {error && !checkoutRequired && (
           <p className="mt-3 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-sm text-rose-800">{error}</p>
         )}
         {job && (
@@ -166,7 +186,7 @@ export default function GeneratorForm({
             </div>
             {job.files.length > 0 && (
               <div className="mt-4 grid grid-cols-5 gap-2">
-                {job.files.slice(0, isFree ? 1 : 20).map((f) => (
+                {job.files.slice(0, 20).map((f) => (
                   <div
                     key={f.name}
                     className="aspect-square rounded-lg border border-stone-200 bg-stone-200/70 p-1 text-[10px] leading-tight text-stone-600"
@@ -187,7 +207,8 @@ export default function GeneratorForm({
           </div>
         )}
         <p className="mt-3 text-xs text-stone-500">
-          {note ?? "Mock mode now — the AI pipeline runs once API keys are connected."}
+          {note ??
+            "Demo mode: order creation is disabled in production until checkout is connected (API answers 402 payment_required)."}
         </p>
       </form>
     </div>

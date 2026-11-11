@@ -73,9 +73,16 @@ export default function TermsPage() {
 
           <h3>4. Orders and payment</h3>
           <ul>
-            <li>Packages are one-time purchases: 40 images for $35, 60 for $45, 100 for $75 (USD), as shown on the pricing page.</li>
+            <li>
+              Packages are one-time purchases: the $9 Sample Pack (5 images), 40 images for $35, 60 for $45 and 100 for
+              $75 (USD), as shown on the <Link href="/pricing">pricing page</Link>.
+            </li>
+            <li>There is no free tier, free preview or free trial. Every generated image is part of a paid order.</li>
             <li>Payment is processed by our merchant of record, which handles taxes and issues the receipt.</li>
-            <li>Generation begins after payment confirmation. The order page shows progress.</li>
+            <li>
+              Generation begins only after payment confirmation. Before checkout is connected, order requests are
+              refused with HTTP 402 <code>payment_required</code> rather than producing an unpaid set.
+            </li>
             <li>Team orders of ten or more people may be invoiced under separate commercial terms.</li>
           </ul>
 
@@ -93,7 +100,9 @@ export default function TermsPage() {
             <li>use the images in a way that breaks the prohibited-use rules above.</li>
           </ul>
           <p>
-            The free preview is licensed for personal, non-commercial evaluation only and carries a watermark.
+            The $9 Sample Pack is a paid order under the same licence: its five delivered images carry the same
+            commercial rights as the larger packages. No image is delivered free of charge, and no watermarked
+            evaluation image is produced.
           </p>
 
           <h3>6. Your photos and intellectual property</h3>

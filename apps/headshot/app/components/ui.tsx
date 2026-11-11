@@ -153,47 +153,58 @@ export function FaqList({ items, title }: { items: FaqItem[]; title?: string }) 
 
 export function PlanCards({ ctaHref = "/#generator" }: { ctaHref?: string }) {
   return (
-    <div className="sans grid gap-4 md:grid-cols-3">
-      {PLANS.map((plan) => (
-        <div
-          key={plan.id}
-          className={`flex flex-col rounded-2xl border bg-white/70 p-6 ${
-            plan.popular ? "border-orange-500 shadow-[0_1px_0_0_rgba(194,65,12,0.2)]" : "border-stone-300"
-          }`}
-        >
-          <div className="flex items-baseline justify-between">
-            <h3 className="text-lg font-semibold">{plan.name}</h3>
-            {plan.popular && (
-              <span className="rounded-full bg-orange-700 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-white">
-                Most popular
-              </span>
-            )}
-          </div>
-          <p className="mt-4 text-4xl font-extrabold">
-            ${plan.price}
-            <span className="ml-1 text-sm font-normal text-stone-500">one-time</span>
-          </p>
-          <p className="mt-1 text-sm text-stone-500">{plan.images} headshots</p>
-          <ul className="mt-4 flex-1 space-y-2 text-sm text-stone-700">
-            {plan.features.map((feature) => (
-              <li key={feature} className="flex gap-2">
-                <span aria-hidden="true" className="text-orange-700">
-                  ·
-                </span>
-                {feature}
-              </li>
-            ))}
-          </ul>
-          <Link
-            href={ctaHref}
-            className="mt-6 rounded-xl bg-orange-700 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-orange-600"
+    <div className="sans grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      {PLANS.map((plan) => {
+        const isEntry = plan.images <= 5;
+        return (
+          <div
+            key={plan.id}
+            className={`flex flex-col rounded-2xl border bg-white/70 p-6 ${
+              plan.popular ? "border-orange-500 shadow-[0_1px_0_0_rgba(194,65,12,0.2)]" : "border-stone-300"
+            }`}
           >
-            Start with {plan.name}
-          </Link>
-        </div>
-      ))}
-      <p className="text-xs text-stone-500 md:col-span-3">
-        Every package is a one-time payment, includes a commercial licence and one free redo within 48 hours.{" "}
+            <div className="flex items-baseline justify-between gap-2">
+              <h3 className="text-lg font-semibold">{plan.name}</h3>
+              {plan.popular ? (
+                <span className="rounded-full bg-orange-700 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-white">
+                  Popular
+                </span>
+              ) : isEntry ? (
+                <span className="rounded-full border border-orange-400 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-orange-800">
+                  Entry
+                </span>
+              ) : null}
+            </div>
+            <p className="mt-4 text-4xl font-extrabold">
+              ${plan.price}
+              <span className="ml-1 text-sm font-normal text-stone-500">one-time</span>
+            </p>
+            <p className="mt-1 text-sm text-stone-500">
+              {plan.images} headshots · ${(plan.price / plan.images).toFixed(2)} each
+            </p>
+            <ul className="mt-4 flex-1 space-y-2 text-sm text-stone-700">
+              {plan.features.map((feature) => (
+                <li key={feature} className="flex gap-2">
+                  <span aria-hidden="true" className="text-orange-700">
+                    ·
+                  </span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <Link
+              href={ctaHref}
+              className="mt-6 rounded-xl bg-orange-700 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-orange-600"
+            >
+              Start with {plan.name}
+            </Link>
+          </div>
+        );
+      })}
+      <p className="text-xs text-stone-500 sm:col-span-2 xl:col-span-4">
+        There is no free tier and no free preview image: every order is paid, and the cheapest entry point is the $9
+        Sample Pack (5 headshots). All packages are one-time payments with a commercial licence and one free redo within
+        48 hours.{" "}
         <Link href="/pricing" className="text-orange-700 underline underline-offset-2">
           Compare packages
         </Link>
@@ -218,7 +229,7 @@ export function SampleGrid({ title }: { title?: string }) {
             <div className={`aspect-[4/5] bg-gradient-to-br ${sample.tone} p-4`}>
               <div className="flex h-full items-end">
                 <span className="rounded-full bg-white/70 px-2 py-1 text-[11px] font-medium text-stone-700">
-                  Sample preview
+                  Illustrative preview
                 </span>
               </div>
             </div>
@@ -297,9 +308,9 @@ export function RelatedLinks({
 
 export function CtaBand({
   title = "Ready to stop using the photo from 2015?",
-  body = "Upload five selfies, pick a style, and download 40–100 professional headshots in minutes. One-time payment, free redo included.",
+  body = "Order the $9 Sample Pack (5 headshots) to test the pipeline on your own face, then scale up to 40, 60 or 100 images. One-time payment, one free redo included.",
   href = "/#generator",
-  cta = "Generate my headshots",
+  cta = "Start with the $9 Sample Pack",
 }: {
   title?: string;
   body?: string;

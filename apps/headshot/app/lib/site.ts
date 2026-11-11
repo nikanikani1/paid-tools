@@ -6,6 +6,15 @@ export const SITE_TAGLINE = "AI headshot generator";
 
 export const PLANS = HEADSHOT_PLANS;
 
+/**
+ * Lowest paid entry point. There is no free tier and no free trial: the
+ * cheapest way to see the pipeline on your own photos is the one-time
+ * $9 Sample Pack (5 headshots).
+ */
+export const SAMPLE_PACK = HEADSHOT_PLANS[0];
+export const MIN_PAID_USD = SAMPLE_PACK.price;
+
+
 export const STYLES = [
   "LinkedIn / Corporate",
   "Creative",
@@ -82,13 +91,13 @@ export const USE_CASES: { href: string; title: string; body: string }[] = [
   },
   {
     href: "/free-ai-headshot-generator",
-    title: "Free preview",
-    body: "See one AI portrait rendered from your own photos before you decide whether to buy a full set.",
+    title: "$9 Sample Pack",
+    body: "Five paid sample headshots for $9 — the cheapest way to test the pipeline on your own face. No free tier, no free trial, no watermark.",
   },
 ];
 
 export const FOOTER_LINKS: { href: string; label: string }[] = [
-  { href: "/free-ai-headshot-generator", label: "Free AI headshot generator" },
+  { href: "/free-ai-headshot-generator", label: "Free vs paid headshot tools" },
   { href: "/ai-professional-headshot", label: "AI professional headshot" },
   { href: "/linkedin-headshot", label: "LinkedIn headshot" },
   { href: "/team-headshots", label: "Team headshots" },
@@ -111,8 +120,12 @@ export const TRUST_POINTS: { title: string; body: string }[] = [
     body: "Uploads are used only to render your order. Originals are deleted after 30 days, and we never sell, publish or model-train on your photos.",
   },
   {
-    title: "One-time payment",
-    body: "No subscription, no credits that expire, no surprise renewal. Pay once, download everything you bought.",
+    title: "One-time payment, from $9",
+    body: "No subscription, no credits that expire, no surprise renewal. The $9 Sample Pack (5 images) is the entry point; larger packages are a single payment too.",
+  },
+  {
+    title: "No free tier, on purpose",
+    body: "We do not sell your photos to advertisers and we do not fund free generations with ads or data. Every order is paid, which is why the pipeline is not watermarked and your uploads stay private.",
   },
   {
     title: "Written refund policy",
@@ -122,12 +135,20 @@ export const TRUST_POINTS: { title: string; body: string }[] = [
 
 export const HOME_FAQ = [
   {
+    q: "Do you offer a free trial or a free preview?",
+    a: "No. There is no free tier and no free preview image. The cheapest way to try the pipeline on your own photos is the one-time $9 Sample Pack: five real headshots, no watermark, commercial licence and one free redo. We charge from the first image because every generation costs real GPU time and because we do not fund free runs with ads or by selling photo data.",
+  },
+  {
+    q: "What do I get in the $9 Sample Pack?",
+    a: "Five headshots in one style and one background, delivered at 1024px with no watermark, a commercial licence and one free redo within 48 hours. It runs the same quality gate, identity pass and face-merge stage as the larger packages — only the image count is smaller.",
+  },
+  {
     q: "How many selfies do I need to upload?",
     a: "Three is the minimum, five is what we recommend: one front-facing frame, one turned slightly left, one slightly right, one with a natural smile, and one shot in different lighting. More variety helps the model separate your identity from a single camera angle.",
   },
   {
     q: "How long does it take to get my headshots?",
-    a: "Most 40-photo orders finish in about two minutes of generation time; 100-photo orders take closer to four minutes. The page updates live while your set is rendering, and you can download individual images or a single ZIP when it is done.",
+    a: "A 5-image Sample Pack finishes in well under a minute of generation time; 40-photo orders take about two minutes and 100-photo orders closer to four. The page updates live while your set is rendering, and you can download individual images or a single ZIP when it is done.",
   },
   {
     q: "Do the headshots actually look like me?",

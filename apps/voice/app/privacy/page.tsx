@@ -11,7 +11,7 @@ const data: LegalPageData = {
   updated: LEGAL_UPDATED,
   intro: [
     "This policy explains what data StemSplit.ai collects when you use the vocal remover, why we collect it, how long we keep it and what rights you have. It applies to the website and to every separation job you run.",
-    "The short version: your audio is used to process the job you asked for, it is not used to train models, and it is deleted automatically within 24–48 hours. You do not need an account to try the free preview.",
+    "The short version: your audio is used to process the job you asked for, it is not used to train models, and it is deleted automatically within 24–48 hours. Runs are paid, and payment details are handled by Waffo as merchant of record.",
   ],
   sections: [
     {
@@ -24,7 +24,7 @@ const data: LegalPageData = {
     {
       h2: "What we collect",
       paragraphs: [
-        "We keep data collection to what the service needs. Running a separation requires the audio file itself plus basic metadata such as filename, size and the time the job was created. If you purchase a plan, our payment provider collects the billing details — we receive confirmation of the payment and a subscription identifier, not your full card number.",
+        "We keep data collection to what the service needs. Running a separation requires the audio file itself plus basic metadata such as filename, size and the time the job was created. If you purchase the Trial Pack or a subscription, our payment provider collects the billing details — we receive confirmation of the payment and a subscription identifier, not your full card number.",
       ],
       bullets: [
         "Audio files and file metadata you upload for processing.",
@@ -73,7 +73,7 @@ const data: LegalPageData = {
       h2: "Cookies and analytics",
       paragraphs: [
         "The site uses only the cookies and local storage needed to function — for example remembering your session on a paid plan or keeping a job reference in the browser tab. We do not use advertising cookies or sell data to ad networks.",
-        "If we add product analytics, it will be privacy-oriented and limited to aggregate usage. You can block cookies in your browser settings; the free preview works without them, though some paid-plan features may not.",
+        "If we add product analytics, it will be privacy-oriented and limited to aggregate usage. You can block cookies in your browser settings; the core pages work without them, though checkout and some account features may not.",
       ],
     },
     {

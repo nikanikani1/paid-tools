@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "How to Remove Vocals from a Song (3 Ways)",
   description:
-    "Three ways to remove vocals from a song: AI stem separation, center-channel cancellation in Audacity, or an official instrumental. Compare quality, speed and effort.",
+    "Three ways to remove vocals from a song: AI stem separation, center-channel cancellation in Audacity, or an official instrumental. Compare quality, speed, effort and cost.",
   path: "/remove-vocals-from-song",
 });
 
@@ -13,15 +13,15 @@ const data: ToolPageData = {
   crumb: "Remove vocals from a song",
   title: "How to Remove Vocals from a Song (3 Ways)",
   description:
-    "Three ways to remove vocals from a song: AI stem separation, center-channel cancellation in Audacity, or an official instrumental. Compare quality, speed and effort.",
+    "Three ways to remove vocals from a song: AI stem separation, center-channel cancellation in Audacity, or an official instrumental. Compare quality, speed, effort and cost.",
   h1: "How to Remove Vocals from a Song (3 Ways)",
   badge: "Tutorial · AI + manual methods",
   intro: [
     "There are three realistic ways to remove vocals from a song: run an AI stem separator, phase-cancel the center channel in a DAW, or find an official instrumental. They differ enormously in quality, speed and legal risk.",
-    "This guide compares all three, shows the exact steps for each, and ends with the workflow most people should use. You can try the AI method on this page without installing anything.",
+    "This guide compares all three, shows the exact steps for each, and ends with the workflow most people should use. The AI method runs in your browser on this page; it is paid per run — the one-time $2.90 Trial Pack includes 15 minutes.",
   ],
   toolCta: "Remove vocals from my song",
-  quickFacts: ["AI + manual methods", "Step-by-step", "Free preview", "No install"],
+  quickFacts: ["AI + manual methods", "Step-by-step", "$2.90 trial · 15 min", "No install"],
   showStems: false,
   sections: [
     {
@@ -34,7 +34,7 @@ const data: ToolPageData = {
         "Best for: karaoke tracks, covers, remixes, sampling, practice.",
         "Quality: high on studio mixes; keeps the low end intact.",
         "Effort: none — upload and download.",
-        "Cost: free for 3 minutes per day; paid plans for longer tracks and 4 stems.",
+        "Cost: $2.90 one-time Trial Pack (15 minutes), then optional plans.",
       ],
     },
     {
@@ -68,14 +68,14 @@ const data: ToolPageData = {
         "Publishing, performing or producing: AI separation.",
         "Instant scratch track with no internet: phase cancellation.",
         "Karaoke with an official backing track: licensed instrumental.",
-        "Budget of zero: free AI preview first, manual trick as a fallback.",
+        "Smallest paid step for AI quality: the $2.90 Trial Pack (15 minutes).",
       ],
       bulletsColumns: 2,
     },
     {
       h2: "Step-by-step: remove vocals from a song with AI",
       paragraphs: [
-        "Start with the best copy of the song you have. Upload it with the tool on this page, keep the tab open while the model runs, and download the instrumental when the job completes. If the track is longer than three minutes, either trim a section for the free preview or use a paid plan for the full length.",
+        "Start with the best copy of the song you have. Buy the $2.90 Trial Pack if you have not already, upload the track with the tool on this page, keep the tab open while the model runs, and download the instrumental when the job completes. The trial's 15 minutes cover about five three-minute songs; longer tracks can use Starter or Pro.",
         "Once you have the instrumental, check it against the original at the same volume. A good separation should keep the drums punchy, the bass present and the stereo width intact, with the vocal gone or at least heavily reduced. If you hear vocal bleed, the source file or the arrangement is probably the cause — try the high-quality model on Pro before assuming the tool is at fault.",
       ],
     },
@@ -88,7 +88,7 @@ const data: ToolPageData = {
       bullets: [
         "Low-bitrate sources produce muddy stems — upload WAV or 320kbps.",
         "Judge quality on headphones or monitors, not phone speakers.",
-        "Trim long intros to save time and free minutes.",
+        "Trim long intros to save time and paid minutes.",
         "Own or license the song before you publish anything made from it.",
       ],
       bulletsColumns: 2,
@@ -96,8 +96,12 @@ const data: ToolPageData = {
   ],
   faqs: [
     {
+      q: "How much does it cost to remove vocals with AI?",
+      a: "The entry point is the one-time $2.90 Trial Pack: 15 minutes of separation, about five three-minute songs, with all four stems in MP3 320 and WAV. There is no free-of-charge allowance and no subscription required — the minutes never expire.",
+    },
+    {
       q: "Can I remove vocals from any song?",
-      a: "You can run any song you have the rights to process through the separator. Quality varies: studio mixes separate cleanly, while mono masters, live recordings and very dense mixes may leave vocal bleed in the instrumental. The free preview lets you test a track before paying.",
+      a: "You can run any song you have the rights to process through the separator. Quality varies: studio mixes separate cleanly, while mono masters, live recordings and very dense mixes may leave vocal bleed in the instrumental. A paid trial lets you check a track before committing to a plan.",
     },
     {
       q: "Does removing vocals keep the bass and drums?",
@@ -113,7 +117,7 @@ const data: ToolPageData = {
     },
     {
       q: "Can I remove vocals in Audacity for free?",
-      a: "Yes, using the Vocal Removal effect or a manual channel-invert-and-sum. It is free and offline, but it removes centered instruments and fails on wide vocals. Use it for scratch tracks and AI separation when quality matters.",
+      a: "Yes, using the Vocal Removal effect or a manual channel-invert-and-sum. It is free and offline, but it removes centered instruments and fails on wide vocals. Use it for scratch tracks and paid AI separation when quality matters.",
     },
   ],
   related: [
@@ -125,7 +129,7 @@ const data: ToolPageData = {
     {
       href: "/free-vocal-eliminator",
       label: "Free vocal eliminator",
-      blurb: "What you can do without paying, including limits and quality tips.",
+      blurb: "An honest comparison of free phase-cancellation methods versus paid AI separation.",
     },
     {
       href: "/karaoke-maker",
@@ -135,7 +139,7 @@ const data: ToolPageData = {
   ],
   finalCta: {
     title: "Skip the manual method — let the AI do it",
-    body: "Upload a track and get the vocal and instrumental back in about a minute. Free preview, no signup, no install.",
+    body: "Buy the $2.90 Trial Pack, upload a track and get the vocal and instrumental back in about a minute. 15 minutes, one-time payment, no subscription.",
   },
 };
 

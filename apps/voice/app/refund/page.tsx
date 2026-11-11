@@ -6,24 +6,24 @@ const data: LegalPageData = {
   crumb: "Refunds",
   title: "Refund Policy",
   description:
-    "StemSplit.ai refund policy: 14-day money-back guarantee on your first paid plan, refunds for duplicate charges and failed jobs, and how to request one.",
+    "StemSplit.ai refund policy: 14-day money-back guarantee on your first purchase — including the $2.90 Trial Pack — plus refunds for duplicate charges and failed jobs, and how to request one.",
   h1: "Refund Policy",
   updated: LEGAL_UPDATED,
   intro: [
     "We want you to pay only for separation that works for you. This policy explains when you can get a refund, how to request one and what is not covered.",
-    "The headline: the first purchase of any paid plan is covered by a 14-day money-back guarantee, and failed or duplicate charges are always refunded.",
+    "The headline: your first purchase — including the one-time $2.90 Trial Pack — is covered by a 14-day money-back guarantee while most of the minutes are unused, and failed or duplicate charges are always refunded or restored.",
   ],
   sections: [
     {
       h2: "14-day money-back guarantee",
       paragraphs: [
-        "Your first purchase of a paid plan — monthly, annual or pay-as-you-go — is covered by a 14-day money-back guarantee. If the separation quality is not what you expected, or you simply change your mind, ask for a refund within 14 days of the charge and we will return it in full.",
-        "To keep the guarantee fair, it applies when you have used less than 20 minutes of the plan's allowance. If you have already processed a large part of the month, we may refund the unused portion instead of the full amount.",
+        "Your first purchase — the one-time $2.90 Trial Pack, a monthly plan or an annual plan — is covered by a 14-day money-back guarantee. If the separation quality is not what you expected, or you simply change your mind, ask for a refund within 14 days of the charge and we will return it in full.",
+        "To keep the guarantee fair, it applies while most of the allowance is unused. For the 15-minute Trial Pack that means at least 10 minutes unused; for monthly and annual plans it means less than 20 minutes used. If you have already processed most of the allowance, we may refund the unused portion instead of the full amount.",
       ],
       bullets: [
-        "Covers the first purchase of any paid plan.",
+        "Covers the first purchase, including the $2.90 Trial Pack.",
         "Request within 14 days of the charge.",
-        "Full refund when less than 20 minutes have been used.",
+        "Full refund while most of the allowance is unused.",
         "One guarantee per customer, not per plan change.",
       ],
     },
@@ -83,8 +83,8 @@ const data: LegalPageData = {
   ],
   faqs: [
     {
-      q: "Can I get a refund after using the free trial?",
-      a: "The free preview is free, so there is nothing to refund. If you upgrade and are not happy, the 14-day money-back guarantee applies to your first paid charge as long as you have used less than 20 minutes.",
+      q: "Is the $2.90 Trial Pack refundable?",
+      a: "Yes. It is covered by the same 14-day money-back guarantee as any first purchase: email billing@stemsplit.ai within 14 days of the charge, and we will refund it in full while most of the minutes are unused. The Trial Pack does not renew, so there is nothing to cancel.",
     },
     {
       q: "What if a separation fails?",

@@ -13,6 +13,10 @@ export const metadata: Metadata = buildMetadata({
 
 const FAQ = [
   {
+    q: "Does the $9 Sample Pack include the redo and refund policy?",
+    a: "Yes. The Sample Pack is a paid order, so it carries the same one free redo within 48 hours and the same 14-day refund conditions as the 40, 60 and 100-image packages. The only difference is scale: a redo of a five-image set is fast and is processed the same way as a larger redo.",
+  },
+  {
     q: "How do I request a redo?",
     a: "Reply to your delivery email within 48 hours and say what missed — likeness, styling, backdrop or crop. Include the order ID. We regenerate the whole set with adjusted guidance and send a new download link, usually the same day.",
   },
@@ -67,7 +71,8 @@ export default function RefundPage() {
             </p>
             <p>
               The short version: one free redo within 48 hours, and a refund inside 14 days if the redo still misses.
-              Failed generations are refunded automatically. Nothing in this policy requires you to argue.
+              Failed generations are refunded automatically. This applies to every paid order — including the $9 Sample
+              Pack — because there is no free tier and no free preview anywhere in the product.
             </p>
           </div>
           <div>
@@ -218,16 +223,16 @@ export default function RefundPage() {
           { href: "/how-it-works", label: "How it works", body: "Why redos fix most misses." },
           { href: "/terms", label: "Terms of service", body: "Licence, acceptable use and liability." },
           { href: "/privacy", label: "Privacy", body: "Retention, deletion and processors." },
-          { href: "/", label: "AI headshot generator", body: "Start an order or try the free preview." },
-          { href: "/free-ai-headshot-generator", label: "Free preview", body: "Check the likeness before paying." },
+          { href: "/", label: "AI headshot generator", body: "Start a paid order with the $9 Sample Pack." },
+          { href: "/free-ai-headshot-generator", label: "Free vs paid headshot tools", body: "What free generators give you, and why we charge from $9." },
         ]}
       />
 
       <CtaBand
-        title="Not sure yet? Try the free preview first"
-        body="One free render from your own photos, no card required. If the likeness works, the paid packages are covered by this policy."
-        href="/free-ai-headshot-generator"
-        cta="Render a free preview"
+        title="Start with the $9 Sample Pack"
+        body="There is no free render: five paid headshots for $9, covered by this redo and refund policy. If the sample misses, the redo and refund rules apply exactly as they do for larger orders."
+        href="/pricing"
+        cta="Get the $9 Sample Pack"
       />
     </main>
   );

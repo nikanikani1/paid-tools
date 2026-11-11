@@ -47,7 +47,7 @@ export function SiteFooter() {
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
               Separate any song into vocals, drums, bass and other stems in minutes. Built for karaoke, acapella,
-              remixes and practice — free to try, no signup.
+              remixes and practice — start with the $2.90 Trial Pack, 15 minutes one-time.
             </p>
             <p className="mt-4 text-xs leading-relaxed text-slate-500">
               Only upload audio you own or have permission to process. We respond to takedown requests through our

@@ -2,26 +2,26 @@ import { ToolLandingPage, type ToolPageData } from "@/components/ToolLandingPage
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Vocal Remover Online — No Install, No Signup",
+  title: "Vocal Remover Online — No Install, Runs in Your Browser",
   description:
-    "A vocal remover online that runs in your browser: separate vocals and instrumental from any song with no install and no signup. Free 3 minutes, any device.",
+    "A vocal remover online that runs in your browser: separate vocals and instrumental from any song with no install. Start with the $2.90 Trial Pack — 15 minutes, one-time payment.",
   path: "/vocal-remover-online",
 });
 
 const data: ToolPageData = {
   slug: "/vocal-remover-online",
   crumb: "Vocal remover online",
-  title: "Vocal Remover Online — No Install, No Signup",
+  title: "Vocal Remover Online — No Install, Runs in Your Browser",
   description:
-    "A vocal remover online that runs in your browser: separate vocals and instrumental from any song with no install and no signup. Free 3 minutes, any device.",
-  h1: "Vocal Remover Online — No Install, No Signup",
-  badge: "Browser-based · no install · no signup",
+    "A vocal remover online that runs in your browser: separate vocals and instrumental from any song with no install. Start with the $2.90 Trial Pack — 15 minutes, one-time payment.",
+  h1: "Vocal Remover Online — No Install, Runs in Your Browser",
+  badge: "Browser-based · no install · $2.90 trial",
   intro: [
-    "Some vocal removers ask you to download a desktop app, install a VST plugin or hand over an email before you can hear a single result. This one runs entirely in your browser: open the page, choose a file, download your stems.",
-    "No install, no signup, no plugin. It works on Windows, macOS, Linux, ChromeOS, Android and iOS because the processing happens on our servers and the browser only handles the upload and download.",
+    "Some vocal removers ask you to install a desktop app or a VST plugin before you can hear a single result. This one runs entirely in your browser: open the page, buy the $2.90 Trial Pack, choose a file and download your stems.",
+    "No install and no plugin — the processing happens on our servers and the browser only handles the upload and download. It works on Windows, macOS, Linux, ChromeOS, Android and iOS.",
   ],
   toolCta: "Remove vocals online",
-  quickFacts: ["Works in any browser", "No install", "No signup", "Any device"],
+  quickFacts: ["Works in any browser", "No install", "$2.90 trial · 15 min", "Any device"],
   sections: [
     {
       h2: "Why an online vocal remover is usually enough",
@@ -33,13 +33,13 @@ const data: ToolPageData = {
     {
       h2: "Supported formats and size limits",
       paragraphs: [
-        "You can upload MP3, WAV, M4A and FLAC files up to 100MB, which is roughly 10 minutes of audio depending on the format. The upload runs over the browser's normal HTTPS connection, and the stems are delivered as MP3 320 on free and Starter plans or WAV on paid plans.",
-        "Very large files are rejected before processing so you do not lose your place in the queue. If a track is longer than ten minutes, split it into sections and process each one — the model handles a section just as well as a full track.",
+        "You can upload MP3, WAV, M4A and FLAC files up to 100MB, which is roughly 10 minutes of audio depending on the format. The upload runs over the browser's normal HTTPS connection, and every paid run delivers MP3 320 and WAV files — the Trial Pack included.",
+        "Very large files are rejected before processing so you do not lose paid minutes on an upload that cannot work. If a track is longer than ten minutes, split it into sections and process each one — the model handles a section just as well as a full track.",
       ],
       bullets: [
         "MP3, WAV, M4A, FLAC — the formats people actually have.",
         "Up to 100MB / about 10 minutes per track.",
-        "MP3 320 downloads on free and Starter, WAV on paid plans.",
+        "MP3 320 + WAV on the Trial Pack and every plan.",
         "No plugin, no software, no file conversion step.",
       ],
       bulletsColumns: 2,
@@ -75,12 +75,16 @@ const data: ToolPageData = {
     {
       h2: "Separate vocals online in three steps",
       paragraphs: [
-        "First, choose an audio file using the tool at the top of this page. Second, let the AI model separate the mix into vocals, instrumental, drums, bass and other — a typical three-minute song takes about a minute, and you can watch the progress bar move. Third, download the stems you need from the result panel.",
+        "First, buy the $2.90 Trial Pack — a one-time purchase that adds 15 minutes to your account. Then choose an audio file using the tool at the top of this page. The AI model separates the mix into vocals, instrumental, drums, bass and other; a typical three-minute song takes about a minute and you can watch the progress bar move. Finally, download the stems you need from the result panel.",
         "The whole flow takes less time than installing most desktop alternatives. If you want the full technical explanation of what happens between upload and download, the how-it-works page walks through the pipeline step by step.",
       ],
     },
   ],
   faqs: [
+    {
+      q: "Is there a free version of the online vocal remover?",
+      a: "No. Every run is paid because every run costs GPU time. The entry point is the one-time $2.90 Trial Pack: 15 minutes, 4 stems, MP3 320 and WAV, no subscription. There is no complimentary preview and no free-of-charge allowance.",
+    },
     {
       q: "Does the online vocal remover upload my whole song?",
       a: "Yes — the file you select is uploaded to our processing environment so the model can separate it. It is used only for your job, deleted from working storage automatically, and never used for model training or shared with other users.",
@@ -98,15 +102,15 @@ const data: ToolPageData = {
       a: "Processing itself is comparable because the model runs on dedicated cloud hardware. Online adds upload and download time, which is usually a few seconds for a 3-minute MP3. Large WAV files take longer to upload than to process.",
     },
     {
-      q: "Does it work with FLAC and WAV?",
-      a: "Yes. MP3, WAV, M4A and FLAC are all supported, up to 100MB or about 10 minutes. Lossless sources usually produce cleaner stems than low-bitrate MP3s.",
+      q: "What do I get for $2.90?",
+      a: "15 minutes of AI separation, billed once — about five three-minute songs. Each job returns vocals, instrumental, drums, bass and other as separate files in MP3 320 and WAV. The minutes never expire and nothing renews automatically.",
     },
   ],
   related: [
     {
       href: "/free-vocal-eliminator",
       label: "Free vocal eliminator",
-      blurb: "Exactly what the free tier includes, and how to get a clean instrumental without paying.",
+      blurb: "An honest comparison of free phase-cancellation methods versus paid AI separation.",
     },
     {
       href: "/remove-vocals-from-song",
@@ -121,7 +125,7 @@ const data: ToolPageData = {
   ],
   finalCta: {
     title: "Open the vocal remover and upload a track",
-    body: "No install, no signup, no plugin. The first 3 minutes are free, and the whole job runs in the browser tab you already have open.",
+    body: "No install, no plugin. Buy the $2.90 Trial Pack first — 15 minutes, 4 stems, one-time payment — then run the whole job in the browser tab you already have open.",
   },
 };
 

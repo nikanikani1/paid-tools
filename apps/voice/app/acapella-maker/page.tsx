@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Acapella Maker — Extract Acapella from Any Track",
   description:
-    "Extract a clean acapella from any song with AI. Use the acapella maker for covers, remixes, sampling and vocal practice. Free 3-minute preview, no signup.",
+    "Extract a clean acapella from any song with AI. Use the acapella maker for covers, remixes, sampling and vocal practice — $2.90 Trial Pack, 15 minutes, one-time payment.",
   path: "/acapella-maker",
 });
 
@@ -13,15 +13,15 @@ const data: ToolPageData = {
   crumb: "Acapella maker",
   title: "Acapella Maker — Extract Acapella from Any Track",
   description:
-    "Extract a clean acapella from any song with AI. Use the acapella maker for covers, remixes, sampling and vocal practice. Free 3-minute preview, no signup.",
+    "Extract a clean acapella from any song with AI. Use the acapella maker for covers, remixes, sampling and vocal practice — $2.90 Trial Pack, 15 minutes, one-time payment.",
   h1: "Acapella Maker — Extract Acapella from Any Track",
-  badge: "Acapella extractor · vocals stem",
+  badge: "Acapella extractor · vocals stem · $2.90 trial",
   intro: [
     "An acapella maker isolates the singing from a finished song so you can use it as a standalone vocal track — for covers, remixes, sampling, vocal practice or content. The output is the vocal stem on its own, with the instruments removed.",
-    "Upload a track below and the AI does the extraction in about a minute. No signup, no install, and the free preview covers any song up to three minutes.",
+    "Upload a track below and the AI does the extraction in about a minute. Runs are paid: the one-time $2.90 Trial Pack includes 15 minutes and the full 4-stem output, acapella included.",
   ],
   toolCta: "Extract the acapella",
-  quickFacts: ["Isolates the vocal stem", "Lead + harmonies", "MP3 320 or WAV", "Free 3 minutes"],
+  quickFacts: ["Isolates the vocal stem", "Lead + harmonies", "MP3 320 or WAV", "$2.90 trial · 15 min"],
   sections: [
     {
       h2: "What an acapella maker actually does",
@@ -47,7 +47,7 @@ const data: ToolPageData = {
     {
       h2: "How to extract an acapella in three steps",
       paragraphs: [
-        "First, upload the song. The format does not matter much as long as it is not heavily compressed — MP3, WAV, M4A and FLAC all work. Second, let the model separate the mix. A typical three-minute track takes around a minute; you can watch the progress in the tool. Third, download the vocals stem.",
+        "First, get a paid run: the $2.90 Trial Pack adds 15 minutes of separation to your account and never renews. Then upload the song — the format does not matter much as long as it is not heavily compressed; MP3, WAV, M4A and FLAC all work. The model separates the mix in about a minute, and you download the vocals stem.",
         "If you only need the acapella, you can ignore the other stems even though they are included. If you later decide to make a karaoke version or a remix, the instrumental and drums are already waiting in the same download.",
       ],
     },
@@ -82,6 +82,10 @@ const data: ToolPageData = {
   ],
   faqs: [
     {
+      q: "Is there a free way to extract an acapella with AI here?",
+      a: "No. There is no free-of-charge allowance: every separation costs GPU time, so every run is paid. The $2.90 Trial Pack is the cheapest option and includes 15 minutes, the vocals stem (your acapella), the instrumental and the other stems.",
+    },
+    {
       q: "Can I extract just the lead vocal without the backing vocals?",
       a: "Not with the standard model. Lead, harmonies and backing vocals all land in the vocals stem, which is normally what you want for a cover or remix. Separating lead from backing vocals is not currently offered.",
     },
@@ -95,11 +99,11 @@ const data: ToolPageData = {
     },
     {
       q: "What format is the acapella download?",
-      a: "Free and Starter plans deliver MP3 320kbps; paid plans also offer WAV. The vocals stem is named separately from the instrumental so you can find it easily in the download list.",
+      a: "Every paid run delivers MP3 320kbps and WAV — the Trial Pack included. The vocals stem is named separately from the instrumental so you can find it easily in the download list.",
     },
     {
-      q: "Does the free plan include the acapella?",
-      a: "Yes. The free tier returns both the vocals stem (your acapella) and the instrumental, up to 3 minutes per track and one track per day, with no watermark.",
+      q: "Does the Trial Pack include the acapella?",
+      a: "Yes. Any run returns the vocals stem (your acapella), the instrumental, drums, bass and other. The $2.90 Trial Pack includes 15 minutes of runs — about five three-minute songs — with no subscription.",
     },
   ],
   related: [
@@ -121,7 +125,7 @@ const data: ToolPageData = {
   ],
   finalCta: {
     title: "Pull the acapella out of your next track",
-    body: "Upload a song, download the vocals stem, and use it in your cover, remix or practice session. Free 3-minute preview, no signup.",
+    body: "Buy the $2.90 Trial Pack, upload a song and download the vocals stem for your cover, remix or practice session. 15 minutes, one-time payment.",
   },
 };
 

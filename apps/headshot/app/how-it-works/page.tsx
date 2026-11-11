@@ -254,16 +254,21 @@ export default function HowItWorksPage() {
 
       <RelatedLinks
         links={[
-          { href: "/", label: "AI headshot generator", body: "Start an order or try the free preview." },
-          { href: "/free-ai-headshot-generator", label: "Free AI headshot generator", body: "One preview before you pay." },
-          { href: "/pricing", label: "Pricing", body: "$35 / $45 / $75 one-time packages." },
+          { href: "/", label: "AI headshot generator", body: "Start a paid order with the $9 Sample Pack." },
+          { href: "/free-ai-headshot-generator", label: "Free vs paid headshot tools", body: "What free generators give you, and why we charge from $9." },
+          { href: "/pricing", label: "Pricing", body: "$9 sample, then $35 / $45 / $75 one-time packages." },
           { href: "/privacy", label: "Privacy policy", body: "Processors, retention and deletion." },
           { href: "/terms", label: "Terms of service", body: "Acceptable use and licence terms." },
           { href: "/refund", label: "Redo & refund", body: "48-hour redo and refund conditions." },
         ]}
       />
 
-      <CtaBand title="See it work on your own photos" cta="Start a free preview" href="/free-ai-headshot-generator" />
+      <CtaBand
+        title="See it work on your own photos"
+        body="There is no free preview: the pipeline runs on paid orders only, starting with the $9 Sample Pack (5 headshots)."
+        cta="Start with the $9 Sample Pack"
+        href="/pricing"
+      />
     </main>
   );
 }

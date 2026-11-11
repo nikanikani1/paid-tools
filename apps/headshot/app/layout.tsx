@@ -10,13 +10,14 @@ export const metadata: Metadata = {
     template: `%s — ${SITE_NAME}`,
   },
   description:
-    "Turn 5 selfies into 40–100 professional headshots for LinkedIn, résumés and team pages. One-time pricing from $35, free preview, free redo.",
+    "Turn 5 selfies into professional headshots for LinkedIn, résumés and team pages. Paid packages start with a $9 five-image Sample Pack; one-time pricing, one free redo, no subscription.",
   keywords: [
     "ai headshot generator",
     "professional headshots",
     "linkedin headshot",
     "team headshots",
     "ai headshots",
+    "sample pack headshots",
   ],
   alternates: {
     canonical: SITE_URL,
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Headshot Generator — Professional Headshots from Selfies",
     description:
-      "40–100 professional headshots from five selfies. One-time pricing from $35, free preview, free redo.",
+      "Professional headshots from five selfies. Start with a $9 five-image Sample Pack, then 40 for $35, 60 for $45 or 100 for $75. One-time payment, one free redo.",
     url: SITE_URL,
     siteName: SITE_NAME,
     locale: "en_US",

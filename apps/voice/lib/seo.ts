@@ -83,14 +83,14 @@ export function webApplicationSchema(opts: {
     operatingSystem: "Any (browser-based, no install)",
     browserRequirements: "Requires JavaScript",
     inLanguage: "en",
-    isAccessibleForFree: true,
+    isAccessibleForFree: false,
     offers: [
       {
         "@type": "Offer",
-        name: "Free",
-        price: "0",
+        name: "Trial Pack",
+        price: "2.90",
         priceCurrency: "USD",
-        description: "3 free minutes, 2 stems, MP3 download",
+        description: "One-time $2.90 Trial Pack: 15 minutes, 4 stems, WAV + MP3",
       },
       {
         "@type": "Offer",
@@ -105,6 +105,13 @@ export function webApplicationSchema(opts: {
         price: "9",
         priceCurrency: "USD",
         description: "200 minutes per month, 4 + 6 stems, priority queue",
+      },
+      {
+        "@type": "Offer",
+        name: "Starter Annual",
+        price: "39",
+        priceCurrency: "USD",
+        description: "90 minutes per month, billed $39/year",
       },
     ],
     publisher: {

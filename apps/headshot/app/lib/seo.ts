@@ -68,7 +68,7 @@ export function webApplicationJsonLd(input: {
     operatingSystem: "Web browser",
     browserRequirements: "Requires JavaScript",
     inLanguage: "en-US",
-    isAccessibleForFree: true,
+    isAccessibleForFree: false,
     offers: PLANS.map((plan) => ({
       "@type": "Offer",
       name: `${plan.name} — ${plan.images} headshots`,
@@ -108,7 +108,7 @@ export function productJsonLd(input?: {
     name: input?.name ?? `${SITE_TAGLINE} packages`,
     description:
       input?.description ??
-      "One-time AI headshot packages: 40, 60 or 100 professional portraits generated from your selfies, with a free preview and one free redo.",
+      "One-time AI headshot packages: a $9 five-image Sample Pack, then 40, 60 or 100 professional portraits generated from your selfies. No free tier; every paid order includes one free redo.",
     brand: { "@type": "Brand", name: SITE_NAME },
     category: "Professional headshots",
     url: canonicalFor(input?.path ?? "/pricing"),

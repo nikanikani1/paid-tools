@@ -16,7 +16,7 @@
 | 核心词 | `vocal remover` — **60,500 / KD71 / CPC $0.04** |
 | H1 | **Vocal Remover — Separate Vocals & Instrumental Online**（按意图重写，不照抄关键词） |
 | H2 | ① How it works（3 步）② 4-stem output（vocals/bass/drums/other）③ AI vocal remover（KD26 软入口）④ Free vs Pro ⑤ Use cases（karaoke/acapella/remix/podcast）⑥ FAQ ⑦ Pricing |
-| 转化 | 首屏拖拽上传 + 免费 3 分钟；上传即用，无需注册；付费墙在“下载 4-stem/超过 3 分钟/高音质” |
+| 转化 | 首屏拖拽上传；先选 **$2.90 / 15 分钟 Trial Pack**（一次性付费，**无免费额度**）；付费后立即处理；guest checkout 无需注册；付费墙在 job 创建前 |
 | 内链 | → `/ai-vocal-remover`、`/free-vocal-eliminator`、`/remove-vocals-from-song`、`/acapella-maker`、`/pricing` |
 | 结构化 | WebApplication + FAQPage + BreadcrumbList；`inLanguage` 跟随语言 |
 
@@ -25,21 +25,21 @@
 | # | URL | 核心词 | 量 / KD | H1 | 页面类型 / 说明 |
 |---|---|---|---|---|---|
 | 1 | `/ai-vocal-remover` | `ai vocal remover` | **6,600 / KD26** | AI Vocal Remover — Isolate Vocals with AI | 工具页；强调 AI 模型/质量对比；链首页 |
-| 2 | `/free-vocal-eliminator` | `free vocal eliminator` | **2,900 / KD18** | Free Vocal Eliminator — Remove Vocals from Any Song | 免费工具页；免费额度/水印/时长限制说明；升级 CTA |
-| 3 | `/vocal-remover-online` | `vocal remover online` | **2,400 / KD31** | Vocal Remover Online — No Install, No Signup | 工具页；浏览器/免安装卖点 |
+| 2 | `/free-vocal-eliminator` | `free vocal eliminator` | **2,900 / KD18** | Free Vocal Eliminator vs AI — Honest Comparison | **付费对比页**：免费相位消除 vs AI 分离；不提供免费处理；CTA 到 $2.90 Trial Pack |
+| 3 | `/vocal-remover-online` | `vocal remover online` | **2,400 / KD31** | Vocal Remover Online — No Install, No Signup | 工具页；浏览器/免安装卖点（注意：仍需付费，不写免费） |
 | 4 | `/remove-vocals-from-song` | `remove vocals from song`（量待补，词簇内） | 待补 | How to Remove Vocals from a Song (3 Ways) | 工具+教程；嵌上传组件；FAQ |
 | 5 | `/acapella-maker` | `acapella extractor`（builder 主题 23 词） | 待补 | Acapella Maker — Extract Acapella from Any Track | 工具页；对卡拉 OK/翻唱人群 |
 | 6 | `/karaoke-maker` | `karaoke maker`（builder 主题） | 待补 | Karaoke Maker — Remove Vocals, Keep the Music | 工具页；输出伴奏+歌词提示（后续） |
 | 7 | `/separate-stems` | `stem separation`（量待补） | 待补 | Stem Separation — 4 Stems (Vocals, Drums, Bass, Other) | 工具页；音乐制作人/Remix |
 | 8 | `/remove-background-music` | `remove background music from video`（builder 主题 30 词） | 待补 | Remove Background Music from Video | 工具+教程；先做音频，视频后续 |
-| 9 | `/pricing` | 品牌/方案词 | — | Pricing — Free 3 Minutes, Pro from $5/mo | 定价页；月付/年付/按量；FAQ/退款 |
+| 9 | `/pricing` | 品牌/方案词 | — | Pricing — $2.90 Trial, Starter $5/mo | 定价页；Trial/月付/年付/按量；FAQ/退款 |
 | 10 | `/how-it-works` | 品牌辅助 | — | How Our AI Vocal Remover Works | 信任页；模型/隐私/版权声明 |
 
 ### A.3 内容与合规
 
 - 每页至少：工具区（上传/示例音频）+ 800 字说明 + 3–5 个 FAQ + 相关工具内链。
 - 示例音频：用自有/CC0 音乐，不碰版权曲；页脚声明「仅处理你有权使用的内容」+ DMCA/举报入口。
-- 免费额度：3 分钟/首、1 次/天、2-stem、MP3 320 以下；Pro 才给 4-stem/WAV/批量/长音频。
+- **不提供免费额度**（用户明确要求）：入口 = $2.90/15 分钟 Trial Pack（一次性付费）；付费后才创建 job；Pro 才给 6-stem/WAV/批量/长音频。
 - 多语言：en 先上线；zh/es 用同一结构翻译（不要机翻堆词），hreflang 全量。
 
 ---
@@ -54,7 +54,7 @@
 | 核心词 | `ai headshot generator` — **18,100 / KD59 / CPC $2.93** |
 | H1 | **AI Headshot Generator — Professional Headshots from Your Selfies** |
 | H2 | ① See examples（before/after）② How it works（上传 5 张 → 2 分钟 → 40–100 张）③ Styles（LinkedIn/Corporate/Creative/Team）④ Pricing ⑤ Why ours（重做保障/隐私）⑥ Use cases（LinkedIn/Resume/Team）⑦ FAQ |
-| 转化 | 首屏「Upload selfies」+ 免费 1 张预览（收邮箱）→ 选套餐（$35/40 张起）；失败重做承诺 |
+| 转化 | 首屏「Upload selfies」；先选 **$9 / 5 张 Sample Pack**（一次性付费，**无免费预览**）；付费后生成；不满意重做承诺 |
 | 内链 | → `/linkedin-headshot`、`/professional-headshot`、`/team-headshots`、`/real-estate-agent-headshots`、`/pricing` |
 | 结构化 | WebApplication + FAQPage + Product/Offer（套餐）+ BreadcrumbList |
 
@@ -62,7 +62,7 @@
 
 | # | URL | 核心词 | 量 / KD | H1 | 页面类型 / 说明 |
 |---|---|---|---|---|---|
-| 1 | `/free-ai-headshot-generator` | `free ai headshot generator` | **6,600 / KD59** | Free AI Headshot Generator — 1 Free Preview | 免费钩子页；1 张免费预览换邮箱；付费解锁全部 |
+| 1 | `/free-ai-headshot-generator` | `free ai headshot generator` | **6,600 / KD59** | Free AI Headshot Generator vs Paid — Honest Comparison | **付费对比页**：免费工具能给你什么、我们为什么收 $9 起；不提供免费生成；CTA 到 $9 Sample Pack |
 | 2 | `/ai-professional-headshot` | `ai professional headshot` | 2,400 / KD74（用 `ai professional headshot generator` 1,000/KD62 做软入口） | AI Professional Headshot — Business-Ready in Minutes | 工具页；商务场景 |
 | 3 | `/linkedin-headshot` | `linkedin headshot`（量待补；builder 主题 `best ai linkedin profile generator` 21 词） | 待补 | LinkedIn Headshot Generator — Stand Out to Recruiters | 场景页；LinkedIn 尺寸/背景建议 |
 | 4 | `/team-headshots` | `team headshots`（B2B） | 待补 | AI Team Headshots — Consistent Brand Portraits | B2B 团队页；$25–29/人；发票/管理后台卖点 |

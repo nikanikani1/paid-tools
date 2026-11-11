@@ -17,7 +17,7 @@ const data: LegalPageData = {
     {
       h2: "The service",
       paragraphs: [
-        "StemSplit.ai provides AI-based audio separation: you upload a song, the service returns vocals, instrumental and additional stems. The free tier includes limited minutes and stems; paid plans unlock more minutes, more stems and higher-quality output. Features may change as the product develops.",
+        "StemSplit.ai provides AI-based audio separation: you upload a song, the service returns vocals, instrumental and additional stems. Access starts with the one-time $2.90 Trial Pack (15 minutes); subscription plans add monthly minutes, more stems and higher-quality output. There is no free-of-charge processing tier. Features may change as the product develops.",
         "The service runs on third-party infrastructure for hosting, storage, model inference and payments. Access may be interrupted for maintenance, model upgrades, capacity limits or events outside our control.",
       ],
     },
@@ -52,14 +52,14 @@ const data: LegalPageData = {
     {
       h2: "Accounts, limits and fair use",
       paragraphs: [
-        "The free tier is limited to a set number of minutes and jobs per day. Paid plans include a monthly minute allowance. Minute allowances reset each billing period and do not roll over. Jobs that fail for technical reasons do not consume minutes.",
-        "We may adjust the fair-use limits of the free tier to prevent abuse. If a paid plan's limits change materially, we will give notice before the change applies to your renewal.",
+        "The Trial Pack is a one-time allowance of 15 minutes and does not renew. Subscription plans include a monthly minute allowance; allowances reset each billing period and do not roll over. Jobs that fail for technical reasons do not consume minutes.",
+        "We may adjust fair-use limits to prevent abuse. If a subscription plan's limits change materially, we will give notice before the change applies to your renewal.",
       ],
     },
     {
       h2: "Payments, subscriptions and cancellation",
       paragraphs: [
-        "Paid plans are billed through Waffo as merchant of record, which handles card processing, invoicing and applicable sales tax. Monthly and annual subscriptions renew automatically until cancelled. You can cancel at any time from the billing portal, and access continues until the end of the current period.",
+        "Payments are billed through Waffo as merchant of record, which handles card processing, invoicing and applicable sales tax. The $2.90 Trial Pack is a single one-time charge and does not renew. Monthly and annual subscriptions renew automatically until cancelled; you can cancel at any time from the billing portal, and access continues until the end of the current period.",
         "Refunds are governed by the refund policy. If you cancel, you will not be charged for the next period; cancelling does not automatically refund the current period.",
       ],
     },

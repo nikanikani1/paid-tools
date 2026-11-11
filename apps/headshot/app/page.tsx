@@ -27,13 +27,13 @@ import {
 export const metadata: Metadata = buildMetadata({
   title: "AI Headshot Generator — Professional Headshots from Selfies",
   description:
-    "Upload 5 selfies and get 40–100 studio-quality AI headshots for LinkedIn, résumés and team pages. One-time pricing from $35, free preview, free redo if you do not look like you.",
+    "Upload 5 selfies and get studio-quality AI headshots for LinkedIn, résumés and team pages. Paid packages start at $9 for 5 images (Sample Pack), then 40 for $35. One free redo.",
   path: "/",
   keywords: ["ai headshot generator", "ai headshots", "professional headshot", "linkedin headshot"],
 });
 
 const HOME_DESCRIPTION =
-  "Upload five selfies and get 40–100 studio-quality AI headshots for LinkedIn, résumés, team pages and clinic directories. One-time pricing from $35, free preview, one free redo.";
+  "Upload five selfies and get studio-quality AI headshots for LinkedIn, résumés, team pages and clinic directories. The cheapest entry point is the one-time $9 Sample Pack (5 headshots); larger packages are 40, 60 or 100 images. No free tier.";
 
 export default function HomePage() {
   return (
@@ -54,23 +54,24 @@ export default function HomePage() {
       <section className="mx-auto grid max-w-6xl items-start gap-10 px-6 pb-10 pt-12 md:grid-cols-2">
         <div>
           <p className="sans mb-4 inline-flex rounded-full border border-orange-300 bg-orange-50 px-3 py-1 text-xs uppercase tracking-wide text-orange-800">
-            AI headshots · 40–100 photos · from $35
+            AI headshots · Sample Pack $9 / 5 images · paid, no free tier
           </p>
           <h1 className="text-4xl font-extrabold leading-[1.08] tracking-tight md:text-6xl">
             AI Headshot Generator — Professional Headshots from Your Selfies
           </h1>
           <p className="sans mt-5 max-w-xl text-base leading-relaxed text-stone-700">
             Upload five phone selfies, choose a style and download a full set of studio-quality headshots in minutes.
-            No photographer, no studio booking, no subscription — one payment, a commercial licence and one free redo.
+            No photographer, no studio booking, no subscription — start with the $9 Sample Pack, then scale to 40, 60
+            or 100 images. Every order includes a commercial licence and one free redo.
           </p>
           <ul className="sans mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-stone-600">
-            <li>✓ Free 1-image preview</li>
+            <li>✓ Sample Pack from $9</li>
             <li>✓ 1024px delivery</li>
             <li>✓ Redo within 48 h</li>
             <li>✓ Deleted after 30 days</li>
           </ul>
         </div>
-        <GeneratorForm heading="Start your headshot set" />
+        <GeneratorForm heading="Start with the $9 Sample Pack" defaultPlan={5} />
       </section>
 
       <Section
@@ -78,9 +79,9 @@ export default function HomePage() {
         title="What a generated set looks like"
         intro={
           <p>
-            Every order produces four things: the same face, several expressions, at least two backdrop options and
-            crops that survive being shrunk to a 96-pixel avatar. The four presets below are the ones most people pick
-            first.
+            Every order produces four things: the same face, several expressions, backdrop options and crops that
+            survive being shrunk to a 96-pixel avatar. The Sample Pack delivers one backdrop and five frames; the
+            larger packages add more outfits, backdrops and volume.
           </p>
         }
       >
@@ -106,12 +107,12 @@ export default function HomePage() {
             },
             {
               title: "Pick a style and package",
-              body: "Corporate, creative, actor, medical or real estate presets, each with its own backdrop, wardrobe and lighting profile. Choose 40, 60 or 100 final images.",
-              detail: "You see the price before generating: $35 / $45 / $75, one-time.",
+              body: "Corporate, creative, actor, medical or real estate presets, each with its own backdrop, wardrobe and lighting profile. Start with the $9 Sample Pack (5 images), then choose 40, 60 or 100.",
+              detail: "You see the price before paying: $9 / $35 / $45 / $75, one-time.",
             },
             {
-              title: "Download your set",
-              body: "Generation starts immediately. Watch live progress, then download individual files or the whole ZIP. One free redo within 48 hours if the first set misses.",
+              title: "Pay, then download",
+              body: "Generation starts once the order is paid. Watch live progress, then download individual files or the whole ZIP. One free redo within 48 hours if the first set misses.",
               detail: "Files stay available in your order for 30 days; originals are deleted on the same schedule.",
             },
           ]}
@@ -134,11 +135,12 @@ export default function HomePage() {
 
       <Section
         eyebrow="Pricing"
-        title="One-time packages, no subscription"
+        title="Paid packages, no subscription"
         intro={
           <p>
-            Three packages, identical pipeline, different volume. The 60-image package is the most common choice
-            because it gives you enough expressions to swap your profile photo seasonally without repeating.
+            Four packages, identical pipeline, different volume — and no free tier. The $9 Sample Pack is the cheapest
+            way to see the pipeline on your own face; the 60-image package is what most people buy once the sample
+            works, because it gives you enough expressions to swap your profile photo seasonally without repeating.
           </p>
         }
       >
@@ -232,7 +234,7 @@ export default function HomePage() {
             <KeyFacts
               facts={[
                 { label: "Input photos", value: "3–8 (5 recommended)" },
-                { label: "Generation time", value: "2–4 minutes" },
+                { label: "Generation time", value: "1–4 minutes" },
                 { label: "Delivery size", value: "1024px, JPG" },
                 { label: "Redo window", value: "48 hours, 1 free" },
               ]}
@@ -258,8 +260,8 @@ export default function HomePage() {
         links={[
           {
             href: "/free-ai-headshot-generator",
-            label: "Free AI headshot generator",
-            body: "Render one preview from your own selfies before paying anything.",
+            label: "Free vs paid headshot tools",
+            body: "What free generators actually give you, and why our cheapest paid option is a $9 Sample Pack.",
           },
           {
             href: "/ai-professional-headshot",

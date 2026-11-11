@@ -224,9 +224,9 @@ export default function DoctorHeadshotsPage() {
           { href: "/team-headshots", label: "Team headshots", body: "One style guide for a whole clinic, invoicing included." },
           { href: "/ai-professional-headshot", label: "AI professional headshot", body: "Formal business presets and licensing." },
           { href: "/privacy", label: "Privacy", body: "Processors, retention and deletion." },
-          { href: "/pricing", label: "Pricing", body: "$35 / $45 / $75 one-time packages." },
+          { href: "/pricing", label: "Pricing", body: "$9 sample, then $35 / $45 / $75 one-time packages." },
           { href: "/how-it-works", label: "How it works", body: "Quality gate, identity pass and delivery." },
-          { href: "/", label: "AI headshot generator", body: "All style presets and the free preview." },
+          { href: "/", label: "AI headshot generator", body: "All style presets and paid package options." },
         ]}
       />
 

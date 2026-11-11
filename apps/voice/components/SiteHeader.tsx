@@ -40,8 +40,8 @@ export function SiteHeader() {
           <Link href="/pricing" className="hidden text-sm text-slate-300 transition-colors hover:text-white sm:inline">
             Pricing
           </Link>
-          <Link href="/#tool" className="btn btn-primary btn-sm">
-            Try free
+          <Link href="/pricing#trial" className="btn btn-primary btn-sm">
+            Start trial — $2.90
           </Link>
         </div>
       </div>

@@ -1,6 +1,16 @@
-# 进度看板（2026-11-11 10:55）
+# 进度看板（2026-11-11 11:05）
 
-## 已完成
+## 本轮新增（审计 + 去免费试用）
+
+- [x] 审计报告 `docs/AUDIT-vs-SKILL-2026-11-11.md`：对照 6 个访谈派生 skill + 41 篇提炼 + 第三/第五篇校准；发现 3 个 P0（免费试用、B 主词 18.1K<2万、跳过假门页）
+- [x] 核心定价改为**无免费额度**：A Trial Pack $2.90/15min + Starter $5/90min + Pro $9/200min + Annual $39；B Sample Pack $9/5 张 + $35/40 + $45/60 + $75/100
+- [x] A 站页面去免费承诺 / API 生产 402（task-15，voice-builder，19 routes 0 error）
+- [x] B 站页面去免费预览 / API 生产 402（task-16，headshot-stack，18 routes 0 error）
+- [x] 复核：两站生产 402；A 免费文案 0 命中；B 10 处均为否定/对比语境、0 处免费生成；build/typecheck 全 0 error
+- [ ] B 站主词决策（18.1K < 2 万硬门槛）：付费实验 or 换词
+- [ ] 假门页/预售价验证（目标 ≥20 留资或 ≥3 付费）
+
+## 已完成（工程侧）
 
 - [x] Monorepo 骨架：`apps/voice`、`apps/headshot`、`packages/core`（npm workspaces）
 - [x] 两站生产构建 0 error：voice 19 routes、headshot 17 routes；`npm run typecheck` 0 error

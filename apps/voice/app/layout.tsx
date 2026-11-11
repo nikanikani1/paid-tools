@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | StemSplit.ai",
   },
   description:
-    "Remove vocals from any song with AI and get clean vocals, instrumental, drums, bass and other stems in minutes. Free 3 minutes, no signup.",
+    "Remove vocals from any song with AI and get clean vocals, instrumental, drums, bass and other stems in minutes. Start with the $2.90 Trial Pack — 15 minutes, one-time payment.",
   keywords: [
     "vocal remover",
     "ai vocal remover",

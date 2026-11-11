@@ -24,7 +24,7 @@ const SECTIONS: Section[] = [
     h2: "The three-step workflow",
     paragraphs: [
       "Every job on StemSplit follows the same three steps. You choose an audio file in the browser and upload it over an encrypted connection. Our servers send the audio through a Demucs-based separation model running on cloud GPU hardware. When the model finishes, the stems are rendered and offered as time-limited downloads.",
-      "There is no software to install, no plugin to load and no account required for the free preview. The browser tab shows a progress bar while the job runs, and the result panel lists every file that came out of the separation.",
+      "There is no software to install and no plugin to load. A run starts after you buy a Trial Pack or a plan — there is no free-of-charge processing tier — and the browser tab shows a progress bar while the job runs, with every output file listed in the result panel.",
     ],
   },
   {
@@ -66,21 +66,21 @@ const SECTIONS: Section[] = [
   {
     h2: "Privacy and data handling",
     paragraphs: [
-      "We collect the minimum needed to run a job: the audio file, basic file metadata, and technical logs such as job ID and timestamps. We do not ask for your name, email or card details for the free preview, and we do not sell or share personal data with advertisers.",
+      "We collect the minimum needed to run a job: the audio file, basic file metadata, and technical logs such as job ID and timestamps. Payment details are handled by Waffo as merchant of record, so your full card number never reaches our servers, and we do not sell or share personal data with advertisers.",
       "Audio is processed only for the job you requested, is not published and is not used to train models. The full picture — including our processors, retention periods, cookies and your rights under GDPR and CCPA — is documented in the privacy policy.",
     ],
     bullets: [
       "No training on your audio.",
       "Automatic deletion within 24–48 hours.",
       "Time-limited download links.",
-      "No account needed for the free preview.",
+      "Payment handled by Waffo — card details never touch our servers.",
     ],
     bulletsColumns: 2,
   },
   {
     h2: "Copyright, ownership and acceptable use",
     paragraphs: [
-      "Separating a song does not change who owns it. We grant you a license to use the separation service and the files it produces, but we cannot give you rights to the underlying recording or composition. If you own the track or have permission from the rights holders, you are free to use the stems. If you do not, publishing or monetising them may infringe copyright.",
+      "Separating a song does not change who owns it. We grant you a license to use the separation service and the files it produces, but we cannot give you rights to the underlying recording or composition. If you own the track or have permission from the rights holders, you are allowed to use the stems. If you do not, publishing or monetising them may infringe copyright.",
       "Do not upload content that is illegal, that you have no right to process, or that violates someone else's privacy. We respond to valid DMCA takedown notices, and repeated abuse can result in access being blocked. The terms of service spell out the full acceptable-use rules.",
     ],
   },
@@ -94,6 +94,10 @@ const SECTIONS: Section[] = [
 ];
 
 const FAQS: FaqItem[] = [
+  {
+    q: "Can I try before paying?",
+    a: "No. There is no free-of-charge processing tier. The entry point is the one-time $2.90 Trial Pack: 15 minutes, 4 stems, WAV + MP3, no subscription. Every run is paid because every run costs GPU time.",
+  },
   {
     q: "How long does a separation take?",
     a: "A typical three-minute song takes around 60–90 seconds including queue time. Longer tracks and the high-quality model take proportionally longer. Paid plans include a priority queue.",
@@ -149,8 +153,8 @@ export default function HowItWorksPage() {
               tool can and cannot do.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/#tool" className="btn btn-primary">
-                Try it free
+              <Link href="/pricing#trial" className="btn btn-primary">
+                Start with the $2.90 trial
               </Link>
               <Link href="/pricing" className="btn btn-ghost">
                 See pricing

@@ -17,7 +17,7 @@ import { breadcrumbJsonLd, buildMetadata, faqPageJsonLd, webApplicationJsonLd } 
 export const metadata: Metadata = buildMetadata({
   title: "LinkedIn Headshot Generator — Stand Out to Recruiters",
   description:
-    "Generate a LinkedIn headshot from your selfies: correct circular-crop framing, clean backdrop and a recruiter-friendly expression. 40–100 images from $35, free preview.",
+    "Generate a LinkedIn headshot from your selfies: correct circular-crop framing, clean backdrop and a recruiter-friendly expression. Paid packages from the $9 Sample Pack (5 images) to 100 images.",
   path: "/linkedin-headshot",
   keywords: ["linkedin headshot", "linkedin profile photo", "linkedin headshot generator", "linkedin photo ai"],
 });
@@ -221,9 +221,9 @@ export default function LinkedinHeadshotPage() {
       <RelatedLinks
         links={[
           { href: "/ai-professional-headshot", label: "AI professional headshot", body: "Business presets and where they get used." },
-          { href: "/free-ai-headshot-generator", label: "Free AI headshot generator", body: "Render one preview before you buy." },
+          { href: "/free-ai-headshot-generator", label: "Free vs paid headshot tools", body: "What free generators actually deliver, and why ours starts at a $9 Sample Pack." },
           { href: "/team-headshots", label: "Team headshots", body: "Consistent directory photos for ten-plus people." },
-          { href: "/pricing", label: "Pricing", body: "$35 / $45 / $75 one-time packages." },
+          { href: "/pricing", label: "Pricing", body: "$9 sample, then $35 / $45 / $75 one-time packages." },
           { href: "/how-it-works", label: "How it works", body: "Quality gate, identity pass and delivery." },
           { href: "/", label: "AI headshot generator", body: "The full pipeline and all style presets." },
         ]}

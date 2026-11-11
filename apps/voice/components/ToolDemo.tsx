@@ -1,16 +1,18 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 type JobFile = { name: string; url: string };
 type Job = { id: string; status: string; progress: number; files: JobFile[]; error?: string };
+type PaymentRequiredPayload = { error?: string; message?: string; checkoutUrl?: string };
 
 const MAX_SIZE = 100 * 1024 * 1024;
 const SAMPLE_NAME = "stemsplit-demo-track.mp3";
 
 export function ToolDemo({
-  cta = "Separate vocals — free preview",
-  note = "MP3, WAV, M4A, FLAC · up to 100MB · 10 min per track. Free preview: 3 minutes, no signup.",
+  cta = "Start with the $2.90 trial",
+  note = "Trial Pack: 15 minutes for $2.90, one-time payment. Runs start after checkout.",
 }: {
   cta?: string;
   note?: string;
@@ -19,6 +21,7 @@ export function ToolDemo({
   const [job, setJob] = useState<Job | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [checkoutRequired, setCheckoutRequired] = useState<string | null>(null);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
   const mounted = useRef(true);
 
@@ -61,6 +64,7 @@ export function ToolDemo({
   async function createJob(filename: string, size: number) {
     setBusy(true);
     setError(null);
+    setCheckoutRequired(null);
     setJob(null);
     stop();
     try {
@@ -69,6 +73,16 @@ export function ToolDemo({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ filename, size }),
       });
+      if (res.status === 402) {
+        const payload = (await res.json().catch(() => null)) as PaymentRequiredPayload | null;
+        if (!mounted.current) return;
+        setBusy(false);
+        setCheckoutRequired(
+          payload?.message ??
+            "A paid run is required. The $2.90 Trial Pack includes 15 minutes — one-time payment, no subscription.",
+        );
+        return;
+      }
       if (!res.ok) throw new Error((await res.text()) || "Could not create the separation job.");
       const created = (await res.json()) as Job;
       if (!mounted.current) return;
@@ -115,6 +129,7 @@ export function ToolDemo({
             onChange={(e) => {
               setFile(e.target.files?.[0] ?? null);
               setError(null);
+              setCheckoutRequired(null);
             }}
           />
         </label>
@@ -124,21 +139,26 @@ export function ToolDemo({
         </button>
 
         <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
-          <button
-            type="button"
-            onClick={() => void createJob(SAMPLE_NAME, 4_600_000)}
-            disabled={busy}
-            className="text-xs font-medium text-cyan-300 transition-colors hover:text-cyan-200 disabled:opacity-40"
-          >
-            Try it with a sample track →
-          </button>
-          <span className="text-[11px] text-slate-600">Demo mode: AI provider keys are not connected yet.</span>
+          <Link href="/pricing#trial" className="text-xs font-medium text-cyan-300 transition-colors hover:text-cyan-200">
+            Get the $2.90 Trial Pack · 15 minutes →
+          </Link>
+          <span className="text-[11px] text-slate-600">Paid runs only · $2.90 Trial Pack</span>
         </div>
 
         {error && (
           <p role="alert" className="mt-3 rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-sm text-rose-200">
             {error}
           </p>
+        )}
+
+        {checkoutRequired && (
+          <div role="alert" className="mt-3 rounded-xl border border-violet-400/40 bg-violet-500/10 px-4 py-3">
+            <p className="text-sm font-semibold text-violet-100">Checkout required</p>
+            <p className="mt-1 text-sm leading-relaxed text-slate-300">{checkoutRequired}</p>
+            <Link href="/pricing#trial" className="btn btn-primary btn-sm mt-3">
+              Buy the $2.90 Trial Pack
+            </Link>
+          </div>
         )}
 
         {job && (

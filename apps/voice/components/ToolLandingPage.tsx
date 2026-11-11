@@ -70,7 +70,7 @@ export function ToolLandingPage({ data }: { data: ToolPageData }) {
 
           <ToolDemo cta={data.toolCta} />
           <p className="mt-4 text-xs text-slate-500">
-            Free 3-minute preview · no signup · files deleted automatically after processing
+            Paid runs only · $2.90 Trial Pack includes 15 minutes · files deleted automatically after processing
           </p>
         </section>
 
@@ -123,11 +123,11 @@ export function ToolLandingPage({ data }: { data: ToolPageData }) {
               <h2 className="display mx-auto max-w-2xl text-2xl md:text-3xl">{data.finalCta.title}</h2>
               <p className="mx-auto mt-3 max-w-xl text-slate-300">{data.finalCta.body}</p>
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-                <Link href="/#tool" className="btn btn-primary">
-                  Separate a track free
+                <Link href="/pricing#trial" className="btn btn-primary">
+                  Start with the $2.90 trial
                 </Link>
                 <Link href="/pricing" className="btn btn-ghost">
-                  See pricing
+                  See all plans
                 </Link>
               </div>
               <p className="mt-4 text-xs text-slate-500">
