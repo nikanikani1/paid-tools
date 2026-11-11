@@ -15,6 +15,9 @@ export const SITE_URL =
 export const SITE_NAME = "StemSplit.ai";
 export const SUPPORT_EMAIL = "support@stemsplit.ai";
 export const LEGAL_UPDATED = "November 11, 2026";
+/** ISO date shown on editorial pages ("Last updated: 2026-11-11"). */
+export const CONTENT_UPDATED = "2026-11-11";
+export const OPERATOR_NAME = "StemSplit Audio Team";
 
 export function absoluteUrl(path = "/"): string {
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;

@@ -10,7 +10,7 @@
 | # | 项目 | 金额 | 付给谁 / 链接 | 为什么必须 | 付款后给我什么 |
 |---|---|---|---|---|---|
 | 1 | **Cloudflare Workers Paid** | **$5/月**（账号级，含两站） | https://dash.cloudflare.com/a6d8b503165fb8f7b7e1a29d2209c90a/workers/plans → Paid 列 **Upgrade** | 托管两站；免费档 10ms CPU 跑不了 Next SSR | 页面上显示 Paid / Current plan；不用发我卡信息 |
-| 2 | **2 个 .com 域名** | **$22.34/年**（$11.17 × 2，Cloudflare Registrar at-cost） | https://dash.cloudflare.com/a6d8b503165fb8f7b7e1a29d2209c90a/domains/registrations | 品牌 + SEO + GSC + 自定义域必需 | 域名列表；我配 DNS/Worker 路由 |
+| 2 | **2 个 .com 域名** | **$22.34/年**（$11.17 × 2，Cloudflare Registrar at-cost） | https://dash.cloudflare.com/a6d8b503165fb8f7b7e1a29d2209c90a/domains/registrations | 品牌 + SEO + GSC + 自定义域必需 | **建议：`stemextractor.com`（A）+ `headshotsnap.com`（B）**；备选见 `DOMAINS.md` |
 | 3 | **Replicate 充值** | **$10–20**（按次扣，无月费） | https://replicate.com/account/billing | 人声分离（demucs）+ 头像 face-swap；**主力 AI** | API Token（`r8_...`）放到 `.env.local` |
 | 4 | **Cloudflare R2 开通** | **$0**（10GB 免费；需绑卡才可开通） | https://dash.cloudflare.com/a6d8b503165fb8f7b7e1a29d2209c90a/r2 | 存上传文件/分离结果/头像 zip；egress 免费 | R2 bucket + S3 API Token（Access Key/Secret） |
 
@@ -38,7 +38,7 @@
 
 - [ ] **注册 Replicate 账号**（免费）→ 先拿 API Token（`r8_...`）；充值等周五
 - [ ] （可选）注册 fal 账号（免费）
-- [ ] Cloudflare：确认两个域名候选；Turnstile widget 可先建（免费）；R2 等卡到再开通
+- [ ] Cloudflare：确认两个域名候选（推荐 `stemextractor.com` / `headshotsnap.com`，见 `DOMAINS.md`）；Turnstile widget 可先建（免费）；R2 等卡到再开通
 - [ ] Neon：建 2 个免费项目（voice / headshot）→ pooler 连接串
 - [ ] Resend：注册/登录，准备验证两个发件域（免费 3,000 封/月）
 - [ ] GitHub：建 private repo `paid-tools`（免费）

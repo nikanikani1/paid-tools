@@ -12,6 +12,7 @@ import {
   SampleGrid,
   Section,
 } from "../components/ui";
+import { EditorialByline, StudioComparisonSection } from "../components/editorial";
 import { breadcrumbJsonLd, buildMetadata, faqPageJsonLd, webApplicationJsonLd } from "../lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -225,11 +226,14 @@ export default function LinkedinHeadshotPage() {
           { href: "/team-headshots", label: "Team headshots", body: "Consistent directory photos for ten-plus people." },
           { href: "/pricing", label: "Pricing", body: "$9 sample, then $35 / $45 / $75 one-time packages." },
           { href: "/how-it-works", label: "How it works", body: "Quality gate, identity pass and delivery." },
-          { href: "/", label: "AI headshot generator", body: "The full pipeline and all style presets." },
+          { href: "/", label: "Professional headshots", body: "The full pipeline and all style presets." },
+          { href: "/ai-headshot-generator", label: "AI headshot generator", body: "What the generator does and how it keeps likeness." },
         ]}
       />
 
       <CtaBand title="Refresh the photo recruiters see first" cta="Generate my LinkedIn headshots" />
+      <StudioComparisonSection />
+      <EditorialByline />
     </main>
   );
 }

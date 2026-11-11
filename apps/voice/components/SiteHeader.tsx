@@ -6,6 +6,8 @@ const NAV = [
   { href: "/karaoke-maker", label: "Karaoke maker" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/pricing", label: "Pricing" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function SiteHeader() {
@@ -28,7 +30,7 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-6 text-sm text-slate-300 lg:flex">
+        <nav aria-label="Main" className="hidden items-center gap-5 text-sm text-slate-300 lg:flex">
           {NAV.map((item) => (
             <Link key={item.href} href={item.href} className="transition-colors hover:text-white">
               {item.label}
@@ -37,9 +39,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex flex-none items-center gap-3">
-          <Link href="/pricing" className="hidden text-sm text-slate-300 transition-colors hover:text-white sm:inline">
-            Pricing
-          </Link>
           <Link href="/pricing#trial" className="btn btn-primary btn-sm">
             Start trial — $2.90
           </Link>

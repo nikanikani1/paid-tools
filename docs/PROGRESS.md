@@ -7,8 +7,13 @@
 - [x] A 站页面去免费承诺 / API 生产 402（task-15，voice-builder，19 routes 0 error）
 - [x] B 站页面去免费预览 / API 生产 402（task-16，headshot-stack，18 routes 0 error）
 - [x] 复核：两站生产 402；A 免费文案 0 命中；B 10 处均为否定/对比语境、0 处免费生成；build/typecheck 全 0 error
-- [ ] B 站主词决策（18.1K < 2 万硬门槛）：付费实验 or 换词
+- [x] B 主词修正：首页 `professional headshots` 22,200/KD50，新子页 `/ai-headshot-generator` 18,100/KD41（已完成，13 页 / sitemap 13）
+- [x] 域名候选实查（RDAP）：A `stemextractor.com` / B `headshotsnap.com`（备选见 docs/DOMAINS.md）
+- [x] A 站 E-E-A-T：/about、/contact、/authors、7 工具页系统方法段、作者/更新日期（sitemap 16）
+- [x] B 站 E-E-A-T 与免费措辞清零（task-19：/about、/contact、/authors、16 页署名/更新日期、免费正则 0 命中；sitemap 16）
+- [x] 复核：两站 19/19 页面 200、build/typecheck 0 error、生产 402、sitemap 16/16
 - [ ] 假门页/预售价验证（目标 ≥20 留资或 ≥3 付费）
+- [ ] i18n zh/es、GSC/统计/Bing、外链计划（上线后）
 
 ## 已完成（工程侧）
 

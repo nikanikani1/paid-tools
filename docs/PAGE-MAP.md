@@ -51,17 +51,18 @@
 | 项 | 内容 |
 |---|---|
 | URL | `/`（en）/ `/zh` / `/es` |
-| 核心词 | `ai headshot generator` — **18,100 / KD59 / CPC $2.93** |
-| H1 | **AI Headshot Generator — Professional Headshots from Your Selfies** |
+| 核心词 | `professional headshots` — **22,200 / KD50 / CPC $0.46**（≥2 万，过访谈硬门槛；2026-11-11 复查） |
+| H1 | **Professional Headshots from Your Selfies — AI Headshot Generator** |
 | H2 | ① See examples（before/after）② How it works（上传 5 张 → 2 分钟 → 40–100 张）③ Styles（LinkedIn/Corporate/Creative/Team）④ Pricing ⑤ Why ours（重做保障/隐私）⑥ Use cases（LinkedIn/Resume/Team）⑦ FAQ |
 | 转化 | 首屏「Upload selfies」；先选 **$9 / 5 张 Sample Pack**（一次性付费，**无免费预览**）；付费后生成；不满意重做承诺 |
-| 内链 | → `/linkedin-headshot`、`/professional-headshot`、`/team-headshots`、`/real-estate-agent-headshots`、`/pricing` |
+| 内链 | → `/ai-headshot-generator`、`/linkedin-headshot`、`/ai-professional-headshot`、`/team-headshots`、`/real-estate-agent-headshots`、`/pricing` |
 | 结构化 | WebApplication + FAQPage + Product/Offer（套餐）+ BreadcrumbList |
 
 ### B.2 子页（按优先顺序）
 
 | # | URL | 核心词 | 量 / KD | H1 | 页面类型 / 说明 |
 |---|---|---|---|---|---|
+| 0 | `/ai-headshot-generator` | `ai headshot generator` | **18,100 / KD41**（最新刷新） | AI Headshot Generator — Create Professional Headshots | 工具页；承接原首页词，复用生成表单（$9 Sample Pack 起） |
 | 1 | `/free-ai-headshot-generator` | `free ai headshot generator` | **6,600 / KD59** | Free AI Headshot Generator vs Paid — Honest Comparison | **付费对比页**：免费工具能给你什么、我们为什么收 $9 起；不提供免费生成；CTA 到 $9 Sample Pack |
 | 2 | `/ai-professional-headshot` | `ai professional headshot` | 2,400 / KD74（用 `ai professional headshot generator` 1,000/KD62 做软入口） | AI Professional Headshot — Business-Ready in Minutes | 工具页；商务场景 |
 | 3 | `/linkedin-headshot` | `linkedin headshot`（量待补；builder 主题 `best ai linkedin profile generator` 21 词） | 待补 | LinkedIn Headshot Generator — Stand Out to Recruiters | 场景页；LinkedIn 尺寸/背景建议 |
@@ -71,7 +72,7 @@
 | 7 | `/actor-headshots` | `actress headshots`（builder 主题 12 词） | 待补 | Actor Headshots — Natural, Casting-Ready Portraits | 行业页；casting 风格 |
 | 8 | `/dating-profile-pictures` | `dating profile pictures`（builder 主题 9 词） | 待补 | Dating Profile Pictures — Better Photos, More Matches | 场景页；注意合规/真实性声明 |
 | 9 | `/resume-photo` | `pictures of resumes`（builder 主题 18 词） | 待补 | Resume Photo — Professional Headshot for Your CV | 场景页；ATS/简历尺寸 |
-| 10 | `/pricing` | 品牌/套餐 | — | Pricing — $35/40, $45/60, $75/100 | 定价页；一次性、无订阅、重做政策 |
+| 10 | `/pricing` | 品牌/套餐 | — | Pricing — $9 Sample Pack, $35/40, $45/60, $75/100 | 定价页；一次性、无订阅、重做政策 |
 | 11 | `/how-it-works` | 品牌辅助 | — | How Our AI Headshot Generator Works | 信任页；样本/隐私/退款 |
 
 ### B.3 内容与合规

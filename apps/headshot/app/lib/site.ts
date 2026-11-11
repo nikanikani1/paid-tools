@@ -2,14 +2,29 @@ import { HEADSHOT_PLANS } from "@paid/core";
 
 export const SITE_URL = "https://headshot.example.com";
 export const SITE_NAME = "PortraitLab";
-export const SITE_TAGLINE = "AI headshot generator";
+export const SITE_TAGLINE = "professional headshots";
+
+/** Editorial date shown on every page that carries a byline. */
+export const CONTENT_UPDATED = "2026-11-11";
+
+/** Public contact channels. There is no phone line and no live chat. */
+export const CONTACT = {
+  support: "support@portraitlab.example",
+  billing: "billing@portraitlab.example",
+  privacy: "privacy@portraitlab.example",
+  dmca: "dmca@portraitlab.example",
+  legal: "legal@portraitlab.example",
+  editorial: "editorial@portraitlab.example",
+  press: "press@portraitlab.example",
+} as const;
+
 
 export const PLANS = HEADSHOT_PLANS;
 
 /**
- * Lowest paid entry point. There is no free tier and no free trial: the
- * cheapest way to see the pipeline on your own photos is the one-time
- * $9 Sample Pack (5 headshots).
+ * Lowest paid entry point. Every set is generated after payment: there is no
+ * complimentary tier. The cheapest way to see the pipeline on your own photos
+ * is the one-time $9 Sample Pack (5 headshots).
  */
 export const SAMPLE_PACK = HEADSHOT_PLANS[0];
 export const MIN_PAID_USD = SAMPLE_PACK.price;
@@ -59,11 +74,18 @@ export const STYLE_DETAILS: { name: string; blurb: string; bestFor: string }[] =
 export const NAV_LINKS: { href: string; label: string }[] = [
   { href: "/pricing", label: "Pricing" },
   { href: "/how-it-works", label: "How it works" },
+  { href: "/ai-headshot-generator", label: "AI generator" },
   { href: "/ai-professional-headshot", label: "Professional" },
   { href: "/team-headshots", label: "For teams" },
+  { href: "/about", label: "About" },
 ];
 
 export const USE_CASES: { href: string; title: string; body: string }[] = [
+  {
+    href: "/ai-headshot-generator",
+    title: "AI headshot generator",
+    body: "How the generator works, what it costs and where it beats a studio shoot — the deep-dive on the AI pipeline itself.",
+  },
   {
     href: "/linkedin-headshot",
     title: "LinkedIn headshot",
@@ -92,11 +114,12 @@ export const USE_CASES: { href: string; title: string; body: string }[] = [
   {
     href: "/free-ai-headshot-generator",
     title: "$9 Sample Pack",
-    body: "Five paid sample headshots for $9 — the cheapest way to test the pipeline on your own face. No free tier, no free trial, no watermark.",
+    body: "Five paid sample headshots for $9 — the cheapest way to test the pipeline on your own face. Paid from $9, no watermark.",
   },
 ];
 
 export const FOOTER_LINKS: { href: string; label: string }[] = [
+  { href: "/ai-headshot-generator", label: "AI headshot generator" },
   { href: "/free-ai-headshot-generator", label: "Free vs paid headshot tools" },
   { href: "/ai-professional-headshot", label: "AI professional headshot" },
   { href: "/linkedin-headshot", label: "LinkedIn headshot" },
@@ -105,6 +128,9 @@ export const FOOTER_LINKS: { href: string; label: string }[] = [
   { href: "/doctor-headshots", label: "Doctor headshots" },
   { href: "/pricing", label: "Pricing" },
   { href: "/how-it-works", label: "How it works" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+  { href: "/authors/portraitlab-editorial", label: "Editorial team" },
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
   { href: "/refund", label: "Refund & redo" },
@@ -124,8 +150,8 @@ export const TRUST_POINTS: { title: string; body: string }[] = [
     body: "No subscription, no credits that expire, no surprise renewal. The $9 Sample Pack (5 images) is the entry point; larger packages are a single payment too.",
   },
   {
-    title: "No free tier, on purpose",
-    body: "We do not sell your photos to advertisers and we do not fund free generations with ads or data. Every order is paid, which is why the pipeline is not watermarked and your uploads stay private.",
+    title: "No unpaid tier, on purpose",
+    body: "We do not sell your photos to advertisers and we do not fund unpaid generations with ads or data. Every order is paid before generation, which is why the pipeline is not watermarked and your uploads stay private.",
   },
   {
     title: "Written refund policy",
@@ -135,8 +161,8 @@ export const TRUST_POINTS: { title: string; body: string }[] = [
 
 export const HOME_FAQ = [
   {
-    q: "Do you offer a free trial or a free preview?",
-    a: "No. There is no free tier and no free preview image. The cheapest way to try the pipeline on your own photos is the one-time $9 Sample Pack: five real headshots, no watermark, commercial licence and one free redo. We charge from the first image because every generation costs real GPU time and because we do not fund free runs with ads or by selling photo data.",
+    q: "Do I have to pay before I see any headshots?",
+    a: "Yes. Payment comes first — every set is generated after payment, with no unpaid sample render. The cheapest order is the $9 Sample Pack: five real headshots, no watermark, commercial licence and one free redo. We charge from the first image because every generation costs real GPU time and because we do not fund unpaid runs with ads or by selling photo data.",
   },
   {
     q: "What do I get in the $9 Sample Pack?",
@@ -156,7 +182,7 @@ export const HOME_FAQ = [
   },
   {
     q: "Can I use the headshots commercially?",
-    a: "Yes. Every paid package includes a commercial licence for the images you receive: LinkedIn, your company website, brochures, ads, articles, speaker decks and printed material. The only restriction is that you may not resell the images as stock photography.",
+    a: "Yes. Every paid package includes a commercial licence for the professional headshots you receive: LinkedIn, your company website, brochures, ads, articles, speaker decks and printed material. The only restriction is that you may not resell the images as stock photography.",
   },
   {
     q: "What happens to my uploaded photos?",

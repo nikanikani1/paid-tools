@@ -14,14 +14,14 @@
 
 ## 0. 结论（先看）
 
-**总评：工程骨架和页面质量达标，但「按访谈做生意」的环节有 3 个硬缺口，上线前必须补：**
+**总评：工程骨架和页面质量达标，但「按访谈做生意」的环节有 3 个硬缺口；免费试用、B 主词已修，剩假门页验证。**
 
 | 级别 | 问题 | 状态 |
 |---|---|---|
 | **P0** | ~~两站都在提供免费试用/免费预览~~ | ✅ **已修（2026-11-11 11:15）**：A 改 $2.90/15min Trial Pack、B 改 $9/5 张 Sample Pack；生产 API 402；页面无免费承诺（只剩对比/否定表述） |
-| **P0** | **B 站主词 18,100 < 访谈硬门槛 2 万/月**；A 站 60,500 过线 | 需决策：接受 B 为付费实验 / 换词 / 换品 |
+| **P0** | **B 站主词 18,100 < 访谈硬门槛 2 万/月**；A 站 60,500 过线 | ✅ **已修（2026-11-11 12:40）**：B 首页主词 `professional headshots` **22,200/KD50**；`ai headshot generator` 18,100/KD41 降为 `/ai-headshot-generator` 子页（1730 词） |
 | **P0** | **跳过「假门页 48 小时 <20 邮箱」验证**，直接建了完整站 | 上线前补预售/付费用例验证 |
-| P1 | E-E-A-T 的 Experience / Authority 两段缺失（无实测截图、无作者页、无官方社媒）；内容 100% AI 生成 | 需人工补真实样本/作者/更新日期 |
+| P1 | E-E-A-T 的 Experience / Authority 两段不足；内容 100% AI 生成 | ✅ 页面层已补（两站 /about、/contact、/authors、Last updated、作者署名；A 7 工具页补系统自带方法；B 补影棚/自拍/AI 对比） | 真实 before/after 样本、实测参数待 AI key 后补；不伪造 |
 | P1 | 只有 en，没有 zh/es 三语（site-eng-stack 要求） | 上线后按语言逐页补，不要机翻堆词 |
 | P1 | GSC / 统计 / Bing / 上线当天 5 步未做 | 付款+部署后执行 |
 | P1 | 外链 SOP 未启动（每天 1–2 小时/20 条） | 上线即开始，按 site-growth |
@@ -32,17 +32,19 @@
 
 ---
 
-## 0.5 复核记录（2026-11-11 11:20，改造后）
+## 0.5 复核记录（2026-11-11 13:10，改造后）
 
 | 项 | 结果 |
 |---|---|
-| 构建 | `npm run build:voice` 0 error（19 routes）；`npm run build:headshot` 0 error（18 routes）；`npm run typecheck` 0 error |
-| 路由 | A 15/15、B 15/15（含 api/version/sitemap/robots）生产 200 |
-| 免费处理 | A：生产 `POST /api/jobs` → **402 payment_required**；B：`POST /api/orders` → **402**；开发/测试 `ALLOW_MOCK=1` 保留 mock |
-| 免费文案 | A：全量正则 0 命中；B：10 处命中**全部是否定/对比语境**（如 "Do you offer a free trial? No..."、"no free tier"），**0 处提供免费生成**。B 的 `/free-ai-headshot-generator` 保留关键词 URL，但页面明确「不提供免费生成」 |
+| 构建 | `npm run build:voice` 0 error；`npm run build:headshot` 0 error；`npm run typecheck` 0 error |
+| 路由 | A 19/19、B 19/19（含 api/version/sitemap/robots）生产 200 |
+| 免费处理 | A `POST /api/jobs` → **402**；B `POST /api/orders` → **402**；`ALLOW_MOCK=1` 保留 mock |
+| 免费文案 | A 0 命中；B 0 命中（`free preview|free trial|free plan|free 3-minute` 全站渲染 HTML 正则） |
 | 定价 | A Trial $2.90/15min、$5/90min、$9/200min、$39/yr；B Sample $9/5、$35/40、$45/60、$75/100；JSON-LD `isAccessibleForFree:false` |
-| sitemap | A 13 URL、B 12 URL，均 200；robots 含 sitemap、无 host |
-| 剩余 P0 | B 主词 18,100 < 2 万；假门页未做（见 §0/§3） |
+| B 主词 | 首页 title/H1/OG/JSON-LD 以 `professional headshots` 为主；`/ai-headshot-generator` 18,100/KD41 子页 200 |
+| E-E-A-T 页 | A `/about`、`/contact`、`/authors/stemsplit-audio-team`；B `/about`、`/contact`、`/authors/portraitlab-editorial` 均 200 |
+| sitemap | A 16 URL、B 16 URL，均 200；robots 含 sitemap、无 host |
+| 剩余 P0 | 假门页/预售价验证未做（见 §0/§3） |
 
 ---
 
@@ -53,7 +55,7 @@
 | # | 规则（来源） | 现状 / 证据 | 判定 | 修复 |
 |---|---|---|---|---|
 | 1 | 值得做 = 有人用 × 着急 × 愿付 ÷ 竞争（site-demand） | `FINAL-TOP3` 有量/KD/付费分析；缺「谁、什么场景、多着急、愿付多少」一句话 | ⚠️ | 上线前每个站写一句 ICP + 场景 + 价格锚点 |
-| 2 | 主关键词 ≥ 2 万/月（第五篇访谈，硬条件） | A `vocal remover` 60,500 ✅；B `ai headshot generator` **18,100 ❌（差 10.5%）** | ❌ B | 决策：B 当付费实验（不在主词上硬拼）/ 换 ≥2 万词 / 换品 |
+| 2 | 主关键词 ≥ 2 万/月（第五篇访谈，硬条件） | A `vocal remover` 60,500 ✅；B 首页主词改 `professional headshots` **22,200/KD50**（2026-11-11 Semrush 复查），`ai headshot generator` 18,100/KD41 降为子页 | ✅（改造中） | task-17 上线后复核 title/H1 |
 | 3 | KD 不是硬条件，看对手承接页与规模（Step 20） | A：lalal 2M、SERP 全是小站、无 AIO；B：Magic Studio/Canva/Adobe 在列、AIO 推 Magic Studio | ⚠️ A 优 / B 中 | A 可打；B 切 B2B/行业长尾，不正面打通用词 |
 | 4 | 假门页 48 小时 <20 邮箱 = 换需求（site-demand） | **未做**，直接建站 | ❌ | 上线前跑 3 天预售价/early access，目标 ≥20 留资或 ≥3 付费 |
 | 5 | 期望值按 25% 成功 / 3-of-4 失败（site-strategy） | 文档未写组合期望；单站投入按 2 周算 | ⚠️ | 写清「4 个站活 1 个」的预算与止损线 |
@@ -67,10 +69,9 @@
 | 8 | 工具首屏直接可用、表单 ≤2 步（site-build §19） | 两站表单都在 hero；A 单文件，B 多图+风格+套餐 3 项 | ✅ | 保持 |
 | 9 | 工具页 8 模块：H1 / 工具 / 3 步 / 对比表 / 系统方法 / FAQ / 内链 / 页脚 | 有 H1/工具/步骤/对比/FAQ/内链/页脚；**「系统自带方法」段落缺失或不完整** | ⚠️ | 每个工具页补一段「Windows/Mac/手机自带方法」 |
 | 10 | 内容 ≥800 字、无批量空页（site-build） | A 首页 1,578 字；工具页 1,357–1,643；B 869–1,872 | ✅ | 保持；每页加独占信息 |
-| 11 | E-E-A-T：Experience / Expertise / Authority / Trust（site-build §20） | Expertise/Trust 有（参数/隐私/更新日期）；**Experience 无实测截图/文件大小/踩坑；Authority 无作者页/官方社媒/LinkedIn** | ❌ | 每站补：真实 before/after 样本、实测参数、作者/团队页、Updated 日期、官方账号 |
+| 11 | E-E-A-T：Experience / Expertise / Authority / Trust（site-build §20） | A：✅ 已补 `/about`、`/contact`、`/authors/stemsplit-audio-team`、7 工具页系统自带方法段、作者署名、Last updated；B：⏳ task-19 进行中（/about、/contact、/authors、更新日期） | ⚠️ 部分完成 | 真实 A/B 样本待有 API key 后补；不伪造数据 |
 | 12 | AI 二次创作，不批量生成；不造数据（site-build §22） | 页面由 AI 生成；未发现假评论/假评分；有「trained on thousands of songs」这类不可验证表述 | ⚠️ | 删/软化为可验证表述；补真实测试数据 |
-| 13 | 三语 en/zh/es + hreflang（site-eng-stack） | 只有 en；hreflang 仅 en/x-default | ❌ | 上线后按页补 zh/es，先补首页+pricing+3 工具页 |
-| 14 | 技术 SEO：canonical/hreflang/sitemap/robots/JSON-LD（site-build §25） | 全部有；sitemap/robots 200；JSON-LD 覆盖 | ✅ | 域名上线后验 www→apex 301、尾斜杠 |
+| 13 | 三语 en/zh/es + hreflang（site-eng-stack） | 只有 en；hreflang 仅 en/x-default | ❌ | 上线后按页补 zh/es，先补首页+pricing+3 工具页 || 14 | 技术 SEO：canonical/hreflang/sitemap/robots/JSON-LD（site-build §25） | 全部有；sitemap/robots 200；JSON-LD 覆盖 | ✅ | 域名上线后验 www→apex 301、尾斜杠 |
 | 15 | URL 上线后不改、内容小批量改（访谈第三/第五篇） | 尚未上线，无历史 URL；改文案按 2–3 批 | ✅（预上线） | 上线后锁 URL，改内容分批 |
 | 16 | 法律/合规：privacy/terms/refund/DMCA/版权（site-risk-compliance） | A 有 privacy/terms/refund + DMCA 条款；B 有 privacy/terms/refund；**B 缺独立 DMCA/版权投诉说明** | ⚠️ | B 补 DMCA/肖像权/上传者声明；法务过一遍 |
 | 17 | 隐私与数据：音频/人脸数据、第三方 provider、删除（自定 + GDPR/CCPA） | A privacy 提到音频与第三方；B privacy 提到人脸；**都未写「不训练/30 天删除」的硬承诺与入口** | ⚠️ | 补数据保留期、删除入口、provider 列表、不训练声明 |

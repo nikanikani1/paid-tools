@@ -6,31 +6,37 @@ import { SITE_NAME, SITE_URL } from "./lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "AI Headshot Generator — Professional Headshots from Selfies",
+    default: "Professional Headshots — AI Headshot Generator from Selfies",
     template: `%s — ${SITE_NAME}`,
   },
   description:
-    "Turn 5 selfies into professional headshots for LinkedIn, résumés and team pages. Paid packages start with a $9 five-image Sample Pack; one-time pricing, one free redo, no subscription.",
+    "Professional headshots generated from five selfies in minutes. Paid packages start with a $9 five-image Sample Pack, then 40 for $35. One-time pricing, commercial licence, one free redo.",
   keywords: [
-    "ai headshot generator",
     "professional headshots",
+    "professional headshot",
+    "ai headshot generator",
+    "ai headshots",
     "linkedin headshot",
     "team headshots",
-    "ai headshots",
-    "sample pack headshots",
   ],
   alternates: {
     canonical: SITE_URL,
     languages: { "en-US": SITE_URL, "x-default": SITE_URL },
   },
   openGraph: {
-    title: "AI Headshot Generator — Professional Headshots from Selfies",
+    title: "Professional Headshots — AI Headshot Generator from Selfies",
     description:
       "Professional headshots from five selfies. Start with a $9 five-image Sample Pack, then 40 for $35, 60 for $45 or 100 for $75. One-time payment, one free redo.",
     url: SITE_URL,
     siteName: SITE_NAME,
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Professional Headshots — AI Headshot Generator from Selfies",
+    description:
+      "Professional headshots from five selfies in minutes. Paid from a $9 Sample Pack; 40 for $35, 60 for $45, 100 for $75.",
   },
   robots: { index: true, follow: true },
 };

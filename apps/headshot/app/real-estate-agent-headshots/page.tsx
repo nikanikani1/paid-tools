@@ -12,6 +12,7 @@ import {
   SampleGrid,
   Section,
 } from "../components/ui";
+import { EditorialByline, StudioComparisonSection } from "../components/editorial";
 import { breadcrumbJsonLd, buildMetadata, faqPageJsonLd, webApplicationJsonLd } from "../lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -205,11 +206,14 @@ export default function RealEstateAgentHeadshotsPage() {
           { href: "/linkedin-headshot", label: "LinkedIn headshot", body: "Recruiter-facing profile framing." },
           { href: "/pricing", label: "Pricing", body: "$9 sample, then $35 / $45 / $75 one-time packages." },
           { href: "/how-it-works", label: "How it works", body: "The pipeline from selfie to download." },
-          { href: "/", label: "AI headshot generator", body: "All five style presets and paid package options." },
+          { href: "/", label: "Professional headshots", body: "All five style presets and paid package options." },
+          { href: "/ai-headshot-generator", label: "AI headshot generator", body: "How the generator works and the $9 entry point." },
         ]}
       />
 
       <CtaBand title="Get a headshot that survives the listing card" cta="Generate my headshots" />
+      <StudioComparisonSection />
+      <EditorialByline />
     </main>
   );
 }

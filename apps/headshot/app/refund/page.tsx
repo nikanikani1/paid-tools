@@ -72,7 +72,7 @@ export default function RefundPage() {
             <p>
               The short version: one free redo within 48 hours, and a refund inside 14 days if the redo still misses.
               Failed generations are refunded automatically. This applies to every paid order — including the $9 Sample
-              Pack — because there is no free tier and no free preview anywhere in the product.
+              Pack — because every generation is paid: there is no unpaid generation anywhere in the product.
             </p>
           </div>
           <div>
@@ -223,7 +223,8 @@ export default function RefundPage() {
           { href: "/how-it-works", label: "How it works", body: "Why redos fix most misses." },
           { href: "/terms", label: "Terms of service", body: "Licence, acceptable use and liability." },
           { href: "/privacy", label: "Privacy", body: "Retention, deletion and processors." },
-          { href: "/", label: "AI headshot generator", body: "Start a paid order with the $9 Sample Pack." },
+          { href: "/", label: "Professional headshots", body: "Start a paid order with the $9 Sample Pack." },
+          { href: "/ai-headshot-generator", label: "AI headshot generator", body: "The generator and pipeline behind every order." },
           { href: "/free-ai-headshot-generator", label: "Free vs paid headshot tools", body: "What free generators give you, and why we charge from $9." },
         ]}
       />

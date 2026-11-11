@@ -13,6 +13,7 @@ import {
   Section,
   StyleTable,
 } from "../components/ui";
+import { EditorialByline, StudioComparisonSection } from "../components/editorial";
 import { STYLE_DETAILS } from "../lib/site";
 import { breadcrumbJsonLd, buildMetadata, faqPageJsonLd, productJsonLd } from "../lib/seo";
 
@@ -263,6 +264,8 @@ export default function AiProfessionalHeadshotPage() {
       />
 
       <CtaBand />
+      <StudioComparisonSection />
+      <EditorialByline />
     </main>
   );
 }

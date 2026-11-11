@@ -9,6 +9,7 @@ type Route = {
 
 const ROUTES: Route[] = [
   { path: "/", priority: 1, changeFrequency: "weekly" },
+  { path: "/ai-headshot-generator", priority: 0.9, changeFrequency: "weekly" },
   { path: "/free-ai-headshot-generator", priority: 0.9, changeFrequency: "weekly" },
   { path: "/pricing", priority: 0.9, changeFrequency: "weekly" },
   { path: "/ai-professional-headshot", priority: 0.8, changeFrequency: "monthly" },
@@ -17,6 +18,9 @@ const ROUTES: Route[] = [
   { path: "/real-estate-agent-headshots", priority: 0.7, changeFrequency: "monthly" },
   { path: "/doctor-headshots", priority: 0.7, changeFrequency: "monthly" },
   { path: "/how-it-works", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/about", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/contact", priority: 0.5, changeFrequency: "yearly" },
+  { path: "/authors/portraitlab-editorial", priority: 0.5, changeFrequency: "monthly" },
   { path: "/refund", priority: 0.4, changeFrequency: "yearly" },
   { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
   { path: "/terms", priority: 0.3, changeFrequency: "yearly" },

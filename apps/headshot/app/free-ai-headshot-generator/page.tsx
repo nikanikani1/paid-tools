@@ -10,6 +10,7 @@ import {
   RelatedLinks,
   Section,
 } from "../components/ui";
+import { EditorialByline, StudioComparisonSection } from "../components/editorial";
 import { SAMPLE_PACK } from "../lib/site";
 import { breadcrumbJsonLd, buildMetadata, faqPageJsonLd, productJsonLd } from "../lib/seo";
 
@@ -21,7 +22,7 @@ export const metadata: Metadata = buildMetadata({
   keywords: [
     "free ai headshot generator",
     "free headshot generator",
-    "ai headshot free trial",
+    "ai headshot pricing",
     "free headshot maker",
   ],
 });
@@ -29,7 +30,7 @@ export const metadata: Metadata = buildMetadata({
 const FAQ = [
   {
     q: "Do you offer a free AI headshot generator?",
-    a: "No. PortraitLab has no free tier, no free preview and no free trial. Our cheapest option is the one-time $9 Sample Pack, which delivers five real headshots with no watermark, a commercial licence and one free redo. We charge from the first image because generation costs real GPU time and because we are not willing to fund it with ads or by trading your photos.",
+    a: "No. PortraitLab is paid-only: every set is generated after payment, with no complimentary tier and no sample render before checkout. Our cheapest option is the one-time $9 Sample Pack, which delivers five real headshots with no watermark, a commercial licence and one free redo. We charge from the first image because generation costs real GPU time and because we are not willing to fund it with ads or by trading your photos.",
   },
   {
     q: "Why not just use one of the free tools in this comparison?",
@@ -98,7 +99,7 @@ export default function FreeAiHeadshotGeneratorPage() {
         data={productJsonLd({
           name: "PortraitLab $9 Sample Pack",
           description:
-            "Five real AI headshots for $9, one-time payment: no watermark, commercial licence and one free redo. No free tier or free trial exists.",
+            "Five real AI headshots for $9, one-time payment: no watermark, commercial licence and one free redo. Every order is paid before generation runs.",
           path: "/free-ai-headshot-generator",
         })}
       />
@@ -127,9 +128,10 @@ export default function FreeAiHeadshotGeneratorPage() {
           <div className="space-y-4">
             <p>
               This page ranks for the phrase <strong>free AI headshot generator</strong>, so let us be direct about
-              what you will and will not find here: we do not offer a free generator, a free preview image or a free
-              trial. PortraitLab is a paid product. The cheapest way to put your own face through the pipeline is the
-              one-time {SAMPLE_PACK.price} dollar Sample Pack, which returns {SAMPLE_PACK.images} headshots.
+              what you will and will not find here: we do not offer an unpaid generator, an unpaid sample render or a
+              complimentary tier. PortraitLab is a paid product. The cheapest way to put your own face through the
+              pipeline is the one-time {SAMPLE_PACK.price} dollar Sample Pack, which returns {SAMPLE_PACK.images}{" "}
+              headshots.
             </p>
             <p>
               If that sounds like a worse deal than free, this page is for you. Below is an honest comparison: what the
@@ -141,7 +143,7 @@ export default function FreeAiHeadshotGeneratorPage() {
             <KeyFacts
               facts={[
                 { label: "Free tier", value: "None" },
-                { label: "Free preview", value: "Not offered" },
+                { label: "Preview image", value: "Not offered" },
                 { label: "Cheapest option", value: `$${SAMPLE_PACK.price} Sample Pack` },
                 { label: "What you get", value: `${SAMPLE_PACK.images} headshots, no watermark` },
               ]}
@@ -241,8 +243,8 @@ export default function FreeAiHeadshotGeneratorPage() {
 
       <Section
         eyebrow="Why we charge"
-        title="Why there is no free trial, in plain numbers"
-        intro={<p>Free headshots are not free to produce. Someone pays for the GPU time — the only question is how.</p>}
+        title="Why every order is paid first, in plain numbers"
+        intro={<p>Headshots are not free to produce. Someone pays for the GPU time — the only question is how.</p>}
       >
         <Prose>
           <h3>Every generated image costs compute</h3>
@@ -320,6 +322,11 @@ export default function FreeAiHeadshotGeneratorPage() {
             body: "$9 for 5 images, $35 for 40, $45 for 60, $75 for 100 — one-time.",
           },
           {
+            href: "/ai-headshot-generator",
+            label: "AI headshot generator",
+            body: "What the generator actually does, where the free-tool comparison lands, and the $9 entry point.",
+          },
+          {
             href: "/how-it-works",
             label: "How the pipeline works",
             body: "Quality gate, identity pass and face-merge stage, step by step.",
@@ -348,11 +355,13 @@ export default function FreeAiHeadshotGeneratorPage() {
       />
 
       <CtaBand
-        title="No free preview — but a $9 sample"
+        title="Pay $9, see a real sample first"
         body={`Five real headshots for $${SAMPLE_PACK.price}, one style, no watermark, commercial licence and one free redo. It is the cheapest way to see the pipeline on your own face.`}
         href="/pricing"
         cta="Get the $9 Sample Pack"
       />
+      <StudioComparisonSection />
+      <EditorialByline />
     </main>
   );
 }

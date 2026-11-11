@@ -20,8 +20,8 @@ export const metadata: Metadata = buildMetadata({
 
 const FAQ = [
   {
-    q: "Do you have a free plan or a free trial?",
-    a: "No. There is no free tier, no free preview and no free trial. The cheapest order is the $9 Sample Pack: five headshots, one style, no watermark, commercial licence and one free redo. We charge from the first image because every generation costs GPU time and we do not fund free runs with ads or by trading your photo data.",
+    q: "Can I try it without paying?",
+    a: "No. Payment comes first: there is no complimentary tier and no sample render before checkout. The cheapest order is the $9 Sample Pack: five headshots, one style, no watermark, commercial licence and one free redo. We charge from the first image because every generation costs GPU time and we do not fund unpaid runs with ads or by trading your photo data.",
   },
   {
     q: "Is this a subscription?",
@@ -85,7 +85,7 @@ export default function PricingPage() {
 
       <section className="mx-auto max-w-6xl px-6 pb-8 pt-8 text-center">
         <p className="sans mx-auto mb-4 inline-flex rounded-full border border-orange-300 bg-orange-50 px-3 py-1 text-xs uppercase tracking-wide text-orange-800">
-          No free tier · no free trial · paid from $9
+          Paid only · no unpaid generation · from $9
         </p>
         <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
           Pricing — ${SAMPLE_PACK.price} Sample Pack, then $35 / $45 / $75
@@ -143,7 +143,7 @@ export default function PricingPage() {
         </div>
         <p className="sans mt-3 text-xs text-stone-500">
           Prices in US dollars. Taxes may apply depending on your billing country and are collected by the merchant of
-          record at checkout. There is no free tier and no free preview image.
+          record at checkout. Every image is part of a paid order — no unpaid generation.
         </p>
       </Section>
 
@@ -195,9 +195,9 @@ export default function PricingPage() {
             background-and-crop normalisation so the set looks like one shoot. The tier you buy changes how many final
             images you receive, how many outfits and backdrops are included, and the resolution of the delivered files.
           </p>
-          <h3>Why a paid sample instead of a free trial</h3>
+          <h3>Why a paid sample instead of a giveaway</h3>
           <p>
-            A free trial is the usual growth play, but it has two costs we are not willing to pay: the GPU time for the
+            A giveaway is the usual growth play, but it has two costs we are not willing to pay: the GPU time for the
             free set has to be funded somehow, and free face-photo pipelines tend to monetise the upload. Charging $9 for
             five images keeps the incentives simple — you pay once, you get five clean files with a commercial licence,
             and if the likeness misses you get a redo rather than a sales pitch. It also makes the sample a real signal:

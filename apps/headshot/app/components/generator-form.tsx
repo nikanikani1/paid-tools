@@ -158,8 +158,7 @@ export default function GeneratorForm({
           {busy ? "Starting your order…" : `Continue — ${selected.label.split(" — ").at(-1)} one-time`}
         </button>
         <p className="mt-2 text-xs text-stone-500">
-          Paid order required. No free tier and no free preview — every set is generated after payment, with one free
-          redo if the likeness misses.
+          Paid order required — every set is generated after payment, with one free redo if the likeness misses.
         </p>
         {checkoutRequired && (
           <div className="mt-3 rounded-lg border border-amber-300 bg-amber-50 px-3 py-3 text-sm text-amber-900">

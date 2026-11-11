@@ -13,6 +13,9 @@ const TOOLS = [
 const RESOURCES = [
   { href: "/how-it-works", label: "How it works" },
   { href: "/pricing", label: "Pricing" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+  { href: "/authors/stemsplit-audio-team", label: "Authors" },
   { href: "/#faq", label: "FAQ" },
   { href: "/sitemap.xml", label: "Sitemap" },
 ];

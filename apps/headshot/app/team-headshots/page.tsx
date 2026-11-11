@@ -11,6 +11,7 @@ import {
   Section,
   StepGrid,
 } from "../components/ui";
+import { EditorialByline, StudioComparisonSection } from "../components/editorial";
 import { breadcrumbJsonLd, buildMetadata, faqPageJsonLd, productJsonLd } from "../lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -297,6 +298,8 @@ export default function TeamHeadshotsPage() {
         href="mailto:support@portraitlab.example?subject=Team%20headshots%20quote"
         cta="Request a quote"
       />
+      <StudioComparisonSection />
+      <EditorialByline />
     </main>
   );
 }

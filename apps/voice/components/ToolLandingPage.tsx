@@ -1,12 +1,18 @@
 import Link from "next/link";
+import { AuthorByline } from "@/components/AuthorByline";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ContentSections, type Section } from "@/components/ContentSections";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { StemGrid } from "@/components/StemGrid";
+import { SystemBuiltInMethod } from "@/components/SystemBuiltInMethod";
 import { ToolDemo } from "@/components/ToolDemo";
+import { PRIMARY_AUTHOR, authorPath } from "@/lib/authors";
+import { getSystemMethodCopy } from "@/lib/system-methods";
 import {
+  absoluteUrl,
   breadcrumbSchema,
+  CONTENT_UPDATED,
   faqSchema,
   graphSchema,
   webApplicationSchema,
@@ -33,8 +39,18 @@ export type ToolPageData = {
 };
 
 export function ToolLandingPage({ data }: { data: ToolPageData }) {
+  const systemMethod = getSystemMethodCopy(data.slug);
   const schema = graphSchema(
-    webApplicationSchema({ name: data.h1, description: data.description, path: data.slug }),
+    {
+      ...webApplicationSchema({ name: data.h1, description: data.description, path: data.slug }),
+      author: {
+        "@type": "Organization",
+        name: PRIMARY_AUTHOR.name,
+        url: absoluteUrl(authorPath(PRIMARY_AUTHOR.slug)),
+      },
+      datePublished: CONTENT_UPDATED,
+      dateModified: CONTENT_UPDATED,
+    },
     faqSchema(data.faqs),
     breadcrumbSchema([
       { name: "Home", path: "/" },
@@ -68,6 +84,8 @@ export function ToolLandingPage({ data }: { data: ToolPageData }) {
             ))}
           </div>
 
+          <AuthorByline />
+
           <ToolDemo cta={data.toolCta} />
           <p className="mt-4 text-xs text-slate-500">
             Paid runs only · $2.90 Trial Pack includes 15 minutes · files deleted automatically after processing
@@ -91,6 +109,22 @@ export function ToolLandingPage({ data }: { data: ToolPageData }) {
         )}
 
         <ContentSections sections={data.sections} />
+
+        <div className="hairline">
+          <div className="mx-auto max-w-3xl py-6">
+            <p className="text-xs leading-relaxed text-slate-500">
+              Sample outputs are illustrative; real A/B samples will be added after launch. No customer counts, reviews
+              or benchmark numbers are published on this page because we have not measured them yet. Every upload is
+              processed only for your job and removed from working storage automatically within 24–48 hours —{" "}
+              <Link href="/privacy" className="underline underline-offset-2 hover:text-slate-300">
+                read the privacy policy
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+
+        <SystemBuiltInMethod intro={systemMethod.intro} caveat={systemMethod.caveat} />
 
         <Faq items={data.faqs} />
 
@@ -131,8 +165,9 @@ export function ToolLandingPage({ data }: { data: ToolPageData }) {
                 </Link>
               </div>
               <p className="mt-4 text-xs text-slate-500">
-                Read <Link href="/how-it-works" className="text-slate-400 underline underline-offset-2 hover:text-slate-200">how the stem separation works</Link> or{" "}
-                <Link href="/privacy" className="text-slate-400 underline underline-offset-2 hover:text-slate-200">how your audio is handled</Link>.
+                Read <Link href="/how-it-works" className="text-slate-400 underline underline-offset-2 hover:text-slate-200">how the stem separation works</Link>,{" "}
+                <Link href="/privacy" className="text-slate-400 underline underline-offset-2 hover:text-slate-200">how your audio is handled</Link>, or{" "}
+                <Link href="/contact" className="text-slate-400 underline underline-offset-2 hover:text-slate-200">contact the team</Link>.
               </p>
             </div>
           </div>

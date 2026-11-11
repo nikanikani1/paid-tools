@@ -77,7 +77,7 @@ export default function TermsPage() {
               Packages are one-time purchases: the $9 Sample Pack (5 images), 40 images for $35, 60 for $45 and 100 for
               $75 (USD), as shown on the <Link href="/pricing">pricing page</Link>.
             </li>
-            <li>There is no free tier, free preview or free trial. Every generated image is part of a paid order.</li>
+            <li>There is no unpaid generation of any kind. Every generated image is part of a paid order.</li>
             <li>Payment is processed by our merchant of record, which handles taxes and issues the receipt.</li>
             <li>
               Generation begins only after payment confirmation. Before checkout is connected, order requests are

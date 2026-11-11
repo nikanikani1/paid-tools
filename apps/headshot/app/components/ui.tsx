@@ -202,8 +202,8 @@ export function PlanCards({ ctaHref = "/#generator" }: { ctaHref?: string }) {
         );
       })}
       <p className="text-xs text-stone-500 sm:col-span-2 xl:col-span-4">
-        There is no free tier and no free preview image: every order is paid, and the cheapest entry point is the $9
-        Sample Pack (5 headshots). All packages are one-time payments with a commercial licence and one free redo within
+        Paid only: every order is generated after payment, starting at the $9 Sample Pack (5 headshots). There is no
+        unpaid sample render. All packages are one-time payments with a commercial licence and one free redo within
         48 hours.{" "}
         <Link href="/pricing" className="text-orange-700 underline underline-offset-2">
           Compare packages

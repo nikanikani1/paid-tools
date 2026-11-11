@@ -12,6 +12,7 @@ import {
   SampleGrid,
   Section,
 } from "../components/ui";
+import { EditorialByline, StudioComparisonSection } from "../components/editorial";
 import { breadcrumbJsonLd, buildMetadata, faqPageJsonLd, webApplicationJsonLd } from "../lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -226,11 +227,14 @@ export default function DoctorHeadshotsPage() {
           { href: "/privacy", label: "Privacy", body: "Processors, retention and deletion." },
           { href: "/pricing", label: "Pricing", body: "$9 sample, then $35 / $45 / $75 one-time packages." },
           { href: "/how-it-works", label: "How it works", body: "Quality gate, identity pass and delivery." },
-          { href: "/", label: "AI headshot generator", body: "All style presets and paid package options." },
+          { href: "/", label: "Professional headshots", body: "All style presets and paid package options." },
+          { href: "/ai-headshot-generator", label: "AI headshot generator", body: "How the generator pipeline works and what it costs." },
         ]}
       />
 
       <CtaBand title="Give patients a portrait they can trust" cta="Generate my headshots" />
+      <StudioComparisonSection />
+      <EditorialByline />
     </main>
   );
 }
