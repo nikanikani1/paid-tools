@@ -70,3 +70,11 @@ npm run dev:headshot   # http://localhost:3001
 - [ ] **NS 切换**：Dynadot → `felipe/marjory.ns.cloudflare.com`，Cloudflare zone 激活
 - [ ] 自定义域 + www→apex 301；Waffo checkout/webhook；R2 转存；GSC/统计
 - [ ] **密钥轮换**：旧 Worker version 曾包含构建期密钥，上线前轮换 CF token / R2 keys / Replicate token / Waffo private key
+
+## 自定义域已上线（2026-11-12）
+
+- https://stemextractor.com ✅ 200，canonical 正确；`www` → apex **301**
+- https://headshotsnap.com ✅ 200，canonical 正确；`www` → apex **301**
+- 两站自定义域 `POST` 仍 **402 payment_required**
+- Cloudflare zone 已 Active；$5 为 Workers Paid（账户级），域名 zone 的 Free 是网站套餐，二者独立
+- 旧 Worker version 含构建期密钥，待轮换/删除
