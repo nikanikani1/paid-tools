@@ -76,10 +76,14 @@ export default function GeneratorForm({
     setCheckoutRequired(false);
     setJob(null);
     try {
+      const form = new FormData();
+      files.forEach((file) => form.append("selfies", file, file.name));
+      form.append("style", style);
+      form.append("images", String(images));
+      form.append("package", selected.label);
       const res = await fetch("/api/orders", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ files: files.length, style, images, package: selected.label }),
+        body: form,
       });
       if (res.status === 402) {
         const payload = (await res.json().catch(() => null)) as { message?: string } | null;

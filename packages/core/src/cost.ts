@@ -4,7 +4,8 @@
  * 价格来源：docs/TECH-SELECTION-v1.md（2026-11-11 实测/官方页）：
  *   - 人声分离 Replicate cjwbw/demucs：$0.014 / 3 分钟歌 ≈ $0.004667/分钟（T4 63s）
  *   - 质量档 lucataco/mvsep-mdx23：$0.16 / 首
- *   - 头像 fal flux-pulid $0.0333/MP + Replicate cdingram/face-swap $0.013 → ≈ $0.050/张（含重试系数）
+ *   - 头像 Replicate black-forest-labs/flux-kontext-pro $0.04 + cdingram/face-swap $0.013
+ *     → $0.053/张（2026-11-12 实测：Kontext 5.4s + face-swap 8.85s）；不再依赖 fal
  *
  * 用法（站点任务里，provider 返回后立刻记一笔）：
  *   recordJobCost({ jobId, site: "voice", ruleId: "voice:demucs", units: 3.2 });
@@ -47,13 +48,21 @@ export const PRICE_BOOK: Record<string, PriceRule> = {
     usdPerUnit: 0.16,
     source: "TECH-SELECTION §2.2：$0.16/首（高质量档）",
   },
+  "headshot:kontext": {
+    id: "headshot:kontext",
+    provider: "replicate",
+    model: "black-forest-labs/flux-kontext-pro",
+    unit: "image",
+    usdPerUnit: 0.04,
+    source: "Replicate 官方价 / 2026-11-12 实测 5.4s（$0.04/run）",
+  },
   "headshot:pulid": {
     id: "headshot:pulid",
     provider: "fal",
     model: "fal-ai/flux-pulid",
     unit: "image",
     usdPerUnit: 0.0333,
-    source: "TECH-SELECTION §3.1：$0.0333/MP（1024² ≈ 1MP）",
+    source: "可选 fal 备选：$0.0333/MP（1024² ≈ 1MP）",
   },
   "headshot:face-swap": {
     id: "headshot:face-swap",
@@ -65,8 +74,8 @@ export const PRICE_BOOK: Record<string, PriceRule> = {
   },
 };
 
-/** 头像单张综合成本（含 1.1 重生成 + 1.05 重试系数后的保守值） */
-export const HEADSHOT_COST_PER_IMAGE_USD = 0.05;
+/** 头像单张综合成本（Kontext $0.04 + face-swap $0.013，实测无重试） */
+export const HEADSHOT_COST_PER_IMAGE_USD = 0.053;
 /** 人声分离每分钟综合成本 */
 export const VOICE_COST_PER_MINUTE_USD = 0.004667;
 /** Waffo 官网公开费率（实际合同费率以商户后台为准） */
@@ -238,7 +247,7 @@ export function estimateVoiceJobCost(minutes: number): number {
   return round6(Math.max(0, minutes) * VOICE_COST_PER_MINUTE_USD);
 }
 
-/** 头像预估：按张数（$0.050/张，含重试系数） */
+/** 头像预估：按张数（$0.053/张：Kontext + face-swap） */
 export function estimateHeadshotJobCost(images: number): number {
   return round6(Math.max(0, Math.floor(images)) * HEADSHOT_COST_PER_IMAGE_USD);
 }

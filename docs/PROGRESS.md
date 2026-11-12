@@ -1,6 +1,16 @@
-# 进度看板（2026-11-11 11:05）
+# 进度看板（2026-11-12 12:20）
 
-## 本轮新增（审计 + 去免费试用）
+## 本轮新增（真实 AI 已跑通）
+
+- [x] **Replicate token 已配**；真实 demucs 分离 E2E：3 秒音频 → 4 stems，predict 3.22s；App 层 `/api/jobs` → done
+- [x] **B 站真实头像 E2E**：flux-kontext-pro (6.0s) + face-swap (8.0s) → 1024² 结果图；App 层 `/api/orders` → done
+- [x] B 改 **Replicate-only**（不再需要 fal），单张 $0.053；TECH-SELECTION/cost 已更新
+- [x] Neon：现有项目内建 `paid_voice` / `paid_headshot` 两 schema，`prisma db push` 成功；连接串已进 `.env.local`
+- [x] 证据：`docs/REAL-E2E.md`
+- [ ] **等用户提供：域名、Cloudflare API Token、R2 S3 keys+bucket、Waffo 产品 ID**（阻塞部署/支付）
+- [ ] 假门页/预售价验证；i18n；GSC/统计；外链（上线后）
+
+## 审计 + 去免费试用（2026-11-11）
 
 - [x] 审计报告 `docs/AUDIT-vs-SKILL-2026-11-11.md`：对照 6 个访谈派生 skill + 41 篇提炼 + 第三/第五篇校准；发现 3 个 P0（免费试用、B 主词 18.1K<2万、跳过假门页）
 - [x] 核心定价改为**无免费额度**：A Trial Pack $2.90/15min + Starter $5/90min + Pro $9/200min + Annual $39；B Sample Pack $9/5 张 + $35/40 + $45/60 + $75/100
@@ -30,9 +40,10 @@
 
 ## 待付款后做（2026-11-13）
 
-- [ ] Cloudflare Workers Paid $5、2 个 .com、Replicate $10–20、R2 开通（清单见 `PAYMENT-CHECKLIST.md`）
-- [ ] 填 `.env.local`：Replicate token、R2 keys、Neon 连接串（可选 fal）
-- [ ] 切真实 provider：demucs / flux-pulid / face-swap；跑 1 单人声 + 1 单头像 E2E
+- [x] Cloudflare Workers Paid、2 个 .com、Replicate $10、R2 开通（用户已确认 2026-11-12；域名具体名字待确认）
+- [ ] 填 `.env.local`：R2 keys、Neon 连接串（已完成 voice/headshot schema）、Waffo 产品 ID
+- [x] 切真实 provider：demucs / flux-kontext-pro / face-swap；已跑 1 单人声 + 1 单头像 E2E
+- [ ] 接 Waffo checkout/webhook；部署 Cloudflare Workers；GSC/统计
 - [ ] Neon 两库 `prisma migrate deploy`；`packages/core/src/db.ts` 懒创建 client
 - [ ] R2 lifecycle（in 24–48h、out 30 天）、CORS、预签名实测
 - [ ] Waffo 产品 ID + webhook 验签 + 额度扣减

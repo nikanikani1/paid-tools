@@ -61,17 +61,18 @@ export function ToolDemo({
     [stop],
   );
 
-  async function createJob(filename: string, size: number) {
+  async function createJob(file: File) {
     setBusy(true);
     setError(null);
     setCheckoutRequired(null);
     setJob(null);
     stop();
     try {
+      const form = new FormData();
+      form.append("file", file, file.name);
       const res = await fetch("/api/jobs", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ filename, size }),
+        body: form,
       });
       if (res.status === 402) {
         const payload = (await res.json().catch(() => null)) as PaymentRequiredPayload | null;
@@ -101,7 +102,7 @@ export function ToolDemo({
       setError("That file is larger than 100MB. Trim it to under 10 minutes and try again.");
       return;
     }
-    void createJob(file.name, file.size);
+    void createJob(file);
   }
 
   const percent = job?.progress ?? 0;

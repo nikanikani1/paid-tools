@@ -10,3 +10,8 @@ out/
 .wrangler/
 .open-next/
 research/
+
+# local test artifacts
+data/
+test-*.wav
+test-selfie*.jpg

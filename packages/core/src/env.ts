@@ -41,8 +41,8 @@ export const ENV_SPEC: readonly EnvVarSpec[] = [
   // database
   { key: "DATABASE_URL", group: "database", required: true, secret: true, description: "Neon Postgres **pooler** 连接串（sslmode=require&pgbouncer=true&connection_limit=1）" },
   // ai
-  { key: "REPLICATE_API_TOKEN", group: "ai", required: true, secret: true, description: "Replicate：demucs 分离 + face-swap（两站共用）" },
-  { key: "FAL_KEY", group: "ai", required: true, secret: true, description: "fal.ai：flux-pulid 头像生成" },
+  { key: "REPLICATE_API_TOKEN", group: "ai", required: true, secret: true, description: "Replicate：demucs 分离 + Kontext/face-swap 头像（两站共用）" },
+  { key: "FAL_KEY", group: "ai", required: false, secret: true, description: "可选：fal.ai flux-pulid 备选；默认走 Replicate-only" },
   // storage
   { key: "R2_ACCOUNT_ID", group: "storage", required: true, description: "Cloudflare account id（R2 S3 endpoint 用）" },
   { key: "R2_ACCESS_KEY_ID", group: "storage", required: true, secret: true, description: "R2 S3 API token 的 Access Key ID" },
@@ -68,7 +68,7 @@ export const ENV_SPEC: readonly EnvVarSpec[] = [
 const GROUP_ORDER: EnvGroup[] = ["core", "database", "ai", "storage", "payment", "email", "security"];
 
 export interface EnvMode {
-  /** AI provider 是否真实可用（REPLICATE_API_TOKEN + FAL_KEY 都配了才算 real） */
+  /** AI provider 是否真实可用（REPLICATE_API_TOKEN 即可；fal 可选） */
   ai: "real" | "mock";
   /** R2 是否真实可用（4 个 R2_* 都配了） */
   storage: "real" | "mock";
@@ -124,7 +124,7 @@ export function readEnv(source: EnvSource = getProcessEnv()): EnvReport {
   }
 
   const mode: EnvMode = {
-    ai: isFilled(env.REPLICATE_API_TOKEN) && isFilled(env.FAL_KEY) ? "real" : "mock",
+    ai: isFilled(env.REPLICATE_API_TOKEN) ? "real" : "mock",
     storage: isFilled(env.R2_ACCOUNT_ID) && isFilled(env.R2_ACCESS_KEY_ID) && isFilled(env.R2_SECRET_ACCESS_KEY) && isFilled(env.R2_BUCKET) ? "real" : "mock",
     payment:
       isFilled(env.WAFFO_MERCHANT_ID) && isFilled(env.WAFFO_STORE_ID) && isFilled(env.WAFFO_PRIVATE_KEY) && isFilled(env.WAFFO_WEBHOOK_PUBLIC_KEY)
@@ -142,8 +142,8 @@ export function readEnv(source: EnvSource = getProcessEnv()): EnvReport {
   if (mode.payment === "mock" && (isFilled(env.WAFFO_MERCHANT_ID) || isFilled(env.WAFFO_STORE_ID) || isFilled(env.WAFFO_PRIVATE_KEY))) {
     warnings.push("Waffo 只配置了部分变量（需要 WAFFO_MERCHANT_ID / WAFFO_STORE_ID / WAFFO_PRIVATE_KEY / WAFFO_WEBHOOK_PUBLIC_KEY），已降级 mock");
   }
-  if (mode.ai === "mock" && (isFilled(env.REPLICATE_API_TOKEN) || isFilled(env.FAL_KEY))) {
-    warnings.push("AI provider 只配了一个 key（REPLICATE_API_TOKEN / FAL_KEY 需同时配置才能走真实链路），已降级 mock");
+  if (mode.ai === "mock" && isFilled(env.FAL_KEY)) {
+    warnings.push("只配了 FAL_KEY、缺 REPLICATE_API_TOKEN：人声分离/face-swap 仍需 Replicate，已降级 mock");
   }
   const nodeEnv = env.NODE_ENV;
   if (nodeEnv === "production" && mode.payment === "mock") {

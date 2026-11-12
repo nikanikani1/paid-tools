@@ -6,5 +6,15 @@ export * from "./r2";
 export * from "./cost";
 export * from "./payments/waffo";
 export * from "./providers/mock";
-export { isReplicateConfigured, createDemucsPrediction, createFaceSwapPrediction, getPrediction } from "./providers/replicate";
+export {
+  isReplicateConfigured,
+  createDemucsPrediction,
+  createFaceSwapPrediction,
+  createFluxKontextPrediction,
+  getPrediction,
+  getLatestVersion,
+  createPrediction,
+  waitForPrediction,
+  replicateFetch,
+} from "./providers/replicate";
 export { isFalConfigured, submitFluxPulid } from "./providers/fal";

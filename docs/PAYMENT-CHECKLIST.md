@@ -22,7 +22,7 @@
 
 | # | 项目 | 金额 | 什么时候付 | 备注 |
 |---|---|---|---|---|
-| 5 | **fal 充值** | $10 | 头像联调前；可先不付 | 只有用 `flux-pulid` 才需要；不想注册第二家就改用 Replicate Kontext + face-swap，成本 +6%，先 A/B 质量再定 |
+| 5 | ~~fal 充值~~ | **$0** | 不需要 | 已改 Replicate-only：`flux-kontext-pro` + `face-swap`，$0.053/张 |
 | 6 | Resend Pro | $20/月 | 月邮件 >3,000 封或 >100 封/天 | 现在免费 3,000 封够用 |
 | 7 | Neon Launch | ~$15/月 | 单项目 >1GB 或 >100 CU-hrs/月 | 现在 Free 够用 |
 | 8 | Waffo 交易费 | 3.9% + $0.50/笔 | 有成交才扣 | 无预付；**务必确认现有商户合同费率** |
@@ -36,8 +36,8 @@
 
 ## 三、现在就能做（不需要卡）
 
-- [ ] **注册 Replicate 账号**（免费）→ 先拿 API Token（`r8_...`）；充值等周五
-- [ ] （可选）注册 fal 账号（免费）
+- [x] **注册 Replicate 账号 / 拿 API Token / 充值 $10**（已完成 2026-11-12）
+- [x] ~~（可选）注册 fal 账号~~ → 不需要，已改 Replicate-only
 - [ ] Cloudflare：确认两个域名候选（推荐 `stemextractor.com` / `headshotsnap.com`，见 `DOMAINS.md`）；Turnstile widget 可先建（免费）；R2 等卡到再开通
 - [ ] Neon：建 2 个免费项目（voice / headshot）→ pooler 连接串
 - [ ] Resend：注册/登录，准备验证两个发件域（免费 3,000 封/月）
@@ -53,7 +53,7 @@
 2. Cloudflare Registrar 买 2 个 .com（$22.34）
 3. Replicate 绑卡充值 **$10–20**
 4. Cloudflare R2 开通（绑卡，$0 用量）
-5. （可选）fal 充值 $10
+5. ~~（可选）fal 充值 $10~~ → 不需要（Replicate-only）
 6. 把 API Token / R2 keys / Neon 连接串放进 `.env.local`，告诉我「已付完」
 7. 我切真实 provider，跑 1 单人声 + 1 单头像 E2E，确认成本与耗时后部署
 
