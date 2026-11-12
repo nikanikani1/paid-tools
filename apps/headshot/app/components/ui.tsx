@@ -77,7 +77,6 @@ export function Section({
   return (
     <section
       id={id}
-      data-reveal
       className={`mx-auto max-w-6xl px-6 py-12 ${tone === "raised" ? "my-6 rounded-3xl border border-stone-300 bg-white/60" : ""}`}
     >
       {eyebrow && (

@@ -173,7 +173,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="stems" data-reveal className="hairline px-6 py-14">
+      <section id="stems" className="hairline px-6 py-14">
         <div className="mx-auto max-w-4xl">
           <h2 className="display text-3xl md:text-4xl">Four stems from one upload</h2>
           <p className="mt-4 leading-relaxed text-slate-300">
@@ -204,7 +204,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="how" data-reveal className="hairline px-6 py-14">
+      <section id="how" className="hairline px-6 py-14">
         <div className="mx-auto max-w-5xl">
           <h2 className="display text-3xl md:text-4xl">How it works in three steps</h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-slate-300">
@@ -248,7 +248,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section data-reveal className="hairline px-6 py-14">
+      <section className="hairline px-6 py-14">
         <div className="mx-auto max-w-3xl">
           <h2 className="display text-3xl md:text-4xl">An AI vocal remover that hears the whole mix</h2>
           <p className="mt-4 leading-relaxed text-slate-300">
@@ -280,7 +280,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="use-cases" data-reveal className="hairline px-6 py-14">
+      <section id="use-cases" className="hairline px-6 py-14">
         <div className="mx-auto max-w-5xl">
           <h2 className="display text-3xl md:text-4xl">What people do with separated stems</h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-slate-300">
@@ -299,7 +299,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="pricing" data-reveal className="hairline px-6 py-14">
+      <section id="pricing" className="hairline px-6 py-14">
         <div className="mx-auto max-w-6xl">
           <h2 className="display text-3xl md:text-4xl">The $2.90 trial, then plans only if you need them</h2>
           <p className="mx-auto mt-4 max-w-3xl text-center leading-relaxed text-slate-300">
@@ -353,7 +353,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="tools" data-reveal className="hairline px-6 py-14">
+      <section id="tools" className="hairline px-6 py-14">
         <div className="mx-auto max-w-5xl">
           <h2 className="display text-3xl md:text-4xl">Every vocal remover tool on StemSplit</h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-slate-300">
@@ -374,7 +374,7 @@ export default function HomePage() {
 
       <Faq items={HOME_FAQS} intro="Short answers about pricing, the paid Trial Pack, formats and copyright." />
 
-      <section data-reveal className="px-6 pb-16">
+      <section className="px-6 pb-16">
         <div className="card relative mx-auto max-w-4xl overflow-hidden p-8 text-center md:p-12">
           <div
             aria-hidden="true"
