@@ -87,3 +87,10 @@ npm run dev:headshot   # http://localhost:3001
 - [x] 已 clean build + 部署：A version `1a3cca36`、B 站新版本（见 wrangler 输出）
 - [x] 自定义域回归：stemextractor.com / headshotsnap.com 200，www 301，POST 402
 - 素材授权见 `docs/SAMPLES.md`
+
+## 线上自检（2026-11-12）
+
+- [x] 32 页全量巡检：0 broken link / 0 broken asset / 0 JS error / 0 移动端横向溢出；JSON-LD 全部可解析
+- [x] 音频实际播放、表单 402、404、www 301、自定义域 200 全部通过
+- [ ] **邮箱未配置**：两域名无 MX/TXT，support@ 等不会转发到 Gmail；需开 Cloudflare Email Routing
+- [ ] 所有页面缺 og:image（次要，社交分享无大图）
