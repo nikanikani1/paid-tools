@@ -113,3 +113,12 @@ npm run dev:headshot   # http://localhost:3001
 - [x] IndexNow：两站 key 文件 200，已向 indexnow.org 提交 sitemap URL（202）
 - [ ] GSC 验证/提交（需要 Google 后台交互）
 - [ ] 密钥轮换：旧 Worker version 仍存在；Cloudflare/R2/Replicate/Waffo 凭据尚未轮换
+
+## 2026-11-12 GSC + IndexNow
+
+- [x] GSC Domain properties verified for `stemextractor.com` and `headshotsnap.com` via Cloudflare DNS TXT
+- [x] B 站 sitemap 提交成功（16 URLs）
+- [~] A 站 sitemap 已提交但 GSC 显示「无法获取」，站点 sitemap 本身 200；等待重试
+- [x] IndexNow key 文件根路径 200；两站 sitemap URL 已提交（202）
+- [ ] 旧 Worker version/密钥轮换仍待做（当前 token 无删除 version/R2 admin 权限，需要 Dashboard 操作）
+- [ ] B 站真实生成仍是 1 张/单，不是套餐张数（多图 fan-out 待做）
