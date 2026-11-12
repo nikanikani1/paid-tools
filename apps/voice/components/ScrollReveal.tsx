@@ -1,20 +1,32 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 /**
- * Adds `.is-visible` to `[data-reveal]` elements.
+ * Adds `.is-visible` to `[data-reveal]` elements, including after client-side
+ * navigation. The layout persists across route changes, so a one-shot query on
+ * mount leaves the next page's cards unobserved (they stay opacity:0). We re-run
+ * on pathname changes and watch for streamed/late-mounted nodes.
  *
- * The observer alone is not enough: a fast scroll / anchor jump / restored scroll
- * position can skip a whole element past the viewport, leaving it invisible forever.
- * A passive scroll/resize fallback reveals anything at or above the viewport.
+ * A passive scroll/resize fallback also reveals anything at/above the viewport,
+ * so fast scrolls and restored positions cannot leave a blank section.
  */
 export function ScrollReveal() {
+  const pathname = usePathname();
+
   useEffect(() => {
-    const nodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
-    if (!nodes.length) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      nodes.forEach((n) => n.classList.add("is-visible"));
+    const seen = new WeakSet<HTMLElement>();
+    let nodes: HTMLElement[] = [];
+
+    const collect = () => {
+      nodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+      return nodes;
+    };
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      collect().forEach((n) => n.classList.add("is-visible"));
       return;
     }
 
@@ -38,7 +50,23 @@ export function ScrollReveal() {
       },
       { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
     );
-    nodes.forEach((n) => io.observe(n));
+
+    const observe = (node: HTMLElement) => {
+      if (seen.has(node)) return;
+      seen.add(node);
+      io.observe(node);
+    };
+
+    collect().forEach(observe);
+
+    const mo = new MutationObserver(() => {
+      const fresh = collect().filter((n) => !seen.has(n));
+      if (fresh.length) {
+        fresh.forEach(observe);
+        revealPassed();
+      }
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
 
     let frame = 0;
     const onScroll = () => {
@@ -48,17 +76,21 @@ export function ScrollReveal() {
         revealPassed();
       });
     };
+
     revealPassed();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     window.addEventListener("pageshow", revealPassed);
+
     return () => {
       io.disconnect();
+      mo.disconnect();
       if (frame) window.cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       window.removeEventListener("pageshow", revealPassed);
     };
-  }, []);
+  }, [pathname]);
+
   return null;
 }
