@@ -122,6 +122,36 @@ export function publicUrl(key: string, source: EnvSource = getProcessEnv()): str
   return `${base.replace(/\/+$/, "")}/${validateObjectKey(key).split("/").map(encodeURIComponent).join("/")}`;
 }
 
+/** Server-side upload through a presigned PUT (R2 private objects). */
+export async function r2PutObject(
+  key: string,
+  body: BodyInit,
+  contentType = "application/octet-stream",
+  source: EnvSource = getProcessEnv(),
+): Promise<{ key: string; bytes: number } | null> {
+  if (!isR2Configured(source)) return null;
+  try {
+    const signed = await presignPut(key, { expiresIn: 300, contentType, strict: true }, source);
+    const res = await fetch(signed.url, { method: "PUT", headers: { "Content-Type": contentType }, body });
+    if (!res.ok) return null;
+    const bytes = typeof body === "string" ? new TextEncoder().encode(body).byteLength : Number((body as Blob).size ?? 0);
+    return { key, bytes };
+  } catch {
+    return null;
+  }
+}
+
+/** Presigned, expiring download URL for a private object. */
+export async function r2DownloadUrl(key: string, expiresIn = 7 * 24 * 60 * 60, source: EnvSource = getProcessEnv()): Promise<string | null> {
+  if (!isR2Configured(source)) return null;
+  try {
+    const signed = await presignGet(key, { expiresIn, strict: true }, source);
+    return signed.url;
+  } catch {
+    return null;
+  }
+}
+
 // ---------------------------------------------------------------------------
 // key 工具
 // ---------------------------------------------------------------------------

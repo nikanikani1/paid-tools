@@ -1,10 +1,13 @@
 import { NextResponse } from "next/server";
 import {
+  checkOrderAllowance,
+  consumeOrderAllowance,
   createFaceSwapPrediction,
   createFluxKontextPrediction,
   createJob,
   createMockHeadshotJob,
   isReplicateConfigured,
+  persistJob,
   replicateFetch,
   updateJob,
 } from "@paid/core";
@@ -18,7 +21,47 @@ import {
  * will fan out to the package size after R2/DB are wired.
  */
 const PAYMENT_REQUIRED_MESSAGE =
-  "A paid order is required. Checkout is not connected in this build — start with the $9 Sample Pack once payments are live.";
+  "A paid order is required. Start with the $9 Sample Pack (5 headshots) — one-time payment, no subscription.";
+
+function orderIdFrom(req: Request, form?: FormData | null, body?: { orderId?: string } | null): string | null {
+  return (
+    String(form?.get("orderId") ?? "") ||
+    req.headers.get("x-order-id") ||
+    String(body?.orderId ?? "") ||
+    null
+  );
+}
+
+async function requirePaidOrder(
+  req: Request,
+  form: FormData | null,
+  body: { orderId?: string } | null,
+  requestedImages: number,
+): Promise<{ ok: true; orderId: string } | { ok: false; response: NextResponse }> {
+  if (process.env.ALLOW_MOCK === "1" || process.env.ALLOW_REAL === "1") return { ok: true, orderId: "" };
+  const orderId = orderIdFrom(req, form, body);
+  if (!orderId) {
+    return {
+      ok: false,
+      response: NextResponse.json(
+        { error: "payment_required", message: PAYMENT_REQUIRED_MESSAGE, minimum_order_usd: 9 },
+        { status: 402 },
+      ),
+    };
+  }
+  const allowance = await checkOrderAllowance("headshot", orderId, requestedImages);
+  if (!allowance.ok) {
+    const message =
+      allowance.reason === "insufficient"
+        ? "This order does not have enough images left. Buy another package to continue."
+        : PAYMENT_REQUIRED_MESSAGE;
+    return {
+      ok: false,
+      response: NextResponse.json({ error: "payment_required", message, reason: allowance.reason }, { status: 402 }),
+    };
+  }
+  return { ok: true, orderId };
+}
 
 async function uploadFile(file: File, token: string): Promise<string> {
   const form = new FormData();
@@ -38,15 +81,6 @@ export async function POST(req: Request) {
   const allowMock = process.env.ALLOW_MOCK === "1";
   const allowReal = process.env.ALLOW_REAL === "1";
 
-  // Production has neither flag: every order needs a paid checkout first.
-  // Do NOT rely on NODE_ENV here — OpenNext/Workers may not expose it as "production".
-  if (!allowMock && !allowReal) {
-    return NextResponse.json(
-      { error: "payment_required", message: PAYMENT_REQUIRED_MESSAGE, minimum_order_usd: 9 },
-      { status: 402 },
-    );
-  }
-
   const contentType = req.headers.get("content-type") ?? "";
   if (contentType.includes("multipart/form-data")) {
     const form = await req.formData().catch(() => null);
@@ -59,8 +93,10 @@ export async function POST(req: Request) {
     if (!Number.isFinite(images) || images < 1) {
       return NextResponse.json({ error: "Invalid package size" }, { status: 400 });
     }
+    const paid = await requirePaidOrder(req, form, null, images);
+    if (!paid.ok) return paid.response;
 
-    if (!allowReal) {
+    if (allowMock && !allowReal) {
       const job = createMockHeadshotJob({ files: selfies.length, style, images });
       return NextResponse.json(job, { status: 201 });
     }
@@ -86,15 +122,16 @@ export async function POST(req: Request) {
         real: true,
         provider: "replicate/flux-kontext-pro+face-swap",
         testMode: true,
+        orderId: paid.orderId || undefined,
       });
-      return NextResponse.json(
-        updateJob(job.id, {
-          status: "running",
-          progress: 5,
-          meta: { real: true, provider: "replicate", testMode: true, requestedImages: images },
-        }),
-        { status: 201 },
-      );
+      if (paid.orderId) await consumeOrderAllowance("headshot", paid.orderId, images);
+      const running = updateJob(job.id, {
+        status: "running",
+        progress: 5,
+        meta: { real: true, provider: "replicate", testMode: true, requestedImages: images },
+      });
+      if (running) await persistJob(running.id);
+      return NextResponse.json(running, { status: 201 });
     } catch (err) {
       return NextResponse.json(
         { error: "provider_error", detail: err instanceof Error ? err.message : String(err) },
@@ -104,13 +141,16 @@ export async function POST(req: Request) {
   }
 
   const body = (await req.json().catch(() => null)) as
-    | { files?: number; style?: string; images?: number; package?: string }
+    | { files?: number; style?: string; images?: number; package?: string; orderId?: string }
     | null;
   if (!body || (body.files ?? 0) < 3) {
     return NextResponse.json({ error: "At least 3 selfies are required" }, { status: 400 });
   }
   const images = body.images ?? 5;
   if (images < 1) return NextResponse.json({ error: "Invalid package size" }, { status: 400 });
+  const paid = await requirePaidOrder(req, null, body, images);
+  if (!paid.ok) return paid.response;
+  if (paid.orderId) await consumeOrderAllowance("headshot", paid.orderId, images);
   const job = createMockHeadshotJob({
     files: body.files,
     style: body.style ?? "LinkedIn / Corporate",

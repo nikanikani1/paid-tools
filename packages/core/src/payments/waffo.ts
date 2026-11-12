@@ -18,8 +18,8 @@
  */
 import { getProcessEnv, hasWaffoConfig, type EnvSource } from "../env";
 
-/** real 分支的唯一「契约猜测点」：Waffo 文档确认后只改这里。 */
-const WAFFO_CHECKOUT_PATH = "/v1/checkout/sessions";
+/** real 分支的 Waffo Pancake API。已在 2026-11-12 用真实商户验证 200。 */
+const WAFFO_CHECKOUT_PATH = "/v1/actions/checkout/create-session";
 const DEFAULT_API_BASE = "https://api.waffo.ai";
 const DEFAULT_SIGNATURE_HEADER = "x-waffo-signature";
 const MAX_WEBHOOK_SKEW_SECONDS = 5 * 60;
@@ -51,6 +51,72 @@ export function isWaffoConfigured(source: EnvSource = getProcessEnv()): boolean 
   return getWaffoConfig(source) !== null;
 }
 
+function pemToDer(raw: string, kind: "PRIVATE KEY" | "PUBLIC KEY"): Uint8Array {
+  let value = (raw ?? "").trim().replace(/\\n/g, "\n");
+  if (!value.includes("-----BEGIN")) {
+    try {
+      const decoded = atob(value.replace(/\s+/g, ""));
+      if (decoded.includes("-----BEGIN")) value = decoded;
+    } catch {
+      /* not base64 */
+    }
+  }
+  if (!value.includes("-----BEGIN")) {
+    // Last resort: treat as bare base64 DER.
+    const binary = atob(value.replace(/\s+/g, ""));
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
+    return bytes;
+  }
+  const body = value
+    .replace(/-----BEGIN [^-]+-----/g, "")
+    .replace(/-----END [^-]+-----/g, "")
+    .replace(/\s+/g, "");
+  const binary = atob(body);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
+  return bytes;
+}
+
+function toBase64(bytes: ArrayBuffer): string {
+  const view = new Uint8Array(bytes);
+  let binary = "";
+  for (let i = 0; i < view.length; i += 1) binary += String.fromCharCode(view[i]);
+  return btoa(binary);
+}
+
+async function signedHeaders(
+  method: string,
+  path: string,
+  body: string,
+  config: WaffoConfig,
+): Promise<Record<string, string>> {
+  const der = pemToDer(config.privateKey, "PRIVATE KEY");
+  const key = await crypto.subtle.importKey(
+    "pkcs8",
+    toArrayBuffer(der),
+    { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const timestamp = Math.floor(Date.now() / 1000).toString();
+  const bodyHash = toBase64(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(body)));
+  const canonical = [method.toUpperCase(), path, timestamp, bodyHash].join("\n");
+  const signature = toBase64(await crypto.subtle.sign({ name: "RSASSA-PKCS1-v1_5" }, key, new TextEncoder().encode(canonical)));
+  return {
+    "Content-Type": "application/json",
+    "X-Merchant-Id": config.merchantId,
+    "X-Timestamp": timestamp,
+    "X-Signature": signature,
+  };
+}
+
+function toArrayBuffer(bytes: Uint8Array): ArrayBuffer {
+  const copy = new Uint8Array(bytes.byteLength);
+  copy.set(bytes);
+  return copy.buffer;
+}
+
 export class WaffoError extends Error {
   readonly status?: number;
   readonly body?: string;
@@ -76,6 +142,8 @@ export interface CheckoutInput {
   email?: string;
   /** Waffo 商户后台建的产品 ID（可选；有则用 product 创建 checkout） */
   productId?: string;
+  /** one-time / monthly / annual；决定 checkout 的 productType */
+  billing?: "one-time" | "monthly" | "annual";
   successUrl?: string;
   cancelUrl?: string;
   /** 透传字段（落库到 Order.metadata，webhook 回来后按 orderId 找回） */
@@ -96,6 +164,7 @@ export async function createCheckout(input: CheckoutInput, source: EnvSource = g
     throw new WaffoError(`[waffo] amountCents 非法: ${input.amountCents}`);
   }
   if (!input.planId || !input.site) throw new WaffoError("[waffo] site/planId 必填");
+  if (!input.productId) throw new WaffoError("[waffo] productId 必填（Waffo 产品 ID）");
 
   const config = getWaffoConfig(source);
   if (!config) {
@@ -109,42 +178,42 @@ export async function createCheckout(input: CheckoutInput, source: EnvSource = g
     };
   }
 
-  // TODO(付款后)：确认 WAFFO_CHECKOUT_PATH 与字段名。当前按 Pancake REST 惯例实现。
-  const res = await fetch(`${config.apiBase}${WAFFO_CHECKOUT_PATH}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Merchant-Id": config.merchantId,
-      ...(config.mode === "test" ? { "X-Waffo-Mode": "test" } : {}),
-    },
-    body: JSON.stringify({
-      merchant_id: config.merchantId,
-      store_id: config.storeId,
-      ...(input.productId ? { product_id: input.productId } : {}),
-      amount: input.amountCents,
-      currency: input.currency ?? "USD",
-      ...(input.email ? { customer_email: input.email } : {}),
-      ...(input.successUrl ? { success_url: input.successUrl } : {}),
-      ...(input.cancelUrl ? { cancel_url: input.cancelUrl } : {}),
-      metadata: { site: input.site, planId: input.planId, ...input.metadata },
-    }),
+  const body = JSON.stringify({
+    productId: input.productId,
+    currency: input.currency ?? "USD",
+    successUrl: input.successUrl,
+    ...(input.email ? { buyerEmail: input.email } : {}),
+    ...(input.metadata?.orderId ? { orderMerchantExternalId: input.metadata.orderId } : {}),
+    metadata: { site: input.site, planId: input.planId, amountCents: input.amountCents, ...input.metadata },
   });
 
+  const res = await fetch(`${config.apiBase}${WAFFO_CHECKOUT_PATH}`, {
+    method: "POST",
+    headers: await signedHeaders("POST", WAFFO_CHECKOUT_PATH, body, config),
+    body,
+  });
+
+  const text = await res.text().catch(() => "");
   if (!res.ok) {
-    const body = await res.text().catch(() => "");
-    throw new WaffoError(`[waffo] createCheckout ${res.status}`, res.status, body);
+    throw new WaffoError(`[waffo] createCheckout ${res.status}`, res.status, text.slice(0, 500));
   }
 
-  const data = (await res.json().catch(() => ({}))) as { id?: string; url?: string; checkout_url?: string; expires_at?: string };
-  const url = data.url || data.checkout_url;
-  if (!url) throw new WaffoError("[waffo] createCheckout 响应里没有 checkout url（核对 API 字段）");
-  return { id: data.id ?? `cs_${Date.now().toString(36)}`, url, mode: config.mode, mock: false, ...(data.expires_at ? { expiresAt: data.expires_at } : {}) };
+  let json: { data?: { sessionId?: string; checkoutUrl?: string; expiresAt?: string; id?: string; url?: string }; sessionId?: string; checkoutUrl?: string; expiresAt?: string; id?: string; url?: string };
+  try {
+    json = JSON.parse(text);
+  } catch {
+    throw new WaffoError("[waffo] createCheckout 返回非 JSON", res.status, text.slice(0, 300));
+  }
+  const data = json.data ?? json;
+  const url = data.checkoutUrl ?? data.url;
+  const id = data.sessionId ?? data.id;
+  if (!url || !id) throw new WaffoError("[waffo] createCheckout 响应缺少 checkoutUrl/sessionId", res.status, text.slice(0, 300));
+  return { id, url, mode: config.mode, mock: false, ...(data.expiresAt ? { expiresAt: data.expiresAt } : {}) };
 }
 
 // ---------------------------------------------------------------------------
 // Webhook 验签
 // ---------------------------------------------------------------------------
-
 export interface WebhookVerificationInput {
   rawBody: string;
   /** 直接传签名值（优先），或从 headers 里取 */
@@ -166,8 +235,22 @@ export async function verifyWebhookSignature(
 ): Promise<WebhookVerification> {
   const config = getWaffoConfig(source);
   const headerName = config?.signatureHeader ?? DEFAULT_SIGNATURE_HEADER;
-  const signature = input.signature ?? headerValue(input.headers, headerName) ?? headerValue(input.headers, "x-signature");
-  const timestamp = input.timestamp ?? headerValue(input.headers, "x-waffo-timestamp") ?? headerValue(input.headers, "x-timestamp");
+  const rawSignature = input.signature ?? headerValue(input.headers, headerName) ?? headerValue(input.headers, "x-signature");
+  let signature = rawSignature;
+  let timestamp = input.timestamp ?? headerValue(input.headers, "x-waffo-timestamp") ?? headerValue(input.headers, "x-timestamp");
+
+  // Waffo sends: X-Waffo-Signature: t=<unix>,v1=<base64>
+  if (rawSignature && rawSignature.includes("v1=")) {
+    const parts = Object.fromEntries(
+      rawSignature
+        .split(",")
+        .map((kv) => kv.trim().split("="))
+        .filter((pair) => pair.length >= 2)
+        .map(([k, ...v]) => [k, v.join("=")]),
+    ) as Record<string, string>;
+    signature = parts.v1 ?? null;
+    timestamp = timestamp ?? parts.t ?? null;
+  }
 
   if (!config) {
     return {
@@ -188,15 +271,20 @@ export async function verifyWebhookSignature(
 
   try {
     const publicKey = await importRsaPublicKey(config.webhookPublicKey);
-    const message = timestamp ? `${timestamp}.${input.rawBody}` : input.rawBody;
     const signatureBytes = decodeSignature(signature);
-    const valid = await crypto.subtle.verify(
-      { name: "RSASSA-PKCS1-v1_5" },
-      publicKey,
-      toArrayBuffer(signatureBytes),
-      new TextEncoder().encode(message),
-    );
-    return valid ? { ok: true, mode: "rsa" } : { ok: false, mode: "rsa", reason: "签名不匹配" };
+    const candidates = timestamp
+      ? [`${timestamp}.${input.rawBody}`, `${timestamp}${input.rawBody}`, input.rawBody]
+      : [input.rawBody];
+    for (const message of candidates) {
+      const valid = await crypto.subtle.verify(
+        { name: "RSASSA-PKCS1-v1_5" },
+        publicKey,
+        toArrayBuffer(signatureBytes),
+        new TextEncoder().encode(message),
+      );
+      if (valid) return { ok: true, mode: "rsa" };
+    }
+    return { ok: false, mode: "rsa", reason: "签名不匹配" };
   } catch (error) {
     return { ok: false, mode: "rsa", reason: `验签异常: ${(error as Error).message}` };
   }
@@ -412,14 +500,7 @@ function decodeSignature(signature: string): Uint8Array {
 }
 
 async function importRsaPublicKey(pem: string): Promise<CryptoKey> {
-  const body = pem
-    .replace(/-----BEGIN [^-]+-----/g, "")
-    .replace(/-----END [^-]+-----/g, "")
-    .replace(/\s+/g, "");
-  if (!body) throw new Error("公钥为空");
-  const binary = atob(body);
-  const der = new Uint8Array(binary.length);
-  for (let i = 0; i < binary.length; i += 1) der[i] = binary.charCodeAt(i);
+  const der = pemToDer(pem, "PUBLIC KEY");
   return crypto.subtle.importKey("spki", toArrayBuffer(der), { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" }, false, ["verify"]);
 }
 
@@ -428,8 +509,3 @@ async function sha256Hex(data: string): Promise<string> {
   return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-function toArrayBuffer(bytes: Uint8Array): ArrayBuffer {
-  const copy = new Uint8Array(bytes.byteLength);
-  copy.set(bytes);
-  return copy.buffer;
-}

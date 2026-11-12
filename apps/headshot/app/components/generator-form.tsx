@@ -81,6 +81,9 @@ export default function GeneratorForm({
       form.append("style", style);
       form.append("images", String(images));
       form.append("package", selected.label);
+      const orderId =
+        new URLSearchParams(window.location.search).get("order") || window.localStorage.getItem("paidOrderId");
+      if (orderId) form.append("orderId", orderId);
       const res = await fetch("/api/orders", {
         method: "POST",
         body: form,

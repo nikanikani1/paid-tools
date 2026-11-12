@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { VOICE_PLANS } from "@paid/core";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { BuyButton } from "@/components/BuyButton";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import {
@@ -145,9 +146,12 @@ export default function PricingPage() {
                   </li>
                 ))}
               </ul>
-              <Link href="/#tool" className={`btn mt-6 w-full ${plan.billing === "one-time" ? "btn-primary" : plan.popular ? "btn-primary" : "btn-ghost"}`}>
+              <BuyButton
+                planId={plan.id}
+                className={`btn mt-6 w-full ${plan.billing === "one-time" ? "btn-primary" : plan.popular ? "btn-primary" : "btn-ghost"}`}
+              >
                 {plan.billing === "one-time" ? "Buy the $2.90 trial" : "Choose plan"}
-              </Link>
+              </BuyButton>
               <p className="mt-2 text-center text-[11px] text-slate-600">
                 {plan.billing === "one-time" ? "No subscription · no renewal" : "Secure checkout via Waffo"}
               </p>

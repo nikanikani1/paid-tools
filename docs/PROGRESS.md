@@ -101,3 +101,15 @@ npm run dev:headshot   # http://localhost:3001
 - [x] 两站 OG 分享图 1200×630，首页 meta 已输出并验证
 - [ ] 外部邮箱投递实测（建议手动发一封到 support@ 确认）
 - [x] 邮件路由实测：Cloudflare 转发链路已到达 Gmail；同账号自测触发 Gmail 去重通知
+
+## 2026-11-12 支付 + R2 上线
+
+- [x] Waffo 真实 checkout：`POST /v1/actions/checkout/create-session`，RSA-SHA256；线上两站均返回真实 pancake.waffo.ai URL
+- [x] 订单持久化：R2 `orders/<site>/<orderId>.json`（无数据库依赖）；线上 `/api/orders/status` 可读
+- [x] 付费闸门：未支付/额度不足返回 402；支付后按订单额度扣减
+- [x] Waffo webhook：两站 `/api/webhooks/waffo`，已注册 store webhook；用临时 key 实测签名事件 → 订单 paid；随后恢复真实公钥
+- [x] 真实 E2E：A 站 demucs 4 stems + R2 输出（7 天签名 URL）；B 站 Kontext+face-swap 1 张 + R2 输出
+- [x] B 站真实模式目前只生成 1 张（不是套餐张数），待做多图 fan-out
+- [x] IndexNow：两站 key 文件 200，已向 indexnow.org 提交 sitemap URL（202）
+- [ ] GSC 验证/提交（需要 Google 后台交互）
+- [ ] 密钥轮换：旧 Worker version 仍存在；Cloudflare/R2/Replicate/Waffo 凭据尚未轮换

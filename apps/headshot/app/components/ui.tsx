@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import type { JsonLd as JsonLdData } from "../lib/seo";
 import { PLANS, type FaqItem } from "../lib/site";
+import { BuyButton } from "./BuyButton";
 
 export function JsonLd({ data }: { data: JsonLdData }) {
   return (
@@ -152,7 +153,7 @@ export function FaqList({ items, title }: { items: FaqItem[]; title?: string }) 
   );
 }
 
-export function PlanCards({ ctaHref = "/#generator" }: { ctaHref?: string }) {
+export function PlanCards() {
   return (
     <div className="sans grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
       {PLANS.map((plan) => {
@@ -193,12 +194,12 @@ export function PlanCards({ ctaHref = "/#generator" }: { ctaHref?: string }) {
                 </li>
               ))}
             </ul>
-            <Link
-              href={ctaHref}
-              className="mt-6 rounded-xl bg-orange-700 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-orange-600"
+            <BuyButton
+              planId={plan.id}
+              className="mt-6 w-full rounded-xl bg-orange-700 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-orange-600"
             >
               Start with {plan.name}
-            </Link>
+            </BuyButton>
           </div>
         );
       })}

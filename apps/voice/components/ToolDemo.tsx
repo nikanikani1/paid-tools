@@ -10,6 +10,27 @@ type PaymentRequiredPayload = { error?: string; message?: string; checkoutUrl?: 
 const MAX_SIZE = 100 * 1024 * 1024;
 const SAMPLE_NAME = "stemsplit-demo-track.mp3";
 
+function paidOrderId(): string | null {
+  if (typeof window === "undefined") return null;
+  const fromUrl = new URLSearchParams(window.location.search).get("order");
+  return fromUrl || window.localStorage.getItem("paidOrderId");
+}
+
+async function audioMinutes(file: File): Promise<number> {
+  return new Promise((resolve) => {
+    const url = URL.createObjectURL(file);
+    const audio = new Audio();
+    const finish = (value: number) => {
+      URL.revokeObjectURL(url);
+      resolve(Math.max(1, Math.ceil(value)));
+    };
+    audio.onloadedmetadata = () => finish(Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration / 60 : 1);
+    audio.onerror = () => finish(1);
+    audio.src = url;
+    window.setTimeout(() => finish(1), 4000);
+  });
+}
+
 export function ToolDemo({
   cta = "Start with the $2.90 trial",
   note = "Trial Pack: 15 minutes for $2.90, one-time payment. Runs start after checkout.",
@@ -70,6 +91,11 @@ export function ToolDemo({
     try {
       const form = new FormData();
       form.append("file", file, file.name);
+      const orderId = paidOrderId();
+      if (orderId) {
+        form.append("orderId", orderId);
+        form.append("minutes", String(await audioMinutes(file)));
+      }
       const res = await fetch("/api/jobs", {
         method: "POST",
         body: form,
