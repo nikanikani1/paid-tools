@@ -32,12 +32,21 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og/headshot-og.png",
+        width: 1200,
+        height: 630,
+        alt: "PortraitLab — AI professional headshots from selfies",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Professional Headshots — AI Headshot Generator from Selfies",
     description:
       "Professional headshots from five selfies in minutes. Paid from a $9 Sample Pack; 40 for $35, 60 for $45, 100 for $75.",
+    images: ["/og/headshot-og.png"],
   },
   robots: { index: true, follow: true },
 };

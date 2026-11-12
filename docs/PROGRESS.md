@@ -94,3 +94,9 @@ npm run dev:headshot   # http://localhost:3001
 - [x] 音频实际播放、表单 402、404、www 301、自定义域 200 全部通过
 - [ ] **邮箱未配置**：两域名无 MX/TXT，support@ 等不会转发到 Gmail；需开 Cloudflare Email Routing
 - [ ] 所有页面缺 og:image（次要，社交分享无大图）
+
+## 2026-11-12 收尾
+
+- [x] Cloudflare Email Routing：两域名 catch-all 转发到 Gmail，状态 Active
+- [x] 两站 OG 分享图 1200×630，首页 meta 已输出并验证
+- [ ] 外部邮箱投递实测（建议手动发一封到 support@ 确认）
