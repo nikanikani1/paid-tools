@@ -58,7 +58,7 @@ export default function HomePage() {
         data={breadcrumbJsonLd([{ name: "Home", path: "/" }])}
       />
 
-      <section className="mx-auto grid max-w-6xl items-start gap-10 px-6 pb-10 pt-12 md:grid-cols-2">
+      <section data-reveal className="mx-auto grid max-w-6xl items-start gap-10 px-6 pb-10 pt-12 md:grid-cols-2">
         <div>
           <p className="sans mb-4 inline-flex rounded-full border border-orange-300 bg-orange-50 px-3 py-1 text-xs uppercase tracking-wide text-orange-800">
             Professional headshots · AI generated · Sample Pack $9 / 5 images

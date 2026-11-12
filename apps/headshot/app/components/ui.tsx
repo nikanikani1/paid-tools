@@ -76,6 +76,7 @@ export function Section({
   return (
     <section
       id={id}
+      data-reveal
       className={`mx-auto max-w-6xl px-6 py-12 ${tone === "raised" ? "my-6 rounded-3xl border border-stone-300 bg-white/60" : ""}`}
     >
       {eyebrow && (
@@ -216,30 +217,49 @@ export function PlanCards({ ctaHref = "/#generator" }: { ctaHref?: string }) {
 
 export function SampleGrid({ title }: { title?: string }) {
   const samples = [
-    { label: "Corporate · studio grey", tone: "from-stone-300 to-stone-200" },
-    { label: "LinkedIn · soft office", tone: "from-amber-200 to-orange-100" },
-    { label: "Creative · window light", tone: "from-orange-200 to-rose-100" },
-    { label: "Medical · clean clinic", tone: "from-teal-100 to-stone-200" },
+    { src: "/samples/corporate-woman.jpg", label: "Corporate · studio grey", alt: "AI-generated sample of a woman in a navy blazer on a grey studio background" },
+    { src: "/samples/corporate-man.jpg", label: "Executive · graphite", alt: "AI-generated sample of a man in a charcoal suit on a graphite studio background" },
+    { src: "/samples/creative-woman.jpg", label: "Creative · window light", alt: "AI-generated sample of a woman in a mustard turtleneck in warm window light" },
+    { src: "/samples/medical-woman.jpg", label: "Medical · clean clinic", alt: "AI-generated sample of a doctor in a white coat in a bright clinic" },
+    { src: "/samples/real-estate-man.jpg", label: "Real estate · office", alt: "AI-generated sample of a real estate agent in a sunlit office" },
+    { src: "/samples/executive-woman.jpg", label: "Leadership · editorial", alt: "AI-generated sample of a silver-haired executive in a black blazer" },
   ];
   return (
     <figure className="sans">
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {samples.map((sample) => (
-          <div key={sample.label} className="overflow-hidden rounded-2xl border border-stone-300 bg-white/60">
-            <div className={`aspect-[4/5] bg-gradient-to-br ${sample.tone} p-4`}>
-              <div className="flex h-full items-end">
-                <span className="rounded-full bg-white/70 px-2 py-1 text-[11px] font-medium text-stone-700">
-                  Illustrative preview
-                </span>
-              </div>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {samples.map((sample, index) => (
+          <div
+            key={sample.label}
+            data-reveal
+            style={{ transitionDelay: `${Math.min(index, 5) * 70}ms` }}
+            className="sample-hover shine group overflow-hidden rounded-2xl border border-stone-300 bg-white/70 shadow-sm transition-shadow duration-500 hover:shadow-xl hover:shadow-stone-900/10"
+          >
+            <div className="relative">
+              <img
+                src={sample.src}
+                alt={sample.alt}
+                width={896}
+                height={1088}
+                loading="lazy"
+                decoding="async"
+                className="aspect-[4/5] w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-stone-950/45 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <span className="absolute left-3 top-3 rounded-full bg-white/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-stone-700 backdrop-blur">
+                AI sample
+              </span>
             </div>
-            <figcaption className="px-4 py-3 text-xs text-stone-600">{sample.label}</figcaption>
+            <figcaption className="flex items-center justify-between gap-2 px-4 py-3 text-xs text-stone-600">
+              <span>{sample.label}</span>
+              <span className="text-[10px] uppercase tracking-wider text-stone-400">1024px</span>
+            </figcaption>
           </div>
         ))}
       </div>
-      <figcaption className="mt-3 text-xs text-stone-500">
-        {title ?? "Illustrative previews of the style presets included in every package."} Licensed models only — no
-        public figures, no scraped faces.
+      <figcaption className="mt-4 max-w-3xl text-xs leading-relaxed text-stone-500">
+        {title ?? "AI-generated style previews showing the framing, light and wardrobe direction of each preset."} These
+        are illustrative samples, not customer photos; every paid order is generated from the buyer&apos;s own selfies.
+        Licensed models only — no public figures, no scraped faces.
       </figcaption>
     </figure>
   );

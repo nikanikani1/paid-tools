@@ -78,3 +78,12 @@ npm run dev:headshot   # http://localhost:3001
 - 两站自定义域 `POST` 仍 **402 payment_required**
 - Cloudflare zone 已 Active；$5 为 Workers Paid（账户级），域名 zone 的 Free 是网站套餐，二者独立
 - 旧 Worker version 含构建期密钥，待轮换/删除
+
+## 页面动效 + 示例成品（2026-11-12）
+
+- [x] A 站：真实 4-stem 试听器（public-domain "Amazing Grace"），可切原曲、单轨 ON/OFF、同步播放、动态波形
+- [x] B 站：6 张 FLUX 1.1 Pro 生成的高质量 AI 头像样片（896×1088），替换渐变占位图
+- [x] 两站：ScrollReveal 渐入、hover 缩放/遮罩、`prefers-reduced-motion` 支持；无 JS 内容仍可见
+- [x] 已 clean build + 部署：A version `1a3cca36`、B 站新版本（见 wrangler 输出）
+- [x] 自定义域回归：stemextractor.com / headshotsnap.com 200，www 301，POST 402
+- 素材授权见 `docs/SAMPLES.md`

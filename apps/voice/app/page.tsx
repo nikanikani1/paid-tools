@@ -3,6 +3,7 @@ import { VOICE_PLANS } from "@paid/core";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { StemGrid } from "@/components/StemGrid";
+import { StemPlayer } from "@/components/StemPlayer";
 import { ToolDemo } from "@/components/ToolDemo";
 import {
   breadcrumbSchema,
@@ -142,9 +143,9 @@ export default function HomePage() {
         <div aria-hidden="true" className="hero-grid pointer-events-none absolute inset-0" />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-72 max-w-3xl bg-[radial-gradient(closest-side,rgba(109,92,255,0.35),transparent)]"
+          className="float-slow pointer-events-none absolute inset-x-0 top-0 mx-auto h-72 max-w-3xl bg-[radial-gradient(closest-side,rgba(109,92,255,0.35),transparent)]"
         />
-        <div className="relative mx-auto max-w-4xl">
+        <div className="relative mx-auto max-w-4xl" data-reveal>
           <div className="badge">AI stem separation · 4 stems · $2.90 Trial Pack</div>
           <h1 className="display mx-auto mt-6 max-w-4xl text-4xl md:text-[4rem]">
             Vocal Remover — <span className="gradient-text">Separate Vocals &amp; Instrumental</span> Online
@@ -172,7 +173,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="stems" className="hairline px-6 py-14">
+      <section id="stems" data-reveal className="hairline px-6 py-14">
         <div className="mx-auto max-w-4xl">
           <h2 className="display text-3xl md:text-4xl">Four stems from one upload</h2>
           <p className="mt-4 leading-relaxed text-slate-300">
@@ -190,6 +191,9 @@ export default function HomePage() {
           <div className="mt-6">
             <StemGrid />
           </div>
+          <div className="mt-6">
+            <StemPlayer />
+          </div>
           <p className="mt-5 text-sm text-slate-400">
             Working in a DAW? Read the{" "}
             <Link href="/separate-stems" className="text-cyan-300 underline underline-offset-2 hover:text-cyan-200">
@@ -200,7 +204,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="how" className="hairline px-6 py-14">
+      <section id="how" data-reveal className="hairline px-6 py-14">
         <div className="mx-auto max-w-5xl">
           <h2 className="display text-3xl md:text-4xl">How it works in three steps</h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-slate-300">
@@ -244,7 +248,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="hairline px-6 py-14">
+      <section data-reveal className="hairline px-6 py-14">
         <div className="mx-auto max-w-3xl">
           <h2 className="display text-3xl md:text-4xl">An AI vocal remover that hears the whole mix</h2>
           <p className="mt-4 leading-relaxed text-slate-300">
@@ -276,7 +280,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="use-cases" className="hairline px-6 py-14">
+      <section id="use-cases" data-reveal className="hairline px-6 py-14">
         <div className="mx-auto max-w-5xl">
           <h2 className="display text-3xl md:text-4xl">What people do with separated stems</h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-slate-300">
@@ -295,7 +299,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="pricing" className="hairline px-6 py-14">
+      <section id="pricing" data-reveal className="hairline px-6 py-14">
         <div className="mx-auto max-w-6xl">
           <h2 className="display text-3xl md:text-4xl">The $2.90 trial, then plans only if you need them</h2>
           <p className="mx-auto mt-4 max-w-3xl text-center leading-relaxed text-slate-300">
@@ -349,7 +353,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="tools" className="hairline px-6 py-14">
+      <section id="tools" data-reveal className="hairline px-6 py-14">
         <div className="mx-auto max-w-5xl">
           <h2 className="display text-3xl md:text-4xl">Every vocal remover tool on StemSplit</h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-slate-300">
@@ -370,7 +374,7 @@ export default function HomePage() {
 
       <Faq items={HOME_FAQS} intro="Short answers about pricing, the paid Trial Pack, formats and copyright." />
 
-      <section className="px-6 pb-16">
+      <section data-reveal className="px-6 pb-16">
         <div className="card relative mx-auto max-w-4xl overflow-hidden p-8 text-center md:p-12">
           <div
             aria-hidden="true"

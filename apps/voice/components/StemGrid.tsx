@@ -30,8 +30,13 @@ export function StemGrid({ heading = "The four stems you get back" }: { heading?
     <div>
       <h3 className="text-lg font-semibold text-slate-100">{heading}</h3>
       <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {STEMS.map((stem) => (
-          <div key={stem.name} className="card-hover card p-4">
+        {STEMS.map((stem, index) => (
+          <div
+            key={stem.name}
+            data-reveal
+            style={{ transitionDelay: `${index * 80}ms` }}
+            className="card-hover card p-4"
+          >
             <div className="flex items-center justify-between">
               <span className="font-semibold text-slate-100">{stem.name}</span>
               <span className="text-[10px] uppercase tracking-widest text-violet-300">{stem.tag}</span>
