@@ -235,8 +235,8 @@ npx wrangler rollback           # 回上一版本（交互式）
 - 已配 secrets（25 个/站）：Replicate、R2、Waffo（商户/产品）、Neon URL、SESSION_SECRET、STATS_KEY、SITE 等。
 - R2 bucket：`paid-tools-files`；S3 PUT/GET smoke test 200（`smoke.txt`）。
 - 域名：`stemextractor.com` / `headshotsnap.com` 已在 Cloudflare 添加 zone（Free 计划），状态 **Pending Nameserver Update**；需在 Dynadot 把 NS 改为：
-  - `felicia.ns.cloudflare.com`
-  - `marjorie.ns.cloudflare.com`
+  - `felipe.ns.cloudflare.com`
+  - `marjory.ns.cloudflare.com`
 - 自定义域 / `www→apex` 301 等 NS 生效后再加。
 
 ### Windows 构建注意（实测修正）

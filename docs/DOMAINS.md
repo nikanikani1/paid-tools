@@ -56,6 +56,6 @@
   - `stemextractor.com`
   - `headshotsnap.com`
 - Cloudflare zone 已添加（Free 计划），分配 NS：
-  - `felicia.ns.cloudflare.com`
-  - `marjorie.ns.cloudflare.com`
+  - `felipe.ns.cloudflare.com`
+  - `marjory.ns.cloudflare.com`
 - 待办：在 Dynadot 域名管理里把两个域名的 nameservers 改为上面两条（删除原 NS），保存后等 Cloudflare 激活。
