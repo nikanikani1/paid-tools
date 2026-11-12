@@ -158,7 +158,7 @@ export default function TermsPage() {
           <h3>13. Governing law and disputes</h3>
           <p>
             These terms are governed by the laws of the jurisdiction in which the operating entity is registered.
-            Before starting a formal dispute, contact support@portraitlab.example — most issues are resolved by a redo or
+            Before starting a formal dispute, contact support@headshotsnap.com — most issues are resolved by a redo or
             a refund.
           </p>
 
@@ -170,7 +170,7 @@ export default function TermsPage() {
 
           <h3>15. Contact</h3>
           <p>
-            Questions about these terms: support@portraitlab.example. Related pages:{" "}
+            Questions about these terms: support@headshotsnap.com. Related pages:{" "}
             <Link href="/privacy">privacy</Link>, <Link href="/refund">refund & redo</Link>,{" "}
             <Link href="/pricing">pricing</Link>.
           </p>

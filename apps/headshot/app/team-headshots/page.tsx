@@ -127,7 +127,7 @@ export default function TeamHeadshotsPage() {
               </div>
             </dl>
             <a
-              href="mailto:support@portraitlab.example?subject=Team%20headshots%20enquiry"
+              href="mailto:support@headshotsnap.com?subject=Team%20headshots%20enquiry"
               className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-orange-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-orange-600"
             >
               Request a team quote
@@ -295,7 +295,7 @@ export default function TeamHeadshotsPage() {
       <CtaBand
         title="Get a team quote in one email"
         body="Tell us the headcount and the style you want. We reply with a per-seat quote, the style sheet and the collection link."
-        href="mailto:support@portraitlab.example?subject=Team%20headshots%20quote"
+        href="mailto:support@headshotsnap.com?subject=Team%20headshots%20quote"
         cta="Request a quote"
       />
       <StudioComparisonSection />

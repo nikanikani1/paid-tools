@@ -1,6 +1,6 @@
 import { HEADSHOT_PLANS } from "@paid/core";
 
-export const SITE_URL = "https://headshot.example.com";
+export const SITE_URL = "https://headshotsnap.com";
 export const SITE_NAME = "PortraitLab";
 export const SITE_TAGLINE = "professional headshots";
 
@@ -9,13 +9,13 @@ export const CONTENT_UPDATED = "2026-11-11";
 
 /** Public contact channels. There is no phone line and no live chat. */
 export const CONTACT = {
-  support: "support@portraitlab.example",
-  billing: "billing@portraitlab.example",
-  privacy: "privacy@portraitlab.example",
-  dmca: "dmca@portraitlab.example",
-  legal: "legal@portraitlab.example",
-  editorial: "editorial@portraitlab.example",
-  press: "press@portraitlab.example",
+  support: "support@headshotsnap.com",
+  billing: "billing@headshotsnap.com",
+  privacy: "privacy@headshotsnap.com",
+  dmca: "dmca@headshotsnap.com",
+  legal: "legal@headshotsnap.com",
+  editorial: "editorial@headshotsnap.com",
+  press: "press@headshotsnap.com",
 } as const;
 
 

@@ -15,3 +15,6 @@ research/
 data/
 test-*.wav
 test-selfie*.jpg
+
+.tmp/
+test-*.wav

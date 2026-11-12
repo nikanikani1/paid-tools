@@ -42,7 +42,7 @@ export default function PrivacyPage() {
           <h3>1. Who we are</h3>
           <p>
             {SITE_NAME} operates the AI headshot generator at {SITE_URL}. We are the data controller for the personal
-            data described in this policy. Contact: support@portraitlab.example.
+            data described in this policy. Contact: support@headshotsnap.com.
           </p>
 
           <h3>2. What we collect</h3>
@@ -149,7 +149,7 @@ export default function PrivacyPage() {
           <p>
             Depending on where you live you may have the right to access, correct, export or delete your data, to object
             to certain processing, and to withdraw consent for marketing. To exercise any of them, email
-            support@portraitlab.example with the order identifier. We respond within 30 days and do not charge for the
+            support@headshotsnap.com with the order identifier. We respond within 30 days and do not charge for the
             first request. If you are in the EEA or UK you also have the right to complain to your local data protection
             authority.
           </p>

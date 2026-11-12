@@ -224,3 +224,23 @@ npx wrangler rollback           # 回上一版本（交互式）
 7. **Workers Builds 两个项目**：按第 5 节创建，首次部署 + `/api/version` 冒烟。
 8. **自定义域**：域名 NS 托管 CF 后绑定；上线前 `wrangler tail` 观察 30 分钟。
 9. **`next.config.ts` 保持无 `cacheComponents`**：迁移期不要开 PPR（若将来要用 R2 增量缓存，按 open-next.config.ts 注释开）。
+
+---
+
+## 9. 实际部署记录（2026-11-12）
+
+- A：https://paid-tools-voice.wanghaotiannika.workers.dev （Worker `paid-tools-voice`，version `c9d3ead8`）
+- B：https://paid-tools-headshot.wanghaotiannika.workers.dev （Worker `paid-tools-headshot`，version `6efed6f6`）
+- 两站 `/api/version` 200；生产 `POST /api/jobs`、`/api/orders` 均 **402 payment_required**（已实测）。
+- 已配 secrets（25 个/站）：Replicate、R2、Waffo（商户/产品）、Neon URL、SESSION_SECRET、STATS_KEY、SITE 等。
+- R2 bucket：`paid-tools-files`；S3 PUT/GET smoke test 200（`smoke.txt`）。
+- 域名：`stemextractor.com` / `headshotsnap.com` 已在 Cloudflare 添加 zone（Free 计划），状态 **Pending Nameserver Update**；需在 Dynadot 把 NS 改为：
+  - `felicia.ns.cloudflare.com`
+  - `marjorie.ns.cloudflare.com`
+- 自定义域 / `www→apex` 301 等 NS 生效后再加。
+
+### Windows 构建注意（实测修正）
+
+- `opennextjs-cloudflare build` 在 Windows **可以**成功，但必须把 `TMPDIR/TEMP/TMP` 指到可写目录（如 `D:/ai-workspace/paid-tools/.tmp`），否则 esbuild 写 `open-next-tmp` 报 Access denied。
+- **构建前必须把根 `.env.local` 移走**：OpenNext 会把 `.env.local` 的所有变量（包括 token/私钥）打进 `.open-next/cloudflare/next-env.mjs`。生产构建只传 `NEXT_PUBLIC_SITE_URL_*`；密钥通过 `wrangler secret bulk` 注入运行时。
+- 本次曾用带 `.env.local` 的构建部署过一版，旧版本 bundle 内含密钥；**上线前轮换 Cloudflare API token / R2 keys / Replicate token / Waffo private key**，并删除旧 Worker versions。

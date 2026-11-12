@@ -37,9 +37,10 @@ async function uploadFile(file: File, token: string): Promise<string> {
 export async function POST(req: Request) {
   const allowMock = process.env.ALLOW_MOCK === "1";
   const allowReal = process.env.ALLOW_REAL === "1";
-  const isProduction = process.env.NODE_ENV === "production";
 
-  if (isProduction && !allowMock && !allowReal) {
+  // Production has neither flag: every order needs a paid checkout first.
+  // Do NOT rely on NODE_ENV here — OpenNext/Workers may not expose it as "production".
+  if (!allowMock && !allowReal) {
     return NextResponse.json(
       { error: "payment_required", message: PAYMENT_REQUIRED_MESSAGE, minimum_order_usd: 9 },
       { status: 402 },

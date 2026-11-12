@@ -18,7 +18,7 @@ const data: LegalPageData = {
       h2: "Who we are",
       paragraphs: [
         "StemSplit.ai is an online audio separation service. We operate the website, run the AI models that separate songs into stems, and manage the storage and delivery of the resulting files. Payments for paid plans are processed by Waffo as merchant of record.",
-        "For privacy questions, contact privacy@stemsplit.ai. For data deletion requests, include the job ID shown in the result panel or the email address used for a paid plan.",
+        "For privacy questions, contact privacy@stemextractor.com. For data deletion requests, include the job ID shown in the result panel or the email address used for a paid plan.",
       ],
     },
     {
@@ -112,7 +112,7 @@ const data: LegalPageData = {
     },
     {
       q: "Can I get my file deleted sooner?",
-      a: "Yes. Email privacy@stemsplit.ai with the job ID and we will remove the upload and output files immediately instead of waiting for the automatic 24–48 hour deletion.",
+      a: "Yes. Email privacy@stemextractor.com with the job ID and we will remove the upload and output files immediately instead of waiting for the automatic 24–48 hour deletion.",
     },
     {
       q: "Do you sell my data?",
@@ -120,7 +120,7 @@ const data: LegalPageData = {
     },
   ],
   contactNote:
-    "Privacy questions or deletion requests: privacy@stemsplit.ai. For billing, contact billing@stemsplit.ai. Response time is up to 30 days for rights requests and 1–2 business days for support.",
+    "Privacy questions or deletion requests: privacy@stemextractor.com. For billing, contact billing@stemextractor.com. Response time is up to 30 days for rights requests and 1–2 business days for support.",
 };
 
 export const metadata = legalMetadata(data);

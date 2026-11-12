@@ -13,7 +13,7 @@ export const SITE_URL =
     : "https://voice.example.com";
 
 export const SITE_NAME = "StemSplit.ai";
-export const SUPPORT_EMAIL = "support@stemsplit.ai";
+export const SUPPORT_EMAIL = "support@stemextractor.com";
 export const LEGAL_UPDATED = "November 11, 2026";
 /** ISO date shown on editorial pages ("Last updated: 2026-11-11"). */
 export const CONTENT_UPDATED = "2026-11-11";

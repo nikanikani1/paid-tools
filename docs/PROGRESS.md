@@ -59,3 +59,14 @@ npm run dev:headshot   # http://localhost:3001
 ```
 
 > 注意：本机 Node 20 可跑 `next build`，但 `wrangler 4.160` 要求 Node ≥22.12；本地不要直接 `wrangler deploy`。部署走 Workers Builds（Linux，Node 22）或 GitHub Actions。
+
+## 部署里程碑（2026-11-12）
+
+- [x] A 站 Cloudflare Worker 部署：`paid-tools-voice` → https://paid-tools-voice.wanghaotiannika.workers.dev
+- [x] B 站 Cloudflare Worker 部署：`paid-tools-headshot` → https://paid-tools-headshot.wanghaotiannika.workers.dev
+- [x] 25 个 secrets/站（Replicate/R2/Waffo/Neon/会话）；R2 bucket `paid-tools-files`，S3 PUT/GET 200
+- [x] 生产 402 门禁修复：不再依赖 NODE_ENV，无 ALLOW_MOCK/ALLOW_REAL 即 402
+- [x] 部署后真实 demucs E2E：1 秒 WAV → 4 stems（predict 2.03s），随后删除 ALLOW_REAL 恢复 402
+- [ ] **NS 切换**：Dynadot → `felicia/marjorie.ns.cloudflare.com`，Cloudflare zone 激活
+- [ ] 自定义域 + www→apex 301；Waffo checkout/webhook；R2 转存；GSC/统计
+- [ ] **密钥轮换**：旧 Worker version 曾包含构建期密钥，上线前轮换 CF token / R2 keys / Replicate token / Waffo private key

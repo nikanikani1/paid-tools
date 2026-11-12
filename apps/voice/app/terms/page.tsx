@@ -74,7 +74,7 @@ const data: LegalPageData = {
       h2: "DMCA and copyright complaints",
       id: "dmca",
       paragraphs: [
-        "We respect copyright and expect users to do the same. If you believe content processed through the service infringes your rights, send a notice to dmca@stemsplit.ai with the details required by the Digital Millennium Copyright Act: identification of the copyrighted work, identification of the material and where it appears, your contact information, a good-faith statement, a statement under penalty of perjury that the information is accurate and that you are authorised to act, and your physical or electronic signature.",
+        "We respect copyright and expect users to do the same. If you believe content processed through the service infringes your rights, send a notice to dmca@stemextractor.com with the details required by the Digital Millennium Copyright Act: identification of the copyrighted work, identification of the material and where it appears, your contact information, a good-faith statement, a statement under penalty of perjury that the information is accurate and that you are authorised to act, and your physical or electronic signature.",
         "We will review valid notices, remove or disable access to the material where appropriate, and take repeat-infringer accounts out of service. Counter-notices should be sent to the same address.",
       ],
     },
@@ -96,7 +96,7 @@ const data: LegalPageData = {
       h2: "Governing law and contact",
       paragraphs: [
         "These terms are governed by the laws of the State of Delaware, United States, without regard to conflict-of-law rules. Disputes will be handled in the courts located there, unless applicable consumer law gives you the right to a different forum.",
-        "Questions about these terms: legal@stemsplit.ai. Billing questions: billing@stemsplit.ai. Copyright notices: dmca@stemsplit.ai.",
+        "Questions about these terms: legal@stemextractor.com. Billing questions: billing@stemextractor.com. Copyright notices: dmca@stemextractor.com.",
       ],
     },
   ],
@@ -111,11 +111,11 @@ const data: LegalPageData = {
     },
     {
       q: "How do I cancel a subscription?",
-      a: "Use the billing portal link in your purchase email or contact billing@stemsplit.ai. Cancellation stops future renewals and access continues until the end of the paid period.",
+      a: "Use the billing portal link in your purchase email or contact billing@stemextractor.com. Cancellation stops future renewals and access continues until the end of the paid period.",
     },
   ],
   contactNote:
-    "Legal notices: legal@stemsplit.ai · DMCA: dmca@stemsplit.ai · Billing: billing@stemsplit.ai. These terms should be reviewed by qualified counsel before launch; this page is product copy for the demo build.",
+    "Legal notices: legal@stemextractor.com · DMCA: dmca@stemextractor.com · Billing: billing@stemextractor.com. These terms should be reviewed by qualified counsel before launch; this page is product copy for the demo build.",
 };
 
 export const metadata = legalMetadata(data);

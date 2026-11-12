@@ -62,7 +62,7 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "How can I report an error in a guide?",
-    a: "Email editorial@stemsplit.ai with the page URL and what is wrong. We correct verified mistakes, update the last-updated date and note material changes in the author update log.",
+    a: "Email editorial@stemextractor.com with the page URL and what is wrong. We correct verified mistakes, update the last-updated date and note material changes in the author update log.",
   },
   {
     q: "Who owns the content on this site?",
@@ -131,7 +131,7 @@ const SECTIONS: Section[] = [
     h2: "Editorial standards",
     paragraphs: [
       "Every guide on this site has a named author entity, a last-updated date and a link back to this page. Technical claims must be traceable to the model we run or to official documentation. We do not accept payment for rankings, and no commercial relationship changes what a page says about a limitation.",
-      "Material changes to a guide are recorded in the author update log. Minor fixes — a typo, a dead link, a clarified sentence — are made in place and reflected in the last-updated date. If you find a factual error, email editorial@stemsplit.ai; that inbox is read by the people who write the pages.",
+      "Material changes to a guide are recorded in the author update log. Minor fixes — a typo, a dead link, a clarified sentence — are made in place and reflected in the last-updated date. If you find a factual error, email editorial@stemextractor.com; that inbox is read by the people who write the pages.",
     ],
   },
 ];
@@ -260,8 +260,8 @@ export default function AboutPage() {
                 privacy policy
               </Link>{" "}
               for data handling. For corrections:{" "}
-              <a href="mailto:editorial@stemsplit.ai" className="text-cyan-300 underline underline-offset-2 hover:text-cyan-200">
-                editorial@stemsplit.ai
+              <a href="mailto:editorial@stemextractor.com" className="text-cyan-300 underline underline-offset-2 hover:text-cyan-200">
+                editorial@stemextractor.com
               </a>
               .
             </p>

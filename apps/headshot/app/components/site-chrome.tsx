@@ -41,7 +41,7 @@ export function SiteFooter() {
           <p className="mt-4 leading-relaxed">
             Upload only your own photos. No public figures, no minors.
             <br />
-            Questions: <span className="text-stone-700">support@portraitlab.example</span>
+            Questions: <span className="text-stone-700">support@headshotsnap.com</span>
           </p>
         </div>
         <nav aria-label="Footer" className="grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3">

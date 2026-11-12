@@ -24,11 +24,12 @@ const PAYMENT_REQUIRED_MESSAGE =
 const MAX_SIZE = 100 * 1024 * 1024;
 
 export async function POST(req: Request) {
-  const isProduction = process.env.NODE_ENV === "production";
   const allowMock = process.env.ALLOW_MOCK === "1";
   const allowReal = process.env.ALLOW_REAL === "1";
 
-  if (isProduction && !allowMock && !allowReal) {
+  // Production has neither flag: every run needs a paid checkout first.
+  // Do NOT rely on NODE_ENV here — OpenNext/Workers may not expose it as "production".
+  if (!allowMock && !allowReal) {
     return NextResponse.json(
       {
         error: "payment_required",

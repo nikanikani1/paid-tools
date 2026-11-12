@@ -57,11 +57,11 @@ const data: LegalPageData = {
     {
       h2: "How to request a refund",
       paragraphs: [
-        "Email billing@stemsplit.ai with the email address used at checkout, the order or invoice ID, and a short description of the issue. If the request relates to a specific job, include the job ID from the result panel.",
+        "Email billing@stemextractor.com with the email address used at checkout, the order or invoice ID, and a short description of the issue. If the request relates to a specific job, include the job ID from the result panel.",
         "We reply within 1–2 business days and process approved refunds within 5–10 business days, depending on your bank or card issuer. Refunds go back to the original payment method. Waffo, our merchant of record, issues the refund on our behalf.",
       ],
       bullets: [
-        "Email billing@stemsplit.ai.",
+        "Email billing@stemextractor.com.",
         "Include the checkout email and invoice ID.",
         "Add the job ID if a specific separation is involved.",
         "Approved refunds are processed within 5–10 business days.",
@@ -84,11 +84,11 @@ const data: LegalPageData = {
   faqs: [
     {
       q: "Is the $2.90 Trial Pack refundable?",
-      a: "Yes. It is covered by the same 14-day money-back guarantee as any first purchase: email billing@stemsplit.ai within 14 days of the charge, and we will refund it in full while most of the minutes are unused. The Trial Pack does not renew, so there is nothing to cancel.",
+      a: "Yes. It is covered by the same 14-day money-back guarantee as any first purchase: email billing@stemextractor.com within 14 days of the charge, and we will refund it in full while most of the minutes are unused. The Trial Pack does not renew, so there is nothing to cancel.",
     },
     {
       q: "What if a separation fails?",
-      a: "Failed jobs do not consume minutes. If minutes were deducted anyway, we restore them or refund the equivalent amount. Send the job ID to billing@stemsplit.ai.",
+      a: "Failed jobs do not consume minutes. If minutes were deducted anyway, we restore them or refund the equivalent amount. Send the job ID to billing@stemextractor.com.",
     },
     {
       q: "How long does a refund take?",
@@ -100,7 +100,7 @@ const data: LegalPageData = {
     },
   ],
   contactNote:
-    "Refund requests: billing@stemsplit.ai. Include the checkout email, invoice ID and job ID where relevant, and we will reply within 1–2 business days.",
+    "Refund requests: billing@stemextractor.com. Include the checkout email, invoice ID and job ID where relevant, and we will reply within 1–2 business days.",
 };
 
 export const metadata = legalMetadata(data);

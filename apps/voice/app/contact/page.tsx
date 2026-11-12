@@ -32,31 +32,31 @@ const CHANNELS = [
   },
   {
     title: "Billing & refunds",
-    email: "billing@stemsplit.ai",
+    email: "billing@stemextractor.com",
     details: "Invoices, duplicate charges, cancellations and refund requests.",
     response: "1–2 business days",
   },
   {
     title: "Privacy & data deletion",
-    email: "privacy@stemsplit.ai",
+    email: "privacy@stemextractor.com",
     details: "Access, export or deletion requests; early removal of a job's files.",
     response: "Up to 30 days for rights requests",
   },
   {
     title: "Copyright / DMCA",
-    email: "dmca@stemsplit.ai",
+    email: "dmca@stemextractor.com",
     details: "Takedown notices and counter-notices with the details required by the DMCA.",
     response: "Reviewed within 5 business days",
   },
   {
     title: "Legal",
-    email: "legal@stemsplit.ai",
+    email: "legal@stemextractor.com",
     details: "Terms, contracts and legal correspondence.",
     response: "1–5 business days",
   },
   {
     title: "Editorial corrections",
-    email: "editorial@stemsplit.ai",
+    email: "editorial@stemextractor.com",
     details: "Factual errors, outdated steps or broken links in our guides.",
     response: "1–2 business days",
   },
@@ -73,11 +73,11 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "How do I request a refund?",
-    a: "Email billing@stemsplit.ai with the checkout email, invoice ID and the job ID if a separation is involved. Your first purchase — including the $2.90 Trial Pack — is covered by the 14-day money-back guarantee. The refund policy explains the details.",
+    a: "Email billing@stemextractor.com with the checkout email, invoice ID and the job ID if a separation is involved. Your first purchase — including the $2.90 Trial Pack — is covered by the 14-day money-back guarantee. The refund policy explains the details.",
   },
   {
     q: "Where do I report copyright infringement?",
-    a: "Email dmca@stemsplit.ai with the information required by the DMCA: identification of the work, identification of the material, your contact details, a good-faith statement, a statement under penalty of perjury and your signature. The terms of service describe the full process.",
+    a: "Email dmca@stemextractor.com with the information required by the DMCA: identification of the work, identification of the material, your contact details, a good-faith statement, a statement under penalty of perjury and your signature. The terms of service describe the full process.",
   },
 ];
 

@@ -47,3 +47,15 @@
 - 域名可用性会变，周五买之前我会再查一次 RDAP；如果推荐名被抢，直接换备选。
 - 不要买 `.ai` / `.io` / `.app` 作为主域名（访谈只认 .com；`.app` 的 HSTS 还会增加配置麻烦）。
 - 两个域名不要互链，也不要同一套模板/统计（站群隔离，site-risk-compliance §2）。
+
+---
+
+## 实际购买（2026-11-12）
+
+- 注册商：**Dynadot**；订单 28127549；已注册：
+  - `stemextractor.com`
+  - `headshotsnap.com`
+- Cloudflare zone 已添加（Free 计划），分配 NS：
+  - `felicia.ns.cloudflare.com`
+  - `marjorie.ns.cloudflare.com`
+- 待办：在 Dynadot 域名管理里把两个域名的 nameservers 改为上面两条（删除原 NS），保存后等 Cloudflare 激活。

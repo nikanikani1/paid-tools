@@ -67,7 +67,7 @@ export const AUTHORS: Author[] = [
         note: "Published the first seven vocal-remover workflow guides and the legal/trust pages.",
       },
     ],
-    contactEmail: "editorial@stemsplit.ai",
+    contactEmail: "editorial@stemextractor.com",
     lastUpdated: CONTENT_UPDATED,
   },
 ];
