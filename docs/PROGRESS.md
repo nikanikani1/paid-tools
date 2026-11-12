@@ -100,3 +100,4 @@ npm run dev:headshot   # http://localhost:3001
 - [x] Cloudflare Email Routing：两域名 catch-all 转发到 Gmail，状态 Active
 - [x] 两站 OG 分享图 1200×630，首页 meta 已输出并验证
 - [ ] 外部邮箱投递实测（建议手动发一封到 support@ 确认）
+- [x] 邮件路由实测：Cloudflare 转发链路已到达 Gmail；同账号自测触发 Gmail 去重通知
