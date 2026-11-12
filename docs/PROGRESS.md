@@ -67,6 +67,6 @@ npm run dev:headshot   # http://localhost:3001
 - [x] 25 个 secrets/站（Replicate/R2/Waffo/Neon/会话）；R2 bucket `paid-tools-files`，S3 PUT/GET 200
 - [x] 生产 402 门禁修复：不再依赖 NODE_ENV，无 ALLOW_MOCK/ALLOW_REAL 即 402
 - [x] 部署后真实 demucs E2E：1 秒 WAV → 4 stems（predict 2.03s），随后删除 ALLOW_REAL 恢复 402
-- [ ] **NS 切换**：Dynadot → `felicia/marjory.ns.cloudflare.com`，Cloudflare zone 激活
+- [ ] **NS 切换**：Dynadot → `felipe/marjory.ns.cloudflare.com`，Cloudflare zone 激活
 - [ ] 自定义域 + www→apex 301；Waffo checkout/webhook；R2 转存；GSC/统计
 - [ ] **密钥轮换**：旧 Worker version 曾包含构建期密钥，上线前轮换 CF token / R2 keys / Replicate token / Waffo private key
