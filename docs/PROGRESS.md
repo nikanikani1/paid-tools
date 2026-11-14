@@ -182,3 +182,13 @@ npm run dev:headshot   # http://localhost:3001
 - B 站 R2 里的 5 个 `headshot-trial` paid 是测试脚本伪造/手动标记，**没有真实 Waffo payment**，不属于真实扣款，不退款。
 - 隐藏 $0.10 产品已置 `inactive`；入口已下架。
 - 新增 `docs/KEY-ROTATION-TUTORIAL.md`：逐 key 轮换、干净部署、旧 Worker versions 删除路径/保底换服务、回滚。
+
+## 2026-11-14 生产支付复核（用户确认信任、不再轮换）
+
+- 用户决定：接受旧 Worker versions/密钥风险，不做轮换；支付继续使用生产 key。
+- 生产 checkout 复核：
+  - Voice Trial：`US$2.90`，`StemSplit Trial Pack - 15 minutes`，页面 `test-mode=false`，返回真实 `pancake.waffo.ai` URL。
+  - Headshot Sample Pack：`US$9.00`，`PortraitLab Sample Pack - 5 headshots`，页面 `test-mode=false`。
+- Worker secrets 无 `ALLOW_MOCK`；两站 Waffo live key、live product IDs 在运行。
+- 测试入口已下架；QA 产品已 inactive；两笔真实付款已退款成功。
+- 结论：支付/收款链路可生产使用；旧 versions/未轮换密钥按用户接受风险保留，不再作为上架阻塞。
