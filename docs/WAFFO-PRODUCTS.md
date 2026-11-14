@@ -61,3 +61,7 @@ WAFFO_PRODUCT_ID_HEADSHOT_100=...
 
 - Live webhook（已注册 testMode=false）：`https://stemextractor.com/api/webhooks/waffo`、`https://headshotsnap.com/api/webhooks/waffo`
 - 验证：live checkout 页面已不再显示“测试模式”；尚未做真实卡扣款，需用一张真实卡完成 $2.90 测试单。
+
+## 已知：Live webhook 延迟
+
+Waffo 文档说明：**Live Mode webhooks 只在 store 通过 review 后投递**。真实付款后订单可能已 `completed`，但 webhook 没到。已加入 reconcile 兜底（success 页面 + 付费闸门直接查 Waffo GraphQL），不依赖 webhook。

@@ -131,3 +131,14 @@ npm run dev:headshot   # http://localhost:3001
 - [x] 注册 live webhook（testMode=false）两站
 - [x] 线上 checkout 页面已确认不再是测试模式，B 站 $9 产品正常显示
 - [ ] 真实卡扣款 E2E 尚未执行（需要真实卡；不能用测试模式代替）
+
+## 2026-11-14 真实付款排查
+
+- 用户真实支付 $2.90（Waffo live order `ORD_3FE3bBRlLEJaeliEA30nYS`，business ref `ord_mwfzkg8h_yy9s9md`，status completed）
+- R2 订单仍是 pending：**Waffo live webhook 在 store review 通过前不会投递**（官方文档明确）
+- 修复：
+  - 新增 `/api/orders/reconcile`：从 Waffo GraphQL 按 orderMerchantExternalId 查订单，completed 即标记 paid
+  - success 页面每次轮询前先 reconcile
+  - `/api/jobs`、`/api/orders` 的付费闸门在 unpaid 时先 reconcile 再决定 402
+  - BuyButton 在跳转 checkout 前把 orderId 写入 localStorage，避免用户没点 Waffo 的 Done 就回站时丢单
+- 该用户订单已标记 paid，额度 15/15；待用户用 success 链接恢复浏览器 orderId 后即可上传
