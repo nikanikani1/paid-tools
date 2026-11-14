@@ -205,3 +205,14 @@ npm run dev:headshot   # http://localhost:3001
 - P1 6：GSC B 首页已编入索引；A/B sitemap 成功/16；CF Web Analytics token 未配置。
 - P1 8：`.github/workflows/ci.yml` + `monitor.yml`、`docs/DEPLOY-ROLLBACK.md`；workflow 未跑（仓库未 push/无 Actions secrets）。
 - `/api/health` 两站上线；smoke 27/27、monitor 22/22。
+
+## 2026-11-15 P0 修复收口
+
+- Replicate 当前 Dashboard credit remaining **$9.23**；之前 `<5` 的 429 原文是旧状态/错误文案，不作为当前结论；A 站已加 429/502 创建重试 + 轮询 3 次容错，失败仍退额度。
+- **P0 webhook 修复已部署**：Waffo t 毫秒归一化 + 45 分钟窗口；线上用当前毫秒时间戳 + 非法 v1 测试返回 `签名不匹配`（不再错误返回时间戳过期）。live 正式事件需下一笔真实事件/delivery log 复核 200。
+- 已移除 Waffo 11-12 两条重复 live webhook（voice/headshot 各一），保留 11-14 两条 + tidycontracts 旧站。
+- P0 监控：`tools/monitor-paid-tools.mjs` 22/22 pass，`tools/smoke-paid-tools.mjs` 27/27 pass；排除测试伪造订单收入（B 的 $9 测试单不再计入 net）。
+- P1 7：R2 清理 38 对象 / 41.01 MB，保留 14 个证据对象（含真实退款订单 + B fanout 证据）；R2 20 对象。
+- P1 6：GSC B 首页已编入索引；A/B sitemap 成功/16；CF Web Analytics token 未配置。
+- P1 8：CI/monitor workflow + DEPLOY-ROLLBACK.md 已落地；workflow 未实际跑（仓库未 push / Actions secrets 未配）。
+- Feishu 告警未配置，monitor 的 feishu channel = skipped；这是 P0 监控唯一未闭环项。
