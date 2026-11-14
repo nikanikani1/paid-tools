@@ -162,7 +162,7 @@ export default function AboutPage() {
           </p>
           <p>
             Charging from the first image keeps the incentives simple. The $9 Sample Pack (5 images) is a real paid
-            order with no watermark, a commercial licence and one free redo; the 40, 60 and 100-image packages use the
+            order with no watermark, a commercial licence and one free redo; the larger packages, when they open, will use the
             same pipeline at a lower per-image rate. The refund policy is written down and linked from every page. You
             can see the exact numbers on{" "}
             <Link href="/pricing">pricing</Link> and how the pipeline runs on{" "}

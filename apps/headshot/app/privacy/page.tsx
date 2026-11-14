@@ -29,7 +29,7 @@ export default function PrivacyPage() {
       <section className="mx-auto max-w-6xl px-6 pb-2 pt-8">
         <p className="sans text-xs font-semibold uppercase tracking-[0.18em] text-orange-700">Legal</p>
         <h1 className="mt-2 text-4xl font-extrabold tracking-tight md:text-5xl">Privacy Policy</h1>
-        <p className="sans mt-3 text-sm text-stone-500">Last updated: 11 November 2026</p>
+        <p className="sans mt-3 text-sm text-stone-500">Last updated: 14 November 2026</p>
       </section>
       <Section>
         <Prose>
@@ -103,13 +103,19 @@ export default function PrivacyPage() {
               the person in them (or does not have that person&apos;s permission).
             </li>
           </ul>
+          <p>
+            By uploading photos you confirm that you are the person in them, or that you have that person&apos;s
+            explicit permission to use their photos for this purpose, and that you understand we may refuse or delete
+            photos that do not meet these requirements. You can withdraw this consent at any time by requesting
+            deletion of your order data.
+          </p>
 
           <h3>6. Processors we share data with</h3>
           <p>We use a small number of vendors, each for a specific job:</p>
           <ul>
             <li>
               <strong>Inference providers</strong> (fal and Replicate) receive the uploaded photos and prompts in order
-              to generate and merge the images. Both are contracted for commercial use of the models we call.
+              to generate and merge the images, and process them only for that purpose.
             </li>
             <li>
               <strong>Object storage</strong> (Cloudflare R2) holds uploaded photos and generated files for the 30-day
@@ -127,8 +133,9 @@ export default function PrivacyPage() {
             </li>
           </ul>
           <p>
-            We do not share photos with advertising networks or data brokers, and we do not permit any processor to use
-            your photos for its own model training.
+            We do not share photos with advertising networks or data brokers. We do not use your photos to train
+            models. Our providers process them to run the generation we request; their own retention and model-use
+            practices are governed by their published terms, which apply to their independent role as processors.
           </p>
 
           <h3>7. International transfers</h3>
@@ -140,6 +147,10 @@ export default function PrivacyPage() {
           <h3>8. Retention</h3>
           <ul>
             <li>Photos and generated files: deleted 30 days after delivery, or earlier on request.</li>
+            <li>
+              Download links are signed and time-limited; while files are retained you can request a fresh link from
+              your order email.
+            </li>
             <li>Order records (order ID, email, amount, package): retained for accounting and tax purposes.</li>
             <li>Server logs: retained for a short operational window for security and debugging.</li>
             <li>Marketing email subscription: until you unsubscribe.</li>

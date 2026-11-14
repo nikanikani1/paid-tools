@@ -18,7 +18,7 @@ import { breadcrumbJsonLd, buildMetadata, faqPageJsonLd, webApplicationJsonLd } 
 export const metadata: Metadata = buildMetadata({
   title: "LinkedIn Headshot Generator — Stand Out to Recruiters",
   description:
-    "Generate a LinkedIn headshot from your selfies: correct circular-crop framing, clean backdrop and a recruiter-friendly expression. Paid packages from the $9 Sample Pack (5 images) to 100 images.",
+    "Generate a LinkedIn headshot from your selfies: correct circular-crop framing, clean backdrop and a recruiter-friendly expression. Paid from a $9 Sample Pack (5 images); larger packages are coming soon.",
   path: "/linkedin-headshot",
   keywords: ["linkedin headshot", "linkedin profile photo", "linkedin headshot generator", "linkedin photo ai"],
 });
@@ -200,7 +200,7 @@ export default function LinkedinHeadshotPage() {
             <Link href="/ai-professional-headshot" className="text-orange-700 underline underline-offset-2">
               professional headshot
             </Link>{" "}
-            packages deliver 40 to 100 frames, enough to pick a formal version for LinkedIn, a warmer one for a speaker
+            packages, when they open, will deliver up to 100 frames — enough to pick a formal version for LinkedIn, a warmer one for a speaker
             bio and a neutral one for a résumé or badge. The preset can be changed on the free redo, so a set you like
             can be re-run in a different style without paying twice.
           </p>
@@ -224,14 +224,14 @@ export default function LinkedinHeadshotPage() {
           { href: "/ai-professional-headshot", label: "AI professional headshot", body: "Business presets and where they get used." },
           { href: "/free-ai-headshot-generator", label: "Free vs paid headshot tools", body: "What free generators actually deliver, and why ours starts at a $9 Sample Pack." },
           { href: "/team-headshots", label: "Team headshots", body: "Consistent directory photos for ten-plus people." },
-          { href: "/pricing", label: "Pricing", body: "$9 sample, then $35 / $45 / $75 one-time packages." },
+          { href: "/pricing", label: "Pricing", body: "$9 Sample Pack on sale; larger packages coming soon." },
           { href: "/how-it-works", label: "How it works", body: "Quality gate, identity pass and delivery." },
           { href: "/", label: "Professional headshots", body: "The full pipeline and all style presets." },
           { href: "/ai-headshot-generator", label: "AI headshot generator", body: "What the generator does and how it keeps likeness." },
         ]}
       />
 
-      <CtaBand title="Refresh the photo recruiters see first" cta="Generate my LinkedIn headshots" />
+      <CtaBand title="Refresh the photo recruiters see first" body="The $9 Sample Pack (5 headshots) is the only package on sale today; larger packages are coming soon." cta="Generate my LinkedIn headshots" />
       <StudioComparisonSection />
       <EditorialByline />
     </main>

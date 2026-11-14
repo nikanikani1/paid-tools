@@ -1,0 +1,165 @@
+{
+  "name": "gsc-sitemaps-B",
+  "url": "https://search.google.com/search-console/sitemaps?resource_id=sc-domain%3Aheadshotsnap.com",
+  "title": "站点地图",
+  "text": "help_outline\n帮助\nmanage_accounts\n用户设置\nnotifications\n留言\n\nhome\n概述\nlightbulb_2\n数据洞见\ntrending_up\n效果\nsearch\n网址检查\n编制索引\nkeyboard_arrow_up\nfile_copy\n网页\naccount_tree\n站点地图\nvisibility_off\n移除\n体验\nkeyboard_arrow_up\nspeed\n核心网页指标\nlock\nHTTPS\n增强功能\nkeyboard_arrow_up\nlayers\n路径\n安全问题和人工处置措施\nkeyboard_arrow_down\nlink_2\n链接数量\ntrophy\n成就\nsettings\n设置\nfeedback\n提交反馈\ninfo\nSearch Console 简介\n隐私权条款\n站点地图\n添加新的站点地图\n输入站点地图网址\n提交\n已提交的站点地图\n\n站点地图\n\t类型\n\t已提交的网址数\n\t上次读取时间\n\t状态\n已发现的网页\n已发现的视频\nhttps://headshotsnap.com/sitemap.xml\t站点地图\t2026年11月12日\t2026年11月12日\t成功\t16\t0\t\n每页行数：\n5\n10\n25\n50\n100\n250\n500\n第 1-1 行，共 1 行\n",
+  "inputs": [
+    {
+      "tag": "INPUT",
+      "type": "",
+      "placeholder": "",
+      "aria": "",
+      "id": "",
+      "cls": "yNVtPc ZAGvjd Ny5lGc"
+    },
+    {
+      "tag": "INPUT",
+      "type": "text",
+      "placeholder": "",
+      "aria": "检查 headshotsnap.com 中的任何网址",
+      "id": "",
+      "cls": "Ax4B8 ZAGvjd"
+    },
+    {
+      "tag": "INPUT",
+      "type": "text",
+      "placeholder": "",
+      "aria": "",
+      "id": "",
+      "cls": "whsOnd zHQkBf"
+    },
+    {
+      "tag": "INPUT",
+      "type": "text",
+      "placeholder": "",
+      "aria": "headshotsnap.com",
+      "id": "",
+      "cls": "whsOnd zHQkBf"
+    },
+    {
+      "tag": "INPUT",
+      "type": "text",
+      "placeholder": "",
+      "aria": "输入站点地图网址",
+      "id": "",
+      "cls": "whsOnd zHQkBf"
+    }
+  ],
+  "buttons": [
+    {
+      "text": "",
+      "aria": "主菜单",
+      "cls": "gb_cd"
+    },
+    {
+      "text": "",
+      "aria": "返回",
+      "cls": "gb_cd gb_fd gb_3"
+    },
+    {
+      "text": "",
+      "aria": "关闭",
+      "cls": "gb_cd gb_k gb_3"
+    },
+    {
+      "text": "",
+      "aria": "返回",
+      "cls": "gb_0e"
+    },
+    {
+      "text": "",
+      "aria": "清除搜索内容",
+      "cls": "gb_3e"
+    },
+    {
+      "text": "",
+      "aria": "搜索",
+      "cls": "gb_2e"
+    },
+    {
+      "text": "feedback",
+      "aria": "反馈",
+      "cls": "pYTkkf-Bz112c-LgbsSe pYTkkf-Bz112c-LgbsSe-OWXEXe-SfQLQb-suEO"
+    },
+    {
+      "text": "help_outline",
+      "aria": "帮助",
+      "cls": "pYTkkf-Bz112c-LgbsSe pYTkkf-Bz112c-LgbsSe-OWXEXe-SfQLQb-suEO"
+    },
+    {
+      "text": "manage_accounts",
+      "aria": "用户设置",
+      "cls": "pYTkkf-Bz112c-LgbsSe pYTkkf-Bz112c-LgbsSe-OWXEXe-SfQLQb-suEO"
+    },
+    {
+      "text": "notifications",
+      "aria": "留言",
+      "cls": "pYTkkf-Bz112c-LgbsSe pYTkkf-Bz112c-LgbsSe-OWXEXe-SfQLQb-suEO"
+    },
+    {
+      "text": "",
+      "aria": "Google 应用",
+      "cls": "gb_C"
+    },
+    {
+      "text": "",
+      "aria": "Google 账号： wang haotian  \n(wanghaotiannika@gmail.com)",
+      "cls": "gb_C gb_bb gb_aa"
+    },
+    {
+      "text": "",
+      "aria": "搜索资源",
+      "cls": "enPWWe w3s2J"
+    },
+    {
+      "text": "search\n网址检查",
+      "aria": "",
+      "cls": "Lhhaec"
+    },
+    {
+      "text": "keyboard_arrow_up",
+      "aria": "“编制索引”报告部分",
+      "cls": "iAzf0e xniJIb lVp8ke"
+    },
+    {
+      "text": "keyboard_arrow_up",
+      "aria": "“体验”报告部分",
+      "cls": "iAzf0e xniJIb lVp8ke"
+    },
+    {
+      "text": "keyboard_arrow_up",
+      "aria": "“增强功能”报告部分",
+      "cls": "iAzf0e xniJIb lVp8ke"
+    },
+    {
+      "text": "keyboard_arrow_down",
+      "aria": "“安全问题和人工处置措施”报告部分",
+      "cls": "iAzf0e xniJIb lVp8ke"
+    },
+    {
+      "text": "feedback\n提交反馈",
+      "aria": "",
+      "cls": "Lhhaec"
+    },
+    {
+      "text": "info\nSearch Console 简介",
+      "aria": "",
+      "cls": "Lhhaec"
+    },
+    {
+      "text": "提交",
+      "aria": "",
+      "cls": "U26fgb O0WRkf zZhnYe e3Duub C0oVfc zaJEjb M9Bg4d RDPZE"
+    },
+    {
+      "text": "",
+      "aria": "过滤表格行",
+      "cls": "U26fgb JRtysb WzwrXb"
+    },
+    {
+      "text": "",
+      "aria": "",
+      "cls": "U26fgb JRtysb WzwrXb xFxMO"
+    }
+  ]
+}

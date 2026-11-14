@@ -18,7 +18,7 @@ import { breadcrumbJsonLd, buildMetadata, faqPageJsonLd, webApplicationJsonLd } 
 export const metadata: Metadata = buildMetadata({
   title: "Doctor & Clinic Headshots — Professional Medical Portraits",
   description:
-    "AI headshots for doctors, dentists and clinic staff: white-coat or clean clinical presets, bright low-shadow lighting and directory-ready crops. 40–100 images from $35.",
+    "AI headshots for doctors, dentists and clinic staff: white-coat or clean clinical presets, bright low-shadow lighting and directory-ready crops. Paid from a $9 Sample Pack; larger packages are coming soon.",
   path: "/doctor-headshots",
   keywords: ["doctor headshots", "physician headshot", "clinic headshots", "medical professional headshot", "dentist headshot"],
 });
@@ -46,7 +46,7 @@ const FAQ = [
   },
   {
     q: "What about images for conferences and publications?",
-    a: "Speaker bios and journal author photos are often printed larger than a directory tile, so pick a frame with a slightly warmer expression. The 100-image tier delivers enhanced resolution, which is the better choice if the image may be printed.",
+    a: "Speaker bios and journal author photos are often printed larger than a directory tile, so pick a frame with a slightly warmer expression. An enhanced-resolution set will be available when the larger packages open, which is the better choice if the image may be printed.",
   },
 ];
 
@@ -225,14 +225,14 @@ export default function DoctorHeadshotsPage() {
           { href: "/team-headshots", label: "Team headshots", body: "One style guide for a whole clinic, invoicing included." },
           { href: "/ai-professional-headshot", label: "AI professional headshot", body: "Formal business presets and licensing." },
           { href: "/privacy", label: "Privacy", body: "Processors, retention and deletion." },
-          { href: "/pricing", label: "Pricing", body: "$9 sample, then $35 / $45 / $75 one-time packages." },
+          { href: "/pricing", label: "Pricing", body: "$9 Sample Pack on sale; larger packages coming soon." },
           { href: "/how-it-works", label: "How it works", body: "Quality gate, identity pass and delivery." },
-          { href: "/", label: "Professional headshots", body: "All style presets and paid package options." },
+          { href: "/", label: "Professional headshots", body: "All style presets and the $9 Sample Pack checkout." },
           { href: "/ai-headshot-generator", label: "AI headshot generator", body: "How the generator pipeline works and what it costs." },
         ]}
       />
 
-      <CtaBand title="Give patients a portrait they can trust" cta="Generate my headshots" />
+      <CtaBand title="Give patients a portrait they can trust" body="The $9 Sample Pack (5 headshots) is the only package on sale today; larger packages are coming soon." cta="Generate my headshots" />
       <StudioComparisonSection />
       <EditorialByline />
     </main>

@@ -84,7 +84,8 @@ export function webApplicationJsonLd(input: {
       price: plan.price,
       priceCurrency: "USD",
       url: canonicalFor("/pricing"),
-      availability: "https://schema.org/InStock",
+      // Truth guard: only the 5-image Sample Pack can be bought today.
+      availability: plan.images <= 5 ? "https://schema.org/InStock" : "https://schema.org/PreSale",
     })),
     publisher: {
       "@type": "Organization",
@@ -111,22 +112,25 @@ export function productJsonLd(input?: {
   description?: string;
   path?: string;
 }): JsonLd {
+  // Truth guard: only the 5-image Sample Pack can be ordered today, so the
+  // aggregate price range and the InStock availability must reflect that.
+  const purchasable = PLANS.filter((plan) => plan.images <= 5);
   return {
     "@context": "https://schema.org",
     "@type": "Product",
     name: input?.name ?? `${SITE_TAGLINE} packages`,
     description:
       input?.description ??
-      "One-time AI headshot packages: a $9 five-image Sample Pack, then 40, 60 or 100 professional portraits generated from your selfies. No free tier; every paid order includes one free redo.",
+      "One-time AI headshot packages. The $9 five-image Sample Pack is the only package on sale today; the 40, 60 and 100-image packages are coming soon. No free tier; every paid order includes one free redo.",
     brand: { "@type": "Brand", name: SITE_NAME },
     category: "Professional headshots",
     url: canonicalFor(input?.path ?? "/pricing"),
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: "USD",
-      lowPrice: Math.min(...PLANS.map((p) => p.price)),
-      highPrice: Math.max(...PLANS.map((p) => p.price)),
-      offerCount: PLANS.length,
+      lowPrice: Math.min(...purchasable.map((p) => p.price)),
+      highPrice: Math.max(...purchasable.map((p) => p.price)),
+      offerCount: purchasable.length,
       availability: "https://schema.org/InStock",
       offers: PLANS.map((plan) => ({
         "@type": "Offer",
@@ -135,7 +139,7 @@ export function productJsonLd(input?: {
         price: plan.price,
         priceCurrency: "USD",
         url: canonicalFor("/pricing"),
-        availability: "https://schema.org/InStock",
+        availability: plan.images <= 5 ? "https://schema.org/InStock" : "https://schema.org/PreSale",
       })),
     },
   };

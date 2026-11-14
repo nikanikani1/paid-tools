@@ -1,0 +1,45 @@
+# StemSplit.ai (stemextractor.com)
+
+> AI vocal remover and stem separator. Upload a song, get vocals / drums / bass / other as separate WAV and MP3 files. Paid service — there is no free tier and no free trial.
+
+## What it does
+
+- 4-stem separation: vocals, drums, bass, other.
+- Input formats: MP3, WAV, M4A, FLAC, OGG; maximum 100 MB per file.
+- Output: individual stems as WAV and MP3, delivered through time-limited download links.
+- Pro plan adds a higher-quality model and additional stems (4 + 6 stems per the pricing page).
+- Uploaded audio is used only to run the job and is removed from working storage automatically, normally within 24–48 hours.
+
+## Pricing (USD)
+
+| Plan | Price | Allowance | Billing |
+| --- | --- | --- | --- |
+| Trial Pack | $2.90 | 15 minutes | one-time |
+| Starter | $5 | 90 minutes / month | monthly |
+| Pro | $9 | 200 minutes / month | monthly |
+| Starter Annual | $39 | 90 minutes / month | annual ($39/year) |
+
+- No free processing tier: every job needs minutes from a paid order.
+- Commercial license is included with Pro (see /pricing for the exact wording).
+
+## Limits and behaviour
+
+- File size cap: 100 MB.
+- One paid order covers a fixed number of processing minutes; jobs fail closed (HTTP 402) when there are no minutes left.
+- Separated stems are AI estimates, not lossless original studio multitracks. Bleed, artifacts, or imperfect vocal isolation can occur depending on the source track.
+- Payment is handled by Waffo (card). Refunds and data handling are described on /refund and /privacy.
+
+## Site
+
+- Homepage: https://stemextractor.com/
+- Pricing: https://stemextractor.com/pricing
+- How it works: https://stemextractor.com/how-it-works
+- Tool pages: /vocal-remover-online, /ai-vocal-remover, /remove-vocals-from-song, /separate-stems, /karaoke-maker, /acapella-maker, /free-vocal-eliminator
+  - Note: the /free-vocal-eliminator page is a landing page name; processing still requires a paid order.
+- Sitemap: https://stemextractor.com/sitemap.xml
+- Contact: support@stemextractor.com
+
+## Accuracy notes
+
+- Stem separation quality depends on the mix; dense or heavily compressed tracks are harder than clean studio mixes.
+- No guarantee of a perfectly clean a cappella for every song.

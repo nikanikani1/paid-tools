@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Vocal Remover Online — No Install, Runs in Your Browser",
   description:
-    "A vocal remover online that runs in your browser: separate vocals and instrumental from any song with no install. Start with the $2.90 Trial Pack — 15 minutes, one-time payment.",
+    "A vocal remover online that runs in your browser: remove the vocal from any song with no install. Start with the $2.90 Trial Pack — 15 minutes, one-time payment.",
   path: "/vocal-remover-online",
 });
 
@@ -13,7 +13,7 @@ const data: ToolPageData = {
   crumb: "Vocal remover online",
   title: "Vocal Remover Online — No Install, Runs in Your Browser",
   description:
-    "A vocal remover online that runs in your browser: separate vocals and instrumental from any song with no install. Start with the $2.90 Trial Pack — 15 minutes, one-time payment.",
+    "A vocal remover online that runs in your browser: remove the vocal from any song with no install. Start with the $2.90 Trial Pack — 15 minutes, one-time payment.",
   h1: "Vocal Remover Online — No Install, Runs in Your Browser",
   badge: "Browser-based · no install · $2.90 trial",
   intro: [
@@ -33,13 +33,13 @@ const data: ToolPageData = {
     {
       h2: "Supported formats and size limits",
       paragraphs: [
-        "You can upload MP3, WAV, M4A and FLAC files up to 100MB, which is roughly 10 minutes of audio depending on the format. The upload runs over the browser's normal HTTPS connection, and every paid run delivers MP3 320 and WAV files — the Trial Pack included.",
+        "You can upload MP3, M4A and FLAC files up to 100MB, which is roughly 10 minutes of audio depending on the format. The upload runs over the browser's normal HTTPS connection, and every paid run delivers MP3 320 files — the Trial Pack included.",
         "Very large files are rejected before processing so you do not lose paid minutes on an upload that cannot work. If a track is longer than ten minutes, split it into sections and process each one — the model handles a section just as well as a full track.",
       ],
       bullets: [
-        "MP3, WAV, M4A, FLAC — the formats people actually have.",
+        "MP3, M4A, FLAC — the formats people actually have.",
         "Up to 100MB / about 10 minutes per track.",
-        "MP3 320 + WAV on the Trial Pack and every plan.",
+        "MP3 320 downloads on the Trial Pack.",
         "No plugin, no software, no file conversion step.",
       ],
       bulletsColumns: 2,
@@ -75,7 +75,7 @@ const data: ToolPageData = {
     {
       h2: "Separate vocals online in three steps",
       paragraphs: [
-        "First, buy the $2.90 Trial Pack — a one-time purchase that adds 15 minutes to your account. Then choose an audio file using the tool at the top of this page. The AI model separates the mix into vocals, instrumental, drums, bass and other; a typical three-minute song takes about a minute and you can watch the progress bar move. Finally, download the stems you need from the result panel.",
+        "First, buy the $2.90 Trial Pack — a one-time purchase that adds 15 minutes to your account. Then choose an audio file using the tool at the top of this page. The AI model separates the mix into vocals, drums, bass and other; a typical three-minute song takes about a minute and you can watch the progress bar move. Finally, download the stems you need from the result panel.",
         "The whole flow takes less time than installing most desktop alternatives. If you want the full technical explanation of what happens between upload and download, the how-it-works page walks through the pipeline step by step.",
       ],
     },
@@ -83,7 +83,7 @@ const data: ToolPageData = {
   faqs: [
     {
       q: "Is there a free version of the online vocal remover?",
-      a: "No. Every run is paid because every run costs GPU time. The entry point is the one-time $2.90 Trial Pack: 15 minutes, 4 stems, MP3 320 and WAV, no subscription. There is no complimentary preview and no free-of-charge allowance.",
+      a: "No. Every run is paid because every run costs GPU time. The entry point is the one-time $2.90 Trial Pack: 15 minutes, 4 stems, MP3 320 downloads, one-time payment. There is no complimentary preview and no free-of-charge allowance.",
     },
     {
       q: "Does the online vocal remover upload my whole song?",
@@ -99,11 +99,11 @@ const data: ToolPageData = {
     },
     {
       q: "Is online separation slower than desktop software?",
-      a: "Processing itself is comparable because the model runs on dedicated cloud hardware. Online adds upload and download time, which is usually a few seconds for a 3-minute MP3. Large WAV files take longer to upload than to process.",
+      a: "Processing itself is comparable because the model runs on dedicated cloud hardware. Online adds upload and download time, which is usually a few seconds for a 3-minute MP3. Lossless FLAC files take longer to upload than to process.",
     },
     {
       q: "What do I get for $2.90?",
-      a: "15 minutes of AI separation, billed once — about five three-minute songs. Each job returns vocals, instrumental, drums, bass and other as separate files in MP3 320 and WAV. The minutes never expire and nothing renews automatically.",
+      a: "15 minutes of AI separation, billed once — about five three-minute songs. Each job returns vocals, drums, bass and other as separate MP3 320 files. The minutes never expire and nothing renews automatically.",
     },
   ],
   related: [
@@ -115,12 +115,12 @@ const data: ToolPageData = {
     {
       href: "/remove-vocals-from-song",
       label: "Remove vocals from a song",
-      blurb: "Three ways to get an instrumental, including manual methods in your DAW.",
+      blurb: "Three ways to remove the vocal, including manual methods in your DAW.",
     },
     {
       href: "/karaoke-maker",
       label: "Karaoke maker",
-      blurb: "Turn the instrumental stem into a karaoke backing track you can sing over.",
+      blurb: "Turn the drum, bass and other stems into a karaoke backing mix you can sing over.",
     },
   ],
   finalCta: {

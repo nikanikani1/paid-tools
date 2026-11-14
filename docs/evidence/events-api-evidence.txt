@@ -1,0 +1,23 @@
+### GET /api/events
+{"ok":true,"site":"voice","r2":false,"store":"stdout (R2 not configured)","allowedEvents":["checkout_started","paid","job_started","job_done","download_clicked","page_view","ui_error"],"pii":"not collected (no IP / UA / email / audio / face)"}
+
+### POST json checkout_started
+{"ok":true,"site":"voice","accepted":1,"dropped":0,"stored":{"r2":0,"log":1}}
+
+### POST text/plain (sendBeacon style) download_clicked with PII prop
+{"ok":true,"site":"voice","accepted":1,"dropped":0,"stored":{"r2":0,"log":1}}
+
+### POST invalid event
+{"ok":false,"error":"no_valid_events","dropped":1}
+
+### POST batch
+{"ok":true,"site":"voice","accepted":2,"dropped":0,"stored":{"r2":0,"log":2}}
+
+### GET /api/events with R2 env loaded
+{"ok":true,"site":"voice","r2":true,"store":"events/voice/<YYYY-MM-DD>/",...}
+
+### POST R2 smoke (event=ui_error)
+{"ok":true,"site":"voice","accepted":1,"dropped":0,"stored":{"r2":1,"log":0}}
+
+### POST checkout_started (R2)
+{"ok":true,"site":"voice","accepted":1,"dropped":0,"stored":{"r2":1,"log":0}}

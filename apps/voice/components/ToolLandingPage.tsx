@@ -38,6 +38,25 @@ export type ToolPageData = {
   finalCta: { title: string; body: string };
 };
 
+/**
+ * UI-layer truth guard for the shared system-method copy. The source strings live
+ * in lib/system-methods.ts (outside this component) and still describe downloads
+ * and separate files the shipped pipeline does not return yet; rewrite them here
+ * so no tool page promises them.
+ */
+function sanitizeMethodCopy(text: string): string {
+  return text
+    .replace(/WAV and MP3 downloads/g, "MP3 320 downloads")
+    .replace(
+      /returns the vocals stem, the instrumental and the rest of the 4-stem set in one run/gi,
+      "returns the four separated stems — vocals, drums, bass and other — in one run",
+    )
+    .replace(
+      /returns the instrumental plus an acapella for harmony practice/gi,
+      "returns the vocal stem plus drums, bass and other for practice",
+    );
+}
+
 export function ToolLandingPage({ data }: { data: ToolPageData }) {
   const systemMethod = getSystemMethodCopy(data.slug);
   const schema = graphSchema(
@@ -97,9 +116,9 @@ export function ToolLandingPage({ data }: { data: ToolPageData }) {
             <div className="mx-auto max-w-4xl">
               <h2 className="display text-2xl md:text-3xl">Four stems, one upload</h2>
               <p className="mt-4 leading-relaxed text-slate-300">
-                Every job returns the full set of separations, not just a karaoke-style instrumental. That means one
-                upload gives you an acapella, a backing track, a drum loop and a bass line you can drop straight into
-                your DAW.
+                Every job returns four separated stems — vocals, drums, bass and &ldquo;other&rdquo; — as MP3 320
+                downloads. One upload gives you the vocal stem, the drum stem, the bass stem and the &ldquo;other&rdquo;
+                stem, each as its own file you can drop straight into your DAW.
               </p>
               <div className="mt-6">
                 <StemGrid heading="What comes back in your download" />
@@ -124,7 +143,7 @@ export function ToolLandingPage({ data }: { data: ToolPageData }) {
           </div>
         </div>
 
-        <SystemBuiltInMethod intro={systemMethod.intro} caveat={systemMethod.caveat} />
+        <SystemBuiltInMethod intro={sanitizeMethodCopy(systemMethod.intro)} caveat={sanitizeMethodCopy(systemMethod.caveat)} />
 
         <Faq items={data.faqs} />
 

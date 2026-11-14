@@ -29,7 +29,7 @@ export default function TermsPage() {
       <section className="mx-auto max-w-6xl px-6 pb-2 pt-8">
         <p className="sans text-xs font-semibold uppercase tracking-[0.18em] text-orange-700">Legal</p>
         <h1 className="mt-2 text-4xl font-extrabold tracking-tight md:text-5xl">Terms of Service</h1>
-        <p className="sans mt-3 text-sm text-stone-500">Last updated: 11 November 2026</p>
+        <p className="sans mt-3 text-sm text-stone-500">Last updated: 14 November 2026</p>
       </section>
       <Section>
         <Prose>
@@ -56,6 +56,11 @@ export default function TermsPage() {
             </li>
             <li>You may not upload photos of anyone under 18.</li>
           </ul>
+          <p>
+            By uploading photos you confirm that you are the person in them, or that you have that person&apos;s
+            explicit permission to use their photos for this purpose, and that you understand we may refuse or delete
+            photos that do not meet these requirements.
+          </p>
 
           <h3>3. Prohibited content and uses</h3>
           <ul>
@@ -70,12 +75,17 @@ export default function TermsPage() {
             We may refuse, suspend or delete any order that appears to violate these rules, and we may report unlawful
             content where required by law.
           </p>
+          <p>
+            If a photo of you was uploaded without your permission, email support@headshotsnap.com with the order
+            identifier and we will remove the photos and generated images as soon as we can verify the request.
+          </p>
 
           <h3>4. Orders and payment</h3>
           <ul>
             <li>
-              Packages are one-time purchases: the $9 Sample Pack (5 images), 40 images for $35, 60 for $45 and 100 for
-              $75 (USD), as shown on the <Link href="/pricing">pricing page</Link>.
+              The $9 Sample Pack (5 images) is currently the only package on sale. The 40, 60 and 100-image packages
+              ($35, $45 and $75 USD) are shown on the <Link href="/pricing">pricing page</Link> for comparison and will
+              open for purchase later; you are only charged for a package whose checkout you complete.
             </li>
             <li>There is no unpaid generation of any kind. Every generated image is part of a paid order.</li>
             <li>Payment is processed by our merchant of record, which handles taxes and issues the receipt.</li>
@@ -83,7 +93,7 @@ export default function TermsPage() {
               Generation begins only after payment confirmation. Before checkout is connected, order requests are
               refused with HTTP 402 <code>payment_required</code> rather than producing an unpaid set.
             </li>
-            <li>Team orders of ten or more people may be invoiced under separate commercial terms.</li>
+            <li>Team orders are not currently available; see the <Link href="/team-headshots">team headshots page</Link> for what a team order will include when it opens.</li>
           </ul>
 
           <h3>5. The licence you receive</h3>
@@ -152,14 +162,16 @@ export default function TermsPage() {
           <h3>12. Third-party providers</h3>
           <p>
             The service depends on third-party inference, storage, payment and email providers. Their outages are outside
-            our direct control, and their terms apply to the portion of the service they provide.
+            our direct control, and their terms apply to the portion of the service they provide. The pipeline uses
+            commercially licensed model access; the licence basis for each model is documented internally and reviewed
+            before launch.
           </p>
 
           <h3>13. Governing law and disputes</h3>
           <p>
             These terms are governed by the laws of the jurisdiction in which the operating entity is registered.
             Before starting a formal dispute, contact support@headshotsnap.com — most issues are resolved by a redo or
-            a refund.
+            a refund. Entity and jurisdiction details are available on request.
           </p>
 
           <h3>14. Changes to these terms</h3>

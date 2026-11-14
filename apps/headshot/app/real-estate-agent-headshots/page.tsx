@@ -18,7 +18,7 @@ import { breadcrumbJsonLd, buildMetadata, faqPageJsonLd, webApplicationJsonLd } 
 export const metadata: Metadata = buildMetadata({
   title: "Real Estate Agent Headshots — Trust-Building Portraits",
   description:
-    "AI headshots for real estate agents: portraits that stay sharp on MLS cards, yard signs, business cards and brokerage pages. Paid packages from the $9 Sample Pack (5 images) to 100 images.",
+    "AI headshots for real estate agents: portraits that stay sharp on MLS cards, yard signs, business cards and brokerage pages. Paid from a $9 Sample Pack (5 images); larger packages are coming soon.",
   path: "/real-estate-agent-headshots",
   keywords: [
     "real estate agent headshots",
@@ -51,7 +51,7 @@ const FAQ = [
   },
   {
     q: "How fast do I get the images?",
-    a: "A 40-image order finishes in about two minutes of generation time, 100 images in about four. You download the full set immediately — no waiting for a retoucher or a gallery email.",
+    a: "The 5-image Sample Pack finishes in well under a minute of generation time; larger orders will publish their timings when they open. You download the full set immediately — no waiting for a retoucher or a gallery email.",
   },
 ];
 
@@ -144,7 +144,7 @@ export default function RealEstateAgentHeadshotsPage() {
           <p>
             Print at 300dpi needs a real original. A 1024px square export gives you roughly 3.4 inches at 300dpi, which
             is enough for a card portrait and a flyer headshot. If you are printing a yard sign or a bus bench, you need
-            a larger export — order the 100-image tier, which delivers the enhanced resolution set.
+            a larger export — the enhanced-resolution set will be available when larger packages open.
           </p>
           <h3>Review sites and social avatars</h3>
           <p>
@@ -204,14 +204,14 @@ export default function RealEstateAgentHeadshotsPage() {
           { href: "/ai-professional-headshot", label: "AI professional headshot", body: "Formal business presets and licensing." },
           { href: "/team-headshots", label: "Team headshots", body: "Brokerage-wide consistency, invoicing, 10+ people." },
           { href: "/linkedin-headshot", label: "LinkedIn headshot", body: "Recruiter-facing profile framing." },
-          { href: "/pricing", label: "Pricing", body: "$9 sample, then $35 / $45 / $75 one-time packages." },
+          { href: "/pricing", label: "Pricing", body: "$9 Sample Pack on sale; larger packages coming soon." },
           { href: "/how-it-works", label: "How it works", body: "The pipeline from selfie to download." },
           { href: "/", label: "Professional headshots", body: "All five style presets and paid package options." },
           { href: "/ai-headshot-generator", label: "AI headshot generator", body: "How the generator works and the $9 entry point." },
         ]}
       />
 
-      <CtaBand title="Get a headshot that survives the listing card" cta="Generate my headshots" />
+      <CtaBand title="Get a headshot that survives the listing card" body="The $9 Sample Pack (5 headshots) is the only package on sale today; larger packages are coming soon." cta="Generate my headshots" />
       <StudioComparisonSection />
       <EditorialByline />
     </main>

@@ -14,7 +14,7 @@ export const metadata: Metadata = buildMetadata({
 const FAQ = [
   {
     q: "Does the $9 Sample Pack include the redo and refund policy?",
-    a: "Yes. The Sample Pack is a paid order, so it carries the same one free redo within 48 hours and the same 14-day refund conditions as the 40, 60 and 100-image packages. The only difference is scale: a redo of a five-image set is fast and is processed the same way as a larger redo.",
+    a: "Yes. The Sample Pack is a paid order, so it carries the same one free redo within 48 hours and the same 14-day refund conditions as any package that becomes available later. The only difference is scale: a redo of a five-image set is fast and is processed the same way as a larger redo.",
   },
   {
     q: "How do I request a redo?",
@@ -73,6 +73,11 @@ export default function RefundPage() {
               The short version: one free redo within 48 hours, and a refund inside 14 days if the redo still misses.
               Failed generations are refunded automatically. This applies to every paid order — including the $9 Sample
               Pack — because every generation is paid: there is no unpaid generation anywhere in the product.
+            </p>
+            <p>
+              Only packages with an active checkout are on sale. Today that is the $9 Sample Pack (5 images); the larger
+              packages shown on the pricing page are not yet purchasable, and no charge is taken for a package whose
+              checkout is not enabled.
             </p>
           </div>
           <div>
@@ -203,12 +208,13 @@ export default function RefundPage() {
           </p>
           <h3>Team orders</h3>
           <p>
-            Team orders are refunded per seat: if one person&apos;s set cannot be made usable after a redo, that seat is
-            refunded against the invoice. The rest of the team order is unaffected. See the{" "}
+            Team orders are not currently available. If they open later, this policy will be updated to describe how a
+            seat that cannot be made usable is refunded against the invoice. What a team order will include is described
+            on the{" "}
             <Link href="/team-headshots" className="text-orange-700 underline underline-offset-2">
               team headshots
             </Link>{" "}
-            page for B2B terms.
+            page.
           </p>
         </Prose>
       </Section>

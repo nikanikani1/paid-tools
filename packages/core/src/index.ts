@@ -17,5 +17,14 @@ export {
   createPrediction,
   waitForPrediction,
   replicateFetch,
+  withReplicateRetry,
+  isRetryableReplicateError,
+  isReplicateThrottleError,
+  parseReplicateRetryAfterMs,
+  replicateCreateWaitMs,
+  resetReplicateCreateGate,
+  firstImageUrl,
 } from "./providers/replicate";
+export type { ReplicatePrediction, RetryOptions } from "./providers/replicate";
+export { ReplicateThrottleError } from "./providers/replicate";
 export { isFalConfigured, submitFluxPulid } from "./providers/fal";

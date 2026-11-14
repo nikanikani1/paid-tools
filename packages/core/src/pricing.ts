@@ -13,7 +13,7 @@ export const VOICE_PLANS: VoicePlan[] = [
     price: 2.9,
     minutes: 15,
     billing: "one-time",
-    features: ["15 minutes, one-time", "4 stems", "WAV + MP3", "No subscription", "One-time payment"],
+    features: ["15 minutes, one-time", "4 MP3 stems", "No subscription", "One-time payment"],
   },
   {
     id: "voice-starter",
@@ -21,7 +21,7 @@ export const VOICE_PLANS: VoicePlan[] = [
     price: 5,
     minutes: 90,
     billing: "monthly",
-    features: ["90 minutes / month", "4 stems (vocals, drums, bass, other)", "WAV + MP3", "Batch upload", "No watermark"],
+    features: ["90 minutes / month", "4 MP3 stems (vocals, drums, bass, other)", "No watermark"],
     popular: true,
   },
   {
@@ -30,7 +30,7 @@ export const VOICE_PLANS: VoicePlan[] = [
     price: 9,
     minutes: 200,
     billing: "monthly",
-    features: ["200 minutes / month", "4 + 6 stems", "High quality model", "Priority queue", "Commercial license"],
+    features: ["200 minutes / month", "4 MP3 stems", "Commercial license"],
   },
   {
     id: "voice-annual",
@@ -38,7 +38,7 @@ export const VOICE_PLANS: VoicePlan[] = [
     price: 39,
     minutes: 90,
     billing: "annual",
-    features: ["90 minutes / month", "Billed $39/year (≈ 5 months of Starter)", "4 stems", "Priority support"],
+    features: ["90 minutes / month", "Billed $39/year (≈ 5 months of Starter)", "4 MP3 stems"],
   },
 ];
 

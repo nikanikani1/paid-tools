@@ -20,7 +20,7 @@ import { breadcrumbJsonLd, buildMetadata, faqPageJsonLd, productJsonLd } from ".
 export const metadata: Metadata = buildMetadata({
   title: "AI Professional Headshot — Business-Ready Portraits in Minutes",
   description:
-    "Get a professional headshot without a studio booking. Upload 5 selfies, choose a corporate preset and download 40–100 business-ready portraits for LinkedIn, résumés and press pages.",
+    "Get a professional headshot without a studio booking. Upload 5 selfies, choose a corporate preset and download a paid set of business-ready portraits for LinkedIn, résumés and press pages.",
   path: "/ai-professional-headshot",
   keywords: [
     "ai professional headshot",
@@ -45,7 +45,7 @@ const FAQ = [
   },
   {
     q: "How fast is delivery?",
-    a: "A 40-image order usually finishes in about two minutes, a 60-image order in about three, and a 100-image order in about four. The page shows live progress and you can download as soon as it is done.",
+    a: "The 5-image Sample Pack finishes in well under a minute of generation time. Larger packages will publish their delivery times when they open. The page shows live progress and you can download as soon as it is done.",
   },
   {
     q: "Do I own the images?",
@@ -64,7 +64,7 @@ export default function AiProfessionalHeadshotPage() {
         data={productJsonLd({
           name: "AI Professional Headshot packages",
           description:
-            "Business-ready AI headshots: 40, 60 or 100 professional portraits generated from your selfies, with commercial licence and one free redo.",
+            "Business-ready AI headshots from your selfies. The $9 five-image Sample Pack is the only package on sale today; larger packages are coming soon. Commercial licence and one free redo.",
           path: "/ai-professional-headshot",
         })}
       />
@@ -157,7 +157,7 @@ export default function AiProfessionalHeadshotPage() {
       <Section
         eyebrow="Presets"
         title="Business presets and who they are for"
-        intro={<p>All five presets are included in every package; pick one at order time, or regenerate with a different one on the free redo.</p>}
+        intro={<p>All five presets are available on the Sample Pack; pick one at order time, or regenerate with a different one on the free redo.</p>}
       >
         <StyleTable styles={STYLE_DETAILS} />
       </Section>
@@ -229,7 +229,7 @@ export default function AiProfessionalHeadshotPage() {
             </thead>
             <tbody className="divide-y divide-stone-200">
               {[
-                ["AI generated set (this page)", "$35–$75 one-time", "2–4 min generation", "Likeness drift; fixed by redo"],
+                ["AI generated set (this page)", "From $9 one-time (Sample Pack)", "Under a minute for the Sample Pack", "Likeness drift; fixed by redo"],
                 ["Studio photographer", "Studio day rates, multiple outfits extra", "1–3 weeks incl. retouching", "Scheduling and cost for one look"],
                 ["DIY phone selfie", "$0", "5 minutes", "Light, crop and background look amateur"],
                 ["Wedding or holiday crop", "$0", "Minutes", "Wrong crop, other people, dated styling"],
@@ -257,13 +257,13 @@ export default function AiProfessionalHeadshotPage() {
           { href: "/linkedin-headshot", label: "LinkedIn headshot", body: "Profile sizing and recruiter-facing advice." },
           { href: "/team-headshots", label: "Team headshots", body: "One style guide across ten or more people." },
           { href: "/doctor-headshots", label: "Doctor headshots", body: "Clinical presets for medical directories." },
-          { href: "/pricing", label: "Pricing", body: "Compare 40, 60 and 100 image packages." },
+          { href: "/pricing", label: "Pricing", body: "$9 Sample Pack on sale; larger packages coming soon." },
           { href: "/how-it-works", label: "How it works", body: "The quality gate, identity pass and delivery." },
           { href: "/refund", label: "Redo & refund policy", body: "What happens if the set misses." },
         ]}
       />
 
-      <CtaBand />
+      <CtaBand body="The $9 Sample Pack (5 headshots) is the only package on sale today; larger packages are coming soon. One-time payment, one free redo included." />
       <StudioComparisonSection />
       <EditorialByline />
     </main>

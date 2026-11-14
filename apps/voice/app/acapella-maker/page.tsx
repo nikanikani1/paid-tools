@@ -21,7 +21,7 @@ const data: ToolPageData = {
     "Upload a track below and the AI does the extraction in about a minute. Runs are paid: the one-time $2.90 Trial Pack includes 15 minutes and the full 4-stem output, acapella included.",
   ],
   toolCta: "Extract the acapella",
-  quickFacts: ["Isolates the vocal stem", "Lead + harmonies", "MP3 320 or WAV", "$2.90 trial · 15 min"],
+  quickFacts: ["Isolates the vocal stem", "Lead + harmonies", "MP3 320", "$2.90 trial · 15 min"],
   sections: [
     {
       h2: "What an acapella maker actually does",
@@ -34,11 +34,11 @@ const data: ToolPageData = {
       h2: "Who needs an acapella extractor",
       paragraphs: [
         "Cover artists use acapellas as a reference to learn phrasing, tuning and timing. Remixers and producers need them to build a new arrangement around a familiar vocal. Content creators use short acapella snippets in videos and livestreams. Singers use them for practice and for layering harmonies on top of an existing performance.",
-        "The common thread is that building or rehearsing a vocal from scratch is not always practical. An extracted acapella gives you the real performance immediately, and because the same job also produces the instrumental and individual stems, you can work with the vocal and the backing track separately.",
+        "The common thread is that building or rehearsing a vocal from scratch is not always practical. An extracted acapella gives you the real performance immediately, and because the same job also produces the drum, bass and other stems, you can work with the vocal and the backing parts separately.",
       ],
       bullets: [
         "Covers and tribute performances — learn or reproduce the original vocal.",
-        "Remixes and mashups — put the vocal over a new instrumental.",
+        "Remixes and mashups — put the vocal over a new backing track.",
         "Sampling and production — chop real vocal phrases into a new track.",
         "Practice and transcription — slow the vocal down and study it.",
       ],
@@ -47,18 +47,18 @@ const data: ToolPageData = {
     {
       h2: "How to extract an acapella in three steps",
       paragraphs: [
-        "First, get a paid run: the $2.90 Trial Pack adds 15 minutes of separation to your account and never renews. Then upload the song — the format does not matter much as long as it is not heavily compressed; MP3, WAV, M4A and FLAC all work. The model separates the mix in about a minute, and you download the vocals stem.",
-        "If you only need the acapella, you can ignore the other stems even though they are included. If you later decide to make a karaoke version or a remix, the instrumental and drums are already waiting in the same download.",
+        "First, get a paid run: the $2.90 Trial Pack adds 15 minutes of separation to your account and never renews. Then upload the song — the format does not matter much as long as it is not heavily compressed; MP3, M4A and FLAC all work. The model separates the mix in about a minute, and you download the vocals stem.",
+        "If you only need the acapella, you can ignore the other stems even though they are included. If you later decide to make a karaoke version or a remix, the drum, bass and other stems are already waiting in the same download.",
       ],
     },
     {
       h2: "How to get a cleaner acapella",
       paragraphs: [
         "Source quality is the biggest factor. A lossless file or a 320kbps MP3 gives the model far more to work with than a 128kbps stream rip, which smears the vocal into the instruments. If the song is available in higher quality, use that version.",
-        "Some recordings are simply hard: heavily distorted vocals, whispered passages, dense wall-of-sound productions or live recordings where the vocal mic also picked up the drums. In those cases the acapella may contain bleed or artifacts. The Pro high-quality model helps, but no separator can undo a difficult source completely.",
+        "Some recordings are simply hard: heavily distorted vocals, whispered passages, dense wall-of-sound productions or live recordings where the vocal mic also picked up the drums. In those cases the acapella may contain bleed or artifacts. A cleaner source file helps, but no separator can undo a difficult source completely.",
       ],
       bullets: [
-        "Use WAV, FLAC or 320kbps MP3, not low-bitrate rips.",
+        "Use FLAC or a high-bitrate MP3, not low-bitrate rips.",
         "Avoid clipping and heavily limited masters when you have a choice.",
         "For long songs, separate the section you actually need.",
         "Check the acapella with headphones — bleed is easiest to hear there.",
@@ -68,8 +68,8 @@ const data: ToolPageData = {
     {
       h2: "Acapella vs. stems vs. karaoke: what's the difference",
       paragraphs: [
-        "An acapella is the vocal alone. A karaoke track or instrumental is the song with the vocal removed. Stems are the individual parts — vocals, drums, bass and other — which is what a separator actually returns. The acapella is simply the vocals stem; the instrumental is the original mix minus that stem.",
-        "In practice one separation gives you everything: the acapella for covers and remixes, the instrumental for karaoke, and the drums and bass for production. That is why producers use stem separation instead of separate vocal-removal and acapella-extraction tools.",
+        "An acapella is the vocal alone. A karaoke track is the song with the vocal removed. Stems are the individual parts — vocals, drums, bass and other — which is what a separator actually returns. The acapella is simply the vocals stem; the remaining three stems hold the rest of the mix.",
+        "In practice one separation gives you everything: the acapella for covers and remixes, plus the drum, bass and other stems for karaoke or production. That is why producers use stem separation instead of separate vocal-removal and acapella-extraction tools.",
       ],
     },
     {
@@ -83,7 +83,7 @@ const data: ToolPageData = {
   faqs: [
     {
       q: "Is there a free way to extract an acapella with AI here?",
-      a: "No. There is no free-of-charge allowance: every separation costs GPU time, so every run is paid. The $2.90 Trial Pack is the cheapest option and includes 15 minutes, the vocals stem (your acapella), the instrumental and the other stems.",
+      a: "No. There is no free-of-charge allowance: every separation costs GPU time, so every run is paid. The $2.90 Trial Pack is the cheapest option and includes 15 minutes and all four stems: the vocals stem (your acapella), drums, bass and other.",
     },
     {
       q: "Can I extract just the lead vocal without the backing vocals?",
@@ -99,11 +99,11 @@ const data: ToolPageData = {
     },
     {
       q: "What format is the acapella download?",
-      a: "Every paid run delivers MP3 320kbps and WAV — the Trial Pack included. The vocals stem is named separately from the instrumental so you can find it easily in the download list.",
+      a: "Every paid run delivers MP3 320 files — the Trial Pack included. The vocals stem is named separately from the drums, bass and other stems so you can find it easily in the download list.",
     },
     {
       q: "Does the Trial Pack include the acapella?",
-      a: "Yes. Any run returns the vocals stem (your acapella), the instrumental, drums, bass and other. The $2.90 Trial Pack includes 15 minutes of runs — about five three-minute songs — with no subscription.",
+      a: "Yes. Any run returns all four stems: vocals (your acapella), drums, bass and other. The $2.90 Trial Pack includes 15 minutes of runs — about five three-minute songs — with no subscription.",
     },
   ],
   related: [
@@ -120,7 +120,7 @@ const data: ToolPageData = {
     {
       href: "/remove-vocals-from-song",
       label: "Remove vocals from a song",
-      blurb: "Compare AI extraction with manual center-cancellation and official instrumentals.",
+      blurb: "Compare AI extraction with manual center-cancellation and official vocal-free versions.",
     },
   ],
   finalCta: {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Analytics } from "./components/Analytics";
 import { ScrollReveal } from "./components/ScrollReveal";
 import { SiteFooter, SiteHeader } from "./components/site-chrome";
 import { SITE_NAME, SITE_URL } from "./lib/site";
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     template: `%s — ${SITE_NAME}`,
   },
   description:
-    "Professional headshots generated from five selfies in minutes. Paid packages start with a $9 five-image Sample Pack, then 40 for $35. One-time pricing, commercial licence, one free redo.",
+    "Professional headshots generated from five selfies in minutes. The $9 five-image Sample Pack is the only package on sale today; larger packages are coming soon. One-time pricing, commercial licence, one free redo.",
   keywords: [
     "professional headshots",
     "professional headshot",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Professional Headshots — AI Headshot Generator from Selfies",
     description:
-      "Professional headshots from five selfies. Start with a $9 five-image Sample Pack, then 40 for $35, 60 for $45 or 100 for $75. One-time payment, one free redo.",
+      "Professional headshots from five selfies. The $9 five-image Sample Pack is the only package on sale today; larger packages are coming soon. One-time payment, one free redo.",
     url: SITE_URL,
     siteName: SITE_NAME,
     locale: "en_US",
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Professional Headshots — AI Headshot Generator from Selfies",
     description:
-      "Professional headshots from five selfies in minutes. Paid from a $9 Sample Pack; 40 for $35, 60 for $45, 100 for $75.",
+      "Professional headshots from five selfies in minutes. Paid from a $9 Sample Pack; larger packages are coming soon.",
     images: ["/og/headshot-og.png"],
   },
   robots: { index: true, follow: true },
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ScrollReveal />
+        <Analytics site="headshot" />
         <SiteHeader />
         {children}
         <SiteFooter />

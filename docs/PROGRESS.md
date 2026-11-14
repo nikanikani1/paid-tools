@@ -150,3 +150,16 @@ npm run dev:headshot   # http://localhost:3001
 - [x] A/B 上传区支持桌面文件拖拽（dragenter/over/drop，带高亮和类型/大小校验）
 - [x] 拖拽测试：A 拖入 mp3 显示文件名；B 拖入 3 张 jpg 显示 "3 selfies selected"
 - 注意：拖拽的是「文件」，不是文件夹本身；浏览器不会把文件夹内容自动展开
+
+## 2026-11-14 P0/P1 智能体团队交付与验收
+
+- 团队：product-truth / b-fanout / access-metering / growth-ops / security-compliance，Lead 集成部署
+- A 站：只售 $2.90 Trial（15 分钟、4 个 MP3 stems），订阅隐藏；全站清除 WAV/6-stem/batch/priority/instrumental 承诺
+- B 站：只售 $9 Sample Pack（5 张）；真实 Replicate + R2 E2E 5/5 张，193s，≈$0.265；40/60/100 仅 Coming soon
+- 隐藏套餐服务端硬拒绝：/api/checkout → 409 plan_not_available
+- 订单恢复：两站 /orders + /api/orders/[id]/files，按需重签 7 天 URL；用户订单 15/15 已恢复
+- 额度：reserve→fail→refund / success→confirm；服务端解析真实音频时长，>10min 400 不扣费
+- 增长：GSC A sitemap 恢复成功；B sitemap 成功、B 首页待复检；IndexNow 200；事件 API + llms.txt + 监控/外链文档
+- 安全：线上安全 headers 生效；密钥轮换/旧 Worker 删除/R2 lifecycle 因权限 blocked；律师审阅 blocked
+- 线上验收：typecheck/build/OpenNext deploy 0 error；两站关键页 console 0 error
+- 详见 docs/ACCEPTANCE-P0-P1.md、SECURITY-ROTATION.md、COMPLIANCE.md、OPS-MONITORING.md、GSC-BING.md、BACKLINK-EXECUTION.md

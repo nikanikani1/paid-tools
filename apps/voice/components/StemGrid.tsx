@@ -46,8 +46,8 @@ export function StemGrid({ heading = "The four stems you get back" }: { heading?
         ))}
       </div>
       <p className="mt-4 text-sm text-slate-400">
-        The instrumental is simply your original track with the vocal stem removed — it is created in the same pass,
-        so you get vocals, instrumental and the individual stems from a single upload.
+        Every job returns these four separated stems — vocals, drums, bass and other — as individual MP3 320 files
+        from a single upload.
       </p>
     </div>
   );

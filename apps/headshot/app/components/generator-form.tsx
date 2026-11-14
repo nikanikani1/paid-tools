@@ -4,14 +4,22 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { STYLES } from "../lib/site";
 
 type JobFile = { name: string; url: string };
-type Job = { id: string; status: string; progress: number; files: JobFile[]; error?: string };
+type JobFailure = { index: number; stage: string; reason: string };
+type JobMeta = {
+  real?: boolean;
+  fanout?: boolean;
+  requestedImages?: number;
+  succeeded?: number;
+  failed?: number;
+  failures?: JobFailure[];
+  chargedUnits?: number;
+  r2Stored?: number;
+};
+type Job = { id: string; status: string; progress: number; files: JobFile[]; error?: string; meta?: JobMeta };
 
-const PACKAGES = [
-  { images: 5, label: "Sample Pack — 5 headshots — $9" },
-  { images: 40, label: "Starter — 40 headshots — $35" },
-  { images: 60, label: "Professional — 60 headshots — $45" },
-  { images: 100, label: "Executive — 100 headshots — $75" },
-];
+// Launch catalogue: only the paid 5-image Sample Pack is sold. Larger packages
+// (40/60/100) are intentionally not selectable until they are implemented.
+const PACKAGES = [{ images: 5, label: "Sample Pack — 5 headshots — $9" }];
 
 export type GeneratorFormProps = {
   id?: string;
@@ -33,7 +41,8 @@ export default function GeneratorForm({
   const [files, setFiles] = useState<File[]>([]);
   const [dragging, setDragging] = useState(false);
   const [style, setStyle] = useState(defaultStyle);
-  const [images, setImages] = useState(defaultPlan);
+  // Only the 5-image Sample Pack exists at launch; any defaultPlan prop is clamped to it.
+  const images = Math.min(Math.max(1, Math.floor(defaultPlan || PACKAGES[0].images)), PACKAGES[0].images);
   const [job, setJob] = useState<Job | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -192,20 +201,13 @@ export default function GeneratorForm({
               ))}
             </select>
           </label>
-          <label className="text-sm text-stone-700">
+          <div className="text-sm text-stone-700">
             Package
-            <select
-              value={images}
-              onChange={(e) => setImages(Number(e.target.value))}
-              className="mt-1 w-full rounded-lg border border-stone-300 bg-white p-2 text-stone-900"
-            >
-              {PACKAGES.map((pkg) => (
-                <option key={pkg.images} value={pkg.images}>
-                  {pkg.label}
-                </option>
-              ))}
-            </select>
-          </label>
+            <div className="mt-1 rounded-lg border border-stone-300 bg-stone-100 px-3 py-2 text-stone-900">
+              Sample Pack — 5 headshots — $9
+            </div>
+            <p className="mt-1 text-xs text-stone-500">Only the 5-image Sample Pack is available at launch.</p>
+          </div>
         </div>
         <button
           type="submit"
@@ -240,6 +242,36 @@ export default function GeneratorForm({
             <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-stone-200">
               <div className="h-full bg-orange-600 transition-all" style={{ width: `${job.progress}%` }} />
             </div>
+            {typeof job.meta?.requestedImages === "number" && job.meta.requestedImages > 0 && (job.status === "done" || job.status === "failed") && (
+              <div
+                className={`mt-3 rounded-lg border px-3 py-2 text-xs ${
+                  job.meta.failed && job.meta.failed > 0
+                    ? "border-amber-300 bg-amber-50 text-amber-900"
+                    : "border-emerald-300 bg-emerald-50 text-emerald-900"
+                }`}
+              >
+                <p className="font-semibold">
+                  {job.meta.succeeded ?? job.files.length}/{job.meta.requestedImages} images succeeded
+                  {typeof job.meta.failed === "number" && job.meta.failed > 0 ? ` · ${job.meta.failed} failed` : ""}
+                  {typeof job.meta.chargedUnits === "number" ? ` · ${job.meta.chargedUnits} image credits used` : ""}
+                </p>
+                {job.meta.failures && job.meta.failures.length > 0 && (
+                  <ul className="mt-1 list-disc space-y-0.5 pl-4">
+                    {job.meta.failures.map((failure) => (
+                      <li key={`${failure.index}-${failure.stage}`}>
+                        Image {failure.index} — {failure.stage}: {failure.reason}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {job.meta.failed && job.meta.failed > 0 && (
+                  <p className="mt-1">You are only charged for images that were delivered.</p>
+                )}
+              </div>
+            )}
+            {job.error && (
+              <p className="mt-3 rounded-lg border border-rose-300 bg-rose-50 px-3 py-2 text-xs text-rose-800">{job.error}</p>
+            )}
             {job.files.length > 0 && (
               <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {job.files.slice(0, 20).map((f) => (

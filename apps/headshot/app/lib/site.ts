@@ -147,7 +147,7 @@ export const TRUST_POINTS: { title: string; body: string }[] = [
   },
   {
     title: "One-time payment, from $9",
-    body: "No subscription, no credits that expire, no surprise renewal. The $9 Sample Pack (5 images) is the entry point; larger packages are a single payment too.",
+    body: "No subscription, no credits that expire, no surprise renewal. The $9 Sample Pack (5 images) is the only package on sale today; the larger packages, when they open, will be one-time payments too.",
   },
   {
     title: "No unpaid tier, on purpose",
@@ -174,7 +174,7 @@ export const HOME_FAQ = [
   },
   {
     q: "How long does it take to get my headshots?",
-    a: "A 5-image Sample Pack finishes in well under a minute of generation time; 40-photo orders take about two minutes and 100-photo orders closer to four. The page updates live while your set is rendering, and you can download individual images or a single ZIP when it is done.",
+    a: "A 5-image Sample Pack finishes in well under a minute of generation time. The page updates live while your set is rendering, and you can download individual images or a single ZIP when it is done. Delivery times for the 40, 60 and 100-image packages will be published when those packages open.",
   },
   {
     q: "Do the headshots actually look like me?",

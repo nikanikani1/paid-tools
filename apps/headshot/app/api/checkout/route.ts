@@ -20,6 +20,14 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "invalid_json" }, { status: 400 });
   }
   const planId = String(body?.planId ?? "headshot-trial");
+  // 40/60/100 packages are visible as coming soon but must not be purchasable
+  // until multi-image fan-out is fully live for those package sizes.
+  if (planId !== "headshot-trial") {
+    return NextResponse.json(
+      { error: "plan_not_available", message: "Only the $9 Sample Pack (5 headshots) is on sale right now. Larger packages are coming soon." },
+      { status: 409 },
+    );
+  }
   const info = planInfo(SITE, planId);
   if (!info) return NextResponse.json({ error: "unknown_plan" }, { status: 400 });
 

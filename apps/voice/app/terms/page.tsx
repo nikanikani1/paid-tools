@@ -1,14 +1,13 @@
 import { LegalPage, legalMetadata, type LegalPageData } from "@/components/LegalPage";
-import { LEGAL_UPDATED } from "@/lib/seo";
 
 const data: LegalPageData = {
   slug: "/terms",
   crumb: "Terms",
   title: "Terms of Service",
   description:
-    "The rules for using StemSplit.ai: acceptable use, audio rights, accounts and limits, subscriptions, DMCA takedowns, disclaimers and liability.",
+    "The rules for using StemSplit.ai: acceptable use, audio rights, paid runs and limits, DMCA takedowns, disclaimers and liability. Current output is four MP3 stems.",
   h1: "Terms of Service",
-  updated: LEGAL_UPDATED,
+  updated: "November 14, 2026",
   intro: [
     "These terms govern your use of StemSplit.ai. By uploading a file or using any part of the service, you agree to them. If you do not agree, do not use the service.",
     "The important parts: only process audio you have the right to use, do not abuse the service, and understand that separation is an estimate rather than a perfect extraction.",
@@ -17,8 +16,8 @@ const data: LegalPageData = {
     {
       h2: "The service",
       paragraphs: [
-        "StemSplit.ai provides AI-based audio separation: you upload a song, the service returns vocals, instrumental and additional stems. Access starts with the one-time $2.90 Trial Pack (15 minutes); subscription plans add monthly minutes, more stems and higher-quality output. There is no free-of-charge processing tier. Features may change as the product develops.",
-        "The service runs on third-party infrastructure for hosting, storage, model inference and payments. Access may be interrupted for maintenance, model upgrades, capacity limits or events outside our control.",
+        "StemSplit.ai provides AI-based audio separation: you upload a track and, for a completed paid job, receive four MP3 stems at 320 kbps — vocals, drums, bass and other. The current paid entry point is the one-time $2.90 Trial Pack (15 minutes). Other plan sizes shown on the pricing page are product options that may be offered later; only a plan whose checkout is active can be purchased, and nothing renews unless a subscription is explicitly purchased.",
+        "There is no free-of-charge processing tier. The service runs on third-party infrastructure for hosting, storage, model inference and payments. Access may be interrupted for maintenance, model upgrades, capacity limits or events outside our control.",
       ],
     },
     {
@@ -50,17 +49,17 @@ const data: LegalPageData = {
       bulletsColumns: 2,
     },
     {
-      h2: "Accounts, limits and fair use",
+      h2: "Paid runs, limits and fair use",
       paragraphs: [
-        "The Trial Pack is a one-time allowance of 15 minutes and does not renew. Subscription plans include a monthly minute allowance; allowances reset each billing period and do not roll over. Jobs that fail for technical reasons do not consume minutes.",
-        "We may adjust fair-use limits to prevent abuse. If a subscription plan's limits change materially, we will give notice before the change applies to your renewal.",
+        "The Trial Pack is a one-time allowance of 15 minutes and does not renew. Each job is limited to a single track of up to 10 minutes and 100 MB. Jobs that fail for technical reasons do not consume minutes; successfully started jobs do.",
+        "We may adjust fair-use limits to prevent abuse. If a plan you have already purchased changes materially, we will give notice before the change applies to your next renewal or use.",
       ],
     },
     {
-      h2: "Payments, subscriptions and cancellation",
+      h2: "Payments, refunds and cancellation",
       paragraphs: [
-        "Payments are billed through Waffo as merchant of record, which handles card processing, invoicing and applicable sales tax. The $2.90 Trial Pack is a single one-time charge and does not renew. Monthly and annual subscriptions renew automatically until cancelled; you can cancel at any time from the billing portal, and access continues until the end of the current period.",
-        "Refunds are governed by the refund policy. If you cancel, you will not be charged for the next period; cancelling does not automatically refund the current period.",
+        "Payments are billed through Waffo as merchant of record, which handles card processing, invoicing and applicable sales tax. The $2.90 Trial Pack is a single one-time charge and does not renew, so there is nothing to cancel.",
+        "If a subscription plan becomes available for purchase, it will renew automatically until cancelled; you can cancel at any time from the billing portal and access continues until the end of the current paid period. Refunds are governed by the refund policy.",
       ],
     },
     {
@@ -75,7 +74,7 @@ const data: LegalPageData = {
       id: "dmca",
       paragraphs: [
         "We respect copyright and expect users to do the same. If you believe content processed through the service infringes your rights, send a notice to dmca@stemextractor.com with the details required by the Digital Millennium Copyright Act: identification of the copyrighted work, identification of the material and where it appears, your contact information, a good-faith statement, a statement under penalty of perjury that the information is accurate and that you are authorised to act, and your physical or electronic signature.",
-        "We will review valid notices, remove or disable access to the material where appropriate, and take repeat-infringer accounts out of service. Counter-notices should be sent to the same address.",
+        "We will review valid notices, remove or disable access to the material where appropriate, and take repeat-infringer accounts out of service. Counter-notices should be sent to the same address. This channel covers uploads that are still retained; audio files are deleted within 30 days of delivery, so notices should be sent promptly.",
       ],
     },
     {
@@ -89,13 +88,13 @@ const data: LegalPageData = {
       h2: "Termination and changes",
       paragraphs: [
         "You can stop using the service at any time. We may suspend or terminate access for violations of these terms or for legal reasons. Sections that by their nature should survive termination — including intellectual property, disclaimers, liability limits and governing law — survive.",
-        "We may update these terms from time to time. Material changes will be announced on the site or by email to paying subscribers, and the updated date at the top of the page will change. Continued use after an update means you accept the revised terms.",
+        "We may update these terms from time to time. Material changes will be announced on the site or by email to paying customers, and the updated date at the top of the page will change. Continued use after an update means you accept the revised terms.",
       ],
     },
     {
       h2: "Governing law and contact",
       paragraphs: [
-        "These terms are governed by the laws of the State of Delaware, United States, without regard to conflict-of-law rules. Disputes will be handled in the courts located there, unless applicable consumer law gives you the right to a different forum.",
+        "These terms are governed by the laws applicable to the operator's jurisdiction of registration, and disputes will be handled by the courts there, unless applicable consumer law gives you the right to a different forum. Entity and jurisdiction details are available on request.",
         "Questions about these terms: legal@stemextractor.com. Billing questions: billing@stemextractor.com. Copyright notices: dmca@stemextractor.com.",
       ],
     },
@@ -107,15 +106,19 @@ const data: LegalPageData = {
     },
     {
       q: "Can I use the service commercially?",
-      a: "Yes, the separation service can be used for commercial projects as long as you have the rights to the source audio. Paid plans include a commercial-use license for the processing itself. The original song's rights still apply.",
+      a: "Yes, the separation service can be used for commercial projects as long as you have the rights to the source audio. The original song's rights still apply.",
+    },
+    {
+      q: "What output do I get?",
+      a: "Each completed job returns four MP3 stems at 320 kbps — vocals, drums, bass and other. No other formats, exports or stem counts are included in the current service.",
     },
     {
       q: "How do I cancel a subscription?",
-      a: "Use the billing portal link in your purchase email or contact billing@stemextractor.com. Cancellation stops future renewals and access continues until the end of the paid period.",
+      a: "The Trial Pack does not renew, so there is nothing to cancel. If you purchase a subscription plan, use the billing portal link in your purchase email or contact billing@stemextractor.com; cancellation stops future renewals and access continues until the end of the paid period.",
     },
   ],
   contactNote:
-    "Legal notices: legal@stemextractor.com · DMCA: dmca@stemextractor.com · Billing: billing@stemextractor.com. These terms should be reviewed by qualified counsel before launch; this page is product copy for the demo build.",
+    "Legal notices: legal@stemextractor.com · DMCA: dmca@stemextractor.com · Billing: billing@stemextractor.com. These terms are product copy and should be reviewed by qualified counsel before launch.",
 };
 
 export const metadata = legalMetadata(data);

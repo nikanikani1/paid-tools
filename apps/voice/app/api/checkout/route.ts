@@ -24,6 +24,14 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "invalid_json" }, { status: 400 });
   }
   const planId = String(body?.planId ?? "voice-trial");
+  // Subscription plans are visible as "coming soon" but must not be purchasable
+  // until renewal/credit lifecycle is implemented.
+  if (planId !== "voice-trial") {
+    return NextResponse.json(
+      { error: "plan_not_available", message: "Only the $2.90 Trial Pack is on sale right now. Subscriptions are coming soon." },
+      { status: 409 },
+    );
+  }
   const info = planInfo(SITE, planId);
   if (!info) return NextResponse.json({ error: "unknown_plan" }, { status: 400 });
 

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { JsonLd } from "@/components/JsonLd";
+import { Analytics } from "@/app/components/Analytics";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -10,11 +11,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: SITE_NAME,
   title: {
-    default: "Vocal Remover — Separate Vocals & Instrumental Online | StemSplit.ai",
+    default: "Vocal Remover — Separate Vocals & Stems Online | StemSplit.ai",
     template: "%s | StemSplit.ai",
   },
   description:
-    "Remove vocals from any song with AI and get clean vocals, instrumental, drums, bass and other stems in minutes. Start with the $2.90 Trial Pack — 15 minutes, one-time payment.",
+    "Remove vocals from any song with AI and get clean vocals, drums, bass and other stems in minutes. Start with the $2.90 Trial Pack — 15 minutes, one-time payment.",
   keywords: [
     "vocal remover",
     "ai vocal remover",
@@ -36,21 +37,21 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: "StemSplit.ai",
-    title: "Vocal Remover — Separate Vocals & Instrumental Online",
+    title: "Vocal Remover — Separate Vocals & Stems Online",
     description:
-      "Remove vocals from any song with AI and get clean vocals, instrumental, drums, bass and other stems in minutes. Paid from $2.90, one-time payment.",
+      "Remove vocals from any song with AI and get clean vocals, drums, bass and other stems in minutes. Paid from $2.90, one-time payment.",
     images: [
       {
         url: "/og/voice-og.png",
         width: 1200,
         height: 630,
-        alt: "StemSplit.ai — separate vocals and instrumental from any song",
+        alt: "StemSplit.ai — separate vocals and stems from any song",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vocal Remover — Separate Vocals & Instrumental Online",
+    title: "Vocal Remover — Separate Vocals & Stems Online",
     description: "AI 4-stem separation from any song. Paid from $2.90, one-time payment.",
     images: ["/og/voice-og.png"],
   },
@@ -93,6 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <JsonLd data={siteSchema} />
         <ScrollReveal />
+        <Analytics site="voice" />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-violet-500 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"

@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Free Vocal Eliminator — Free vs AI Comparison",
   description:
-    "No free-of-charge uploads here: an honest comparison of free vocal-eliminator methods — phase cancellation, Audacity, official instrumentals — versus paid AI separation. Trial Pack $2.90 / 15 minutes, one-time.",
+    "No free-of-charge uploads here: an honest comparison of free vocal-eliminator methods — phase cancellation, Audacity, label-released vocal-free versions — versus paid AI separation. Trial Pack $2.90 / 15 minutes, one-time.",
   path: "/free-vocal-eliminator",
 });
 
@@ -13,7 +13,7 @@ const data: ToolPageData = {
   crumb: "Free vocal eliminator",
   title: "Free Vocal Eliminator — Free vs AI Comparison",
   description:
-    "No free-of-charge uploads here: an honest comparison of free vocal-eliminator methods — phase cancellation, Audacity, official instrumentals — versus paid AI separation. Trial Pack $2.90 / 15 minutes, one-time.",
+    "No free-of-charge uploads here: an honest comparison of free vocal-eliminator methods — phase cancellation, Audacity, label-released vocal-free versions — versus paid AI separation. Trial Pack $2.90 / 15 minutes, one-time.",
   h1: "Free Vocal Eliminator — Free Methods vs AI Separation",
   badge: "Honest comparison · paid runs only",
   intro: [
@@ -60,27 +60,27 @@ const data: ToolPageData = {
       bullets: [
         "Same phase math as Audacity, dressed up as AI on some sites.",
         "Upload privacy is often unclear — read the policy first.",
-        "No 4-stem output, no WAV, usually no account deletion controls.",
+        "No 4-stem output, usually no account deletion controls.",
         "Ad-supported tools may be slow or limited by file size.",
       ],
       bulletsColumns: 2,
     },
     {
-      h2: "Free option 3: official instrumentals and karaoke versions",
+      h2: "Free option 3: official vocal-free versions and karaoke releases",
       paragraphs: [
-        "The best-sounding free option is not a tool at all: find an official instrumental or karaoke version of the song. Many artists release instrumentals, and karaoke labels license them. Search the title plus 'instrumental', 'off vocal' or 'karaoke version'.",
-        "The catch is availability and rights. Popular songs often have an official instrumental; obscure tracks frequently do not. And using a commercial karaoke track in a video, stream or paid performance can require a license. If the instrumental exists and your use is cleared, it is unbeatable — because it is the real backing track, not an estimate.",
+        "The best-sounding free option is not a tool at all: find an official vocal-free version or karaoke release of the song. Many artists release vocal-free mixes, and karaoke labels license them. Search the title plus 'off vocal' or 'karaoke version'.",
+        "The catch is availability and rights. Popular songs often have an official vocal-free version; obscure tracks frequently do not. And using a commercial karaoke track in a video, stream or paid performance can require a license. If one exists and your use is cleared, it is unbeatable — because it is the real mix, not an estimate.",
       ],
     },
     {
       h2: "Why there is no free AI separation here",
       paragraphs: [
         "AI stem separation is not free to run. A three-minute song occupies a cloud GPU for about a minute, and the model has to be hosted, cooled, updated and monitored. Someone always pays: with ads, with your data, or with a quality cap designed to push you toward a subscription.",
-        "We chose a different trade-off: no free-of-charge allowance, no ad tracking, no data resale — and a one-time $2.90 Trial Pack with 15 minutes, the full 4-stem output and WAV + MP3 downloads. Fifteen minutes is about five three-minute songs. It is a small enough first step to test the quality on your own material, and it does not renew.",
+        "We chose a different trade-off: no free-of-charge allowance, no ad tracking, no data resale — and a one-time $2.90 Trial Pack with 15 minutes, the full 4-stem output and MP3 320 downloads. Fifteen minutes is about five three-minute songs. It is a small enough first step to test the quality on your own material, and it does not renew.",
       ],
       bullets: [
         "No free-of-charge allowance, no ads, no selling your uploads.",
-        "One-time $2.90 Trial Pack: 15 minutes, 4 stems, WAV + MP3.",
+        "One-time $2.90 Trial Pack: 15 minutes, 4 stems, MP3 320 downloads.",
         "Roughly five 3-minute songs; minutes never expire.",
         "14-day money-back guarantee on your first purchase.",
       ],
@@ -94,8 +94,8 @@ const data: ToolPageData = {
       ],
       bullets: [
         "Quality: phase cancellation is thin and mono; AI separation keeps the mix intact.",
-        "Output: free tools give one damaged instrumental; the trial gives 4 stems + acapella.",
-        "Formats: free tools export whatever your DAW gives; the trial delivers MP3 320 and WAV.",
+        "Output: free tools give one damaged vocal-free mix; the trial gives four separated stems.",
+        "Formats: free tools export whatever your DAW gives; the trial delivers MP3 320 downloads.",
         "Privacy: free web tools vary wildly; paid runs are deleted within 24–48 hours.",
         "Cost: $0 vs $2.90 one-time — no subscription either way.",
       ],
@@ -103,8 +103,8 @@ const data: ToolPageData = {
     {
       h2: "How to spend 15 trial minutes well",
       paragraphs: [
-        "Upload the highest-quality copy of each song you have — a WAV or 320kbps MP3, not a stream rip. Trim intros and outros so you do not spend paid minutes on silence. Start with the track you care about most; if the separation is not right for that material, the next four songs are not going to be different.",
-        "Use the stems, not just the instrumental. The vocals stem is your acapella, the drums and bass are ready for production, and the instrumental doubles as a karaoke backing track. One run gives you all of it, which is why 15 minutes stretches further than it sounds.",
+        "Upload the highest-quality copy of each song you have — a high-bitrate MP3 or a lossless FLAC, not a stream rip. Trim intros and outros so you do not spend paid minutes on silence. Start with the track you care about most; if the separation is not right for that material, the next four songs are not going to be different.",
+        "Use all four stems, not just the vocal. The vocals stem is your acapella, and the drums, bass and other stems are ready for production or for building a karaoke backing mix in your DAW. One run gives you all of it, which is why 15 minutes stretches further than it sounds.",
       ],
     },
   ],
@@ -123,7 +123,7 @@ const data: ToolPageData = {
     },
     {
       q: "What do I get for $2.90 exactly?",
-      a: "15 minutes of AI separation, billed once — about five three-minute songs. Each job returns vocals, instrumental, drums, bass and other as separate files in MP3 320 and WAV. The minutes do not expire and nothing renews automatically.",
+      a: "15 minutes of AI separation, billed once — about five three-minute songs. Each job returns vocals, drums, bass and other as separate MP3 320 files. The minutes do not expire and nothing renews automatically.",
     },
     {
       q: "Are free online vocal removers safe to use?",
@@ -148,7 +148,7 @@ const data: ToolPageData = {
     {
       href: "/karaoke-maker",
       label: "Karaoke maker",
-      blurb: "Turn an AI instrumental into a karaoke backing track that keeps the full band.",
+      blurb: "Build a karaoke backing mix from the drum, bass and other stems.",
     },
   ],
   finalCta: {

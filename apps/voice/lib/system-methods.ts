@@ -22,7 +22,7 @@ export const PLATFORMS: PlatformMethod[] = [
       "Select the whole track (Ctrl+A), then open Effect → Vocal Reduction and Isolation.",
       "Choose Action: Remove Vocals, keep the default settings and apply.",
       "Check the result on headphones: centered bass and kick are usually removed together with the vocal.",
-      "Export with File → Export Audio and choose WAV or MP3.",
+      "Export with File → Export Audio and choose MP3.",
     ],
     verdict:
       "Good for a rehearsal backing track. It cannot keep the low end and it cannot produce an acapella or stems.",
@@ -44,16 +44,16 @@ export const PLATFORMS: PlatformMethod[] = [
   {
     name: "iPhone & iPad",
     builtIn:
-      "iOS and iPadOS have no built-in vocal remover for your own files. GarageBand for iOS can record and arrange, but it has no phase-invert control. Apple Music's Sing feature can lower vocals on supported catalog songs, but it streams only and cannot export an instrumental.",
+      "iOS and iPadOS have no built-in vocal remover for your own files. GarageBand for iOS can record and arrange, but it has no phase-invert control. Apple Music's Sing feature can lower vocals on supported catalog songs, but it streams only and cannot export a separate audio file.",
     steps: [
       "Apple Music Sing: play a supported song, open the lyrics view and use the vocal slider to lower the vocal (Apple Music subscription required).",
-      "There is no export: Sing is a playback feature, not a file tool, so it cannot give you a WAV or MP3 backing track.",
+      "There is no export: Sing is a playback feature, not a file tool, so it cannot give you a downloadable MP3 of the song.",
       "GarageBand for iOS can trim and arrange audio you import, but it cannot cancel or remove a vocal.",
       "iMovie can lower a clip's volume, not isolate a source.",
       "For real separation, open this site in Safari on the phone, or move the file to a Mac/PC and use a desktop method.",
     ],
     verdict:
-      "Phones are for listening and file handling. No iOS feature produces stems or a downloadable instrumental.",
+      "Phones are for listening and file handling. No iOS feature produces stems or downloadable separate files.",
   },
   {
     name: "Android",
@@ -121,25 +121,25 @@ const SYSTEM_METHOD_COPY: Record<string, SystemMethodCopy> = {
     intro:
       "Method 2 in this guide is the built-in method: center-channel cancellation. These are the real, documented steps for Windows, macOS, phones and DAWs — including where each platform simply does not offer the feature.",
     caveat:
-      "The built-in method is fast, offline and free-of-charge, but it is not a separator: you get one mono instrumental with the centered low end removed. For an instrumental that keeps the band intact — or an acapella on the side — use AI separation; the one-time $2.90 Trial Pack covers 15 minutes.",
+      "The built-in method is fast, offline and free-of-charge, but it is not a separator: you get one mono vocal-free mix with the centered low end removed. For a mix that keeps the band intact — or an acapella on the side — use AI separation; the one-time $2.90 Trial Pack covers 15 minutes.",
   },
   "/acapella-maker": {
     intro:
-      "This is the important limitation to understand before trying any built-in method: center-channel cancellation produces the instrumental, not the acapella. It removes the vocal from the mix — there is no stock Windows, macOS, iOS, Android or DAW feature that extracts a vocal as its own file.",
+      "This is the important limitation to understand before trying any built-in method: center-channel cancellation produces a vocal-free mix, not the acapella. It removes the vocal from the mix — there is no stock Windows, macOS, iOS, Android or DAW feature that extracts a vocal as its own file.",
     caveat:
-      "Built-in tools cannot give you an acapella. The only way to get the vocal as a separate file is a stem-separation model; the $2.90 Trial Pack returns the vocals stem, the instrumental and the rest of the 4-stem set in one run.",
+      "Built-in tools cannot give you an acapella. The only way to get the vocal as a separate file is a stem-separation model; the $2.90 Trial Pack returns all four stems — vocals, drums, bass and other — in one run.",
   },
   "/karaoke-maker": {
     intro:
       "For a quick rehearsal backing track, the built-in center-channel method can be enough — and it is already on your desktop if you have any audio editor or DAW. Here is what each platform actually offers, with the real steps.",
     caveat:
-      "A built-in karaoke track is mono, hollow and missing its centered bass and kick. AI separation keeps the full band and returns the instrumental plus an acapella for harmony practice; the one-time $2.90 Trial Pack covers 15 minutes — about five songs.",
+      "A built-in karaoke attempt is mono, hollow and missing its centered bass and kick. AI separation keeps the full band across four stems and returns the vocals stem as an acapella for harmony practice; the one-time $2.90 Trial Pack covers 15 minutes — about five songs.",
   },
   "/separate-stems": {
     intro:
-      "Built-in tools cannot produce stems. Windows, macOS, iOS, Android and every stock DAW offer at most a center-channel cancel — one mono instrumental, not four separated files. Here is the honest platform-by-platform picture.",
+      "Built-in tools cannot produce stems. Windows, macOS, iOS, Android and every stock DAW offer at most a center-channel cancel — one mono vocal-free mix, not four separated files. Here is the honest platform-by-platform picture.",
     caveat:
-      "If your goal is vocals, drums, bass and other as separate, time-aligned files, no built-in OS or DAW feature can do it. AI stem separation is what returns those four stems; the $2.90 Trial Pack includes 15 minutes with WAV and MP3 downloads.",
+      "If your goal is vocals, drums, bass and other as separate, time-aligned files, no built-in OS or DAW feature can do it. AI stem separation is what returns those four stems; the $2.90 Trial Pack includes 15 minutes and MP3 320 downloads.",
   },
 };
 

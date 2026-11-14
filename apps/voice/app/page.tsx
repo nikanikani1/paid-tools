@@ -14,8 +14,31 @@ import {
   type FaqItem,
 } from "@/lib/seo";
 
+/**
+ * Truth guard: only the one-time Trial Pack is live today. Subscription plans stay
+ * hidden from checkout until they can be delivered end to end.
+ */
+const PURCHASABLE_PLAN_IDS = new Set(["voice-trial"]);
+
+/** UI-level truth overrides: the core feature lists still describe capabilities the
+ * shipped pipeline does not produce yet, so the page renders this list instead. */
+const DISPLAY_FEATURES: Record<string, string[]> = {
+  "voice-trial": ["15 minutes, one-time", "4 stems (vocals, drums, bass, other)", "MP3 320 downloads", "No subscription"],
+  "voice-starter": ["90 minutes / month when subscriptions open", "4 stems", "MP3 320 downloads"],
+  "voice-pro": ["200 minutes / month when subscriptions open", "4 stems", "MP3 320 downloads"],
+  "voice-annual": ["90 minutes / month when subscriptions open", "Billed $39/year when subscriptions open", "4 stems"],
+};
+
+function isPurchasable(planId: string): boolean {
+  return PURCHASABLE_PLAN_IDS.has(planId);
+}
+
+function displayFeatures(planId: string, fallback: string[]): string[] {
+  return DISPLAY_FEATURES[planId] ?? fallback;
+}
+
 export const metadata = pageMetadata({
-  title: "Vocal Remover — Separate Vocals & Instrumental Online",
+  title: "Vocal Remover — Separate Vocals & Stems Online",
   description:
     "Remove vocals from any song with AI and get 4 stems — vocals, drums, bass and other — in minutes. Start with the $2.90 Trial Pack: 15 minutes, one-time payment, 4 stems.",
   path: "/",
@@ -28,19 +51,19 @@ const HOME_FAQS: FaqItem[] = [
   },
   {
     q: "What do I get in the $2.90 Trial Pack?",
-    a: "15 minutes of processing, billed once — not a subscription. Each job returns vocals, instrumental, drums, bass and other as separate files in MP3 320 and WAV. Fifteen minutes covers about five three-minute tracks, or one long set of edits. When the trial minutes are used up you can upgrade, but nothing renews automatically.",
+    a: "15 minutes of processing, billed once — not a subscription. Each job returns four separated stems — vocals, drums, bass and other — as MP3 320 downloads. Fifteen minutes covers about five three-minute tracks, or one long set of edits. When the trial minutes are used up you can buy another Trial Pack; the monthly subscriptions are not open yet, and nothing renews automatically.",
   },
   {
     q: "What exactly is a stem?",
-    a: "A stem is one isolated part of a mix — the vocal performance, the drum kit, the bass line, or everything else (guitars, keys, strings, synths). Producers, DJs and karaoke makers work with stems because they can mute, replace or rebalance individual parts without touching the rest of the song. A 4-stem separation gives you all four parts plus the instrumental (the original mix with the vocal removed).",
+    a: "A stem is one isolated part of a mix — the vocal performance, the drum kit, the bass line, or everything else (guitars, keys, strings, synths). Producers, DJs and karaoke makers work with stems because they can mute, replace or rebalance individual parts without touching the rest of the song. A 4-stem separation gives you all four separated parts as individual files.",
   },
   {
     q: "Which audio files can I upload?",
-    a: "MP3, WAV, M4A and FLAC up to 100MB or roughly 10 minutes per track. For the cleanest separation, upload the highest-quality file you have — a lossless WAV or a 320kbps MP3 rather than a low-bitrate stream rip. Very compressed files, phone recordings and live bootlegs are harder for any model to split cleanly.",
+    a: "MP3, M4A and FLAC up to 100MB or roughly 10 minutes per track. For the cleanest separation, upload the highest-quality file you have rather than a low-bitrate stream rip. Very compressed files, phone recordings and live bootlegs are harder for any model to split cleanly.",
   },
   {
     q: "How long does separation take?",
-    a: "A typical 3-minute song is usually ready in 60–90 seconds after upload, depending on queue length. Longer tracks and the high-quality model take proportionally longer. Pro subscribers get a priority queue, but there is no unpaid queue — paid jobs are processed in the order they arrive.",
+    a: "A typical 3-minute song is usually ready in 60–90 seconds after upload, depending on queue length. Longer tracks take proportionally longer. There is no unpaid queue — paid jobs are processed in the order they arrive.",
   },
   {
     q: "Do you keep my audio files?",
@@ -148,11 +171,12 @@ export default function HomePage() {
         <div className="relative mx-auto max-w-4xl" data-reveal>
           <div className="badge">AI stem separation · 4 stems · $2.90 Trial Pack</div>
           <h1 className="display mx-auto mt-6 max-w-4xl text-4xl md:text-[4rem]">
-            Vocal Remover — <span className="gradient-text">Separate Vocals &amp; Instrumental</span> Online
+            Vocal Remover — <span className="gradient-text">Separate Vocals &amp; Stems</span> Online
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg">
-            Upload a song and get clean vocals, instrumental, drums, bass and other stems in minutes. One upload, four
-            stems, no plugins and no desktop software. Start with the $2.90 Trial Pack — 15 minutes, one-time payment.
+            Upload a song and get clean vocals, drums, bass and other stems in minutes. One upload, four separated stems
+            as MP3 downloads, no plugins and no desktop software. Start with the $2.90 Trial Pack — 15 minutes, one-time
+            payment.
           </p>
 
           <ToolDemo />
@@ -161,8 +185,7 @@ export default function HomePage() {
             {[
               "$2.90 Trial Pack",
               "15 minutes included",
-              "4 stems + instrumental",
-              "MP3 and WAV downloads",
+              "4 separated MP3 stems",
               "Files auto-deleted",
             ].map((item) => (
               <span key={item} className="chip">
@@ -179,14 +202,14 @@ export default function HomePage() {
           <p className="mt-4 leading-relaxed text-slate-300">
             Most &ldquo;vocal removers&rdquo; only give you one thing: the song with the singing filtered out. Stem
             separation is more useful. The model listens to the full mix and splits it into its musical parts, so you
-            can download the acapella, the instrumental, the drum loop and the bass line as separate files. Re-sing
-            the vocal, replace the drums, sample the bass, or rebuild the arrangement in your DAW — the choice is
-            yours.
+            can download the vocal stem, the drum stem, the bass stem and the &ldquo;other&rdquo; stem as separate MP3
+            files. Re-sing the vocal, replace the drums, sample the bass, or rebuild the arrangement in your DAW — the
+            choice is yours.
           </p>
           <p className="mt-4 leading-relaxed text-slate-300">
             A 4-stem split works on almost any genre. Pop, rock, hip-hop, EDM, country, worship and karaoke tracks are
-            all handled by the same model. Live recordings, heavy vinyl rips and mono mixes are harder, but you can
-            still get usable vocals and a solid backing track in most cases.
+            all handled by the same model. Live recordings, heavy vinyl rips and mono mixes are harder for any model,
+            but most tracks still come back usable.
           </p>
           <div className="mt-6">
             <StemGrid />
@@ -199,7 +222,7 @@ export default function HomePage() {
             <Link href="/separate-stems" className="text-cyan-300 underline underline-offset-2 hover:text-cyan-200">
               stem separation guide
             </Link>{" "}
-            for formats, alignment, producer workflows and the 6-stem option.
+            for formats, alignment and producer workflows.
           </p>
         </div>
       </section>
@@ -221,12 +244,12 @@ export default function HomePage() {
               {
                 step: "2",
                 title: "Upload your track",
-                body: "Drop an MP3, WAV, M4A or FLAC. We check duration and quality before processing, so a paid run is never wasted on a broken file.",
+                body: "Drop an MP3 or M4A file. We check duration and quality before processing, so a paid run is never wasted on a broken file.",
               },
               {
                 step: "3",
                 title: "Download your stems",
-                body: "Grab vocals, instrumental and individual stems as MP3 320 or WAV. Keep what you need — the originals are deleted automatically.",
+                body: "Grab the four separated stems as MP3 320. Keep what you need — the originals are deleted automatically.",
               },
             ].map((item) => (
               <div key={item.step} className="card-hover card p-6">
@@ -301,50 +324,68 @@ export default function HomePage() {
 
       <section id="pricing" className="hairline px-6 py-14">
         <div className="mx-auto max-w-6xl">
-          <h2 className="display text-3xl md:text-4xl">The $2.90 trial, then plans only if you need them</h2>
+          <h2 className="display text-3xl md:text-4xl">The $2.90 trial is the only plan on sale right now</h2>
           <p className="mx-auto mt-4 max-w-3xl text-center leading-relaxed text-slate-300">
             We do not run a free-of-charge tier. Every separation uses GPU time, so instead of a giveaway preview we keep the entry
-            price low: a one-time $2.90 Trial Pack with 15 minutes and the full 4-stem output. If you process more
-            than that, Starter and Pro add monthly minutes; if you do not, the trial is the whole purchase.
+            price low: a one-time $2.90 Trial Pack with 15 minutes and the full 4-stem output as MP3. Starter, Pro and
+            Annual are shown for comparison only — subscriptions are not open yet, so their checkout is closed.
           </p>
           <div className="mt-8 grid gap-4 md:grid-cols-4">
-            {VOICE_PLANS.map((plan) => (
-              <div
-                key={plan.id}
-                id={plan.id === "voice-trial" ? "trial" : undefined}
-                className={`card flex flex-col p-5 ${plan.popular ? "border-violet-400/70 shadow-[0_0_40px_-24px_rgba(139,92,246,0.9)]" : ""}`}
-              >
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-semibold text-slate-100">{plan.name}</h3>
-                  {plan.popular && <span className="text-[10px] font-semibold uppercase tracking-wider text-violet-300">Popular</span>}
+            {VOICE_PLANS.map((plan) => {
+              const purchasable = isPurchasable(plan.id);
+              return (
+                <div
+                  key={plan.id}
+                  id={plan.id === "voice-trial" ? "trial" : undefined}
+                  className={`card flex flex-col p-5 ${purchasable ? "border-violet-400/70 shadow-[0_0_40px_-24px_rgba(139,92,246,0.9)]" : ""}`}
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="font-semibold text-slate-100">{plan.name}</h3>
+                    <span
+                      className={
+                        purchasable
+                          ? "rounded-full bg-violet-500/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-violet-200"
+                          : "rounded-full border border-slate-700 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-400"
+                      }
+                    >
+                      {purchasable ? "Available now" : "Coming soon"}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-3xl font-extrabold">
+                    ${priceLabel(plan.price)}
+                    <span className="text-sm font-normal text-slate-400">{billingSuffix(plan.billing)}</span>
+                  </p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    {plan.billing === "annual"
+                      ? "Billed yearly when subscriptions open"
+                      : plan.billing === "one-time"
+                        ? "One-time · ≈ 5 songs"
+                        : `${plan.minutes} minutes included when subscriptions open`}
+                  </p>
+                  <ul className="mt-4 flex-1 space-y-1.5 text-sm text-slate-300">
+                    {displayFeatures(plan.id, plan.features).map((feature) => (
+                      <li key={feature} className="flex gap-2">
+                        <span aria-hidden="true" className="text-cyan-300">·</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {purchasable ? (
+                    <Link href="/pricing#trial" className="btn btn-sm mt-5 w-full btn-primary">
+                      Buy the $2.90 trial
+                    </Link>
+                  ) : (
+                    <div className="btn btn-sm mt-5 w-full cursor-not-allowed border border-slate-700 bg-slate-800/40 text-center text-slate-400">
+                      Coming soon — subscriptions not open yet
+                    </div>
+                  )}
                 </div>
-                <p className="mt-3 text-3xl font-extrabold">
-                  ${priceLabel(plan.price)}
-                  <span className="text-sm font-normal text-slate-400">{billingSuffix(plan.billing)}</span>
-                </p>
-                <p className="mt-1 text-xs text-slate-500">
-                  {plan.billing === "annual"
-                    ? "≈ $3.25/month · 5 months of Starter"
-                    : plan.billing === "one-time"
-                      ? "One-time · ≈ 5 songs"
-                      : `${plan.minutes} minutes included`}
-                </p>
-                <ul className="mt-4 flex-1 space-y-1.5 text-sm text-slate-300">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex gap-2">
-                      <span aria-hidden="true" className="text-cyan-300">·</span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link href="/pricing#trial" className={`btn btn-sm mt-5 w-full ${plan.popular ? "btn-primary" : "btn-ghost"}`}>
-                  {plan.billing === "one-time" ? "Buy the $2.90 trial" : "Choose plan"}
-                </Link>
-              </div>
-            ))}
+              );
+            })}
           </div>
           <p className="mt-6 text-center text-sm text-slate-400">
-            One-time or monthly, cancel anytime. Compare everything on the{" "}
+            The Trial Pack is one-time. Subscriptions are not open yet — compare the live trial with the planned
+            monthly plans on the{" "}
             <Link href="/pricing" className="text-cyan-300 underline underline-offset-2 hover:text-cyan-200">
               pricing page
             </Link>
@@ -385,7 +426,8 @@ export default function HomePage() {
               Your next karaoke track is one $2.90 trial away
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-slate-300">
-              Fifteen minutes of AI separation, four stems, one-time payment. No subscription unless you want one.
+              Fifteen minutes of AI separation, four MP3 stems, one-time payment. No subscription — the Trial Pack is
+              the only plan on sale today.
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
               <Link href="/pricing#trial" className="btn btn-primary">

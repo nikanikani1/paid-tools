@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Karaoke Maker — Remove Vocals, Keep the Music",
   description:
-    "Make a karaoke track from any song: the AI karaoke maker removes the vocals and keeps the full band. Start with the $2.90 Trial Pack — 15 minutes, one-time payment, MP3 or WAV.",
+    "Make a karaoke track from any song: the AI karaoke maker removes the vocals and keeps the band. Start with the $2.90 Trial Pack — 15 minutes, one-time payment, MP3 downloads.",
   path: "/karaoke-maker",
 });
 
@@ -13,7 +13,7 @@ const data: ToolPageData = {
   crumb: "Karaoke maker",
   title: "Karaoke Maker — Remove Vocals, Keep the Music",
   description:
-    "Make a karaoke track from any song: the AI karaoke maker removes the vocals and keeps the full band. Start with the $2.90 Trial Pack — 15 minutes, one-time payment, MP3 or WAV.",
+    "Make a karaoke track from any song: the AI karaoke maker removes the vocals and keeps the band. Start with the $2.90 Trial Pack — 15 minutes, one-time payment, MP3 downloads.",
   h1: "Karaoke Maker — Remove Vocals, Keep the Music",
   badge: "Karaoke track maker · $2.90 trial",
   intro: [
@@ -21,12 +21,12 @@ const data: ToolPageData = {
     "Unlike karaoke videos on streaming sites, you are not limited to the songs someone else chose to produce. Any track you have the rights to use can become your backing track, in its original key and arrangement. Runs are paid — the one-time $2.90 Trial Pack covers 15 minutes.",
   ],
   toolCta: "Make my karaoke track",
-  quickFacts: ["Any song, original key", "Full band preserved", "MP3 320 or WAV", "$2.90 trial · 15 min"],
+  quickFacts: ["Any song, original key", "Full band preserved", "MP3 320 downloads", "$2.90 trial · 15 min"],
   sections: [
     {
       h2: "Make a karaoke track from any song",
       paragraphs: [
-        "The workflow is the same as any vocal removal: upload the song, let the AI separate the vocal from the instruments, and download the instrumental. What makes it a karaoke track is the result — the full arrangement without the singer, at the original tempo and key.",
+        "The workflow is the same as any vocal removal: upload the song, let the AI separate the vocal from the instruments, and use the drum, bass and other stems as your karaoke backing mix. The result keeps the original tempo and key, minus the singer.",
         "Because the model separates rather than filters, the backing track keeps its drums, bass, guitars and stereo image. It sounds like the record with the vocal muted, not like a thin, hollow version of the song. For most pop, rock, country and hip-hop tracks, that is close enough to sing over at home, at a party or in a rehearsal room.",
       ],
     },
@@ -37,7 +37,7 @@ const data: ToolPageData = {
         "Backing vocals are the one caveat. Harmonies and backing vocals are part of the vocals stem, so they are removed along with the lead. That is usually what karaoke singers want — but if a song relies on a call-and-response backing vocal, you may prefer to keep a little of the original vocal at low volume in your mix.",
       ],
       bullets: [
-        "Lead vocal removed, full instrumental kept.",
+        "Lead vocal removed; drums, bass and other kept.",
         "Original tempo, key and arrangement — no re-recording.",
         "Backing vocals and harmonies are removed with the vocal stem.",
         "Stereo image and low end preserved by AI separation.",
@@ -47,7 +47,7 @@ const data: ToolPageData = {
     {
       h2: "How to make a karaoke version in three steps",
       paragraphs: [
-        "First, buy the $2.90 Trial Pack — 15 minutes, one-time payment, no subscription. Then upload the song with the tool at the top of this page. The AI model separates the mix into vocals and instrumental, and a typical three-minute track is finished in around a minute. Download the instrumental — that file is your karaoke backing track.",
+        "First, buy the $2.90 Trial Pack — 15 minutes, one-time payment, no subscription. Then upload the song with the tool at the top of this page. The AI model separates the mix into four stems, and a typical three-minute track is finished in around a minute. Download the drum, bass and other stems and use them as your karaoke backing mix.",
         "If you also want the acapella for harmony practice, it is in the same download. Every paid run returns drums and bass too, which is useful if you want to build a custom arrangement or change the energy of a section.",
       ],
     },
@@ -68,29 +68,29 @@ const data: ToolPageData = {
     {
       h2: "Recording vocals over your karaoke track",
       paragraphs: [
-        "Once you have the instrumental, load it into any recording app and add a vocal track. Use headphones so the backing track does not bleed into your microphone, and record a few takes before choosing one. Most phones and laptops are good enough for a practice recording; for a release, use a proper mic and interface.",
-        "If the song is in the wrong key for your voice, transpose the instrumental in your DAW. Because the backing track is a normal audio file, any pitch-shifting tool will work — a semitone or two up or down usually sounds natural.",
+        "Once you have the backing parts, load them into any recording app and add a vocal track. Use headphones so the backing mix does not bleed into your microphone, and record a few takes before choosing one. Most phones and laptops are good enough for a practice recording; for a release, use a proper mic and interface.",
+        "If the song is in the wrong key for your voice, transpose the stems in your DAW. Because each stem is a normal MP3 file, any pitch-shifting tool will work — a semitone or two up or down usually sounds natural.",
       ],
       bullets: [
         "Use headphones to stop the backing track bleeding into the mic.",
         "Record several takes and comp the best lines.",
-        "Transpose the instrumental if the key does not suit your range.",
+        "Transpose the stems if the key does not suit your range.",
         "Export at 44.1kHz or higher if you plan to publish.",
       ],
       bulletsColumns: 2,
     },
     {
-      h2: "Karaoke, instrumental and acapella: what's the difference",
+      h2: "Karaoke, vocal-free mixes and acapella: what's the difference",
       paragraphs: [
-        "A karaoke track and an instrumental are practically the same thing: the song without the lead vocal. An acapella is the opposite — the vocal without the instruments. Stems are the individual parts that make all of this possible.",
-        "One upload returns all of it: the instrumental for karaoke, the vocals stem for harmony practice or remix, and the drums and bass for production. That is the advantage of stem separation over a single-purpose karaoke tool.",
+        "A karaoke track and a vocal-free mix are practically the same thing: the song without the lead vocal. An acapella is the opposite — the vocal without the instruments. Stems are the individual parts that make all of this possible.",
+        "One upload returns all of it: the drum, bass and other stems for your karaoke mix, the vocals stem for harmony practice or remix, and the parts for production. That is the advantage of stem separation over a single-purpose karaoke tool.",
       ],
     },
   ],
   faqs: [
     {
       q: "Is there a free karaoke maker here?",
-      a: "No. There is no free-of-charge allowance: every separation costs GPU time, so every run is paid. The $2.90 Trial Pack is the cheapest entry point — 15 minutes, one-time payment, about five three-minute songs — and it returns the instrumental plus the other stems.",
+      a: "No. There is no free-of-charge allowance: every separation costs GPU time, so every run is paid. The $2.90 Trial Pack is the cheapest entry point — 15 minutes, one-time payment, about five three-minute songs — and it returns all four separated stems.",
     },
     {
       q: "Can I make a karaoke version of any song?",
@@ -102,7 +102,7 @@ const data: ToolPageData = {
     },
     {
       q: "Can I change the key of my karaoke track?",
-      a: "Yes — download the instrumental and transpose it in any DAW or audio editor. The download is a normal MP3 or WAV file, so any pitch-shifting tool works.",
+      a: "Yes — download the stems and transpose them in any DAW or audio editor. The downloads are normal MP3 files, so any pitch-shifting tool works.",
     },
     {
       q: "Can I use the karaoke track at an event or online?",
@@ -110,7 +110,7 @@ const data: ToolPageData = {
     },
     {
       q: "What download format do I get?",
-      a: "Every paid run delivers MP3 320kbps and WAV — the Trial Pack included. WAV is the better choice if you plan to edit, transpose or record over the track.",
+      a: "Every paid run delivers MP3 320 files — the Trial Pack included. MP3 320 is enough for practice, transposition and recording over the track.",
     },
   ],
   related: [
@@ -122,7 +122,7 @@ const data: ToolPageData = {
     {
       href: "/remove-vocals-from-song",
       label: "Remove vocals from a song",
-      blurb: "Compare the AI method with manual phase cancellation and official instrumentals.",
+      blurb: "Compare the AI method with manual phase cancellation and official vocal-free versions.",
     },
     {
       href: "/vocal-remover-online",
@@ -132,7 +132,7 @@ const data: ToolPageData = {
   ],
   finalCta: {
     title: "Turn your song into a karaoke track",
-    body: "Buy the $2.90 Trial Pack, upload a track and download the instrumental. 15 minutes, one-time payment, original key and arrangement.",
+    body: "Buy the $2.90 Trial Pack, upload a track and download the four separated stems. 15 minutes, one-time payment, original key and arrangement.",
   },
 };
 

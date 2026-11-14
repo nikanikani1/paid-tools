@@ -1,0 +1,44 @@
+# PortraitLab (headshotsnap.com)
+
+> AI professional headshot generator. Upload 3–8 selfies, get studio-style professional headshots. Paid service — there is no free tier and no free trial.
+
+## What it does
+
+- Generates professional headshots from your own selfies.
+- Styles: LinkedIn / Corporate, Creative, Actor / Casting, Medical / Clinic, Real Estate.
+- Input: 3–8 selfies; image files (JPEG, PNG, WebP, HEIC).
+- Output: downloadable headshot image files. Generation starts only after the order is paid.
+- Faces: your selfies are used to generate your own headshots for the order; see /privacy for retention and training details.
+
+## Pricing (USD, one-time; no subscription)
+
+| Package | Price | Headshots | Included |
+| --- | --- | --- | --- |
+| Sample Pack | $9 | 5 | 1 style, 1 background |
+| Starter | $35 | 40 | 2 outfits, 2 backgrounds, 1 free redo |
+| Professional | $45 | 60 | 4 outfits, 4 backgrounds, 1 free redo |
+| Executive | $75 | 100 | all outfits, all backgrounds, enhanced resolution |
+
+- No free tier: every set is generated after payment.
+- Redo: pricing lists 1 free redo for paid packages from Starter up; see /pricing for the current terms.
+
+## Limits and behaviour
+
+- Upload 3–8 selfies per order; more or fewer may be rejected by the form.
+- Results are AI-generated images; likeness accuracy and background rendering can vary between runs.
+- Payment is handled by Waffo (card). Refunds and data handling are described on /refund and /privacy.
+
+## Site
+
+- Homepage: https://headshotsnap.com/
+- Pricing: https://headshotsnap.com/pricing
+- How it works: https://headshotsnap.com/how-it-works
+- Headshot pages: /ai-headshot-generator, /ai-professional-headshot, /linkedin-headshot, /doctor-headshots, /real-estate-agent-headshots, /team-headshots, /free-ai-headshot-generator
+  - Note: the /free-ai-headshot-generator page is a landing page name; generation still requires a paid order.
+- Sitemap: https://headshotsnap.com/sitemap.xml
+- Contact: support@headshotsnap.com
+
+## Accuracy notes
+
+- AI headshots are stylised reconstructions of your selfies, not photographs of a real studio session.
+- For medical / clinical or real-estate use, follow your organisation's photo and disclosure rules.

@@ -25,7 +25,7 @@ export const metadata: Metadata = buildMetadata({
 const FAQ = [
   {
     q: "What is the minimum team size?",
-    a: "Ten people. Below ten, individual packages are cheaper and simpler — each person can order their own 40-image set. At ten or more we run one shared style guide, collect all selfies in a single intake, and invoice the company once.",
+    a: "Ten people. Below ten, individual packages are cheaper and simpler — each person can order their own Sample Pack. At ten or more we run one shared style guide, collect all selfies in a single intake, and invoice the company once.",
   },
   {
     q: "How does the process work for a team?",
@@ -285,7 +285,7 @@ export default function TeamHeadshotsPage() {
         links={[
           { href: "/doctor-headshots", label: "Doctor & clinic headshots", body: "Practitioner portraits for medical directories." },
           { href: "/ai-professional-headshot", label: "AI professional headshot", body: "Individual business presets and use cases." },
-          { href: "/pricing", label: "Individual pricing", body: "40 / 60 / 100 image packages from $35." },
+          { href: "/pricing", label: "Individual pricing", body: "$9 Sample Pack on sale; larger packages coming soon." },
           { href: "/how-it-works", label: "How it works", body: "Quality gate, identity pass and delivery." },
           { href: "/privacy", label: "Privacy", body: "How team photo data is handled and deleted." },
           { href: "/refund", label: "Redo & refund", body: "Per-seat redo and refund terms." },

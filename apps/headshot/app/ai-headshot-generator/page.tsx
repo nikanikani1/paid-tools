@@ -27,7 +27,7 @@ import {
 export const metadata: Metadata = buildMetadata({
   title: "AI Headshot Generator — Paid Headshots from Selfies, from $9",
   description:
-    "An AI headshot generator that runs a quality gate, identity pass and face-merge stage on your selfies. Paid only — start with the $9 Sample Pack (5 images), then 40 for $35. No free tier.",
+    "An AI headshot generator that runs a quality gate, identity pass and face-merge stage on your selfies. Paid only — the $9 Sample Pack (5 images) is the only package on sale today; larger packages are coming soon. No free tier.",
   path: "/ai-headshot-generator",
   keywords: [
     "ai headshot generator",
@@ -39,7 +39,7 @@ export const metadata: Metadata = buildMetadata({
 });
 
 const DESCRIPTION =
-  "An AI headshot generator for professional headshots: upload selfies, get 5 paid sample images for $9 or a full 40/60/100-image set. Quality gate, identity pass and face-merge included.";
+  "An AI headshot generator for professional headshots: upload selfies, get 5 paid sample images for $9. The 40, 60 and 100-image packages are coming soon. Quality gate, identity pass and face-merge included.";
 
 const FAQ = [
   {
@@ -60,7 +60,7 @@ const FAQ = [
   },
   {
     q: "How long does generation take?",
-    a: "The 5-image Sample Pack finishes in well under a minute of generation time; 40 images take about two minutes and 100 images closer to four. The order page reports progress live and you can download individual files or a ZIP.",
+    a: "The 5-image Sample Pack finishes in well under a minute of generation time. The order page reports progress live and you can download individual files or a ZIP. Delivery times for larger packages will be published when they open.",
   },
   {
     q: "What if the AI headshots do not look like me?",
@@ -73,10 +73,10 @@ const FAQ = [
 ];
 
 const COMPARISON = [
-  ["Cost", "Studio day rate + retouching, often several hundred dollars", "From $9 for 5 headshots; $35 for 40"],
+  ["Cost", "Studio day rate + retouching, often several hundred dollars", "From $9 for a 5-image Sample Pack"],
   ["Time to delivery", "Booking, shoot and retouching: one to three weeks", "Minutes after upload"],
-  ["Number of frames", "A handful of selects you chose on the day", "40–100 final images to choose from"],
-  ["Style variety", "One look per session, more outfits cost more", "Five presets, 2–4 backdrops on larger packages"],
+  ["Number of frames", "A handful of selects you chose on the day", "Five final images on the Sample Pack; larger sets coming soon"],
+  ["Style variety", "One look per session, more outfits cost more", "Five presets, one backdrop on the Sample Pack"],
   ["Reshoot", "New booking, new cost", "One free redo within 48 hours"],
   ["Best for", "Large print, brand campaigns, art direction", "LinkedIn, résumés, team pages, directories"],
 ];
@@ -126,7 +126,7 @@ export default function AiHeadshotGeneratorPage() {
             <p>
               It is a paid tool: every set is generated after payment. The entry point is the one-time{" "}
               {SAMPLE_PACK.price} dollar Sample Pack — {SAMPLE_PACK.images} headshots, one style, no watermark, one free
-              redo — so you can judge the generator on your own face before buying a 40, 60 or 100-image set.
+              redo — so you can judge the generator on your own face before larger packages open.
             </p>
           </div>
           <div className="sans mt-6">
@@ -158,7 +158,7 @@ export default function AiHeadshotGeneratorPage() {
           <p>
             A filter transforms an existing photo: smooth skin, brighten, blur the background, relight. The identity is
             preserved because the original pixels are still there, but so is the original pose, expression and framing.
-            You cannot get a forty-image professional set from a filter, because a filter has only one frame to work
+            You cannot get a large professional set from a filter, because a filter has only one frame to work
             with.
           </p>
           <h3>2. Face swap</h3>
@@ -173,7 +173,7 @@ export default function AiHeadshotGeneratorPage() {
             This is what we run. The model takes a small set of your photos, builds an identity representation and
             generates entirely new frames conditioned on it — new pose, new light, new expression, new background. Then
             a second pass compares the generated face with your originals and merges your specific features back in, so
-            the fifth and fortieth images still look like the same person. That second stage is the difference between a
+            the fifth and later images still look like the same person. That second stage is the difference between a
             demo and a deliverable.
           </p>
         </Prose>
@@ -193,7 +193,7 @@ export default function AiHeadshotGeneratorPage() {
             },
             {
               title: "Choose a preset and package",
-              body: "LinkedIn/corporate, creative, actor, medical or real-estate presets, each fixing backdrop, wardrobe level, lighting direction and crop. Pay for the $9 Sample Pack or a 40/60/100-image set.",
+              body: "LinkedIn/corporate, creative, actor, medical or real-estate presets, each fixing backdrop, wardrobe level, lighting direction and crop. The $9 Sample Pack is the only package on sale today; larger packages are coming soon.",
               detail: "One-time payment; the preset can be changed on the free redo.",
             },
             {
@@ -253,7 +253,7 @@ export default function AiHeadshotGeneratorPage() {
       <Section
         eyebrow="Presets"
         title="Style presets the generator can render"
-        intro={<p>Every preset is available in every package. On the Sample Pack you pick one; the free redo can switch it.</p>}
+        intro={<p>Every preset is available on the Sample Pack. You pick one; the free redo can switch it.</p>}
       >
         <StyleTable styles={STYLE_DETAILS} />
       </Section>
@@ -263,8 +263,8 @@ export default function AiHeadshotGeneratorPage() {
         title="Paid only — the $9 Sample Pack is the entry point"
         intro={
           <p>
-            Paid only, no watermark. Four one-time packages, same pipeline: 5 images for $9, then
-            40 for $35, 60 for $45 and 100 for $75.
+            Paid only, no watermark. The $9 five-image Sample Pack is the only package on sale today; the 40, 60 and 100-image packages are
+            coming soon.
           </p>
         }
       >
@@ -301,7 +301,7 @@ export default function AiHeadshotGeneratorPage() {
           {
             href: "/pricing",
             label: "Pricing",
-            body: "$9 Sample Pack, $35 / $45 / $75 packages, redo and refund policy.",
+            body: "$9 Sample Pack, coming-soon larger packages, redo and refund policy.",
           },
           {
             href: "/refund",
@@ -313,7 +313,7 @@ export default function AiHeadshotGeneratorPage() {
 
       <CtaBand
         title="Run the generator on your own face"
-        body={`Every set is generated after payment: start with the $${SAMPLE_PACK.price} Sample Pack (${SAMPLE_PACK.images} headshots), then scale to 40, 60 or 100 images if it works.`}
+        body={`Every set is generated after payment: start with the $${SAMPLE_PACK.price} Sample Pack (${SAMPLE_PACK.images} headshots) — the only package on sale today. Larger packages are coming soon.`}
         cta="Start with the $9 Sample Pack"
       />
       <StudioComparisonSection title="AI headshot generator vs a studio shoot" />

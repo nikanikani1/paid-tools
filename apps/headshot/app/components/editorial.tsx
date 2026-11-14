@@ -42,7 +42,7 @@ export function StudioComparison({ defaultTitle = "Studio shoot vs phone selfie 
       dimension: "Cost",
       studio: "A studio day rate plus retouching; more outfits usually cost more",
       selfie: "Free, but the result is only as good as the light and the crop",
-      ours: "One-time packages from $9 (5 images) to $75 (100 images)",
+      ours: "One-time $9 Sample Pack (5 images); larger packages coming soon",
     },
     {
       dimension: "Time",
@@ -60,7 +60,7 @@ export function StudioComparison({ defaultTitle = "Studio shoot vs phone selfie 
       dimension: "Frames delivered",
       studio: "A handful of selects chosen on the day",
       selfie: "One or two usable frames at best",
-      ours: "5 to 100 final images, all of the same person",
+      ours: "5 final images in the $9 Sample Pack; larger sets coming soon",
     },
     {
       dimension: "Fails when",

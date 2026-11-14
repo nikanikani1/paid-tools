@@ -44,8 +44,13 @@ export function ToolDemo({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [checkoutRequired, setCheckoutRequired] = useState<string | null>(null);
+  const [activeOrderId, setActiveOrderId] = useState<string | null>(null);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
   const mounted = useRef(true);
+
+  useEffect(() => {
+    setActiveOrderId(paidOrderId());
+  }, []);
 
   const stop = useCallback(() => {
     if (timer.current) clearInterval(timer.current);
@@ -125,7 +130,7 @@ export function ToolDemo({
   function chooseFile(next: File | null | undefined) {
     if (!next) return;
     if (!next.type.startsWith("audio/") && !/\.(mp3|wav|m4a|flac|ogg|aac)$/i.test(next.name)) {
-      setError("Please choose an audio file (MP3, WAV, M4A, FLAC, OGG).");
+      setError("Please choose an audio file (MP3, M4A, FLAC, OGG).");
       return;
     }
     if (next.size > MAX_SIZE) {
@@ -188,7 +193,7 @@ export function ToolDemo({
             {file ? file.name : "Drop an audio file here, or click to choose"}
           </span>
           <span className="mt-2 text-xs text-slate-500">
-            {file ? `${(file.size / (1024 * 1024)).toFixed(1)} MB · ready to separate` : "MP3, WAV, M4A, FLAC · max 100MB / 10 min"}
+            {file ? `${(file.size / (1024 * 1024)).toFixed(1)} MB · ready to separate` : "MP3, M4A, FLAC, OGG · max 100MB / 10 min per track"}
           </span>
           <input
             type="file"
@@ -222,9 +227,14 @@ export function ToolDemo({
           <div role="alert" className="mt-3 rounded-xl border border-violet-400/40 bg-violet-500/10 px-4 py-3">
             <p className="text-sm font-semibold text-violet-100">Checkout required</p>
             <p className="mt-1 text-sm leading-relaxed text-slate-300">{checkoutRequired}</p>
-            <Link href="/pricing#trial" className="btn btn-primary btn-sm mt-3">
-              Buy the $2.90 Trial Pack
-            </Link>
+            <div className="mt-3 flex flex-wrap items-center gap-3">
+              <Link href="/pricing#trial" className="btn btn-primary btn-sm">
+                Buy the $2.90 Trial Pack
+              </Link>
+              <Link href="/orders" className="text-xs text-cyan-300 underline underline-offset-2 hover:text-cyan-200">
+                Already paid? Recover your order →
+              </Link>
+            </div>
           </div>
         )}
 
@@ -271,6 +281,17 @@ export function ToolDemo({
                 Each stem opens in a new tab so this page stays intact; download the rest from here.
               </p>
             )}
+            {job.files.length > 0 && activeOrderId && (
+              <p className="mt-2 text-[11px] text-slate-500">
+                Looking for every download from this order, or an expired link?{" "}
+                <Link
+                  href={`/orders?order=${encodeURIComponent(activeOrderId)}`}
+                  className="text-cyan-300 underline underline-offset-2 hover:text-cyan-200"
+                >
+                  Open the order page →
+                </Link>
+              </p>
+            )}
             {done && (
               <button
                 type="button"
@@ -288,6 +309,12 @@ export function ToolDemo({
         )}
       </form>
       <p className="mt-4 text-center text-xs text-slate-500">{note}</p>
+      <p className="mt-2 text-center text-[11px] text-slate-600">
+        Already paid?{" "}
+        <Link href="/orders" className="text-cyan-300/80 underline underline-offset-2 hover:text-cyan-200">
+          Recover your order and download links →
+        </Link>
+      </p>
     </div>
   );
 }

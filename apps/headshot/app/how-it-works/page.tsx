@@ -40,12 +40,12 @@ const STEPS = [
   },
   {
     title: "Face merge pass",
-    body: "A second pass compares the generated face with your original photos and pulls your facial features back into the output. This is what keeps a forty-image set recognisable instead of drifting into a generic person.",
+    body: "A second pass compares the generated face with your original photos and pulls your facial features back into the output. This is what keeps a multi-image set recognisable instead of drifting into a generic person.",
     detail: "This stage is why the set holds up at 20 images, not just the first one.",
   },
   {
     title: "Normalisation and export",
-    body: "Backgrounds are flattened to the preset tone, crops aligned, and files exported as 1024px JPG — or the enhanced resolution set on the top tier.",
+    body: "Backgrounds are flattened to the preset tone, crops aligned, and files exported as 1024px JPG — an enhanced-resolution set will be available when the larger packages open.",
     detail: "Per-image cost and generation time are fixed, so package price does not change with what you upload.",
   },
   {
@@ -58,7 +58,7 @@ const STEPS = [
 const FAQ = [
   {
     q: "How long does generation actually take?",
-    a: "Roughly two minutes for 40 images, three minutes for 60 and four minutes for 100 at normal queue depth. The page shows live percentage progress while the set renders.",
+    a: "The 5-image Sample Pack finishes in well under a minute of generation time. Larger packages will publish their timings when they open. The page shows live percentage progress while the set renders.",
   },
   {
     q: "What happens if a photo fails the quality gate?",
@@ -97,7 +97,7 @@ export default function HowItWorksPage() {
         data={howToJsonLd({
           name: "How to generate professional AI headshots from selfies",
           description:
-            "Upload five selfies, choose a style preset and download 40 to 100 professional headshots.",
+            "Upload five selfies, choose a style preset and download a paid set of professional headshots (the $9 Sample Pack is the entry point).",
           steps: STEPS.map((step) => ({ name: step.title, text: step.body })),
         })}
       />
@@ -237,7 +237,7 @@ export default function HowItWorksPage() {
       <Section
         eyebrow="Presets"
         title="The five style presets"
-        intro={<p>Every preset is available in every package; the preset sets backdrop, wardrobe level, light direction and crop.</p>}
+        intro={<p>Every preset is available on the Sample Pack; the preset sets backdrop, wardrobe level, light direction and crop.</p>}
       >
         <div className="sans grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {STYLES.map((style) => (
@@ -257,7 +257,7 @@ export default function HowItWorksPage() {
           { href: "/", label: "Professional headshots", body: "Start a paid order with the $9 Sample Pack." },
           { href: "/ai-headshot-generator", label: "AI headshot generator", body: "The generator behind the pipeline, explained." },
           { href: "/free-ai-headshot-generator", label: "Free vs paid headshot tools", body: "What free generators give you, and why we charge from $9." },
-          { href: "/pricing", label: "Pricing", body: "$9 sample, then $35 / $45 / $75 one-time packages." },
+          { href: "/pricing", label: "Pricing", body: "$9 Sample Pack on sale; larger packages coming soon." },
           { href: "/privacy", label: "Privacy policy", body: "Processors, retention and deletion." },
           { href: "/terms", label: "Terms of service", body: "Acceptable use and licence terms." },
           { href: "/refund", label: "Redo & refund", body: "48-hour redo and refund conditions." },

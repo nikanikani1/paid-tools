@@ -157,24 +157,27 @@ export function PlanCards() {
     <div className="sans grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
       {PLANS.map((plan) => {
         const isEntry = plan.images <= 5;
+        // Truth guard: only the $9 Sample Pack can be delivered today. Larger
+        // packages stay visible for comparison but cannot be ordered yet.
+        const purchasable = isEntry;
         return (
           <div
             key={plan.id}
             className={`flex flex-col rounded-2xl border bg-white/70 p-6 ${
-              plan.popular ? "border-orange-500 shadow-[0_1px_0_0_rgba(194,65,12,0.2)]" : "border-stone-300"
+              purchasable ? "border-orange-500 shadow-[0_1px_0_0_rgba(194,65,12,0.2)]" : "border-stone-300"
             }`}
           >
             <div className="flex items-baseline justify-between gap-2">
               <h3 className="text-lg font-semibold">{plan.name}</h3>
-              {plan.popular ? (
-                <span className="rounded-full bg-orange-700 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-white">
-                  Popular
-                </span>
-              ) : isEntry ? (
+              {purchasable ? (
                 <span className="rounded-full border border-orange-400 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-orange-800">
                   Entry
                 </span>
-              ) : null}
+              ) : (
+                <span className="rounded-full border border-stone-400 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-stone-600">
+                  Coming soon
+                </span>
+              )}
             </div>
             <p className="mt-4 text-4xl font-extrabold">
               ${plan.price}
@@ -193,18 +196,25 @@ export function PlanCards() {
                 </li>
               ))}
             </ul>
-            <BuyButton
-              planId={plan.id}
-              className="mt-6 w-full rounded-xl bg-orange-700 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-orange-600"
-            >
-              Start with {plan.name}
-            </BuyButton>
+            {purchasable ? (
+              <BuyButton
+                planId={plan.id}
+                className="mt-6 w-full rounded-xl bg-orange-700 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-orange-600"
+              >
+                Start with {plan.name}
+              </BuyButton>
+            ) : (
+              <div className="mt-6 w-full cursor-not-allowed rounded-xl border border-stone-300 bg-stone-100 px-4 py-2.5 text-center text-sm font-semibold text-stone-500">
+                Coming soon — not on sale yet
+              </div>
+            )}
           </div>
         );
       })}
       <p className="text-xs text-stone-500 sm:col-span-2 xl:col-span-4">
-        Paid only: every order is generated after payment, starting at the $9 Sample Pack (5 headshots). There is no
-        unpaid sample render. All packages are one-time payments with a commercial licence and one free redo within
+        Paid only: every order is generated after payment. Today the only package on sale is the $9 Sample Pack (5
+        headshots); the 40, 60 and 100-image packages are coming soon and cannot be ordered yet — their cards are shown
+        for comparison only. The Sample Pack is a one-time payment with a commercial licence and one free redo within
         48 hours.{" "}
         <Link href="/pricing" className="text-orange-700 underline underline-offset-2">
           Compare packages
@@ -328,7 +338,7 @@ export function RelatedLinks({
 
 export function CtaBand({
   title = "Ready to stop using the photo from 2015?",
-  body = "Order the $9 Sample Pack (5 headshots) to test the pipeline on your own face, then scale up to 40, 60 or 100 images. One-time payment, one free redo included.",
+  body = "Order the $9 Sample Pack (5 headshots) to test the pipeline on your own face. It is the only package on sale today — the 40, 60 and 100-image packages are coming soon. One-time payment, one free redo included.",
   href = "/#generator",
   cta = "Start with the $9 Sample Pack",
 }: {

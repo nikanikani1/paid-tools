@@ -44,7 +44,7 @@ const SECTIONS: Section[] = [
   {
     h2: "How the separation model works",
     paragraphs: [
-      "The model is htdemucs, part of the Demucs family originally developed by Meta AI and released under an MIT license. It is a hybrid transformer: it analyses both the raw waveform and a time-frequency representation of the audio. The waveform path preserves transients — drum hits, vocal consonants, plosive sounds — while the spectral path makes sustained and overlapping sources easier to tell apart.",
+      "The model is htdemucs, part of the Demucs family originally developed by Meta AI and released under an MIT license. It is a hybrid transformer: it analyses both the raw audio signal and a time-frequency representation of the audio. The audio-signal path preserves transients — drum hits, vocal consonants, plosive sounds — while the spectral path makes sustained and overlapping sources easier to tell apart.",
       "The network is trained to estimate four sources: vocals, drums, bass and other. During training, those four estimates are summed back together and compared with the original mix, so the model learns a decomposition that reconstructs the song accurately while keeping each stem usable on its own. The 'other' stem carries guitars, keys, strings, synths and background textures.",
       "We do not train the model on your uploads and we do not fine-tune a model per customer. Every user runs the same pre-trained model, which is why results are consistent and why your audio never influences anyone else's separation.",
     ],
@@ -53,10 +53,10 @@ const SECTIONS: Section[] = [
     h2: "Why separation is not perfect — and what to expect",
     paragraphs: [
       "Stem separation is an estimation problem, not a decoding problem. When a vocal and a guitar occupy the same frequencies at the same moment, the model has to guess how much energy belongs to each. Modern models are good at this, but not perfect, and the artifacts are predictable.",
-      "The most common issues are vocal bleed in the instrumental, a slightly underwater quality on cymbals, and reduced clarity in dense mixes. Mono recordings, live bootlegs and heavily compressed sources are the hardest cases. If a result is not clean enough, try a higher-quality source file, trim to the section you need, or use the high-quality model available on Pro.",
+      "The most common issues are vocal bleed in the drum and bass stems, a slightly underwater quality on cymbals, and reduced clarity in dense mixes. Mono recordings, live bootlegs and heavily compressed sources are the hardest cases. If a result is not clean enough, try a higher-quality source file, or trim to the section you need.",
     ],
     bullets: [
-      "Vocal bleed — some vocal remains in the instrumental at low level.",
+      "Vocal bleed — some vocal remains in the other stems at low level.",
       "Cymbal smearing — high-frequency artifacts in dense mixes.",
       "Live recordings — bleed between stems because the mics captured everything.",
       "Mono masters — no stereo information for the model to use.",
@@ -87,7 +87,7 @@ const SECTIONS: Section[] = [
   {
     h2: "The technology behind the site",
     paragraphs: [
-      "The front end is a Next.js application rendered on Cloudflare's edge network. Audio is stored in Cloudflare R2 and processed by a Demucs model hosted on Replicate, with job state managed in a Postgres database. Payments, when you upgrade, are handled by Waffo as merchant of record, which means they take care of sales tax and card processing.",
+      "The front end is a Next.js application rendered on Cloudflare's edge network. Audio is stored in Cloudflare R2 and processed by a Demucs model hosted on Replicate, with job state managed in a Postgres database. Payments are handled by Waffo as merchant of record, which means they take care of sales tax and card processing.",
       "The goal of this architecture is boring reliability: no GPU cluster to maintain, no queue server to babysit, and a processing path that can be swapped to a different model when a better one becomes available. If you want the longer version of any part of this page, the blog will cover model comparisons and quality tests as we publish them.",
     ],
   },
@@ -96,11 +96,11 @@ const SECTIONS: Section[] = [
 const FAQS: FaqItem[] = [
   {
     q: "Can I try before paying?",
-    a: "No. There is no free-of-charge processing tier. The entry point is the one-time $2.90 Trial Pack: 15 minutes, 4 stems, WAV + MP3, no subscription. Every run is paid because every run costs GPU time.",
+    a: "No. There is no free-of-charge processing tier. The entry point is the one-time $2.90 Trial Pack: 15 minutes, 4 stems, MP3 320 downloads, one-time payment. Every run is paid because every run costs GPU time.",
   },
   {
     q: "How long does a separation take?",
-    a: "A typical three-minute song takes around 60–90 seconds including queue time. Longer tracks and the high-quality model take proportionally longer. Paid plans include a priority queue.",
+    a: "A typical three-minute song takes around 60–90 seconds including queue time. Longer tracks take proportionally longer. Paid jobs are processed in the order they arrive.",
   },
   {
     q: "Is my audio used to train the AI model?",
@@ -108,7 +108,7 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "Which model do you use?",
-    a: "htdemucs, a Demucs-family model developed by Meta AI and released under an MIT license. The Pro plan adds a 6-stem variant. We do not train custom models per user.",
+    a: "htdemucs, a Demucs-family model developed by Meta AI and released under an MIT license. We do not train custom models per user.",
   },
   {
     q: "Can I delete my files sooner?",

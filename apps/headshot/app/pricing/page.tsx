@@ -5,9 +5,9 @@ import { SAMPLE_PACK, PLANS } from "../lib/site";
 import { buildMetadata, breadcrumbJsonLd, faqPageJsonLd, productJsonLd } from "../lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Pricing — $9 Sample Pack, then 40 for $35, 60 for $45, 100 for $75",
+  title: "Pricing — $9 Sample Pack (5 headshots), larger packages coming soon",
   description:
-    "AI headshot pricing with no free tier: a $9 five-image Sample Pack, then $35 for 40 headshots, $45 for 60 and $75 for 100. One-time payment, commercial licence, one free redo.",
+    "AI headshot pricing with no free tier: the $9 five-image Sample Pack is the only package on sale today. The 40, 60 and 100-image packages are coming soon. One-time payment, commercial licence, one free redo.",
   path: "/pricing",
   keywords: [
     "ai headshot pricing",
@@ -21,19 +21,19 @@ export const metadata: Metadata = buildMetadata({
 const FAQ = [
   {
     q: "Can I try it without paying?",
-    a: "No. Payment comes first: there is no complimentary tier and no sample render before checkout. The cheapest order is the $9 Sample Pack: five headshots, one style, no watermark, commercial licence and one free redo. We charge from the first image because every generation costs GPU time and we do not fund unpaid runs with ads or by trading your photo data.",
+    a: "No. Payment comes first: there is no complimentary tier and no sample render before checkout. The only package on sale today is the $9 Sample Pack: five headshots, one style, no watermark, commercial licence and one free redo. We charge from the first image because every generation costs GPU time and we do not fund unpaid runs with ads or by trading your photo data.",
   },
   {
     q: "Is this a subscription?",
-    a: "No. Each package is a single one-time payment for one order. There is no recurring charge, no credit balance that expires and no auto-renewal. You can buy a second package later if you want a different style, but nothing renews on its own.",
+    a: "No. Each package is a single one-time payment for one order. There is no recurring charge, no credit balance that expires and no auto-renewal. You can buy a second Sample Pack later if you want a different style, but nothing renews on its own.",
   },
   {
     q: "What exactly is included in a package?",
-    a: "The final images at the resolution listed for that tier, the style preset and backdrop options included, one free redo within 48 hours, a commercial licence for every delivered image, and 30 days of storage in your order so you can re-download. The Sample Pack is five images in one style with one backdrop.",
+    a: "Today only the Sample Pack can be ordered: five headshots in one style with one backdrop, one free redo within 48 hours, a commercial licence for every delivered image, and 30 days of storage in your order so you can re-download. The 40, 60 and 100-image packages are listed for comparison and are not on sale yet.",
   },
   {
     q: "How does the per-image price break down?",
-    a: "Sample Pack: $9 / 5 images = $1.80 per headshot. Starter: $35 / 40 = $0.88. Professional: $45 / 60 = $0.75. Executive: $75 / 100 = $0.75. The larger packages lower the per-image cost because the fixed part of an order — quality gate, identity pass, delivery — is shared across more images.",
+    a: "Sample Pack: $9 / 5 images = $1.80 per headshot, and that is the only package you can buy today. The larger tiers are listed for reference only — Starter: $35 / 40 = $0.88, Professional: $45 / 60 = $0.75, Executive: $75 / 100 = $0.75 — but they are coming soon and cannot be ordered yet.",
   },
   {
     q: "Do I pay again if I request a redo?",
@@ -45,7 +45,7 @@ const FAQ = [
   },
   {
     q: "Can I upgrade to a bigger package later?",
-    a: "Yes. Start with the $9 Sample Pack, then buy whichever package size you need. The pipeline and the style presets are identical, so a later order will match the sample as long as you upload the same source photos and pick the same preset.",
+    a: "Not today. Only the $9 Sample Pack is on sale; the 40, 60 and 100-image packages are coming soon and cannot be ordered yet. When they open, the pipeline and the style presets will be identical, so a later order will match the sample as long as you upload the same source photos and pick the same preset.",
   },
   {
     q: "What if the headshots do not look like me?",
@@ -63,6 +63,7 @@ const COMPARISON = [
   { label: "Delivery time", values: ["< 1 min", "~2 min", "~3 min", "~4 min"] },
   { label: "Price", values: ["$9", "$35", "$45", "$75"] },
   { label: "Per image", values: ["$1.80", "$0.88", "$0.75", "$0.75"] },
+  { label: "Availability", values: ["Available now", "Coming soon", "Coming soon", "Coming soon"] },
 ];
 
 export default function PricingPage() {
@@ -88,17 +89,24 @@ export default function PricingPage() {
           Paid only · no unpaid generation · from $9
         </p>
         <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
-          Pricing — ${SAMPLE_PACK.price} Sample Pack, then $35 / $45 / $75
+          Pricing — ${SAMPLE_PACK.price} Sample Pack is the only package on sale today
         </h1>
         <p className="sans mx-auto mt-4 max-w-3xl text-base leading-relaxed text-stone-700">
-          One-time payments, no subscription. The $9 Sample Pack (5 headshots) is the entry point; 40, 60 and 100-image
-          packages follow at a lower cost per image. Every paid order includes a commercial licence, one free redo
-          within 48 hours and 30 days of storage so you can download more than once.
+          One-time payments, no subscription. The ${SAMPLE_PACK.price} Sample Pack (5 headshots) is the entry point and
+          the only package you can order right now; the 40, 60 and 100-image packages are coming soon and are shown
+          for comparison only. Every paid order includes a commercial licence, one free redo within 48 hours and 30
+          days of storage so you can download more than once.
         </p>
       </section>
 
       <Section>
         <PlanCards />
+        <p className="sans mt-4 text-sm leading-relaxed text-stone-600">
+          Only the ${SAMPLE_PACK.price} Sample Pack (${SAMPLE_PACK.images} headshots) can be ordered today — its button
+          is the only live checkout on this page. The remaining package cards are marked{" "}
+          <span className="font-semibold">Coming soon</span> and have no checkout; their prices are published for
+          reference and will be confirmed when they open.
+        </p>
       </Section>
 
       <Section
@@ -106,8 +114,9 @@ export default function PricingPage() {
         title="Package comparison"
         intro={
           <p>
-            Same pipeline and the same style presets in all four tiers. The difference is volume, how many outfits and
-            backdrops are included, and the resolution of the delivered files.
+            The tiers share the same pipeline and style presets. Only the ${SAMPLE_PACK.price} Sample Pack is on sale
+            today; the larger packages are listed for comparison and marked{" "}
+            <span className="font-semibold">Coming soon</span>.
           </p>
         }
       >
@@ -120,7 +129,7 @@ export default function PricingPage() {
                 </th>
                 {PLANS.map((plan) => (
                   <th key={plan.id} scope="col" className="px-5 py-3 font-semibold">
-                    {plan.name} {plan.popular && <span className="text-orange-700">· popular</span>}
+                    {plan.name}
                   </th>
                 ))}
               </tr>
@@ -192,8 +201,9 @@ export default function PricingPage() {
           <p>
             Every package runs the same four-stage pipeline: a face quality gate on your uploads, identity-conditioned
             generation, a face-merge pass that pulls your original features back into the output, and a final
-            background-and-crop normalisation so the set looks like one shoot. The tier you buy changes how many final
-            images you receive, how many outfits and backdrops are included, and the resolution of the delivered files.
+            background-and-crop normalisation so the set looks like one shoot. The tier changes how many final images
+            you receive, how many outfits and backdrops are included, and the resolution of the delivered files — but
+            only the Sample Pack is on sale today.
           </p>
           <h3>Why a paid sample instead of a giveaway</h3>
           <p>
@@ -201,23 +211,23 @@ export default function PricingPage() {
             free set has to be funded somehow, and free face-photo pipelines tend to monetise the upload. Charging $9 for
             five images keeps the incentives simple — you pay once, you get five clean files with a commercial licence,
             and if the likeness misses you get a redo rather than a sales pitch. It also makes the sample a real signal:
-            the images you judge are produced by the same pipeline as the 100-image set.
+            the images you judge are produced by the same paid pipeline the larger packages will use.
           </p>
           <h3>Why fixed packages instead of a credit system</h3>
           <p>
             Credit systems are good for businesses that sell unpredictable usage; they are bad for a one-off purchase.
             Someone who needs a headshot for a new job does not want 120 credits with 40 used and 80 expiring in six
-            months. Four fixed packages keep the decision simple: sample it, then choose how many images you want to
-            choose from.
+            months. Fixed packages keep the decision simple: sample it, then choose how many images you want to choose
+            from when the larger tiers open.
           </p>
-          <h3>Which package most people buy</h3>
+          <h3>What comes after the Sample Pack</h3>
           <p>
-            The $9 Sample Pack is the entry point, and the 60-image package is the most common upgrade. Forty images is
-            usually enough for one good profile photo and a couple of spares; sixty gives you enough expressions and
-            wardrobe variety to rotate a profile photo seasonally, and it is the tier where outfit and backdrop options
-            open up to four each. The 100-image package is for people who need both a formal and a warm variant for
-            multiple channels — for example a founder who has a LinkedIn profile, a company About page, a conference
-            speaker card and a podcast page.
+            The 40, 60 and 100-image packages are being prepared and are not open for orders yet. When they open, the
+            difference will be volume and variety: more outfits and backdrops and a larger set to choose from. Forty
+            images is planned for one good profile photo plus spares; sixty adds expressions and wardrobe variety;
+            the 100-image package is for people who need both a formal and a warm variant across several channels — for
+            example a founder with a LinkedIn profile, a company About page, a conference speaker card and a podcast
+            page. None of these three can be bought today.
           </p>
           <h3>What the commercial licence covers</h3>
           <p>
@@ -229,9 +239,9 @@ export default function PricingPage() {
           <h3>Team and volume pricing</h3>
           <p>
             Orders of ten or more people are handled through the{" "}
-            <Link href="/team-headshots">team headshots</Link> flow, with a single style guide, one invoice and volume
-            pricing below the per-person list price. If you need more than 100 images for one person, buy two packages
-            — the pipeline is identical, so the sets will match.
+            <Link href="/team-headshots">team headshots</Link> flow, with a single style guide and one invoice. Volume
+            pricing for large sets is being finalised together with the larger packages; the only self-serve package on
+            sale today is the Sample Pack.
           </p>
         </Prose>
       </Section>
@@ -243,7 +253,7 @@ export default function PricingPage() {
       <CtaBand
         href="/#generator"
         title="Start with the $9 Sample Pack"
-        body="Five headshots, one style, no watermark, commercial licence and one free redo. Then scale to 40, 60 or 100 images if the sample works."
+        body="Five headshots, one style, no watermark, commercial licence and one free redo. It is the only package on sale today — the 40, 60 and 100-image packages are coming soon."
         cta="Start with the Sample Pack"
       />
     </main>

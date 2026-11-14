@@ -1,14 +1,13 @@
 import { LegalPage, legalMetadata, type LegalPageData } from "@/components/LegalPage";
-import { LEGAL_UPDATED } from "@/lib/seo";
 
 const data: LegalPageData = {
   slug: "/refund",
   crumb: "Refunds",
   title: "Refund Policy",
   description:
-    "StemSplit.ai refund policy: 14-day money-back guarantee on your first purchase — including the $2.90 Trial Pack — plus refunds for duplicate charges and failed jobs, and how to request one.",
+    "StemSplit.ai refund policy: 14-day money-back guarantee on your first purchase — including the $2.90 Trial Pack — plus refunds for duplicate charges and failed jobs.",
   h1: "Refund Policy",
-  updated: LEGAL_UPDATED,
+  updated: "November 14, 2026",
   intro: [
     "We want you to pay only for separation that works for you. This policy explains when you can get a refund, how to request one and what is not covered.",
     "The headline: your first purchase — including the one-time $2.90 Trial Pack — is covered by a 14-day money-back guarantee while most of the minutes are unused, and failed or duplicate charges are always refunded or restored.",
@@ -17,8 +16,8 @@ const data: LegalPageData = {
     {
       h2: "14-day money-back guarantee",
       paragraphs: [
-        "Your first purchase — the one-time $2.90 Trial Pack, a monthly plan or an annual plan — is covered by a 14-day money-back guarantee. If the separation quality is not what you expected, or you simply change your mind, ask for a refund within 14 days of the charge and we will return it in full.",
-        "To keep the guarantee fair, it applies while most of the allowance is unused. For the 15-minute Trial Pack that means at least 10 minutes unused; for monthly and annual plans it means less than 20 minutes used. If you have already processed most of the allowance, we may refund the unused portion instead of the full amount.",
+        "Your first purchase — currently the one-time $2.90 Trial Pack — is covered by a 14-day money-back guarantee. If the separation quality is not what you expected, or you simply change your mind, ask for a refund within 14 days of the charge and we will return it in full.",
+        "To keep the guarantee fair, it applies while most of the allowance is unused: for the 15-minute Trial Pack that means at least 10 minutes unused. If you have already processed most of the allowance, we may refund the unused portion instead of the full amount.",
       ],
       bullets: [
         "Covers the first purchase, including the $2.90 Trial Pack.",
@@ -28,16 +27,10 @@ const data: LegalPageData = {
       ],
     },
     {
-      h2: "Monthly subscriptions",
+      h2: "What is currently on sale",
       paragraphs: [
-        "Monthly plans renew automatically. If you cancel, you keep access until the end of the period you already paid for and are not charged again. After the 14-day guarantee window, monthly payments are not refunded for partial periods — cancel before the renewal date to avoid the next charge.",
-        "If you cancel and are charged again by mistake within a few days, contact us and we will refund the duplicate charge.",
-      ],
-    },
-    {
-      h2: "Annual plans",
-      paragraphs: [
-        "Annual plans are covered by the same 14-day money-back guarantee. After the guarantee window, annual plans are generally non-refundable, but we will refund the unused full months if you cancel because of a service failure we cannot fix. The annual discount exists because the plan is committed for a year — please compare the monthly plan if you are unsure.",
+        "Only plans whose checkout is active can be purchased. Today that is the one-time $2.90 Trial Pack (15 minutes); larger or subscription plans shown on the pricing page are not currently on sale. If you are not charged for a plan, there is no refund question to resolve — nothing was purchased.",
+        "If subscription plans become available later, this policy will be updated before they go on sale to describe renewal and cancellation terms. Nothing renews automatically unless a subscription is explicitly purchased.",
       ],
     },
     {
@@ -68,9 +61,15 @@ const data: LegalPageData = {
       ],
     },
     {
+      h2: "Files and the 30-day window",
+      paragraphs: [
+        "Separated files are deleted from storage within 30 days of delivery, and download links are signed and time-limited (currently 7 days). A refund does not extend that window, so download anything you need before requesting a refund.",
+      ],
+    },
+    {
       h2: "What is not covered",
       paragraphs: [
-        "We cannot refund used minutes beyond the guarantee window, accounts terminated for abuse, or charges from third-party tools you used alongside the service. We also cannot refund a plan that was purchased with a stolen payment method or in violation of the terms of service.",
+        "We cannot refund used minutes beyond the guarantee window, accounts terminated for abuse, or charges from third-party tools you used alongside the service. We also cannot refund a plan purchased with a stolen payment method or in violation of the terms of service.",
         "Please contact us before filing a chargeback. A chargeback usually freezes the account while it is investigated, and we can often resolve the issue faster directly.",
       ],
     },
@@ -95,8 +94,8 @@ const data: LegalPageData = {
       a: "We review requests within 1–2 business days. Once approved, Waffo issues the refund to your original payment method, and it typically appears within 5–10 business days.",
     },
     {
-      q: "Can I get a refund on an annual plan after 14 days?",
-      a: "Annual plans are generally non-refundable after the guarantee window, but we refund unused full months if you cancel because of a service failure we cannot fix.",
+      q: "Are the monthly or annual plans refundable?",
+      a: "Those plans are not currently on sale. Only plans with an active checkout can be purchased, and today that is the one-time Trial Pack. If subscription plans become available, this policy will be updated before they go on sale.",
     },
   ],
   contactNote:
