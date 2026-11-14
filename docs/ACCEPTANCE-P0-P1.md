@@ -74,3 +74,15 @@
 5. 律师审阅 privacy/terms/refund、DMCA designated agent、运营主体/管辖。
 6. 外链 10 条中需人工账号的目录/社区提交。
 7. B 站首页 Google 收录 24–72h 后复检。
+
+## 追加验收：$0.10 真实环境测试单（2026-11-14）
+
+- [x] 隐藏 `/qa` 入口（noindex，不链接、不在 pricing/sitemap）
+- [x] Waffo live $0.10 产品创建，真实卡支付完成
+- [x] 订单 `ord_mwggroyd_1q2v4v3`：reconcile 后 `paid`，amountCents=10
+- [x] 真实 AI job 因 Replicate 502 失败，订单额度自动退回 1/1（failure refund 真实验证）
+- [x] 入口已下架：上线 `/qa` 两站 **404**；`voice-qa`/`headshot-qa` checkout **409**
+- [x] Worker QA secrets 删除；本地 QA env 清理
+- [~] 真实成功 stem 未产出（provider 502，非项目扣费/权限问题）；已验证失败退款路径
+- [x] R2 lifecycle：`voice-out-30d`、`headshot-out-30d` 已 Enabled（30 天删除）
+- [ ] 旧 Worker versions 删除 / 全部密钥轮换：仍 blocked（见 SECURITY-ROTATION.md）

@@ -163,3 +163,12 @@ npm run dev:headshot   # http://localhost:3001
 - 安全：线上安全 headers 生效；密钥轮换/旧 Worker 删除/R2 lifecycle 因权限 blocked；律师审阅 blocked
 - 线上验收：typecheck/build/OpenNext deploy 0 error；两站关键页 console 0 error
 - 详见 docs/ACCEPTANCE-P0-P1.md、SECURITY-ROTATION.md、COMPLIANCE.md、OPS-MONITORING.md、GSC-BING.md、BACKLINK-EXECUTION.md
+
+## 2026-11-14 $0.10 真实环境测试单
+
+- 建 live QA 产品：Voice QA `PROD_7PIC7us5fzMMo563pOzdqm`、Headshot QA `PROD_0929Yj0tKUY9jGRGDbgBTL`，$0.10 / 1 unit。
+- 隐藏 `/qa` 入口；真实卡支付完成：订单 `ord_mwggroyd_1q2v4v3`，Waffo remote completed，reconcile 后 paid，amount=10 cents。
+- 真实 AI job `voice_mwgh7t7f_ndvth1` 因 Replicate 502 失败；订单预留自动退回（used=0/reserved=0/remaining=1），验证失败不扣额度。
+- 测试入口已下架：`/qa` 两站 404；`/api/checkout` 的 `voice-qa`/`headshot-qa` 返回 409；Worker QA secrets 已删除；本地 QA env 已清理。
+- R2 lifecycle 已通过 Dashboard 配置：`voice-out-30d` + `headshot-out-30d`（prefix voice/out/、headshot/out/，Delete after 30 days，Enabled）。
+- 旧 Worker versions 仍无法删除（Dashboard 版本菜单无 Delete，API token DELETE 返回 405 Method not allowed）；密钥轮换仍 blocked。
