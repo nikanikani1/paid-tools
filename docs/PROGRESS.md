@@ -172,3 +172,13 @@ npm run dev:headshot   # http://localhost:3001
 - 测试入口已下架：`/qa` 两站 404；`/api/checkout` 的 `voice-qa`/`headshot-qa` 返回 409；Worker QA secrets 已删除；本地 QA env 已清理。
 - R2 lifecycle 已通过 Dashboard 配置：`voice-out-30d` + `headshot-out-30d`（prefix voice/out/、headshot/out/，Delete after 30 days，Enabled）。
 - 旧 Worker versions 仍无法删除（Dashboard 版本菜单无 Delete，API token DELETE 返回 405 Method not allowed）；密钥轮换仍 blocked。
+
+## 2026-11-14 真实付款退款 + 密钥教程
+
+- 已通过 Waffo API 创建退款 ticket 并执行成功：
+  - `$2.90`：payment `PAY_7cMFjz9NgtWwmAlJDGz4z5` → refund `REF_33QO5Zrs5b8nJINX5jMmAw`（succeeded）
+  - `$0.10`：payment `PAY_7DwtS4efFKx6E8ZH74OoGL` → refund `REF_0KRhN70cseWHScS8fXld6D`（succeeded）
+- R2 订单 `ord_mwfzkg8h_yy9s9md` / `ord_mwggroyd_1q2v4v3` 已标记 `refunded`。
+- B 站 R2 里的 5 个 `headshot-trial` paid 是测试脚本伪造/手动标记，**没有真实 Waffo payment**，不属于真实扣款，不退款。
+- 隐藏 $0.10 产品已置 `inactive`；入口已下架。
+- 新增 `docs/KEY-ROTATION-TUTORIAL.md`：逐 key 轮换、干净部署、旧 Worker versions 删除路径/保底换服务、回滚。
