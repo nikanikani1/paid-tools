@@ -6,6 +6,8 @@ import {
   createJob,
   createMockVoiceJob,
   isReplicateConfigured,
+  lookupCheckoutOrder,
+  markOrderPaid,
   persistJob,
   replicateFetch,
   updateJob,
@@ -59,7 +61,19 @@ async function requirePaidOrder(req: Request, form: FormData | null, body: { ord
     };
   }
   const minutes = Math.max(1, Math.ceil(Number(form?.get("minutes") ?? body?.minutes ?? 1) || 1));
-  const allowance = await checkOrderAllowance("voice", orderId, minutes);
+  let allowance = await checkOrderAllowance("voice", orderId, minutes);
+  if (!allowance.ok && allowance.reason === "unpaid") {
+    // Live Waffo webhooks can be withheld while the store is under review.
+    const remote = await lookupCheckoutOrder(orderId);
+    if (remote?.paid) {
+      await markOrderPaid("voice", orderId, {
+        providerOrderId: remote.providerOrderId,
+        email: remote.email,
+        metadata: { lastEventType: "reconcile", remoteStatus: remote.rawStatus },
+      });
+      allowance = await checkOrderAllowance("voice", orderId, minutes);
+    }
+  }
   if (!allowance.ok) {
     const message =
       allowance.reason === "insufficient"
@@ -143,6 +157,9 @@ export async function POST(req: Request) {
   }
   const paid = await requirePaidOrder(req, null, body);
   if (!paid.ok) return paid.response;
+  if (process.env.ALLOW_MOCK !== "1") {
+    return NextResponse.json({ error: "file is required for paid runs" }, { status: 400 });
+  }
   if (paid.orderId) await consumeOrderAllowance("voice", paid.orderId, paid.minutes);
   const job = createMockVoiceJob({ filename: body.filename, size: body.size ?? 0 });
   return NextResponse.json(job, { status: 201 });

@@ -15,6 +15,7 @@ export function SuccessClient({ orderId }: { orderId: string | null }) {
     let timer: ReturnType<typeof setTimeout> | null = null;
     async function load() {
       try {
+        await fetch(`/api/orders/reconcile?order=${encodeURIComponent(orderId!)}`, { cache: "no-store" });
         const res = await fetch(`/api/orders/status?order=${encodeURIComponent(orderId!)}`, { cache: "no-store" });
         const next = (await res.json()) as Status;
         if (cancelled) return;

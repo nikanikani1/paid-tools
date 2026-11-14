@@ -24,8 +24,10 @@ export function BuyButton({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ planId }),
       });
-      const data = (await res.json().catch(() => null)) as { url?: string; error?: string; message?: string } | null;
+      const data = (await res.json().catch(() => null)) as { url?: string; orderId?: string; error?: string; message?: string } | null;
       if (!res.ok || !data?.url) throw new Error(data?.message ?? data?.error ?? "Checkout is temporarily unavailable.");
+      // Persist before leaving: Waffo only follows successUrl when the buyer clicks Done.
+      if (data.orderId) window.localStorage.setItem("paidOrderId", data.orderId);
       window.location.assign(data.url);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Checkout is temporarily unavailable.");

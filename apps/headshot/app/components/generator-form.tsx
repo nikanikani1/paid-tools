@@ -31,6 +31,7 @@ export default function GeneratorForm({
   note,
 }: GeneratorFormProps) {
   const [files, setFiles] = useState<File[]>([]);
+  const [dragging, setDragging] = useState(false);
   const [style, setStyle] = useState(defaultStyle);
   const [images, setImages] = useState(defaultPlan);
   const [job, setJob] = useState<Job | null>(null);
@@ -64,6 +65,30 @@ export default function GeneratorForm({
   useEffect(() => () => stop(), [stop]);
 
   const selected = PACKAGES.find((pkg) => pkg.images === images) ?? PACKAGES[0];
+
+  function chooseFiles(next: FileList | File[] | null | undefined) {
+    if (!next) return;
+    const incoming = Array.from(next);
+    const imagesOnly = incoming.filter((f) => f.type.startsWith("image/") || /\.(jpe?g|png|webp|heic)$/i.test(f.name));
+    if (imagesOnly.length === 0) {
+      setError("Please choose JPG, PNG, WebP or HEIC selfies.");
+      return;
+    }
+    if (imagesOnly.some((f) => f.size > 15 * 1024 * 1024)) {
+      setError("Each selfie must be under 15 MB.");
+      return;
+    }
+    setFiles(imagesOnly);
+    setError(null);
+    setCheckoutRequired(false);
+  }
+
+  function onDrop(e: React.DragEvent<HTMLLabelElement>) {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragging(false);
+    chooseFiles(e.dataTransfer.files);
+  }
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -113,7 +138,29 @@ export default function GeneratorForm({
     <div id={id} className="sans scroll-mt-24 rounded-2xl border border-stone-300 bg-white/75 p-5 shadow-sm">
       {heading && <h2 className="mb-4 text-lg font-semibold text-stone-900">{heading}</h2>}
       <form onSubmit={onSubmit}>
-        <label className="flex cursor-pointer flex-col items-center rounded-xl border border-dashed border-stone-400 px-6 py-8 text-center transition hover:border-orange-600 hover:bg-orange-50/40">
+        <label
+          className={`flex cursor-pointer flex-col items-center rounded-xl border border-dashed px-6 py-8 text-center transition ${
+            dragging
+              ? "border-orange-600 bg-orange-100 ring-2 ring-orange-500/30"
+              : "border-stone-400 hover:border-orange-600 hover:bg-orange-50/40"
+          }`}
+          onDragOver={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setDragging(true);
+          }}
+          onDragEnter={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setDragging(true);
+          }}
+          onDragLeave={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setDragging(false);
+          }}
+          onDrop={onDrop}
+        >
           <span className="text-sm font-medium text-stone-700">
             {files.length > 0 ? `${files.length} selfies selected` : "Drop 3–8 selfies here, or click to choose"}
           </span>
@@ -126,7 +173,10 @@ export default function GeneratorForm({
             multiple
             className="hidden"
             aria-label="Upload selfies"
-            onChange={(e) => setFiles([...(e.target.files ?? [])])}
+            onChange={(e) => {
+              chooseFiles(e.target.files);
+              e.currentTarget.value = "";
+            }}
           />
         </label>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -191,20 +241,29 @@ export default function GeneratorForm({
               <div className="h-full bg-orange-600 transition-all" style={{ width: `${job.progress}%` }} />
             </div>
             {job.files.length > 0 && (
-              <div className="mt-4 grid grid-cols-5 gap-2">
+              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {job.files.slice(0, 20).map((f) => (
-                  <div
+                  <a
                     key={f.name}
-                    className="aspect-square rounded-lg border border-stone-200 bg-stone-200/70 p-1 text-[10px] leading-tight text-stone-600"
+                    href={f.url}
+                    download={f.name}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative aspect-[4/5] overflow-hidden rounded-xl border border-stone-300 bg-stone-200"
+                    title={`Download ${f.name}`}
                   >
-                    {f.name}
-                  </div>
+                    <img src={f.url} alt={f.name} className="h-full w-full object-cover" />
+                    <span className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-stone-950/65 px-2 py-1.5 text-[11px] font-medium text-white backdrop-blur-sm">
+                      <span className="truncate">{f.name}</span>
+                      <span className="flex-none rounded bg-white/20 px-1.5 py-0.5">Download</span>
+                    </span>
+                  </a>
                 ))}
               </div>
             )}
             {job.files.length > 0 && (
               <p className="mt-3 text-xs text-stone-600">
-                {job.files.length} files ready.{" "}
+                {job.files.length} files ready. Each download opens in a new tab so this page stays intact.{" "}
                 <a className="text-orange-700 underline underline-offset-2" href={`/api/orders/${job.id}`}>
                   Refresh status
                 </a>

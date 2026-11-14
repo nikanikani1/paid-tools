@@ -212,6 +212,71 @@ export async function createCheckout(input: CheckoutInput, source: EnvSource = g
 }
 
 // ---------------------------------------------------------------------------
+// Order reconciliation (success page / job gate)
+// ---------------------------------------------------------------------------
+
+export interface WaffoOrderLookup {
+  status: string;
+  paid: boolean;
+  providerOrderId?: string;
+  email?: string;
+  rawStatus?: string;
+}
+
+const PAID_ORDER_STATUSES = new Set(["completed", "paid", "active", "succeeded", "trialing"]);
+
+/**
+ * Waffo live-mode webhooks may be delayed/withheld until the store passes review.
+ * The success page and the paid-job gate reconcile directly against Waffo so a
+ * completed card payment is never lost just because the webhook hasn't arrived.
+ */
+export async function lookupCheckoutOrder(
+  orderMerchantExternalId: string,
+  source: EnvSource = getProcessEnv(),
+): Promise<WaffoOrderLookup | null> {
+  const config = getWaffoConfig(source);
+  if (!config) return null;
+  const query = `query($storeId: String!, $ref: String!) {
+    onetimeOrders(storeId: $storeId, filter: { orderMerchantExternalId: { eq: $ref } }) {
+      id status buyerEmail orderMerchantExternalId
+    }
+    subscriptionOrders(storeId: $storeId, filter: { orderMerchantExternalId: { eq: $ref } }) {
+      id status buyerEmail orderMerchantExternalId
+    }
+  }`;
+  const body = JSON.stringify({
+    query,
+    variables: { storeId: config.storeId, ref: orderMerchantExternalId },
+  });
+  try {
+    const res = await fetch(`${config.apiBase}/v1/graphql`, {
+      method: "POST",
+      headers: await signedHeaders("POST", "/v1/graphql", body, config),
+      body,
+    });
+    if (!res.ok) return null;
+    const payload = (await res.json()) as {
+      data?: {
+        onetimeOrders?: Array<{ id?: string; status?: string; buyerEmail?: string }>;
+        subscriptionOrders?: Array<{ id?: string; status?: string; buyerEmail?: string }>;
+      };
+    };
+    const item = payload.data?.onetimeOrders?.[0] ?? payload.data?.subscriptionOrders?.[0];
+    if (!item) return null;
+    const rawStatus = String(item.status ?? "").toLowerCase();
+    return {
+      status: PAID_ORDER_STATUSES.has(rawStatus) ? "paid" : rawStatus || "pending",
+      paid: PAID_ORDER_STATUSES.has(rawStatus),
+      providerOrderId: item.id,
+      email: item.buyerEmail,
+      rawStatus,
+    };
+  } catch {
+    return null;
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Webhook 验签
 // ---------------------------------------------------------------------------
 export interface WebhookVerificationInput {

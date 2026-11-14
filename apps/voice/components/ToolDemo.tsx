@@ -39,6 +39,7 @@ export function ToolDemo({
   note?: string;
 }) {
   const [file, setFile] = useState<File | null>(null);
+  const [dragging, setDragging] = useState(false);
   const [job, setJob] = useState<Job | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -121,6 +122,28 @@ export function ToolDemo({
     }
   }
 
+  function chooseFile(next: File | null | undefined) {
+    if (!next) return;
+    if (!next.type.startsWith("audio/") && !/\.(mp3|wav|m4a|flac|ogg|aac)$/i.test(next.name)) {
+      setError("Please choose an audio file (MP3, WAV, M4A, FLAC, OGG).");
+      return;
+    }
+    if (next.size > MAX_SIZE) {
+      setError("That file is larger than 100MB. Trim it to under 10 minutes and try again.");
+      return;
+    }
+    setFile(next);
+    setError(null);
+    setCheckoutRequired(null);
+  }
+
+  function onDrop(e: React.DragEvent<HTMLLabelElement>) {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragging(false);
+    chooseFile(e.dataTransfer.files?.[0]);
+  }
+
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!file || busy) return;
@@ -137,7 +160,25 @@ export function ToolDemo({
   return (
     <div id="tool" className="card mx-auto mt-10 w-full max-w-2xl p-5 text-left sm:p-6">
       <form onSubmit={onSubmit}>
-        <label className="dropzone">
+        <label
+          className={`dropzone ${dragging ? "ring-2 ring-violet-400 ring-offset-2 ring-offset-[#0b1020]" : ""}`}
+          onDragOver={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setDragging(true);
+          }}
+          onDragEnter={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setDragging(true);
+          }}
+          onDragLeave={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setDragging(false);
+          }}
+          onDrop={onDrop}
+        >
           <span className="wave-bars mb-4" aria-hidden="true">
             {[10, 18, 26, 34, 22, 30, 16, 24, 12].map((height, index) => (
               <span key={index} style={{ height, animationDelay: `${index * 0.12}s` }} />
@@ -154,9 +195,8 @@ export function ToolDemo({
             accept="audio/*"
             className="sr-only"
             onChange={(e) => {
-              setFile(e.target.files?.[0] ?? null);
-              setError(null);
-              setCheckoutRequired(null);
+              chooseFile(e.target.files?.[0]);
+              e.currentTarget.value = "";
             }}
           />
         </label>
@@ -216,13 +256,20 @@ export function ToolDemo({
                     <a
                       href={f.url}
                       download={f.name}
-                      className="flex-none text-xs font-medium text-cyan-300 hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-none rounded-md border border-cyan-400/30 px-2 py-1 text-xs font-medium text-cyan-300 hover:bg-cyan-400/10 hover:underline"
                     >
                       Download
                     </a>
                   </li>
                 ))}
               </ul>
+            )}
+            {job.files.length > 0 && (
+              <p className="mt-3 text-[11px] text-slate-500">
+                Each stem opens in a new tab so this page stays intact; download the rest from here.
+              </p>
             )}
             {done && (
               <button

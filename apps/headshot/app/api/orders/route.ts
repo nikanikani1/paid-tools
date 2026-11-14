@@ -7,6 +7,8 @@ import {
   createJob,
   createMockHeadshotJob,
   isReplicateConfigured,
+  lookupCheckoutOrder,
+  markOrderPaid,
   persistJob,
   replicateFetch,
   updateJob,
@@ -49,7 +51,19 @@ async function requirePaidOrder(
       ),
     };
   }
-  const allowance = await checkOrderAllowance("headshot", orderId, requestedImages);
+  let allowance = await checkOrderAllowance("headshot", orderId, requestedImages);
+  if (!allowance.ok && allowance.reason === "unpaid") {
+    // Live Waffo webhooks can be withheld while the store is under review.
+    const remote = await lookupCheckoutOrder(orderId);
+    if (remote?.paid) {
+      await markOrderPaid("headshot", orderId, {
+        providerOrderId: remote.providerOrderId,
+        email: remote.email,
+        metadata: { lastEventType: "reconcile", remoteStatus: remote.rawStatus },
+      });
+      allowance = await checkOrderAllowance("headshot", orderId, requestedImages);
+    }
+  }
   if (!allowance.ok) {
     const message =
       allowance.reason === "insufficient"
@@ -150,6 +164,9 @@ export async function POST(req: Request) {
   if (images < 1) return NextResponse.json({ error: "Invalid package size" }, { status: 400 });
   const paid = await requirePaidOrder(req, null, body, images);
   if (!paid.ok) return paid.response;
+  if (process.env.ALLOW_MOCK !== "1") {
+    return NextResponse.json({ error: "selfies are required for paid runs" }, { status: 400 });
+  }
   if (paid.orderId) await consumeOrderAllowance("headshot", paid.orderId, images);
   const job = createMockHeadshotJob({
     files: body.files,

@@ -142,3 +142,11 @@ npm run dev:headshot   # http://localhost:3001
   - `/api/jobs`、`/api/orders` 的付费闸门在 unpaid 时先 reconcile 再决定 402
   - BuyButton 在跳转 checkout 前把 orderId 写入 localStorage，避免用户没点 Waffo 的 Done 就回站时丢单
 - 该用户订单已标记 paid，额度 15/15；待用户用 success 链接恢复浏览器 orderId 后即可上传
+
+## 2026-11-14 UX 修复
+
+- [x] 结果下载：所有 stem/头像下载链接改为新标签打开，原结果页不再被覆盖，可连续下载多个文件
+- [x] B 站头像结果增加可点击缩略图 + Download 覆盖层
+- [x] A/B 上传区支持桌面文件拖拽（dragenter/over/drop，带高亮和类型/大小校验）
+- [x] 拖拽测试：A 拖入 mp3 显示文件名；B 拖入 3 张 jpg 显示 "3 selfies selected"
+- 注意：拖拽的是「文件」，不是文件夹本身；浏览器不会把文件夹内容自动展开
