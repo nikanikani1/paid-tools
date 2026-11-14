@@ -122,3 +122,12 @@ npm run dev:headshot   # http://localhost:3001
 - [x] IndexNow key 文件根路径 200；两站 sitemap URL 已提交（202）
 - [ ] 旧 Worker version/密钥轮换仍待做（当前 token 无删除 version/R2 admin 权限，需要 Dashboard 操作）
 - [ ] B 站真实生成仍是 1 张/单，不是套餐张数（多图 fan-out 待做）
+
+## 2026-11-14 支付环境修正
+
+- [x] 定位 checkout 显示“测试模式”：原产品是 Test 环境，且 Worker 使用的是 test key
+- [x] 用 `cf-secrets.json` 的 live key 重建 8 个 live 产品（见 WAFFO-PRODUCTS.md）
+- [x] 切换本地 env + 两站 Worker secrets 到 live 私钥/公钥
+- [x] 注册 live webhook（testMode=false）两站
+- [x] 线上 checkout 页面已确认不再是测试模式，B 站 $9 产品正常显示
+- [ ] 真实卡扣款 E2E 尚未执行（需要真实卡；不能用测试模式代替）
