@@ -53,7 +53,7 @@
 | 隐私/条款/退款对齐 | **PASS（文案层）**：30 天保留、4 MP3 stems、B 肖像权/未成年人、A DMCA、删除无法兑现承诺 |
 | 密钥轮换 | **BLOCKED**：没有任何生产密钥完成轮换；需用户后台+MFA |
 | 旧 Worker versions 删除 | **BLOCKED**：当前 Cloudflare token 无删除 version 权限 |
-| R2 lifecycle | **BLOCKED**：`wrangler r2 bucket lifecycle list` 返回 10000 Authentication error；需 R2 管理员权限 |
+| R2 lifecycle | **PASS**：Dashboard 已启用 `voice-out-30d`、`headshot-out-30d`（30 天删除；见追加验收） |
 | 律师审阅 | **BLOCKED**：docs/COMPLIANCE.md 列 11 项待律师/用户确认 |
 
 ## 集成验收
@@ -68,7 +68,7 @@
 ## 仍 blocked / 需要用户操作（不冒充完成）
 
 1. 轮换 8 组生产密钥 → 干净部署 → Dashboard 删除旧 Worker versions → 清理本地明文副本（详见 docs/SECURITY-ROTATION.md）。
-2. Cloudflare R2 管理员权限配置 lifecycle（30 天输出、输入临时文件）。
+2. ~~Cloudflare R2 管理员权限配置 lifecycle~~ ✅ 已通过 Dashboard 完成（30 天输出删除）。
 3. Bing Webmaster 登录后导入 GSC / 提交 sitemap。
 4. CF Web Analytics token（可选）与自动告警/日报 cron 的授权。
 5. 律师审阅 privacy/terms/refund、DMCA designated agent、运营主体/管辖。

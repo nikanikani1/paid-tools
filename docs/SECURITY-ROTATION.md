@@ -3,6 +3,8 @@
 > 任务：task-24（安全/合规收敛）。本文件把「哪些密钥要轮换、在哪操作、怎么验证、怎么回滚、现在卡在哪」写清楚。
 > **本文件不包含任何密钥值**（只写变量名/后台位置/操作路径）。不要把 `.env.local`、`cf-env.json`、`cf-secrets.json`、`.tmp/secrets-*.json` 的内容贴进聊天、issue 或文档。
 > ⚠️ 结论：**截至本文撰写，没有任何一个生产密钥完成轮换**。这里不谎称已完成——已完成的是代码/仓库侧与核查，密钥轮换全部需要账号后台操作，属「阻塞 / 需用户操作」。
+>
+> 2026-11-14 补充：**R2 lifecycle 已通过 Dashboard 配置**（`voice-out-30d`、`headshot-out-30d`，30 天删除）；这不等于密钥轮换。旧 Worker versions 仍存在，API token DELETE 返回 405，Dashboard 版本菜单没有 Delete。
 
 ---
 
