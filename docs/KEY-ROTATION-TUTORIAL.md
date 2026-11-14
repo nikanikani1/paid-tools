@@ -95,7 +95,7 @@
 5. 用最小真实任务验证（A 站 5 秒 WAV / B 站 1 张自拍），确认 provider 可创建 prediction。
 6. 再删除旧 Replicate token。
 
-> 当前 Replicate 账户余额 <$5 会被限流（6 次/分钟、burst 1），且出现过 502；这与 token 轮换是两件事，测试时预留重试/等待。
+> Replicate Dashboard 2026-11-14 截图显示 **credit remaining $9.23**、本月 usage $0.77，因此“当前余额 <$5”不成立；之前的 429 原文确实写了 `less than $5.0 in credit`，可能是当时/另一个计费口径或旧状态。测试前先看 Dashboard，不要只信错误文案。
 
 ---
 

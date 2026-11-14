@@ -1,0 +1,807 @@
+{
+  "generatedAt": "2026-11-14T15:53:31.467Z",
+  "mode": "dry-run",
+  "includePendingQa": false,
+  "includeHistorical": false,
+  "bucket": "paid-tools-files",
+  "options": {
+    "envFile": ".env.local",
+    "out": "D:\\ai-workspace\\paid-tools\\docs\\evidence\\r2-cleanup-plan-20261114-155331.json"
+  },
+  "orderSummaries": [
+    {
+      "key": "orders/headshot/ord_mwdjc0nd_j5a2v8g.json",
+      "site": "headshot",
+      "id": "ord_mwdjc0nd_j5a2v8g",
+      "status": "refunded",
+      "planId": "headshot-trial",
+      "amountCents": 900,
+      "unitsGranted": 5,
+      "unitsUsed": 5,
+      "createdAt": "2026-11-12T12:39:38.569Z",
+      "paidAt": "2026-11-12T12:55:32.439Z",
+      "refundedAt": "2026-11-12T13:32:05.835Z",
+      "hasEmail": false,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/headshot/ord_mwfye9w4_rsnl8uv.json",
+      "site": "headshot",
+      "id": "ord_mwfye9w4_rsnl8uv",
+      "status": "pending",
+      "planId": "headshot-trial",
+      "amountCents": 900,
+      "unitsGranted": 5,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-14T05:16:50.452Z",
+      "paidAt": null,
+      "refundedAt": null,
+      "hasEmail": true,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/headshot/ord_mwfz79kj_hj0wn4j.json",
+      "site": "headshot",
+      "id": "ord_mwfz79kj_hj0wn4j",
+      "status": "pending",
+      "planId": "headshot-trial",
+      "amountCents": 900,
+      "unitsGranted": 5,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-14T05:39:23.059Z",
+      "paidAt": null,
+      "refundedAt": null,
+      "hasEmail": true,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/headshot/ord_mwg8u8c2_cscke5i.json",
+      "site": "headshot",
+      "id": "ord_mwg8u8c2_cscke5i",
+      "status": "paid",
+      "planId": "headshot-trial",
+      "amountCents": 900,
+      "unitsGranted": 5,
+      "unitsUsed": 2,
+      "createdAt": "2026-11-14T10:09:11.090Z",
+      "paidAt": "2026-11-14T10:09:12.912Z",
+      "refundedAt": null,
+      "hasEmail": true,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/headshot/ord_mwg95akh_eohr2pu.json",
+      "site": "headshot",
+      "id": "ord_mwg95akh_eohr2pu",
+      "status": "paid",
+      "planId": "headshot-trial",
+      "amountCents": 900,
+      "unitsGranted": 5,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-14T10:17:47.201Z",
+      "paidAt": "2026-11-14T10:17:50.146Z",
+      "refundedAt": null,
+      "hasEmail": true,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/headshot/ord_mwg98npc_21xbl9p.json",
+      "site": "headshot",
+      "id": "ord_mwg98npc_21xbl9p",
+      "status": "paid",
+      "planId": "headshot-trial",
+      "amountCents": 900,
+      "unitsGranted": 5,
+      "unitsUsed": 5,
+      "createdAt": "2026-11-14T10:20:24.192Z",
+      "paidAt": "2026-11-14T10:20:34.257Z",
+      "refundedAt": null,
+      "hasEmail": true,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/headshot/ord_mwg9ivk0_dgk2bjw.json",
+      "site": "headshot",
+      "id": "ord_mwg9ivk0_dgk2bjw",
+      "status": "paid",
+      "planId": "headshot-trial",
+      "amountCents": 900,
+      "unitsGranted": 5,
+      "unitsUsed": 5,
+      "createdAt": "2026-11-14T10:28:20.928Z",
+      "paidAt": "2026-11-14T10:28:22.963Z",
+      "refundedAt": null,
+      "hasEmail": true,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/headshot/ord_mwgaj564_dups35c.json",
+      "site": "headshot",
+      "id": "ord_mwgaj564_dups35c",
+      "status": "paid",
+      "planId": "headshot-trial",
+      "amountCents": 900,
+      "unitsGranted": 5,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-14T10:56:33.004Z",
+      "paidAt": "2026-11-14T10:56:43.083Z",
+      "refundedAt": null,
+      "hasEmail": true,
+      "jobIds": [
+        "headshot_linkcheck_mwgaje2n"
+      ],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/headshot/ord_mwghi8yg_8kvhp00.json",
+      "site": "headshot",
+      "id": "ord_mwghi8yg_8kvhp00",
+      "status": "pending",
+      "planId": "headshot-trial",
+      "amountCents": 900,
+      "unitsGranted": 5,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-14T14:11:48.568Z",
+      "paidAt": null,
+      "refundedAt": null,
+      "hasEmail": false,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/headshot/ord_mwgjqwpz_ly0e7ly.json",
+      "site": "headshot",
+      "id": "ord_mwgjqwpz_ly0e7ly",
+      "status": "pending",
+      "planId": "headshot-trial",
+      "amountCents": 900,
+      "unitsGranted": 5,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-14T15:14:31.847Z",
+      "paidAt": null,
+      "refundedAt": null,
+      "hasEmail": false,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/voice/ord_mwdirvlc_ett3m1b.json",
+      "site": "voice",
+      "id": "ord_mwdirvlc_ett3m1b",
+      "status": "pending",
+      "planId": "voice-trial",
+      "amountCents": 290,
+      "unitsGranted": 15,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-12T12:23:58.896Z",
+      "paidAt": null,
+      "refundedAt": null,
+      "hasEmail": false,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/voice/ord_mwdit6f3_mkgxa8d.json",
+      "site": "voice",
+      "id": "ord_mwdit6f3_mkgxa8d",
+      "status": "paid",
+      "planId": "voice-trial",
+      "amountCents": 290,
+      "unitsGranted": 15,
+      "unitsUsed": 3,
+      "createdAt": "2026-11-12T12:24:59.583Z",
+      "paidAt": "2026-11-12T12:27:23.739Z",
+      "refundedAt": null,
+      "hasEmail": false,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/voice/ord_mwdjbmv8_ub3utqt.json",
+      "site": "voice",
+      "id": "ord_mwdjbmv8_ub3utqt",
+      "status": "refunded",
+      "planId": "voice-trial",
+      "amountCents": 290,
+      "unitsGranted": 15,
+      "unitsUsed": 5,
+      "createdAt": "2026-11-12T12:39:20.708Z",
+      "paidAt": "2026-11-12T12:43:34.704Z",
+      "refundedAt": "2026-11-12T13:32:02.905Z",
+      "hasEmail": false,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/voice/ord_mwdk0mq6_3unopbu.json",
+      "site": "voice",
+      "id": "ord_mwdk0mq6_3unopbu",
+      "status": "refunded",
+      "planId": "voice-trial",
+      "amountCents": 290,
+      "unitsGranted": 15,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-12T12:58:46.926Z",
+      "paidAt": "2026-11-12T12:59:33.407Z",
+      "refundedAt": "2026-11-12T13:00:18.702Z",
+      "hasEmail": true,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/voice/ord_mwfz8lsy_jwziwpe.json",
+      "site": "voice",
+      "id": "ord_mwfz8lsy_jwziwpe",
+      "status": "pending",
+      "planId": "voice-trial",
+      "amountCents": 290,
+      "unitsGranted": 15,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-14T05:40:25.570Z",
+      "paidAt": null,
+      "refundedAt": null,
+      "hasEmail": true,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/voice/ord_mwfzkg8h_yy9s9md.json",
+      "site": "voice",
+      "id": "ord_mwfzkg8h_yy9s9md",
+      "status": "refunded",
+      "planId": "voice-trial",
+      "amountCents": 290,
+      "unitsGranted": 15,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-14T05:49:38.225Z",
+      "paidAt": "2026-11-14T06:10:44.348Z",
+      "refundedAt": "2026-11-14T14:47:19.454Z",
+      "hasEmail": true,
+      "jobIds": [],
+      "protected": true,
+      "readError": null
+    },
+    {
+      "key": "orders/voice/ord_mwgasq3s_7ljnhv9.json",
+      "site": "voice",
+      "id": "ord_mwgasq3s_7ljnhv9",
+      "status": "pending",
+      "planId": "voice-trial",
+      "amountCents": 290,
+      "unitsGranted": 15,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-14T11:04:00.040Z",
+      "paidAt": null,
+      "refundedAt": null,
+      "hasEmail": false,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/voice/ord_mwgfkkc3_6smw1w4.json",
+      "site": "voice",
+      "id": "ord_mwgfkkc3_6smw1w4",
+      "status": "pending",
+      "planId": "voice-qa",
+      "amountCents": 10,
+      "unitsGranted": 1,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-14T13:17:37.395Z",
+      "paidAt": null,
+      "refundedAt": null,
+      "hasEmail": false,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/voice/ord_mwgg5izz_g1066ru.json",
+      "site": "voice",
+      "id": "ord_mwgg5izz_g1066ru",
+      "status": "pending",
+      "planId": "voice-qa",
+      "amountCents": 10,
+      "unitsGranted": 1,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-14T13:33:55.439Z",
+      "paidAt": null,
+      "refundedAt": null,
+      "hasEmail": false,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/voice/ord_mwggroyd_1q2v4v3.json",
+      "site": "voice",
+      "id": "ord_mwggroyd_1q2v4v3",
+      "status": "refunded",
+      "planId": "voice-qa",
+      "amountCents": 10,
+      "unitsGranted": 1,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-14T13:51:09.589Z",
+      "paidAt": "2026-11-14T13:59:11.212Z",
+      "refundedAt": "2026-11-14T14:47:21.564Z",
+      "hasEmail": true,
+      "jobIds": [],
+      "protected": true,
+      "readError": null
+    },
+    {
+      "key": "orders/voice/ord_mwghhfc7_o9i5jz2.json",
+      "site": "voice",
+      "id": "ord_mwghhfc7_o9i5jz2",
+      "status": "pending",
+      "planId": "voice-trial",
+      "amountCents": 290,
+      "unitsGranted": 15,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-14T14:11:10.183Z",
+      "paidAt": null,
+      "refundedAt": null,
+      "hasEmail": false,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    },
+    {
+      "key": "orders/voice/ord_mwgjqtee_lnd2ekf.json",
+      "site": "voice",
+      "id": "ord_mwgjqtee_lnd2ekf",
+      "status": "pending",
+      "planId": "voice-trial",
+      "amountCents": 290,
+      "unitsGranted": 15,
+      "unitsUsed": 0,
+      "createdAt": "2026-11-14T15:14:27.542Z",
+      "paidAt": null,
+      "refundedAt": null,
+      "hasEmail": false,
+      "jobIds": [],
+      "protected": false,
+      "readError": null
+    }
+  ],
+  "totals": {
+    "objects": 58,
+    "delete": {
+      "count": 19,
+      "bytes": 2204745
+    },
+    "needsDecision": {
+      "count": 26,
+      "bytes": 41906332
+    },
+    "protected": {
+      "count": 7,
+      "bytes": 96853
+    },
+    "unknown": {
+      "count": 6,
+      "bytes": 929
+    }
+  },
+  "delete": [
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg8uw70_9kwnsb/headshot-02.jpg",
+      "size": 214006,
+      "category": "test_output",
+      "reason": "测试订单关联输出（headshot/out，jobId=headshot_mwg8uw70_9kwnsb）",
+      "jobId": "headshot_mwg8uw70_9kwnsb"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg993xt_yujet3/headshot-02.jpg",
+      "size": 222279,
+      "category": "test_output",
+      "reason": "测试订单关联输出（headshot/out，jobId=headshot_mwg993xt_yujet3）",
+      "jobId": "headshot_mwg993xt_yujet3"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg993xt_yujet3/headshot-03.jpg",
+      "size": 193616,
+      "category": "test_output",
+      "reason": "测试订单关联输出（headshot/out，jobId=headshot_mwg993xt_yujet3）",
+      "jobId": "headshot_mwg993xt_yujet3"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg993xt_yujet3/headshot-04.jpg",
+      "size": 198549,
+      "category": "test_output",
+      "reason": "测试订单关联输出（headshot/out，jobId=headshot_mwg993xt_yujet3）",
+      "jobId": "headshot_mwg993xt_yujet3"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg993xt_yujet3/headshot-05.jpg",
+      "size": 250418,
+      "category": "test_output",
+      "reason": "测试订单关联输出（headshot/out，jobId=headshot_mwg993xt_yujet3）",
+      "jobId": "headshot_mwg993xt_yujet3"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg9j392_k4cqqp/headshot-01.jpg",
+      "size": 199252,
+      "category": "test_output",
+      "reason": "测试订单关联输出（headshot/out，jobId=headshot_mwg9j392_k4cqqp）",
+      "jobId": "headshot_mwg9j392_k4cqqp"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg9j392_k4cqqp/headshot-02.jpg",
+      "size": 260047,
+      "category": "test_output",
+      "reason": "测试订单关联输出（headshot/out，jobId=headshot_mwg9j392_k4cqqp）",
+      "jobId": "headshot_mwg9j392_k4cqqp"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg9j392_k4cqqp/headshot-03.jpg",
+      "size": 199983,
+      "category": "test_output",
+      "reason": "测试订单关联输出（headshot/out，jobId=headshot_mwg9j392_k4cqqp）",
+      "jobId": "headshot_mwg9j392_k4cqqp"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg9j392_k4cqqp/headshot-04.jpg",
+      "size": 203414,
+      "category": "test_output",
+      "reason": "测试订单关联输出（headshot/out，jobId=headshot_mwg9j392_k4cqqp）",
+      "jobId": "headshot_mwg9j392_k4cqqp"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg9j392_k4cqqp/headshot-05.jpg",
+      "size": 235165,
+      "category": "test_output",
+      "reason": "测试订单关联输出（headshot/out，jobId=headshot_mwg9j392_k4cqqp）",
+      "jobId": "headshot_mwg9j392_k4cqqp"
+    },
+    {
+      "key": "jobs/headshot/headshot_mwg8uw70_9kwnsb.json",
+      "size": 7666,
+      "category": "test_job",
+      "reason": "测试订单关联 job（kind=headshot, orderId=ord_mwg8u8c2_cscke5i, status=done）",
+      "orderId": "ord_mwg8u8c2_cscke5i",
+      "jobId": "headshot_mwg8uw70_9kwnsb"
+    },
+    {
+      "key": "jobs/headshot/headshot_mwg993xt_yujet3.json",
+      "size": 8238,
+      "category": "test_job",
+      "reason": "测试订单关联 job（kind=headshot, orderId=ord_mwg98npc_21xbl9p, status=done）",
+      "orderId": "ord_mwg98npc_21xbl9p",
+      "jobId": "headshot_mwg993xt_yujet3"
+    },
+    {
+      "key": "jobs/headshot/headshot_mwg9j392_k4cqqp.json",
+      "size": 9843,
+      "category": "test_job",
+      "reason": "测试订单关联 job（kind=headshot, orderId=ord_mwg9ivk0_dgk2bjw, status=done）",
+      "orderId": "ord_mwg9ivk0_dgk2bjw",
+      "jobId": "headshot_mwg9j392_k4cqqp"
+    },
+    {
+      "key": "jobs/voice/voice_mwgh7t7f_ndvth1.json",
+      "size": 553,
+      "category": "qa_refunded_job",
+      "reason": "测试订单关联 job（kind=voice, orderId=ord_mwggroyd_1q2v4v3, status=failed）",
+      "orderId": "ord_mwggroyd_1q2v4v3",
+      "jobId": "voice_mwgh7t7f_ndvth1"
+    },
+    {
+      "key": "orders/headshot/ord_mwg8u8c2_cscke5i.json",
+      "size": 336,
+      "category": "e2e_test_order",
+      "reason": "B 站 e2e 测试订单（headshot，手工标记 paid、无真实 Waffo payment）",
+      "orderId": "ord_mwg8u8c2_cscke5i"
+    },
+    {
+      "key": "orders/headshot/ord_mwg95akh_eohr2pu.json",
+      "size": 336,
+      "category": "e2e_test_order",
+      "reason": "B 站 e2e 测试订单（headshot，手工标记 paid、无真实 Waffo payment）",
+      "orderId": "ord_mwg95akh_eohr2pu"
+    },
+    {
+      "key": "orders/headshot/ord_mwg98npc_21xbl9p.json",
+      "size": 336,
+      "category": "e2e_test_order",
+      "reason": "B 站 e2e 测试订单（headshot，手工标记 paid、无真实 Waffo payment）",
+      "orderId": "ord_mwg98npc_21xbl9p"
+    },
+    {
+      "key": "orders/headshot/ord_mwg9ivk0_dgk2bjw.json",
+      "size": 336,
+      "category": "e2e_test_order",
+      "reason": "B 站 e2e 测试订单（headshot，手工标记 paid、无真实 Waffo payment）",
+      "orderId": "ord_mwg9ivk0_dgk2bjw"
+    },
+    {
+      "key": "orders/headshot/ord_mwgaj564_dups35c.json",
+      "size": 372,
+      "category": "e2e_test_order",
+      "reason": "B 站 e2e 测试订单（headshot，手工标记 paid、无真实 Waffo payment）",
+      "orderId": "ord_mwgaj564_dups35c"
+    }
+  ],
+  "needsDecision": [
+    {
+      "key": "headshot/out/2026-11-12/headshot_mwdjwl22_wt5wrf/headshot-01.jpg",
+      "size": 190429,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 headshot/out 对象（jobId=headshot_mwdjwl22_wt5wrf，无测试订单关联）— 待 Lead 决定",
+      "jobId": "headshot_mwdjwl22_wt5wrf"
+    },
+    {
+      "key": "jobs/headshot/headshot_mwdjwl22_wt5wrf.json",
+      "size": 1326,
+      "category": "orphan_job",
+      "reason": "孤儿/历史 job（kind=headshot, status=done, 无测试订单关联）— 待 Lead 决定",
+      "jobId": "headshot_mwdjwl22_wt5wrf"
+    },
+    {
+      "key": "jobs/voice/voice_mwdjtvvw_bz9nv8.json",
+      "size": 2197,
+      "category": "orphan_job",
+      "reason": "孤儿/历史 job（kind=voice, status=done, 无测试订单关联）— 待 Lead 决定",
+      "jobId": "voice_mwdjtvvw_bz9nv8"
+    },
+    {
+      "key": "orders/headshot/ord_mwdjc0nd_j5a2v8g.json",
+      "size": 641,
+      "category": "historical_order",
+      "reason": "未列入批准清单的历史/未知订单（headshot，status=refunded, plan=headshot-trial）— 待 Lead 决定",
+      "orderId": "ord_mwdjc0nd_j5a2v8g"
+    },
+    {
+      "key": "orders/headshot/ord_mwfye9w4_rsnl8uv.json",
+      "size": 582,
+      "category": "historical_order",
+      "reason": "未列入批准清单的历史/未知订单（headshot，status=pending, plan=headshot-trial）— 待 Lead 决定",
+      "orderId": "ord_mwfye9w4_rsnl8uv"
+    },
+    {
+      "key": "orders/headshot/ord_mwfz79kj_hj0wn4j.json",
+      "size": 582,
+      "category": "historical_order",
+      "reason": "未列入批准清单的历史/未知订单（headshot，status=pending, plan=headshot-trial）— 待 Lead 决定",
+      "orderId": "ord_mwfz79kj_hj0wn4j"
+    },
+    {
+      "key": "orders/headshot/ord_mwghi8yg_8kvhp00.json",
+      "size": 546,
+      "category": "pending_qa",
+      "reason": "pending QA checkout（headshot，status=pending，从未付款）— 待 Lead 决定",
+      "orderId": "ord_mwghi8yg_8kvhp00"
+    },
+    {
+      "key": "orders/headshot/ord_mwgjqwpz_ly0e7ly.json",
+      "size": 546,
+      "category": "historical_order",
+      "reason": "未列入批准清单的历史/未知订单（headshot，status=pending, plan=headshot-trial）— 待 Lead 决定",
+      "orderId": "ord_mwgjqwpz_ly0e7ly"
+    },
+    {
+      "key": "orders/voice/ord_mwdirvlc_ett3m1b.json",
+      "size": 285,
+      "category": "historical_order",
+      "reason": "未列入批准清单的历史/未知订单（voice，status=pending, plan=voice-trial）— 待 Lead 决定",
+      "orderId": "ord_mwdirvlc_ett3m1b"
+    },
+    {
+      "key": "orders/voice/ord_mwdit6f3_mkgxa8d.json",
+      "size": 587,
+      "category": "historical_order",
+      "reason": "未列入批准清单的历史/未知订单（voice，status=paid, plan=voice-trial）— 待 Lead 决定",
+      "orderId": "ord_mwdit6f3_mkgxa8d"
+    },
+    {
+      "key": "orders/voice/ord_mwdjbmv8_ub3utqt.json",
+      "size": 637,
+      "category": "historical_order",
+      "reason": "未列入批准清单的历史/未知订单（voice，status=refunded, plan=voice-trial）— 待 Lead 决定",
+      "orderId": "ord_mwdjbmv8_ub3utqt"
+    },
+    {
+      "key": "orders/voice/ord_mwdk0mq6_3unopbu.json",
+      "size": 728,
+      "category": "historical_order",
+      "reason": "未列入批准清单的历史/未知订单（voice，status=refunded, plan=voice-trial）— 待 Lead 决定",
+      "orderId": "ord_mwdk0mq6_3unopbu"
+    },
+    {
+      "key": "orders/voice/ord_mwfz8lsy_jwziwpe.json",
+      "size": 578,
+      "category": "historical_order",
+      "reason": "未列入批准清单的历史/未知订单（voice，status=pending, plan=voice-trial）— 待 Lead 决定",
+      "orderId": "ord_mwfz8lsy_jwziwpe"
+    },
+    {
+      "key": "orders/voice/ord_mwgasq3s_7ljnhv9.json",
+      "size": 542,
+      "category": "historical_order",
+      "reason": "未列入批准清单的历史/未知订单（voice，status=pending, plan=voice-trial）— 待 Lead 决定",
+      "orderId": "ord_mwgasq3s_7ljnhv9"
+    },
+    {
+      "key": "orders/voice/ord_mwgfkkc3_6smw1w4.json",
+      "size": 537,
+      "category": "pending_qa",
+      "reason": "pending QA checkout（voice，status=pending，从未付款）— 待 Lead 决定",
+      "orderId": "ord_mwgfkkc3_6smw1w4"
+    },
+    {
+      "key": "orders/voice/ord_mwgg5izz_g1066ru.json",
+      "size": 537,
+      "category": "pending_qa",
+      "reason": "pending QA checkout（voice，status=pending，从未付款）— 待 Lead 决定",
+      "orderId": "ord_mwgg5izz_g1066ru"
+    },
+    {
+      "key": "orders/voice/ord_mwghhfc7_o9i5jz2.json",
+      "size": 542,
+      "category": "pending_qa",
+      "reason": "pending QA checkout（voice，status=pending，从未付款）— 待 Lead 决定",
+      "orderId": "ord_mwghhfc7_o9i5jz2"
+    },
+    {
+      "key": "orders/voice/ord_mwgjqtee_lnd2ekf.json",
+      "size": 542,
+      "category": "historical_order",
+      "reason": "未列入批准清单的历史/未知订单（voice，status=pending, plan=voice-trial）— 待 Lead 决定",
+      "orderId": "ord_mwgjqtee_lnd2ekf"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjh8xh_ihmaq6/bass.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjh8xh_ihmaq6，无测试订单关联）— 待 Lead 决定",
+      "jobId": "voice_mwdjh8xh_ihmaq6"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjh8xh_ihmaq6/drums.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjh8xh_ihmaq6，无测试订单关联）— 待 Lead 决定",
+      "jobId": "voice_mwdjh8xh_ihmaq6"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjh8xh_ihmaq6/other.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjh8xh_ihmaq6，无测试订单关联）— 待 Lead 决定",
+      "jobId": "voice_mwdjh8xh_ihmaq6"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjh8xh_ihmaq6/vocals.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjh8xh_ihmaq6，无测试订单关联）— 待 Lead 决定",
+      "jobId": "voice_mwdjh8xh_ihmaq6"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjtvvw_bz9nv8/bass.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjtvvw_bz9nv8，无测试订单关联）— 待 Lead 决定",
+      "jobId": "voice_mwdjtvvw_bz9nv8"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjtvvw_bz9nv8/drums.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjtvvw_bz9nv8，无测试订单关联）— 待 Lead 决定",
+      "jobId": "voice_mwdjtvvw_bz9nv8"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjtvvw_bz9nv8/other.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjtvvw_bz9nv8，无测试订单关联）— 待 Lead 决定",
+      "jobId": "voice_mwdjtvvw_bz9nv8"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjtvvw_bz9nv8/vocals.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjtvvw_bz9nv8，无测试订单关联）— 待 Lead 决定",
+      "jobId": "voice_mwdjtvvw_bz9nv8"
+    }
+  ],
+  "protected": [
+    {
+      "key": "jobs/voice/voice_mwg0y8bj_11wiv9.json",
+      "size": 2201,
+      "category": "protected_job",
+      "reason": "真实订单关联 job（orderId=ord_mwfzkg8h_yy9s9md）"
+    },
+    {
+      "key": "orders/voice/ord_mwfzkg8h_yy9s9md.json",
+      "size": 959,
+      "category": "protected_order",
+      "reason": "真实/退款证据订单（voice）— 真实付款 $2.90（Waffo live ORD_3FE3bBRlLEJaeliEA30nYS，已退款）— 退款证据，保留"
+    },
+    {
+      "key": "orders/voice/ord_mwggroyd_1q2v4v3.json",
+      "size": 1745,
+      "category": "protected_order",
+      "reason": "真实/退款证据订单（voice）— 真实付款 $0.10 QA 单（已退款，REF_0KRhN70cseWHScS8fXld6D）— 退款证据，保留"
+    },
+    {
+      "key": "voice/out/2026-11-14/voice_mwg0y8bj_11wiv9/bass.mp3",
+      "size": 22987,
+      "category": "protected_output",
+      "reason": "真实订单关联输出（voice/out，jobId=voice_mwg0y8bj_11wiv9）"
+    },
+    {
+      "key": "voice/out/2026-11-14/voice_mwg0y8bj_11wiv9/drums.mp3",
+      "size": 22987,
+      "category": "protected_output",
+      "reason": "真实订单关联输出（voice/out，jobId=voice_mwg0y8bj_11wiv9）"
+    },
+    {
+      "key": "voice/out/2026-11-14/voice_mwg0y8bj_11wiv9/other.mp3",
+      "size": 22987,
+      "category": "protected_output",
+      "reason": "真实订单关联输出（voice/out，jobId=voice_mwg0y8bj_11wiv9）"
+    },
+    {
+      "key": "voice/out/2026-11-14/voice_mwg0y8bj_11wiv9/vocals.mp3",
+      "size": 22987,
+      "category": "protected_output",
+      "reason": "真实订单关联输出（voice/out，jobId=voice_mwg0y8bj_11wiv9）"
+    }
+  ],
+  "unknown": [
+    {
+      "key": "events/headshot/2026-11-14/2026-11-14T11-19-52-835Z-m2r376.json",
+      "size": 174,
+      "reason": "无法识别的 key（不删）"
+    },
+    {
+      "key": "events/voice/2026-11-14/2026-11-14T10-09-34-557Z-3ulsyl.json",
+      "size": 190,
+      "reason": "无法识别的 key（不删）"
+    },
+    {
+      "key": "events/voice/2026-11-14/2026-11-14T10-09-36-020Z-9sbu5r.json",
+      "size": 185,
+      "reason": "无法识别的 key（不删）"
+    },
+    {
+      "key": "events/voice/2026-11-14/2026-11-14T11-19-47-238Z-mbpfbx.json",
+      "size": 171,
+      "reason": "无法识别的 key（不删）"
+    },
+    {
+      "key": "events/voice/2026-11-14/2026-11-14T13-06-29-937Z-35evqu.json",
+      "size": 179,
+      "reason": "无法识别的 key（不删）"
+    },
+    {
+      "key": "smoke.txt",
+      "size": 30,
+      "reason": "无法识别的 key（不删）"
+    }
+  ]
+}

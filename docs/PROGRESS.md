@@ -192,3 +192,16 @@ npm run dev:headshot   # http://localhost:3001
 - Worker secrets 无 `ALLOW_MOCK`；两站 Waffo live key、live product IDs 在运行。
 - 测试入口已下架；QA 产品已 inactive；两笔真实付款已退款成功。
 - 结论：支付/收款链路可生产使用；旧 versions/未轮换密钥按用户接受风险保留，不再作为上架阻塞。
+
+## 2026-11-15 P0 监控/退款 + P1 6/7/8 收口
+
+- 修正 Replicate 余额结论：Dashboard 当前 credit remaining **$9.23**；此前 429 原文 `<5` 是旧状态/错误文案，不能当当前事实。
+- A 站 job 增加 429/502 瞬时错误重试与轮询容错（3 次才失败，失败仍退额度）。
+- **P0 支付 webhook 修复**：Waffo `t` 是毫秒，旧代码按秒 + 5 分钟窗口 → 401；已改为毫秒归一化 + 45 分钟窗口，线上 invalid-sig 测试确认时间戳不再被误判。
+- 移除 Waffo 11-12 两条重复 live webhook，保留 11-14 两条（voice/headshot）+ tidycontracts 旧站。
+- P0 监控：`tools/monitor-paid-tools.mjs`（22 checks）/`tools/smoke-paid-tools.mjs`（27 checks）本地/线上 pass；排除测试伪造订单收入；Feishu 未配置。
+- P0 退款自动化：`tools/refund-waffo-order.mjs` + `docs/REFUND-RUNBOOK.md`，两笔真实退款 dry-run 幂等通过。
+- P1 7 清理：删除 38 个测试对象 / 41.01 MB，保留 14 个（真实退款证据 + B fanout 证据）；R2 20 对象。
+- P1 6：GSC B 首页已编入索引；A/B sitemap 成功/16；CF Web Analytics token 未配置。
+- P1 8：`.github/workflows/ci.yml` + `monitor.yml`、`docs/DEPLOY-ROLLBACK.md`；workflow 未跑（仓库未 push/无 Actions secrets）。
+- `/api/health` 两站上线；smoke 27/27、monitor 22/22。

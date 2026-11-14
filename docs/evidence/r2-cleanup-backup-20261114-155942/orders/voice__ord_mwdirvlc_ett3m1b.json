@@ -1,0 +1,16 @@
+{
+  "id": "ord_mwdirvlc_ett3m1b",
+  "site": "voice",
+  "status": "pending",
+  "planId": "voice-trial",
+  "productId": "PROD_6kSYbZsVjgzoc7vwXxh1ka",
+  "amountCents": 290,
+  "currency": "USD",
+  "unitsGranted": 15,
+  "unitsUsed": 0,
+  "provider": "waffo",
+  "metadata": {
+    "source": "pricing"
+  },
+  "createdAt": "2026-11-12T12:23:58.896Z"
+}

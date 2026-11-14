@@ -1,0 +1,110 @@
+# 监控 — paid-tools（GitHub Actions cron；只读，不部署）
+#
+# 每日 01:00 UTC（= 09:00 Asia/Shanghai）跑：
+#   1) tools/smoke-paid-tools.mjs    关键路径冒烟；任何 FAIL → 本 job 失败（fail fast）
+#   2) tools/monitor-paid-tools.mjs  指标/阈值/收入/失败率；exit 2（critical）→ 本 job 失败，
+#      exit 1（warn）只打 warning、不失败（避免「页面慢一点就红」；warn 仍进 summary/artifact/飞书）
+#
+# 需要配置的 secrets（全部可选，缺了就按「skipped」如实记录，不伪造）：
+#   FEISHU_WEBHOOK                 飞书机器人 webhook；缺 → 只输出 JSON/Step Summary
+#   CLOUDFLARE_API_TOKEN           有 Workers 读权限 → 自动查 24h requests/errors
+#   CLOUDFLARE_ACCOUNT_ID
+#   R2_ACCOUNT_ID / R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY / R2_BUCKET / R2_ENDPOINT
+#                                  → 只读统计 orders/、events/ 前缀（收入/转化/失败率）
+#
+# 手动触发：Actions → monitor → Run workflow
+# 本地等价：node tools/smoke-paid-tools.mjs && node tools/monitor-paid-tools.mjs
+
+name: monitor
+
+on:
+  schedule:
+    # GitHub cron 是 UTC；01:00 UTC = 09:00 CST（与 docs/OPS-MONITORING.md §8 的日报时间一致）
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: monitor-paid-tools
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  monitor:
+    name: smoke + monitor
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET: ${{ secrets.R2_BUCKET }}
+      R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Node 22：与生产 Worker runtime（v22.23.4）和 wrangler/miniflare 的 engines 要求一致；
+      # @aws-sdk/client-s3 在 Node <22 会打 NodeVersionSupportWarning。
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install (npm ci)
+        run: npm ci --no-audit --no-fund
+
+      # GitHub runner 直连生产（无本机代理）；--no-proxy 让行为确定
+      - name: Smoke — critical paths (fail fast)
+        shell: bash
+        run: node --no-warnings tools/smoke-paid-tools.mjs --no-proxy --json-out=smoke.json --md-out=smoke.md
+
+      - name: Monitor — metrics/thresholds (critical fails, warn does not)
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          node --no-warnings tools/monitor-paid-tools.mjs --no-proxy --quiet --json-out=monitor.json --md-out=monitor.md > /dev/null
+          code=$?
+          echo "monitor_exit=${code}" >> "$GITHUB_ENV"
+          if [ "$code" -eq 2 ]; then
+            echo "::error::monitor 判定 critical（exit 2）— 见 Step Summary / artifact"
+            exit 2
+          fi
+          if [ "$code" -eq 1 ]; then
+            echo "::warning::monitor 判定 warn（exit 1）— 不阻塞 job，见 Step Summary / artifact"
+          fi
+          exit 0
+
+      - name: Step Summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "# paid-tools 每日巡检"
+            echo ""
+            echo "运行时间：$(date -u '+%Y-%m-%d %H:%M UTC') ｜ monitor_exit=${monitor_exit:-未运行}"
+            echo ""
+            if [ -f smoke.md ]; then cat smoke.md; else echo "smoke.md 未产出（smoke 脚本可能未跑完）"; fi
+            echo ""
+            if [ -f monitor.md ]; then cat monitor.md; else echo "monitor.md 未产出（monitor 脚本可能未跑完）"; fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload reports (JSON + Markdown)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: monitor-reports-${{ github.run_id }}
+          path: |
+            monitor.json
+            monitor.md
+            smoke.json
+            smoke.md
+          if-no-files-found: ignore
+          retention-days: 14

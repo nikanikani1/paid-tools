@@ -1,0 +1,20 @@
+{
+  "id": "ord_mwfz79kj_hj0wn4j",
+  "site": "headshot",
+  "status": "pending",
+  "planId": "headshot-trial",
+  "productId": "PROD_6tGVAmXOmg47eThGLohMck",
+  "amountCents": 900,
+  "currency": "USD",
+  "email": "wanghaotiannika@gmail.com",
+  "unitsGranted": 5,
+  "unitsUsed": 0,
+  "provider": "waffo",
+  "providerSessionId": "cs_622117e9-4b27-a611-fdfa-405bea2660ab",
+  "checkoutUrl": "https://pancake.waffo.ai/store/tidycontracts-qzvinaig/checkout/cs_622117e9-4b27-a611-fdfa-405bea2660ab",
+  "successUrl": "https://headshotsnap.com/success?order=ord_mwfz79kj_hj0wn4j",
+  "metadata": {
+    "source": "pricing"
+  },
+  "createdAt": "2026-11-14T05:39:23.059Z"
+}

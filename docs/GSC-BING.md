@@ -1,6 +1,7 @@
 # GSC-BING — 搜索后台操作记录（A: stemextractor.com / B: headshotsnap.com）
 
-> 最后更新：2026-11-14（task-23，ego-browser 登录态来自本机 Chrome 导入的 Google 账号）。
+> 最后更新：2026-11-15（task-27：B 站首页复检 → **已编入索引**；A/B sitemap 状态复检）。
+> 上一版：2026-11-14（task-23，ego-browser 登录态来自本机 Chrome 导入的 Google 账号）。
 > 原则：只记录**这次真实看到/点到**的结果；错误原样引用；没权限/没登录的写「阻塞」。
 
 ## 1. 属性与账号状态
@@ -14,11 +15,11 @@
 - 验证方式：DNS TXT 域级验证（见 docs/PROGRESS.md「2026-11-12 GSC + IndexNow」）。
 - 浏览器：ego-browser（本机默认浏览器，已登录态）；**未使用 computer-use**。
 
-## 2. GSC：sitemap 状态（2026-11-14 复检）
+## 2. GSC：sitemap 状态（2026-11-15 复检）
 
 | 站点 | Sitemap | 状态 | 已发现网页 | 上次读取 | 结论 |
 | --- | --- | --- | --- | --- | --- |
-| A | `https://stemextractor.com/sitemap.xml` | **成功** | **16** | 2026-11-12 | ✅ A 站 sitemap 已恢复成功（此前「无法获取」已消失） |
+| A | `https://stemextractor.com/sitemap.xml` | **成功** | **16** | 2026-11-14（2026-11-15 复检确认） | ✅ A 站 sitemap 已恢复成功（此前「无法获取」已消失） |
 | B | `https://headshotsnap.com/sitemap.xml` | **成功** | **16** | 2026-11-12 | ✅ 与既有记录一致 |
 
 > task-23 要求「GSC A 站 sitemap 重试」——复检时 A 站状态已是「成功 / 16 个已发现网页」，**无需再重试提交**；若后续再出现「无法获取」，操作路径：GSC → 站点地图 → 删除该条 → 「添加新的站点地图」输入 `sitemap.xml` → 提交。
@@ -29,7 +30,7 @@
 | 站点 | URL | 结果 | 请求编入索引 | 证据 |
 | --- | --- | --- | --- | --- |
 | A | `https://stemextractor.com/` | **网页已编入索引** | 已点击「请求编入索引」（按钮存在且可点） | `gsc-inspect-A-final.png|json`、`gsc-inspect-A-requested.png` |
-| B | `https://headshotsnap.com/` | **网页未编入索引：Google 无法识别此网址** | 已点击「请求编入索引」，**未看到确认提示** | `gsc-inspect-B-final.png|json`、`gsc-inspect-B-requested.png` |
+| B | `https://headshotsnap.com/` | **网页已编入索引**（2026-11-15 00:08 CST 复检；11-14 曾显示「Google 无法识别此网址」） | 无需再点（已收录） | 2026-11-15 复检记录见 §3.1；历史证据 `gsc-inspect-B-final.png|json`、`gsc-inspect-B-requested.png` |
 
 详细观察：
 - 两个 URL 检查页都一直显示「正在测试实际网址可否编入索引」——GSC 的实时测试在本次会话里**没有等到完成态**（等待 15s+ 仍显示测试中）。A 的索引状态是已编入索引，B 是未编入索引。
@@ -39,6 +40,17 @@
   2. GSC → 编制索引 → 网页 → 看「已发现但尚未编入索引」理由；
   3. 确认线上首页 canonical 与 sitemap 首条一致（`curl -s https://headshotsnap.com/ | grep -o '<link rel="canonical" href="[^"]*"'`）；
   4. 若有内链/外链新页面，同步提交 IndexNow（见 §4）。
+
+### 3.1 2026-11-15 00:08 CST B 站首页复检（task-27）—— **已编入索引**
+
+- 方法：ego-browser（本机默认浏览器，登录态来自 Chrome 导入的 Google 账号）；打开 GSC → B 属性 → 网址检查 → 输入 `https://headshotsnap.com/` → Enter。
+  ⚠️ **深链坑**：`https://search.google.com/search-console/inspect?resource_id=sc-domain%3Aheadshotsnap.com&id=https%3A%2F%2Fheadshotsnap.com%2F`（以及 resource_id 不编码的变体）在 2026-11-15 都返回 Google 自家 **404「Error 404 (找不到)!!1」**；必须走「GSC → 网址检查 → 输入框」的 UI 路径，不要用这个深链。
+- 复检结果（页面原文）：
+  - 顶部状态：**「网址已收录到 Google」**
+  - 「网页索引编制」：**「网页已编入索引」**
+  - 增强项：「HTTPS — 网页采用 HTTPS 协议」；「产品摘要 / 路径 — 检测到了 1 项有效内容」
+- 结论：11-14 的「Google 无法识别此网址」已消失，B 首页**已完成收录**，不再需要点「请求编入索引」；sitemap 状态仍为「成功 / 16 个已发现网页」。
+- 证据形式：本次为 **ego-browser 文本证据**（未新增 PNG；上一轮截图 `gsc-inspect-B-final.png` 仍保留历史对照）。复现方法：按上面的 UI 路径手动走一遍即可。
 
 ## 4. IndexNow（Bing/Yandex/Seznam 索引加速）
 
@@ -90,7 +102,7 @@ curl -s -o /dev/null -w "indexnow=%{http_code}\n" -X POST https://api.indexnow.o
 ## 7. 下次进 GSC 的 5 分钟复检清单
 
 1. A/B 站点地图状态是否仍为「成功」；
-2. B 首页 URL 检查：实时测试是否完成、「可以编入索引」后请求编入索引；
+2. B 首页 URL 检查：**已收录（2026-11-15 确认）**，后续只需在「网页」报告确认索引数增长，不需要再点请求编入索引；
 3. 两站「网页」报告：已编入索引数（当前 A/B sitemap 各 16 URL）是否增长；
 4. 「效果」报告：28 天点击/展示是否 >0（新站前 2–3 个月数据少属正常）；
 5. 若仍无法识别 B 首页：检查线上响应头/canonical，并在 GSC 用「测试实际网址」看抓取是否被 robot 拦。

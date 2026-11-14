@@ -1,0 +1,22 @@
+{
+  "id": "ord_mwdjc0nd_j5a2v8g",
+  "site": "headshot",
+  "status": "refunded",
+  "planId": "headshot-trial",
+  "productId": "PROD_2T3kfOP3KloTX9xbnjjoTv",
+  "amountCents": 900,
+  "currency": "USD",
+  "unitsGranted": 5,
+  "unitsUsed": 5,
+  "provider": "waffo",
+  "providerSessionId": "cs_874fed2d-ae21-0b95-0600-e4f860301f17",
+  "checkoutUrl": "https://pancake.waffo.ai/store/tidycontracts-qzvinaig/checkout/cs_874fed2d-ae21-0b95-0600-e4f860301f17",
+  "successUrl": "https://headshotsnap.com/success?order=ord_mwdjc0nd_j5a2v8g",
+  "metadata": {
+    "source": "pricing",
+    "test": "live-e2e"
+  },
+  "createdAt": "2026-11-12T12:39:38.569Z",
+  "paidAt": "2026-11-12T12:55:32.439Z",
+  "refundedAt": "2026-11-12T13:32:05.835Z"
+}

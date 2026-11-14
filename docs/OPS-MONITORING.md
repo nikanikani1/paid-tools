@@ -153,3 +153,118 @@ paid-tools-files (bucket)
 | `download_clicked` | 点击 `<a download>` 或直链文件（mp3/wav/zip/jpg/png…） | props.ext | 交付完成价值事件 |
 
 服务端也可以直接 `POST /api/events`（白名单：checkout_started / paid / job_started / job_done / download_clicked / page_view / ui_error）。**验收证据**：`docs/evidence/events-api-evidence.txt`（本地 curl：200、PII 过滤、R2 写入 `stored.r2=1`）。
+
+## 8. 退款与 Waffo webhook 监控（2026-11-14 补，task-28）
+
+> 操作手册见 `docs/REFUND-RUNBOOK.md`；工具 `tools/refund-waffo-order.mjs`（幂等，`--dry-run` 只读）。
+
+### 8.1 每日必查（3 条 GraphQL，只读）
+
+1. **退款 ticket 是否卡住**：`refundTickets(limit:20)` 里 `status` 非 `succeeded` 且 `createdAt` 超过 30 分钟 → P1，按 runbook §7 跟进（不要重复建 ticket）。
+2. **退款记录是否落 R2**：`refunds(limit:20)` 每条 `succeeded` 都要能在 R2 `orders/<site>/<orderMerchantExternalId>.json` 看到 `status=refunded` + 同 `providerRefundId`。缺失 → 跑 `node tools/refund-waffo-order.mjs --order <id>`（幂等补写，不会二次退款）。
+3. **webhook 投递健康**：`webhookDeliveries(storeId, limit:20)` 里 `status="failed"` 计数 > 0 → 立即查 `responseBody`。
+
+### 8.2 阈值与告警
+
+| 指标 | 阈值 | 级别 | 处置 |
+| --- | --- | --- | --- |
+| `webhookDeliveries.status=failed`（24h） | ≥1 | **P0**（当前必现，见 8.3） | 先确认 R2 订单是否已由 reconcile/脚本补上，再修验签 |
+| 退款 ticket 非终态 > 30min | ≥1 | P1 | runbook §7 |
+| R2 退款状态与 Waffo 不一致 | ≥1 | P0 | 用脚本 `--dry-run` 定位后幂等补写 |
+| `payment_not_found` 的「paid」R2 订单 | ≥1 | P1 | 测试伪造单或丢支付：核对 Waffo orders，禁止退款 |
+| 退款金额 > $50 或不在 runbook §2 口径 | 任意 | P1 | 需 Lead 书面确认后加 `--max-amount` |
+
+### 8.3 已知 P0：live webhook 全部 401（2026-11-14 确认，未修）
+
+- 现象：两站 `order.completed` / `refund.succeeded` 投递均 401（每事件 5 次重试），我方返回 `{"ok":false,"error":"bad_signature","reason":"webhook 时间戳过期（重放保护）"}`；旧站 `tidycontracts.com/api/webhook/waffo` 200。
+- 根因：`packages/core/src/payments/waffo.ts` 的 `verifyWebhookSignature` 把 Waffo 的 `t`（**毫秒**）当秒比较，且窗口是 5 分钟（官方要求 45 分钟，重投会重放原始 `t`）。
+- 影响：支付/退款状态更新只能走 `/api/orders/reconcile` + `tools/refund-waffo-order.mjs`；**在修复前，任何依赖 webhook 的自动化都不要上线**。
+- 验收修复：`webhookDeliveries` 里 `status=failed` 清零 + 手动重放一次事件返回 200。
+- 另：同一 URL 注册了 2 条 live webhook（11-12/11-14 各一次），清理命令见 REFUND-RUNBOOK §9（需 owner 批准）。
+
+---
+
+# 9. 自动监控（task-27，2026-11-15）：脚本 + GitHub Actions + 阈值/退出码
+
+> 本节把 §0「没有任何自动告警」补成**可执行资产**。与 §8（退款/webhook 监控，task-28）互不覆盖。
+
+## 9.1 资产清单
+
+| 资产 | 作用 | 状态 |
+| --- | --- | --- |
+| `tools/monitor-paid-tools.mjs` | 两站可用性 + 付费闸门 + 已知订单 + R2 订单/收入/失败率 + CF 24h errors + 可选飞书摘要；输出 JSON | ✅ 本机真实跑通 |
+| `tools/smoke-paid-tools.mjs` | 秒级关键路径 smoke（页面/API/sitemap/404/www/安全头/闸门/定价真实性/已知订单），严格 pass-fail | ✅ 27/27 通过 |
+| `.github/workflows/ci.yml` | push/PR：`npm ci` → `typecheck` → 双站 build（**不部署**） | ✅ YAML 已校验，build 本机等价跑通 |
+| `.github/workflows/monitor.yml` | 每日 01:00 UTC（09:00 CST）跑 smoke + monitor；critical 才让 job 变红；JSON/MD 存 artifact | ✅ YAML 已校验 |
+| `apps/*/app/api/health/route.ts` | 只读健康检查（service/status/commit + `checks.r2`），给外部 uptime 探针用 | ✅ 已加入构建；**尚未部署**（线上 404 属预期） |
+
+## 9.2 命令（本机 / CI）
+
+```bash
+# 本机（直连被网络策略挡住时脚本会自动探测 127.0.0.1:7897 代理；也可显式指定）
+node tools/smoke-paid-tools.mjs                       # 期望 exit 0，27 项全 PASS
+node tools/monitor-paid-tools.mjs                     # JSON→stdout，人读摘要→stderr
+node tools/monitor-paid-tools.mjs --quiet > monitor.json
+node tools/monitor-paid-tools.mjs --probe-r2          # 只做 R2 只读连通性自检
+node tools/monitor-paid-tools.mjs --proxy=http://127.0.0.1:7897
+node tools/monitor-paid-tools.mjs --no-proxy          # 强制直连（CI 用）
+
+# GitHub Actions 里同样输出文件（供 Step Summary / artifact）
+node tools/monitor-paid-tools.mjs --quiet --json-out=monitor.json --md-out=monitor.md
+node tools/smoke-paid-tools.mjs   --json-out=smoke.json --md-out=smoke.md
+```
+
+## 9.3 阈值与退出码（脚本 `THRESHOLDS` 与本节必须一致）
+
+| # | 指标 | 阈值 | 判读 |
+| --- | --- | --- | --- |
+| 1 | 页面可用性 `/`、`/pricing`、`/orders` | 非 200 = **fail(critical)** | 站点挂了 |
+| 2 | 页面响应时间 | > 2500ms = warn | 只是慢，不判死 |
+| 3 | `/api/version` | 200 且 `service` 匹配 = pass；否则 fail | commit=dev 仅 info（部署未注入 GIT_COMMIT） |
+| 4 | `/api/events` GET | `r2:true` = pass；`r2:false` = warn | false 时事件只进 stdout，统计会失真 |
+| 5 | `sitemap.xml` | 200 且 URL 数 ≥16；200 但 <16 = warn；非 200 = fail | 两站当前都是 16 |
+| 6 | 付费闸门 `POST /api/jobs`(A) / `POST /api/orders`(B) | 必须 **402**；2xx = **fail(critical, P0 免费口子)**；5xx = fail | 探针无副作用（无订单必 402） |
+| 7 | 已知订单 `/api/orders/status` | 非 200 且非 404 = fail；404 或状态不一致 = warn | 订单可能被 CLEANUP 清理 |
+| 8 | CF 24h errorRate（scope: `paid-tools-*`） | > 1% = warn；> 5% = fail | 缺 `paid-tools-*` 脚本 = warn |
+| 9 | R2 前缀 `orders/`、`events/` | 读取失败 = warn；凭证缺失 = skipped | 只读，绝不写 R2 |
+
+**退出码**：`0` = ok；`1` = warn（可用但有短板）；`2` = critical（挂了/闸门被打开/核心 API 500）。
+> `monitor.yml` 的处理：exit 2 → job 失败；exit 1 → 只打 `::warning::`，不阻塞（warn 仍进 Step Summary + artifact + 飞书）。`smoke` 任何 FAIL → job 失败（fail fast）。
+> 抗抖动：两个脚本对**连接级失败**（超时/ECONNRESET/代理抖动）各重试 1 次；HTTP 4xx/5xx 不重试（那是真实信号）。实测本机连续 3 次 monitor + 2 次 smoke 全部 exit 0。
+
+## 9.4 2026-11-14 23:5x–2026-11-15 00:0x 本机真实运行证据
+
+- `smoke` → **PASS 27/27，exit 0**（A/B 各 13 项；含 402 闸门、16 URL sitemap、www 301、安全头、已知订单）。
+- `monitor` → **OK，exit 0，22 checks 全 pass**（proxy 自动识别 `127.0.0.1:7897`，因为本机直连生产超时）。
+- R2 只读统计（当时）：`voice` 12 单（paid 1 / refunded 4 / pending 7，net $2.90）；`headshot` 10 单（paid 5 / refunded 1 / pending 4，net $45.00）。
+  ⚠️ 随后 task-28 的 `CLEANUP` 脚本清理了测试单，再跑变成 `voice` 2 单 / `headshot` 1 单 —— **数字会随运维动作变化，这是实时的，不是 bug**。
+  ⚠️ `headshot` 的 5 个 paid 是 2026-11-14 测试伪造/手动标记（无真实 Waffo payment，见 PROGRESS），**净收入不等于真实收款**。
+- CF GraphQL（24h）：`paid-tools-headshot` 4514 req / 0 err，`paid-tools-voice` 4256 req / 0 err，errorRate 0.00%；账号里另有 `tidycontracts-cf`、`hk-www-redirect`，已按 `paid-tools-*` 过滤，不污染判读。
+- CF Web Analytics：`NEXT_PUBLIC_CF_WEB_ANALYTICS_TOKEN` **未配置**（`.env.local` 与仓库都没有）→ `Analytics.tsx` 的 beacon 分支 no-op；monitor JSON 里 `meta.configured.cloudflareWebAnalyticsToken=false`（本轮不做伪造 ID）。
+- 飞书：`FEISHU_WEBHOOK` 未配置 → `channels.feishu = skipped`（本地只输出 JSON/摘要，**不伪造已推送**）。
+- 反向验证：把 `MONITOR_SITE_VOICE` 指向坏域名后 `monitor` 返回 **exit 2 / status=critical / 9 fails**，说明阈值真的会触发。
+
+## 9.5 GitHub Actions 的启用方式（需要用户/Lead 动作）
+
+1. 把仓库推到 GitHub（当前改动未 commit，按纪律未提交）。
+2. Settings → Secrets and variables → Actions 添加（**全部可选**，缺了脚本会标 skipped）：
+   `FEISHU_WEBHOOK`、`CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID`、`R2_ACCOUNT_ID`、`R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`、`R2_BUCKET`、`R2_ENDPOINT`。
+3. Actions 页面确认 `monitor` workflow 出现（schedule 只认默认分支；`workflow_dispatch` 可手动跑）。
+4. 首次手动 Run workflow 验证：Step Summary 应出现 smoke/monitor 两张表；artifact 应有 `monitor.json`/`monitor.md`。
+
+## 9.6 仍**未**自动化 / 明确 blocked 的部分（不冒充完成）
+
+| 项 | 现状 | 原因 / 替代 |
+| --- | --- | --- |
+| 5xx/402 精确按状态码比例 | ❌ 未自动化 | GraphQL `workersInvocationsAdaptive` 只给 requests/errors 汇总；精确比例需 Workers Logs 或 `wrangler tail`（本机 Node 20 跑不了 wrangler 4.160，需 Node ≥22） |
+| Worker CPU 时间 | ❌ 未自动化 | 该数据集无 CPU 维度；Dashboard → Workers → Metrics 人工看，或开 Logpush（付费） |
+| `/api/health` 线上可用 | ⏳ 未部署 | 代码已加并通过 build；下一次部署后 `GET /api/health` 才会 200（在那之前 404 不是故障） |
+| 线上 commit 与仓库 HEAD 对账 | ❌ 不可行 | 线上 `/api/version.commit=dev`（部署未注入 `GIT_COMMIT`）；要修需在部署时注入 build 环境变量 |
+| webhook 自动投递健康 | ❌ 不在本任务 | 归属 task-28；**已知 P0：live webhook 全部 401**（见 §8.3）——修复前「paid/pending」数字可能滞后，监控里 `pending` 偏多属已知现象 |
+| 自动告警到飞书 | ⏳ 只差 webhook | 脚本与 workflow 已支持，填 `FEISHU_WEBHOOK` secret 即生效 |
+
+## 9.7 每周仍建议人工做的事（脚本替代不了）
+
+1. `wrangler tail` 抽查 402/5xx 与 CPU（或等 Logpush 上）。
+2. 核对 R2 `paid` 订单与 Waffo 真实付款一一对应（防测试伪造单混入收入）。
+3. 看 `monitor` 的 `warnings` 趋势，而不是只看 exit code。

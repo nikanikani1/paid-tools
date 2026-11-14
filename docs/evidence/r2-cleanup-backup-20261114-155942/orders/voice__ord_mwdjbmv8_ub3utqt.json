@@ -1,0 +1,22 @@
+{
+  "id": "ord_mwdjbmv8_ub3utqt",
+  "site": "voice",
+  "status": "refunded",
+  "planId": "voice-trial",
+  "productId": "PROD_6kSYbZsVjgzoc7vwXxh1ka",
+  "amountCents": 290,
+  "currency": "USD",
+  "unitsGranted": 15,
+  "unitsUsed": 5,
+  "provider": "waffo",
+  "providerSessionId": "cs_80c9429a-becf-81d0-2e84-47c98a562e06",
+  "checkoutUrl": "https://pancake.waffo.ai/store/tidycontracts-qzvinaig/checkout/cs_80c9429a-becf-81d0-2e84-47c98a562e06",
+  "successUrl": "https://stemextractor.com/success?order=ord_mwdjbmv8_ub3utqt",
+  "metadata": {
+    "source": "pricing",
+    "test": "live-e2e"
+  },
+  "createdAt": "2026-11-12T12:39:20.708Z",
+  "paidAt": "2026-11-12T12:43:34.704Z",
+  "refundedAt": "2026-11-12T13:32:02.905Z"
+}

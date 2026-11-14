@@ -15,6 +15,12 @@ import {
 
 const STEM_ORDER = ["vocals", "instrumental", "drums", "bass", "other"] as const;
 
+const TRANSIENT_PROVIDER_ERROR = /\b(429|500|502|503|504)\b|timeout|timed out|ECONN|fetch failed|rate limit/i;
+
+function isTransientProviderError(err: unknown): boolean {
+  return TRANSIENT_PROVIDER_ERROR.test(err instanceof Error ? err.message : String(err));
+}
+
 function settlementIds(job: { input: Record<string, unknown> }): { orderId: string | null; reservationId: string | null } {
   return {
     orderId: typeof job.input.orderId === "string" ? job.input.orderId : null,
@@ -116,11 +122,23 @@ export async function GET(_req: Request, ctx: { params: Promise<{ id: string }> 
       },
     });
   } catch (err) {
+    const message = err instanceof Error ? err.message : "Provider lookup failed.";
+    const previousErrors = Number(job.meta?.providerErrors ?? 0);
+    const attempts = previousErrors + 1;
+    // A transient 429/502 does not mean the prediction failed; keep polling a
+    // few times before refunding and marking the job failed.
+    if (isTransientProviderError(err) && attempts < 3) {
+      return finish({
+        status: "running",
+        progress: 60,
+        meta: { ...job.meta, providerErrors: attempts, lastProviderError: message.slice(0, 200) },
+      });
+    }
     await settleAllowance(job, "refund", "provider lookup failed");
     return finish({
       status: "failed",
       progress: 100,
-      error: err instanceof Error ? err.message : "Provider lookup failed.",
+      error: message,
     });
   }
 }

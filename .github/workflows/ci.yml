@@ -1,0 +1,59 @@
+# CI — paid-tools（只验证，不部署）
+#
+# 目的：任何 push / PR 都能证明「仓库能装上、类型过、两站能构建」。
+# 明确不做的事：
+#   - 不在 CI 里部署（缺生产 secrets；部署走 docs/DEPLOY-ROLLBACK.md 的手工/Workers Builds 流程）
+#   - 不跑 wrangler（本机 Node 20 跑不了 wrangler 4.x；CI 也不放 Cloudflare token）
+#
+# 本地等价命令（改完代码先自测）：
+#   npm ci && npm run typecheck && npm run build
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: install + typecheck + build (voice, headshot)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      # 非敏感构建期变量：与生产一致，避免静态页面里 canonical/robots 出现 localhost
+      NEXT_PUBLIC_SITE_URL_VOICE: https://stemextractor.com
+      NEXT_PUBLIC_SITE_URL_HEADSHOT: https://headshotsnap.com
+      NEXT_PUBLIC_SITE_URL: https://stemextractor.com
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Node 22：wrangler / miniflare / undici@7 的 engines 要求 ≥22，生产 Worker runtime 报 v22.23.4。
+      # 本机 Node 20.10 只用于 next build + 监控脚本（typecheck 与双站 build 已在本机 Node 20 通过）。
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install (npm ci)
+        run: npm ci --no-audit --no-fund
+
+      - name: Typecheck (both apps)
+        run: npm run typecheck
+
+      - name: Build voice (A stemextractor.com)
+        run: npm run build:voice
+
+      - name: Build headshot (B headshotsnap.com)
+        run: npm run build:headshot

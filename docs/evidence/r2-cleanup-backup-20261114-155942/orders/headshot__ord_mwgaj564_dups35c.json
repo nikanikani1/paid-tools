@@ -1,0 +1,19 @@
+{
+  "id": "ord_mwgaj564_dups35c",
+  "site": "headshot",
+  "status": "paid",
+  "planId": "headshot-trial",
+  "amountCents": 900,
+  "currency": "USD",
+  "email": "jobids-check@example.com",
+  "unitsGranted": 5,
+  "unitsUsed": 0,
+  "provider": "waffo",
+  "metadata": {},
+  "createdAt": "2026-11-14T10:56:33.004Z",
+  "paidAt": "2026-11-14T10:56:43.083Z",
+  "providerOrderId": "jobids_check",
+  "jobIds": [
+    "headshot_linkcheck_mwgaje2n"
+  ]
+}

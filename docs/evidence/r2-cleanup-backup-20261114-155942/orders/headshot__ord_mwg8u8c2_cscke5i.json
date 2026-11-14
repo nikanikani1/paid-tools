@@ -1,0 +1,16 @@
+{
+  "id": "ord_mwg8u8c2_cscke5i",
+  "site": "headshot",
+  "status": "paid",
+  "planId": "headshot-trial",
+  "amountCents": 900,
+  "currency": "USD",
+  "email": "e2e-task21@example.com",
+  "unitsGranted": 5,
+  "unitsUsed": 2,
+  "provider": "waffo",
+  "metadata": {},
+  "createdAt": "2026-11-14T10:09:11.090Z",
+  "paidAt": "2026-11-14T10:09:12.912Z",
+  "providerOrderId": "e2e_task21_provider"
+}

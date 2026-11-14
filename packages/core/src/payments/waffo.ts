@@ -22,7 +22,7 @@ import { getProcessEnv, hasWaffoConfig, type EnvSource } from "../env";
 const WAFFO_CHECKOUT_PATH = "/v1/actions/checkout/create-session";
 const DEFAULT_API_BASE = "https://api.waffo.ai";
 const DEFAULT_SIGNATURE_HEADER = "x-waffo-signature";
-const MAX_WEBHOOK_SKEW_SECONDS = 5 * 60;
+const MAX_WEBHOOK_SKEW_SECONDS = 45 * 60;
 
 export interface WaffoConfig {
   mode: "live" | "test";
@@ -328,7 +328,12 @@ export async function verifyWebhookSignature(
   if (!signature) return { ok: false, mode: "rsa", reason: `缺少签名 header（${headerName}）` };
 
   if (timestamp) {
-    const age = Math.abs(Date.now() / 1000 - Number(timestamp));
+    // Waffo sends `t` in milliseconds (some older deliveries used seconds).
+    // Normalize only for the freshness check; the raw value is part of the
+    // signed message and must stay untouched in `candidates` below.
+    const rawTimestamp = Number(timestamp);
+    const timestampSeconds = rawTimestamp > 1e12 ? rawTimestamp / 1000 : rawTimestamp;
+    const age = Math.abs(Date.now() / 1000 - timestampSeconds);
     if (!Number.isFinite(age) || age > MAX_WEBHOOK_SKEW_SECONDS) {
       return { ok: false, mode: "rsa", reason: "webhook 时间戳过期（重放保护）" };
     }

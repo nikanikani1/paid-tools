@@ -1,0 +1,650 @@
+{
+  "generatedAt": "2026-11-14T15:59:42.412Z",
+  "mode": "apply",
+  "includePendingQa": true,
+  "includeHistorical": true,
+  "bucket": "paid-tools-files",
+  "backupDir": "docs\\evidence\\r2-cleanup-backup-20261114-155942",
+  "totals": {
+    "delete": {
+      "count": 38,
+      "bytes": 43003037
+    },
+    "needsDecision": {
+      "count": 0,
+      "bytes": 0
+    },
+    "protected": {
+      "count": 14,
+      "bytes": 1204893
+    },
+    "unknown": {
+      "count": 6,
+      "bytes": 929
+    }
+  },
+  "protectedSnapshot": [
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg9j392_k4cqqp/headshot-01.jpg",
+      "size": 199252,
+      "exists": true,
+      "lastModified": "2026-11-14T10:30:01.000Z"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg9j392_k4cqqp/headshot-02.jpg",
+      "size": 260047,
+      "exists": true,
+      "lastModified": "2026-11-14T10:30:06.000Z"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg9j392_k4cqqp/headshot-03.jpg",
+      "size": 199983,
+      "exists": true,
+      "lastModified": "2026-11-14T10:30:57.000Z"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg9j392_k4cqqp/headshot-04.jpg",
+      "size": 203414,
+      "exists": true,
+      "lastModified": "2026-11-14T10:30:44.000Z"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg9j392_k4cqqp/headshot-05.jpg",
+      "size": 235165,
+      "exists": true,
+      "lastModified": "2026-11-14T10:31:34.000Z"
+    },
+    {
+      "key": "jobs/headshot/headshot_mwg9j392_k4cqqp.json",
+      "size": 9843,
+      "exists": true,
+      "lastModified": "2026-11-14T10:31:36.000Z"
+    },
+    {
+      "key": "jobs/voice/voice_mwg0y8bj_11wiv9.json",
+      "size": 2201,
+      "exists": true,
+      "lastModified": "2026-11-14T06:28:24.000Z"
+    },
+    {
+      "key": "orders/headshot/ord_mwg9ivk0_dgk2bjw.json",
+      "size": 336,
+      "exists": true,
+      "lastModified": "2026-11-14T10:31:35.000Z"
+    },
+    {
+      "key": "orders/voice/ord_mwfzkg8h_yy9s9md.json",
+      "size": 959,
+      "exists": true,
+      "lastModified": "2026-11-14T14:47:19.000Z"
+    },
+    {
+      "key": "orders/voice/ord_mwggroyd_1q2v4v3.json",
+      "size": 1745,
+      "exists": true,
+      "lastModified": "2026-11-14T14:47:22.000Z"
+    },
+    {
+      "key": "voice/out/2026-11-14/voice_mwg0y8bj_11wiv9/bass.mp3",
+      "size": 22987,
+      "exists": true,
+      "lastModified": "2026-11-14T06:28:24.000Z"
+    },
+    {
+      "key": "voice/out/2026-11-14/voice_mwg0y8bj_11wiv9/drums.mp3",
+      "size": 22987,
+      "exists": true,
+      "lastModified": "2026-11-14T06:28:24.000Z"
+    },
+    {
+      "key": "voice/out/2026-11-14/voice_mwg0y8bj_11wiv9/other.mp3",
+      "size": 22987,
+      "exists": true,
+      "lastModified": "2026-11-14T06:28:24.000Z"
+    },
+    {
+      "key": "voice/out/2026-11-14/voice_mwg0y8bj_11wiv9/vocals.mp3",
+      "size": 22987,
+      "exists": true,
+      "lastModified": "2026-11-14T06:28:24.000Z"
+    }
+  ],
+  "delete": [
+    {
+      "key": "headshot/out/2026-11-12/headshot_mwdjwl22_wt5wrf/headshot-01.jpg",
+      "size": 190429,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 headshot/out 对象（jobId=headshot_mwdjwl22_wt5wrf，无真实订单关联）— --include-historical 指定删除",
+      "jobId": "headshot_mwdjwl22_wt5wrf"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg8uw70_9kwnsb/headshot-02.jpg",
+      "size": 214006,
+      "category": "test_output",
+      "reason": "测试订单关联输出（headshot/out，jobId=headshot_mwg8uw70_9kwnsb）",
+      "jobId": "headshot_mwg8uw70_9kwnsb"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg993xt_yujet3/headshot-02.jpg",
+      "size": 222279,
+      "category": "test_output",
+      "reason": "测试订单关联输出（headshot/out，jobId=headshot_mwg993xt_yujet3）",
+      "jobId": "headshot_mwg993xt_yujet3"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg993xt_yujet3/headshot-03.jpg",
+      "size": 193616,
+      "category": "test_output",
+      "reason": "测试订单关联输出（headshot/out，jobId=headshot_mwg993xt_yujet3）",
+      "jobId": "headshot_mwg993xt_yujet3"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg993xt_yujet3/headshot-04.jpg",
+      "size": 198549,
+      "category": "test_output",
+      "reason": "测试订单关联输出（headshot/out，jobId=headshot_mwg993xt_yujet3）",
+      "jobId": "headshot_mwg993xt_yujet3"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg993xt_yujet3/headshot-05.jpg",
+      "size": 250418,
+      "category": "test_output",
+      "reason": "测试订单关联输出（headshot/out，jobId=headshot_mwg993xt_yujet3）",
+      "jobId": "headshot_mwg993xt_yujet3"
+    },
+    {
+      "key": "jobs/headshot/headshot_mwdjwl22_wt5wrf.json",
+      "size": 1326,
+      "category": "orphan_job",
+      "reason": "孤儿/历史 job（kind=headshot, status=done，无真实订单关联）— --include-historical 指定删除",
+      "jobId": "headshot_mwdjwl22_wt5wrf"
+    },
+    {
+      "key": "jobs/headshot/headshot_mwg8uw70_9kwnsb.json",
+      "size": 7666,
+      "category": "test_job",
+      "reason": "测试订单关联 job（kind=headshot, orderId=ord_mwg8u8c2_cscke5i, status=done）",
+      "orderId": "ord_mwg8u8c2_cscke5i",
+      "jobId": "headshot_mwg8uw70_9kwnsb"
+    },
+    {
+      "key": "jobs/headshot/headshot_mwg993xt_yujet3.json",
+      "size": 8238,
+      "category": "test_job",
+      "reason": "测试订单关联 job（kind=headshot, orderId=ord_mwg98npc_21xbl9p, status=done）",
+      "orderId": "ord_mwg98npc_21xbl9p",
+      "jobId": "headshot_mwg993xt_yujet3"
+    },
+    {
+      "key": "jobs/voice/voice_mwdjtvvw_bz9nv8.json",
+      "size": 2197,
+      "category": "orphan_job",
+      "reason": "孤儿/历史 job（kind=voice, status=done，无真实订单关联）— --include-historical 指定删除",
+      "jobId": "voice_mwdjtvvw_bz9nv8"
+    },
+    {
+      "key": "jobs/voice/voice_mwgh7t7f_ndvth1.json",
+      "size": 553,
+      "category": "qa_refunded_job",
+      "reason": "测试订单关联 job（kind=voice, orderId=ord_mwggroyd_1q2v4v3, status=failed）",
+      "orderId": "ord_mwggroyd_1q2v4v3",
+      "jobId": "voice_mwgh7t7f_ndvth1"
+    },
+    {
+      "key": "orders/headshot/ord_mwdjc0nd_j5a2v8g.json",
+      "size": 641,
+      "category": "historical_order",
+      "reason": "历史测试订单（headshot，status=refunded, plan=headshot-trial；无真实付款，非证据单）— --include-historical 指定删除",
+      "orderId": "ord_mwdjc0nd_j5a2v8g"
+    },
+    {
+      "key": "orders/headshot/ord_mwfye9w4_rsnl8uv.json",
+      "size": 582,
+      "category": "historical_order",
+      "reason": "历史测试订单（headshot，status=pending, plan=headshot-trial；无真实付款，非证据单）— --include-historical 指定删除",
+      "orderId": "ord_mwfye9w4_rsnl8uv"
+    },
+    {
+      "key": "orders/headshot/ord_mwfz79kj_hj0wn4j.json",
+      "size": 582,
+      "category": "historical_order",
+      "reason": "历史测试订单（headshot，status=pending, plan=headshot-trial；无真实付款，非证据单）— --include-historical 指定删除",
+      "orderId": "ord_mwfz79kj_hj0wn4j"
+    },
+    {
+      "key": "orders/headshot/ord_mwg8u8c2_cscke5i.json",
+      "size": 336,
+      "category": "e2e_test_order",
+      "reason": "B 站 e2e 测试订单（headshot，手工标记 paid、无真实 Waffo payment）",
+      "orderId": "ord_mwg8u8c2_cscke5i"
+    },
+    {
+      "key": "orders/headshot/ord_mwg95akh_eohr2pu.json",
+      "size": 336,
+      "category": "e2e_test_order",
+      "reason": "B 站 e2e 测试订单（headshot，手工标记 paid、无真实 Waffo payment）",
+      "orderId": "ord_mwg95akh_eohr2pu"
+    },
+    {
+      "key": "orders/headshot/ord_mwg98npc_21xbl9p.json",
+      "size": 336,
+      "category": "e2e_test_order",
+      "reason": "B 站 e2e 测试订单（headshot，手工标记 paid、无真实 Waffo payment）",
+      "orderId": "ord_mwg98npc_21xbl9p"
+    },
+    {
+      "key": "orders/headshot/ord_mwgaj564_dups35c.json",
+      "size": 372,
+      "category": "e2e_test_order",
+      "reason": "B 站 e2e 测试订单（headshot，手工标记 paid、无真实 Waffo payment）",
+      "orderId": "ord_mwgaj564_dups35c"
+    },
+    {
+      "key": "orders/headshot/ord_mwghi8yg_8kvhp00.json",
+      "size": 546,
+      "category": "pending_qa",
+      "reason": "pending QA checkout（headshot，status=pending，从未付款；--include-pending-qa 指定删除）",
+      "orderId": "ord_mwghi8yg_8kvhp00"
+    },
+    {
+      "key": "orders/headshot/ord_mwgjqwpz_ly0e7ly.json",
+      "size": 546,
+      "category": "historical_order",
+      "reason": "历史测试订单（headshot，status=pending, plan=headshot-trial；无真实付款，非证据单）— --include-historical 指定删除",
+      "orderId": "ord_mwgjqwpz_ly0e7ly"
+    },
+    {
+      "key": "orders/voice/ord_mwdirvlc_ett3m1b.json",
+      "size": 285,
+      "category": "historical_order",
+      "reason": "历史测试订单（voice，status=pending, plan=voice-trial；无真实付款，非证据单）— --include-historical 指定删除",
+      "orderId": "ord_mwdirvlc_ett3m1b"
+    },
+    {
+      "key": "orders/voice/ord_mwdit6f3_mkgxa8d.json",
+      "size": 587,
+      "category": "historical_order",
+      "reason": "历史测试订单（voice，status=paid, plan=voice-trial；无真实付款，非证据单）— --include-historical 指定删除",
+      "orderId": "ord_mwdit6f3_mkgxa8d"
+    },
+    {
+      "key": "orders/voice/ord_mwdjbmv8_ub3utqt.json",
+      "size": 637,
+      "category": "historical_order",
+      "reason": "历史测试订单（voice，status=refunded, plan=voice-trial；无真实付款，非证据单）— --include-historical 指定删除",
+      "orderId": "ord_mwdjbmv8_ub3utqt"
+    },
+    {
+      "key": "orders/voice/ord_mwdk0mq6_3unopbu.json",
+      "size": 728,
+      "category": "historical_order",
+      "reason": "历史测试订单（voice，status=refunded, plan=voice-trial；无真实付款，非证据单）— --include-historical 指定删除",
+      "orderId": "ord_mwdk0mq6_3unopbu"
+    },
+    {
+      "key": "orders/voice/ord_mwfz8lsy_jwziwpe.json",
+      "size": 578,
+      "category": "historical_order",
+      "reason": "历史测试订单（voice，status=pending, plan=voice-trial；无真实付款，非证据单）— --include-historical 指定删除",
+      "orderId": "ord_mwfz8lsy_jwziwpe"
+    },
+    {
+      "key": "orders/voice/ord_mwgasq3s_7ljnhv9.json",
+      "size": 542,
+      "category": "historical_order",
+      "reason": "历史测试订单（voice，status=pending, plan=voice-trial；无真实付款，非证据单）— --include-historical 指定删除",
+      "orderId": "ord_mwgasq3s_7ljnhv9"
+    },
+    {
+      "key": "orders/voice/ord_mwgfkkc3_6smw1w4.json",
+      "size": 537,
+      "category": "pending_qa",
+      "reason": "pending QA checkout（voice，status=pending，从未付款；--include-pending-qa 指定删除）",
+      "orderId": "ord_mwgfkkc3_6smw1w4"
+    },
+    {
+      "key": "orders/voice/ord_mwgg5izz_g1066ru.json",
+      "size": 537,
+      "category": "pending_qa",
+      "reason": "pending QA checkout（voice，status=pending，从未付款；--include-pending-qa 指定删除）",
+      "orderId": "ord_mwgg5izz_g1066ru"
+    },
+    {
+      "key": "orders/voice/ord_mwghhfc7_o9i5jz2.json",
+      "size": 542,
+      "category": "pending_qa",
+      "reason": "pending QA checkout（voice，status=pending，从未付款；--include-pending-qa 指定删除）",
+      "orderId": "ord_mwghhfc7_o9i5jz2"
+    },
+    {
+      "key": "orders/voice/ord_mwgjqtee_lnd2ekf.json",
+      "size": 542,
+      "category": "historical_order",
+      "reason": "历史测试订单（voice，status=pending, plan=voice-trial；无真实付款，非证据单）— --include-historical 指定删除",
+      "orderId": "ord_mwgjqtee_lnd2ekf"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjh8xh_ihmaq6/bass.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjh8xh_ihmaq6，无真实订单关联）— --include-historical 指定删除",
+      "jobId": "voice_mwdjh8xh_ihmaq6"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjh8xh_ihmaq6/drums.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjh8xh_ihmaq6，无真实订单关联）— --include-historical 指定删除",
+      "jobId": "voice_mwdjh8xh_ihmaq6"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjh8xh_ihmaq6/other.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjh8xh_ihmaq6，无真实订单关联）— --include-historical 指定删除",
+      "jobId": "voice_mwdjh8xh_ihmaq6"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjh8xh_ihmaq6/vocals.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjh8xh_ihmaq6，无真实订单关联）— --include-historical 指定删除",
+      "jobId": "voice_mwdjh8xh_ihmaq6"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjtvvw_bz9nv8/bass.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjtvvw_bz9nv8，无真实订单关联）— --include-historical 指定删除",
+      "jobId": "voice_mwdjtvvw_bz9nv8"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjtvvw_bz9nv8/drums.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjtvvw_bz9nv8，无真实订单关联）— --include-historical 指定删除",
+      "jobId": "voice_mwdjtvvw_bz9nv8"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjtvvw_bz9nv8/other.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjtvvw_bz9nv8，无真实订单关联）— --include-historical 指定删除",
+      "jobId": "voice_mwdjtvvw_bz9nv8"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjtvvw_bz9nv8/vocals.mp3",
+      "size": 5212996,
+      "category": "orphan_output",
+      "reason": "孤儿/历史 voice/out 对象（jobId=voice_mwdjtvvw_bz9nv8，无真实订单关联）— --include-historical 指定删除",
+      "jobId": "voice_mwdjtvvw_bz9nv8"
+    }
+  ],
+  "backups": [
+    {
+      "key": "orders/headshot/ord_mwdjc0nd_j5a2v8g.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\headshot__ord_mwdjc0nd_j5a2v8g.json",
+      "bytes": 641
+    },
+    {
+      "key": "orders/headshot/ord_mwfye9w4_rsnl8uv.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\headshot__ord_mwfye9w4_rsnl8uv.json",
+      "bytes": 582
+    },
+    {
+      "key": "orders/headshot/ord_mwfz79kj_hj0wn4j.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\headshot__ord_mwfz79kj_hj0wn4j.json",
+      "bytes": 582
+    },
+    {
+      "key": "orders/headshot/ord_mwg8u8c2_cscke5i.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\headshot__ord_mwg8u8c2_cscke5i.json",
+      "bytes": 336
+    },
+    {
+      "key": "orders/headshot/ord_mwg95akh_eohr2pu.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\headshot__ord_mwg95akh_eohr2pu.json",
+      "bytes": 336
+    },
+    {
+      "key": "orders/headshot/ord_mwg98npc_21xbl9p.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\headshot__ord_mwg98npc_21xbl9p.json",
+      "bytes": 336
+    },
+    {
+      "key": "orders/headshot/ord_mwgaj564_dups35c.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\headshot__ord_mwgaj564_dups35c.json",
+      "bytes": 372
+    },
+    {
+      "key": "orders/headshot/ord_mwghi8yg_8kvhp00.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\headshot__ord_mwghi8yg_8kvhp00.json",
+      "bytes": 546
+    },
+    {
+      "key": "orders/headshot/ord_mwgjqwpz_ly0e7ly.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\headshot__ord_mwgjqwpz_ly0e7ly.json",
+      "bytes": 546
+    },
+    {
+      "key": "orders/voice/ord_mwdirvlc_ett3m1b.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\voice__ord_mwdirvlc_ett3m1b.json",
+      "bytes": 285
+    },
+    {
+      "key": "orders/voice/ord_mwdit6f3_mkgxa8d.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\voice__ord_mwdit6f3_mkgxa8d.json",
+      "bytes": 587
+    },
+    {
+      "key": "orders/voice/ord_mwdjbmv8_ub3utqt.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\voice__ord_mwdjbmv8_ub3utqt.json",
+      "bytes": 637
+    },
+    {
+      "key": "orders/voice/ord_mwdk0mq6_3unopbu.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\voice__ord_mwdk0mq6_3unopbu.json",
+      "bytes": 728
+    },
+    {
+      "key": "orders/voice/ord_mwfz8lsy_jwziwpe.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\voice__ord_mwfz8lsy_jwziwpe.json",
+      "bytes": 578
+    },
+    {
+      "key": "orders/voice/ord_mwgasq3s_7ljnhv9.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\voice__ord_mwgasq3s_7ljnhv9.json",
+      "bytes": 542
+    },
+    {
+      "key": "orders/voice/ord_mwgfkkc3_6smw1w4.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\voice__ord_mwgfkkc3_6smw1w4.json",
+      "bytes": 537
+    },
+    {
+      "key": "orders/voice/ord_mwgg5izz_g1066ru.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\voice__ord_mwgg5izz_g1066ru.json",
+      "bytes": 537
+    },
+    {
+      "key": "orders/voice/ord_mwghhfc7_o9i5jz2.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\voice__ord_mwghhfc7_o9i5jz2.json",
+      "bytes": 542
+    },
+    {
+      "key": "orders/voice/ord_mwgjqtee_lnd2ekf.json",
+      "backupFile": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\orders\\voice__ord_mwgjqtee_lnd2ekf.json",
+      "bytes": 542
+    }
+  ],
+  "warnings": [
+    {
+      "key": "headshot/out/2026-11-12/headshot_mwdjwl22_wt5wrf/headshot-01.jpg",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg8uw70_9kwnsb/headshot-02.jpg",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg993xt_yujet3/headshot-02.jpg",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg993xt_yujet3/headshot-03.jpg",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg993xt_yujet3/headshot-04.jpg",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "headshot/out/2026-11-14/headshot_mwg993xt_yujet3/headshot-05.jpg",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "jobs/headshot/headshot_mwdjwl22_wt5wrf.json",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "jobs/headshot/headshot_mwg8uw70_9kwnsb.json",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "jobs/headshot/headshot_mwg993xt_yujet3.json",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "jobs/voice/voice_mwdjtvvw_bz9nv8.json",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "jobs/voice/voice_mwgh7t7f_ndvth1.json",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjh8xh_ihmaq6/bass.mp3",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjh8xh_ihmaq6/drums.mp3",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjh8xh_ihmaq6/other.mp3",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjh8xh_ihmaq6/vocals.mp3",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjtvvw_bz9nv8/bass.mp3",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjtvvw_bz9nv8/drums.mp3",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjtvvw_bz9nv8/other.mp3",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    },
+    {
+      "key": "voice/out/2026-11-12/voice_mwdjtvvw_bz9nv8/vocals.mp3",
+      "warning": "订单 JSON 读取失败，仅记录 key/size（无内容备份）"
+    }
+  ],
+  "needsDecision": [],
+  "unknown": [
+    {
+      "key": "events/headshot/2026-11-14/2026-11-14T11-19-52-835Z-m2r376.json",
+      "size": 174,
+      "reason": "无法识别的 key（不删）"
+    },
+    {
+      "key": "events/voice/2026-11-14/2026-11-14T10-09-34-557Z-3ulsyl.json",
+      "size": 190,
+      "reason": "无法识别的 key（不删）"
+    },
+    {
+      "key": "events/voice/2026-11-14/2026-11-14T10-09-36-020Z-9sbu5r.json",
+      "size": 185,
+      "reason": "无法识别的 key（不删）"
+    },
+    {
+      "key": "events/voice/2026-11-14/2026-11-14T11-19-47-238Z-mbpfbx.json",
+      "size": 171,
+      "reason": "无法识别的 key（不删）"
+    },
+    {
+      "key": "events/voice/2026-11-14/2026-11-14T13-06-29-937Z-35evqu.json",
+      "size": 179,
+      "reason": "无法识别的 key（不删）"
+    },
+    {
+      "key": "smoke.txt",
+      "size": 30,
+      "reason": "无法识别的 key（不删）"
+    }
+  ],
+  "deleteResult": {
+    "deleted": 38,
+    "errors": []
+  },
+  "verification": {
+    "protectedReadable": true,
+    "protectedChecks": [
+      {
+        "key": "orders/headshot/ord_mwg9ivk0_dgk2bjw.json",
+        "head": {
+          "exists": true,
+          "size": 336,
+          "lastModified": "2026-11-14T10:31:35.000Z"
+        }
+      },
+      {
+        "key": "orders/voice/ord_mwfzkg8h_yy9s9md.json",
+        "head": {
+          "exists": true,
+          "size": 959,
+          "lastModified": "2026-11-14T14:47:19.000Z"
+        }
+      },
+      {
+        "key": "orders/voice/ord_mwggroyd_1q2v4v3.json",
+        "head": {
+          "exists": true,
+          "size": 1745,
+          "lastModified": "2026-11-14T14:47:22.000Z"
+        }
+      }
+    ],
+    "deletedGone": true,
+    "residualKeys": [],
+    "deleteErrors": [],
+    "deletedCount": 38,
+    "remainingObjects": 20,
+    "protectedOrderDocs": [
+      {
+        "key": "orders/headshot/ord_mwg9ivk0_dgk2bjw.json",
+        "id": "ord_mwg9ivk0_dgk2bjw",
+        "status": "paid",
+        "refundedAt": null
+      },
+      {
+        "key": "orders/voice/ord_mwfzkg8h_yy9s9md.json",
+        "id": "ord_mwfzkg8h_yy9s9md",
+        "status": "refunded",
+        "refundedAt": "2026-11-14T14:47:19.454Z"
+      },
+      {
+        "key": "orders/voice/ord_mwggroyd_1q2v4v3.json",
+        "id": "ord_mwggroyd_1q2v4v3",
+        "status": "refunded",
+        "refundedAt": "2026-11-14T14:47:21.564Z"
+      }
+    ]
+  },
+  "manifestMarkdown": "docs\\evidence\\r2-cleanup-backup-20261114-155942\\manifest.md"
+}

@@ -40,6 +40,29 @@ const MAX_SIZE = 100 * 1024 * 1024;
 /** Enough to cover WAV/FLAC headers and an MP3 Xing frame; M4A needs faststart. */
 const HEADER_BYTES = 1024 * 1024;
 
+const TRANSIENT_PROVIDER_ERROR = /\b(429|500|502|503|504)\b|timeout|timed out|ECONN|fetch failed|rate limit/i;
+
+function isTransientProviderError(err: unknown): boolean {
+  return TRANSIENT_PROVIDER_ERROR.test(err instanceof Error ? err.message : String(err));
+}
+
+async function createDemucsWithRetry(audioUrl: string) {
+  let last: unknown;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      return await createDemucsPrediction(audioUrl);
+    } catch (err) {
+      last = err;
+      // A throttled/transient provider call is safe to retry once: the reservation
+      // is still held and no prediction was created.
+      if (attempt === 1 || !isTransientProviderError(err)) throw err;
+      await new Promise((resolve) => setTimeout(resolve, 8_000));
+    }
+  }
+  throw last;
+}
+
+
 type OrderGate =
   | { ok: true; orderId: string | null; minutes: number }
   | { ok: false; response: NextResponse };
@@ -235,7 +258,7 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: "upload_url_missing" }, { status: 502 });
       }
 
-      const prediction = await createDemucsPrediction(audioUrl);
+      const prediction = await createDemucsWithRetry(audioUrl);
       const job = createJob("voice", {
         filename,
         size: file.size,
