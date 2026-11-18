@@ -2,29 +2,29 @@ import { ToolLandingPage, type ToolPageData } from "@/components/ToolLandingPage
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Acapella Maker — Extract Acapella from Any Track",
+  title: "Acapella Extractor — Make an Acapella from Any Song",
   description:
-    "Extract a clean acapella from any song with AI. Use the acapella maker for covers, remixes, sampling and vocal practice — $2.90 Trial Pack, 15 minutes, one-time payment.",
+    "Make a clean acapella from any song with AI. Extract the vocal for covers, remixes, sampling or practice. $2.90 Trial Pack: 15 minutes, 4 MP3 stems.",
   path: "/acapella-maker",
 });
 
 const data: ToolPageData = {
   slug: "/acapella-maker",
   crumb: "Acapella maker",
-  title: "Acapella Maker — Extract Acapella from Any Track",
+  title: "Acapella Extractor — Make an Acapella from Any Song",
   description:
-    "Extract a clean acapella from any song with AI. Use the acapella maker for covers, remixes, sampling and vocal practice — $2.90 Trial Pack, 15 minutes, one-time payment.",
-  h1: "Acapella Maker — Extract Acapella from Any Track",
+    "Make a clean acapella from any song with AI. Extract the vocal for covers, remixes, sampling or practice. $2.90 Trial Pack: 15 minutes, 4 MP3 stems.",
+  h1: "Acapella Extractor — Make an Acapella from Any Song",
   badge: "Acapella extractor · vocals stem · $2.90 trial",
   intro: [
-    "An acapella maker isolates the singing from a finished song so you can use it as a standalone vocal track — for covers, remixes, sampling, vocal practice or content. The output is the vocal stem on its own, with the instruments removed.",
+    "An acapella extractor (also called an acapella maker) isolates the singing from a finished song so you can use it as a standalone vocal track — for covers, remixes, sampling, vocal practice or content. The output is the vocal stem on its own, with the instruments removed.",
     "Upload a track below and the AI does the extraction in about a minute. Runs are paid: the one-time $2.90 Trial Pack includes 15 minutes and the full 4-stem output, acapella included.",
   ],
   toolCta: "Extract the acapella",
   quickFacts: ["Isolates the vocal stem", "Lead + harmonies", "MP3 320", "$2.90 trial · 15 min"],
   sections: [
     {
-      h2: "What an acapella maker actually does",
+      h2: "What an acapella extractor actually does",
       paragraphs: [
         "A finished song is a mix of many sources — vocals, drums, bass, guitars, keys and effects — flattened into two channels. An acapella maker has to reverse that process for the vocal alone. Unlike a vocal remover, which keeps the backing track, an acapella maker keeps the singing and discards the instruments.",
         "Modern AI models do this by learning what voices sound like and predicting the vocal's contribution to the mix at every moment. The extracted acapella includes the lead vocal together with backing vocals and harmonies, because they are all part of the same vocal performance. Reverb and delay tails may also come along for the ride — they are baked into the original recording.",
@@ -82,6 +82,10 @@ const data: ToolPageData = {
   ],
   faqs: [
     {
+      q: "Is an acapella extractor the same as an acapella maker?",
+      a: "Yes. Both names describe the same job: separating the vocal from the instrumental. This acapella extractor returns the vocals stem on its own, and the same paid run also includes the drums, bass and other stems as MP3 320 files.",
+    },
+    {
       q: "Is there a free way to extract an acapella with AI here?",
       a: "No. There is no free-of-charge allowance: every separation costs GPU time, so every run is paid. The $2.90 Trial Pack is the cheapest option and includes 15 minutes and all four stems: the vocals stem (your acapella), drums, bass and other.",
     },
@@ -111,6 +115,11 @@ const data: ToolPageData = {
       href: "/karaoke-maker",
       label: "Karaoke maker",
       blurb: "The same separation, used the other way around: keep the music and drop the vocal.",
+    },
+    {
+      href: "/separate-stems",
+      label: "Stem separation",
+      blurb: "See the full four-stem view, including drums, bass and other.",
     },
     {
       href: "/ai-vocal-remover",

@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "How to Remove Vocals from a Song (3 Ways)",
   description:
-    "Three ways to remove vocals from a song: AI stem separation, center-channel cancellation in Audacity, or an official vocal-free version. Compare quality, speed, effort and cost.",
+    "Three ways to remove vocals from a song: AI stem separation, center-channel cancellation, or an official vocal-free mix. Compare quality, speed and rights.",
   path: "/remove-vocals-from-song",
 });
 
@@ -13,7 +13,7 @@ const data: ToolPageData = {
   crumb: "Remove vocals from a song",
   title: "How to Remove Vocals from a Song (3 Ways)",
   description:
-    "Three ways to remove vocals from a song: AI stem separation, center-channel cancellation in Audacity, or an official vocal-free version. Compare quality, speed, effort and cost.",
+    "Three ways to remove vocals from a song: AI stem separation, center-channel cancellation, or an official vocal-free mix. Compare quality, speed and rights.",
   h1: "How to Remove Vocals from a Song (3 Ways)",
   badge: "Tutorial · AI + manual methods",
   intro: [
@@ -59,7 +59,7 @@ const data: ToolPageData = {
       ],
     },
     {
-      h2: "Which method should you use?",
+      h2: "Remove vocals from a song: which method should you use?",
       paragraphs: [
         "Use method 1 for anything you plan to publish, perform or produce with — it is the only approach that gives you full-sounding drum, bass and other stems plus an acapella at the same time. Use method 2 only when you need a rough vocal-free mix immediately, offline, and you accept the hollow sound. Use method 3 when an official vocal-free version exists and your use is cleared.",
         "If you are unsure, the practical test is simple: listen to the result on headphones. If the low end survives and the stereo image still feels wide, you used a good method. If it sounds like a telephone with no bass, you used phase cancellation.",
@@ -95,6 +95,10 @@ const data: ToolPageData = {
     },
   ],
   faqs: [
+    {
+      q: "Can I remove lead vocals from songs and keep the backing track?",
+      a: "Yes — with AI separation, the lead vocal and backing vocals go into the vocals stem, while drums, bass and other stay in separate files. The old center-cancellation trick removes the vocal but also thins out centered drums and bass, so it is not a substitute.",
+    },
     {
       q: "How much does it cost to remove vocals with AI?",
       a: "The entry point is the one-time $2.90 Trial Pack: 15 minutes of separation, about five three-minute songs, with all four stems in MP3 320. There is no free-of-charge allowance and no subscription required — the minutes never expire.",
@@ -135,6 +139,11 @@ const data: ToolPageData = {
       href: "/karaoke-maker",
       label: "Karaoke maker",
       blurb: "Take the vocal-free stems one step further and build a karaoke track.",
+    },
+    {
+      href: "/separate-stems",
+      label: "Stem separation",
+      blurb: "See all four stems and the producer workflow behind them.",
     },
   ],
   finalCta: {

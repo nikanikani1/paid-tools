@@ -2,29 +2,29 @@ import { ToolLandingPage, type ToolPageData } from "@/components/ToolLandingPage
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Stem Separation — 4 Stems (Vocals, Drums, Bass, Other)",
+  title: "Stem Separation & Stems Separator — 4 Stems",
   description:
-    "Separate any song into 4 stems — vocals, drums, bass and other — with AI. Producer-ready stem separation with MP3 320 downloads. Start with the $2.90 Trial Pack: 15 minutes, one-time.",
+    "Split any song into four stems — vocals, drums, bass and other — with an AI stems separator. MP3 320 downloads from a one-time $2.90 Trial Pack, 15 minutes.",
   path: "/separate-stems",
 });
 
 const data: ToolPageData = {
   slug: "/separate-stems",
   crumb: "Stem separation",
-  title: "Stem Separation — 4 Stems (Vocals, Drums, Bass, Other)",
+  title: "Stem Separation & Stems Separator — 4 Stems",
   description:
-    "Separate any song into 4 stems — vocals, drums, bass and other — with AI. Producer-ready stem separation with MP3 320 downloads. Start with the $2.90 Trial Pack: 15 minutes, one-time.",
-  h1: "Stem Separation — 4 Stems (Vocals, Drums, Bass, Other)",
+    "Split any song into four stems — vocals, drums, bass and other — with an AI stems separator. MP3 320 downloads from a one-time $2.90 Trial Pack, 15 minutes.",
+  h1: "Stem Separation & Stems Separator — 4 Stems",
   badge: "4-stem separation · producer-ready · $2.90 trial",
   intro: [
-    "Stem separation takes a finished song and splits it into the parts it was mixed from: vocals, drums, bass and everything else. It is the difference between having a song and having the ingredients of a song.",
+    "A stems separator takes a finished song and splits it into the parts it was mixed from: vocals, drums, bass and everything else. It is the difference between having a song and having the ingredients of a song.",
     "Producers use stems to remix, sample, practise and rebuild arrangements. Upload a track below and get all four stems back in minutes. Runs are paid — the one-time $2.90 Trial Pack includes 15 minutes and the full 4-stem output as MP3 320 downloads.",
   ],
   toolCta: "Separate into 4 stems",
   quickFacts: ["4 stems per job", "MP3 320 downloads", "Original tempo and key", "$2.90 trial · 15 min"],
   sections: [
     {
-      h2: "What stem separation actually gives you",
+      h2: "What a stems separator actually gives you",
       paragraphs: [
         "A mixed song is a stereo file — two channels of audio with every instrument and voice baked together. Stem separation estimates how much of that signal belongs to each musical source and rebuilds those sources as separate files. The four standard stems are vocals, drums, bass and other, where 'other' covers guitars, keys, strings, synths and any remaining texture.",
         "The stems are time-aligned with each other, so dropping all four into a DAW at bar one reconstructs the original song almost exactly. That is what makes them useful: you can mute the vocal, replace the drums, loop the bass or process one element without touching the rest.",
@@ -92,6 +92,10 @@ const data: ToolPageData = {
   ],
   faqs: [
     {
+      q: "Is this a stems separator or a stem extractor?",
+      a: "Both terms describe the same process: separating a finished mix into individual parts. This stems separator returns four MP3 320 files — vocals, drums, bass and other — from one paid run.",
+    },
+    {
       q: "Is there a free stem separation option?",
       a: "No. There is no free-of-charge allowance and no complimentary preview: every separation costs GPU time, so every run is paid. The cheapest entry point is the one-time $2.90 Trial Pack — 15 minutes, about five songs, with all four stems in MP3 320.",
     },
@@ -131,6 +135,11 @@ const data: ToolPageData = {
       href: "/karaoke-maker",
       label: "Karaoke maker",
       blurb: "Use the drum, bass and other stems as the basis for a karaoke backing mix.",
+    },
+    {
+      href: "/remove-vocals-from-song",
+      label: "Remove vocals from a song",
+      blurb: "Compare AI separation with center-channel cancellation and official vocal-free versions.",
     },
   ],
   finalCta: {
