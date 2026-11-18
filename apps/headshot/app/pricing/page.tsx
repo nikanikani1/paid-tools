@@ -5,9 +5,9 @@ import { SAMPLE_PACK, PLANS } from "../lib/site";
 import { buildMetadata, breadcrumbJsonLd, faqPageJsonLd, productJsonLd } from "../lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Pricing — $9 Sample Pack (5 headshots), larger packages coming soon",
+  title: "Pricing — $9 Sample Pack, 5 Headshots",
   description:
-    "AI headshot pricing with no free tier: the $9 five-image Sample Pack is the only package on sale today. The 40, 60 and 100-image packages are coming soon. One-time payment, commercial licence, one free redo.",
+    "AI headshot pricing with no free tier: the $9 Sample Pack gives five headshots, one style, one free redo and a commercial licence. Larger packages are coming soon.",
   path: "/pricing",
   keywords: [
     "ai headshot pricing",

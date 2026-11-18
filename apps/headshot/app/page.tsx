@@ -26,9 +26,9 @@ import {
 } from "./lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Professional Headshots — AI Headshot Generator from Your Selfies",
+  title: "AI Headshot Generator — Professional Headshots",
   description:
-    "Professional headshots generated from five selfies in minutes: LinkedIn, résumés, team pages. The $9 Sample Pack (5 images) is the only package on sale today; larger packages are coming soon. Commercial licence, one free redo.",
+    "AI headshot generator: five selfies in, professional headshots out for LinkedIn and résumés. $9 Sample Pack (5 images), one-time, commercial licence.",
   path: "/",
   keywords: [
     "professional headshots",

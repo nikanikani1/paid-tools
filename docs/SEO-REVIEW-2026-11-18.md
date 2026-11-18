@@ -146,3 +146,27 @@ GSC 覆盖报告（11/13 快照）显示：
 - 线上 3 页 200；title/H1/description 与新文案一致；
 - 内链可点击到 `/separate-stems` / `/remove-vocals-from-song`；
 - 下一周同一时间复看 GSC/Semrush；目标词无改善再调整内容，不批量改全站。
+
+## 7. 2026-11-18 晚补充执行
+
+### 首页/定价 metadata 收口
+
+- A 首页：description 169 → 约 147 字符；
+- A `/pricing`：title 67 → 54，description 185 → 约 126；
+- B 首页：title 64 → 约 57，description 226 → 约 157；
+- B `/pricing`：title 81 → 约 53，description 207 → 约 158；
+- 已部署并线上核对；不改变任何价格/套餐承诺。
+
+### B 站外链审计
+
+- 已确认 2,326 引荐域名 / 2,673 反向链接主要来自垃圾目录/PBN（`dapachecker*`、`domainseochecker`、`editorlinks.xyz`、`goldbacklinks*`、`100ranking` 等）；
+- Semrush 网络图标记「可疑」；
+- GSC 两站人工处置均为 **未检测到任何问题**（2026-11-18 复核）；
+- 不直接 disavow；先按域名分类，必要时再做域名级 disavow。
+- 详细记录：[BACKLINK-AUDIT-2026-11-18.md](<D:/ai-workspace/paid-tools/docs/BACKLINK-AUDIT-2026-11-18.md>)
+
+### 索引复核
+
+- GSC 覆盖报告（11/13）B 仍然显示 14 已收录 / 5 未收录；
+- URL 检查（11/18）：B 首页、`/ai-professional-headshot` 当前已收录；
+- 覆盖报告和 URL 检查不一致时，以 URL 检查为准，不按旧快照硬改。

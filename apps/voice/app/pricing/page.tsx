@@ -14,9 +14,9 @@ import {
 } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Pricing — $2.90 Trial Pack (15 minutes, 4 MP3 stems)",
+  title: "Pricing — $2.90 Trial Pack, 4 MP3 Stems",
   description:
-    "Start with the one-time $2.90 Trial Pack: 15 minutes of separation and four MP3 stems. Starter $5/mo, Pro $9/mo and the $39/year annual plan are not open yet and cannot be bought today.",
+    "Start with the one-time $2.90 Trial Pack: 15 minutes and four MP3 stems. Monthly plans are not open yet and cannot be bought today.",
   path: "/pricing",
 });
 

@@ -40,7 +40,7 @@ function displayFeatures(planId: string, fallback: string[]): string[] {
 export const metadata = pageMetadata({
   title: "Vocal Remover — Separate Vocals & Stems Online",
   description:
-    "Remove vocals from any song with AI and get 4 stems — vocals, drums, bass and other — in minutes. Start with the $2.90 Trial Pack: 15 minutes, one-time payment, 4 stems.",
+    "Remove vocals from any song with AI and get four MP3 stems: vocals, drums, bass and other. $2.90 Trial Pack, 15 minutes, one-time payment.",
   path: "/",
 });
 
