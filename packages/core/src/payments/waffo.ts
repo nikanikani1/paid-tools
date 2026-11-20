@@ -133,7 +133,7 @@ export class WaffoError extends Error {
 // ---------------------------------------------------------------------------
 
 export interface CheckoutInput {
-  site: "voice" | "headshot";
+  site: "voice" | "headshot" | "landscape" | "haircolor";
   /** 站内套餐 id（见 core/pricing.ts，如 voice-starter / headshot-60） */
   planId: string;
   /** 金额（美分），必须与服务端定价表一致，不信任前端 */

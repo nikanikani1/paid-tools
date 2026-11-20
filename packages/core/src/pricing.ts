@@ -1,4 +1,4 @@
-import type { HeadshotPlan, VoicePlan } from "./types";
+import type { HeadshotPlan, ImagePackPlan, VoicePlan } from "./types";
 
 /**
  * 定价原则（对齐访谈《AI 工具站的订阅费应该怎么定》+ 用户要求「尽量不要免费试用」）：
@@ -77,3 +77,28 @@ export const HEADSHOT_PLANS: HeadshotPlan[] = [
 /** 不提供免费处理额度；这两个常量保留给 UI 显示「0 free runs」用 */
 export const FREE_VOICE_MINUTES = 0;
 export const FREE_HEADSHOT_PREVIEWS = 0;
+
+/** New photo tools: one-time packs, priced for a fast first purchase. */
+export const LANDSCAPE_PLANS: ImagePackPlan[] = [
+  {
+    id: "landscape-pack",
+    name: "Yard Concept Pack",
+    price: 9,
+    images: 4,
+    billing: "one-time",
+    features: ["4 landscape concepts", "4 styles to choose from", "JPG-ready renders", "Commercial use", "No subscription"],
+    popular: true,
+  },
+];
+
+export const HAIR_PLANS: ImagePackPlan[] = [
+  {
+    id: "hair-pack",
+    name: "Hair Color Look Pack",
+    price: 4.9,
+    images: 4,
+    billing: "one-time",
+    features: ["4 hair-color looks", "Natural + fashion shades", "Face-preserving edit", "One-time payment", "No subscription"],
+    popular: true,
+  },
+];

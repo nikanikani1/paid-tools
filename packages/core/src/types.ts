@@ -1,4 +1,4 @@
-export type JobKind = "voice" | "headshot";
+export type JobKind = "voice" | "headshot" | "landscape" | "haircolor";
 
 export type JobStatus = "queued" | "running" | "done" | "failed";
 
@@ -36,6 +36,17 @@ export interface HeadshotPlan {
   name: string;
   price: number;
   images: number;
+  features: string[];
+  popular?: boolean;
+}
+
+/** Generic one-time image pack used by the newer photo tools. */
+export interface ImagePackPlan {
+  id: string;
+  name: string;
+  price: number;
+  images: number;
+  billing: "one-time";
   features: string[];
   popular?: boolean;
 }

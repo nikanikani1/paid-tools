@@ -13,9 +13,9 @@
  */
 import { isR2Configured, presignGet, presignPut } from "./r2";
 import { getProcessEnv, type EnvSource } from "./env";
-import { HEADSHOT_PLANS, VOICE_PLANS } from "./pricing";
+import { HEADSHOT_PLANS, HAIR_PLANS, LANDSCAPE_PLANS, VOICE_PLANS } from "./pricing";
 
-export type OrderSite = "voice" | "headshot";
+export type OrderSite = "voice" | "headshot" | "landscape" | "haircolor";
 export type OrderStatus = "pending" | "paid" | "refunded" | "failed";
 export type ReservationStatus = "reserved" | "confirmed" | "refunded";
 
@@ -89,6 +89,16 @@ function planFor(site: OrderSite, planId: string): { amountCents: number; units:
       billing: plan.billing === "one-time" ? "one-time" : plan.billing === "annual" ? "annual" : "monthly",
       productEnv: envKey[planId],
     };
+  }
+  if (site === "landscape") {
+    const plan = LANDSCAPE_PLANS.find((p) => p.id === planId);
+    if (!plan) return null;
+    return { amountCents: Math.round(plan.price * 100), units: plan.images, billing: "one-time", productEnv: "WAFFO_PRODUCT_ID_LANDSCAPE_PACK" };
+  }
+  if (site === "haircolor") {
+    const plan = HAIR_PLANS.find((p) => p.id === planId);
+    if (!plan) return null;
+    return { amountCents: Math.round(plan.price * 100), units: plan.images, billing: "one-time", productEnv: "WAFFO_PRODUCT_ID_HAIR_PACK" };
   }
   const plan = HEADSHOT_PLANS.find((p) => p.id === planId);
   if (!plan) return null;

@@ -33,7 +33,7 @@ export async function persistJob(id: string): Promise<boolean> {
 
 export async function getPersistedJob(id: string): Promise<Job | undefined> {
   if (!isR2Configured()) return undefined;
-  for (const kind of ["voice", "headshot"] as const) {
+  for (const kind of ["voice", "headshot", "landscape", "haircolor"] as const) {
     try {
       const key = `jobs/${kind}/${id}.json`;
       const signed = await presignGet(key, { expiresIn: 120, strict: true });
