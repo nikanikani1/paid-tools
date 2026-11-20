@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import type { BrandConfig } from "@/lib/brands";
 
 const NAV = [
+  { href: "/#examples", label: "Examples" },
   { href: "/#how", label: "How it works" },
   { href: "/#styles", label: "Styles" },
   { href: "/pricing", label: "Pricing" },
@@ -70,7 +71,7 @@ export function SiteChrome({ brand, children }: { brand: BrandConfig; children: 
               Only upload photos you have the right to use. AI-generated results can contain artifacts.
             </p>
           </div>
-          <FooterColumn title="Product" items={[{ href: "/", label: "Home" }, { href: "/#how", label: "How it works" }, { href: "/#styles", label: "Styles" }, { href: "/pricing", label: "Pricing" }]} />
+          <FooterColumn title="Product" items={[{ href: "/", label: "Home" }, { href: "/#examples", label: "Examples" }, { href: "/#how", label: "How it works" }, { href: "/#styles", label: "Styles" }, { href: "/pricing", label: "Pricing" }]} />
           <FooterColumn title="Orders" items={[{ href: "/orders", label: "Find an order" }, { href: "/refund", label: "Refund policy" }, { href: "/pricing", label: "What is included" }]} />
           <FooterColumn title="Legal & contact" items={[{ href: "/privacy", label: "Privacy" }, { href: "/terms", label: "Terms" }, { href: "/refund", label: "Refunds" }, { href: "/terms#dmca", label: "Copyright / DMCA" }]} />
         </div>

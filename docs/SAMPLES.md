@@ -24,3 +24,16 @@
 - `StemPlayer`：4 轨同步播放/静音切换、原曲对比、进度条、动态波形
 - 头像卡片：滚动渐入、hover 缓慢放大、渐变遮罩、`AI sample` 标签
 - 全部支持 `prefers-reduced-motion: reduce`
+
+## 新站：YardCanvas / HueMirror 首页 demo（2026-11-21）
+
+- 文件目录：`apps/photo-studio/public/samples/`
+- **YardCanvas**
+  - `landscape/yard-before.jpg`：Unsplash `photo-1564013799919-ab600027ffc6`，Unsplash License；已压缩到 900×600。
+  - `landscape/modern-1.jpg` / `modern-2.jpg`：同一输入图经 Replicate `flux-kontext-pro` 生成的 Modern 风格结果，用于演示。
+- **HueMirror**
+  - `hair/selfie-before.jpg`：复用现有 headshot app 的 AI 生成样片（非真人），中心裁切 800×800。
+  - `hair/blonde-1.jpg` / `blonde-2.jpg`：同一自拍经 `flux-kontext-pro` 生成的 Warm blonde 结果。
+- 页面标注：`Demo — not a customer result` + 免责声明；不得包装成客户案例。
+- 替换 demo 输入时必须同步更新本文件和页面 alt/免责声明。
+

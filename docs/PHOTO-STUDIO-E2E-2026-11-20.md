@@ -59,3 +59,12 @@ Waffo live 产品：
 4. **Legal/退款**：页面是 plain-language 草稿，未过律师；支持邮箱暂时用 Gmail，域名到位后换成品牌邮箱。
 5. **真实支付 E2E**：两站只验证到真实 Waffo checkout 页面和测试订单生成，未用真实卡再付一笔（避免重复扣款）；上线首单需盯 webhook 200。
 6. **测试数据**：上述两个测试订单/4 个 job/输出需在验收后清理。
+
+## 5. Demo gallery added (2026-11-21)
+
+- Homepage now opens with a **Before / After demo** before the upload tool:
+  - YardCanvas: stock yard photo → Modern landscape concept; label “Demo — not a customer result”.
+  - HueMirror: AI demo selfie → Warm blonde; same label.
+- Assets: `apps/photo-studio/public/samples/landscape/*.jpg`, `.../hair/*.jpg`, optimized to 800–900 px JPEG.
+- Source/licence note: [SAMPLES.md](<D:/ai-workspace/paid-tools/docs/SAMPLES.md>).
+- Verified live: both homepages 200 and contain “Demo — not a customer result”; all six demo images 200.

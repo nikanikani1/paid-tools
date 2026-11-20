@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { BRAND } from "@/lib/brands";
 import { SiteChrome } from "@/components/SiteChrome";
 import { Studio } from "@/components/Studio";
+import { DemoGallery } from "@/components/DemoGallery";
 import {
   breadcrumbJsonLd,
   buildMetadata,
@@ -127,6 +128,7 @@ export default function HomePage() {
     <SiteChrome brand={BRAND}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
       <main>
+        <DemoGallery />
         {/* Studio renders the single page H1 (brand headline) plus the upload/generate flow. */}
         <div id="studio" className="scroll-mt-24">
           <Studio brand={BRAND} />
