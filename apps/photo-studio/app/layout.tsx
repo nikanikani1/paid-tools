@@ -20,8 +20,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "--ink": BRAND.ink,
   } as CSSProperties;
   return (
-    <html lang="en" style={vars}>
-      <body>{children}</body>
+    <html lang="en" className="scroll-smooth" style={vars}>
+      <body className="pb-20 md:pb-0">{children}</body>
     </html>
   );
 }

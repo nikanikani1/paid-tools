@@ -4,6 +4,7 @@ import { BRAND } from "@/lib/brands";
 import { SiteChrome } from "@/components/SiteChrome";
 import { Studio } from "@/components/Studio";
 import { DemoGallery } from "@/components/DemoGallery";
+import { StickyCta } from "@/components/StickyCta";
 import {
   breadcrumbJsonLd,
   buildMetadata,
@@ -387,6 +388,7 @@ export default function HomePage() {
           </div>
         </section>
       </main>
+      <StickyCta />
     </SiteChrome>
   );
 }
