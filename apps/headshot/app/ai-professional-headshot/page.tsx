@@ -41,7 +41,7 @@ const FAQ = [
   },
   {
     q: "Can I get the same look for a team?",
-    a: "Yes. The team flow uses one shared style guide so every person ends up with the same backdrop, crop and lighting profile. Orders of ten or more are handled as a single invoice — see the team headshots page.",
+    a: "Not through a team product — it does not exist yet. There is no shared style guide, seat pricing or company invoice. Each person can order their own individual pack, but those orders are separate; the team headshots page explains the current status.",
   },
   {
     q: "How fast is delivery?",
@@ -182,12 +182,12 @@ export default function AiProfessionalHeadshotPage() {
           <h3>Company directory and About pages</h3>
           <p>
             Directory tiles are small and usually square. The failure mode here is inconsistency: eight people with
-            eight different backgrounds look like a stock photo collage. If consistency matters more than individuality,
-            use the{" "}
+            eight different backgrounds look like a stock photo collage. A shared team style guide is not available
+            yet, so the practical option today is for each person to order individually and pick the same preset; the{" "}
             <Link href="/team-headshots" className="text-orange-700 underline underline-offset-2">
-              team headshots
+              team headshots page
             </Link>{" "}
-            flow so every person gets the same backdrop and crop.
+            is a preview of the planned workflow, not a product you can buy.
           </p>
           <h3>Press pages, speaker decks and bylined articles</h3>
           <p>
@@ -255,7 +255,7 @@ export default function AiProfessionalHeadshotPage() {
       <RelatedLinks
         links={[
           { href: "/linkedin-headshot", label: "LinkedIn headshot", body: "Profile sizing and recruiter-facing advice." },
-          { href: "/team-headshots", label: "Team headshots", body: "One style guide across ten or more people." },
+          { href: "/team-headshots", label: "Team plans (preview)", body: "Not available yet — a preview page; individual packs only." },
           { href: "/doctor-headshots", label: "Doctor headshots", body: "Clinical presets for medical directories." },
           { href: "/pricing", label: "Pricing", body: "$9 Sample Pack on sale; larger packages coming soon." },
           { href: "/how-it-works", label: "How it works", body: "The quality gate, identity pass and delivery." },

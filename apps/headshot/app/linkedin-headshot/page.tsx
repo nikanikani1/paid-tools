@@ -42,7 +42,7 @@ const FAQ = [
   },
   {
     q: "Can I use the same set for LinkedIn and my company page?",
-    a: "Yes. Both are your own channels, and the commercial licence covers them. If your company page uses a directory layout with consistent tiles, order through the team flow so everyone shares one backdrop.",
+    a: "Yes — both are your own channels and the commercial licence covers them. One caveat: there is no team flow yet, so a company page that needs matching tiles across several people cannot get a shared style guide. Each person orders their own individual pack instead.",
   },
   {
     q: "Do I need a professional photographer for a good LinkedIn photo?",
@@ -205,12 +205,12 @@ export default function LinkedinHeadshotPage() {
             can be re-run in a different style without paying twice.
           </p>
           <p>
-            If you are buying for more than yourself, the{" "}
+            If you are buying for more than yourself: there is no team flow yet, so each person orders individually.
+            That means backdrops are not coordinated across seats unless everyone happens to pick the same preset. The{" "}
             <Link href="/team-headshots" className="text-orange-700 underline underline-offset-2">
-              team headshots
+              team headshots page
             </Link>{" "}
-            flow keeps every profile on one backdrop, which matters most on a company page where profile tiles sit next
-            to each other.
+            is a preview of the planned workflow, not a product on sale.
           </p>
         </Prose>
       </Section>
@@ -223,7 +223,7 @@ export default function LinkedinHeadshotPage() {
         links={[
           { href: "/ai-professional-headshot", label: "AI professional headshot", body: "Business presets and where they get used." },
           { href: "/free-ai-headshot-generator", label: "Free vs paid headshot tools", body: "What free generators actually deliver, and why ours starts at a $9 Sample Pack." },
-          { href: "/team-headshots", label: "Team headshots", body: "Consistent directory photos for ten-plus people." },
+          { href: "/team-headshots", label: "Team plans (preview)", body: "Not available yet — no shared team flow; individual packs only." },
           { href: "/pricing", label: "Pricing", body: "$9 Sample Pack on sale; larger packages coming soon." },
           { href: "/how-it-works", label: "How it works", body: "Quality gate, identity pass and delivery." },
           { href: "/", label: "Professional headshots", body: "The full pipeline and all style presets." },

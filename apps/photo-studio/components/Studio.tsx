@@ -177,9 +177,10 @@ export function Studio({ brand = BRAND }: StudioProps) {
   function chooseFile(incoming: File | null | undefined) {
     setError(null);
     if (!incoming) return;
-    const looksImage = incoming.type.startsWith("image/") || /\.(jpe?g|png|webp|heic|heif)$/i.test(incoming.name);
+    const allowedMime = new Set(["image/jpeg", "image/jpg", "image/png", "image/webp"]);
+    const looksImage = allowedMime.has(incoming.type.toLowerCase()) || /\.(jpe?g|png|webp)$/i.test(incoming.name);
     if (!looksImage) {
-      setError("Use a JPG, PNG, WebP or HEIC image.");
+      setError("Use a JPG, PNG or WebP image — HEIC is not supported yet. On iPhone, export/share as JPG first.");
       return;
     }
     if (incoming.size > MAX_UPLOAD_BYTES) {
@@ -251,11 +252,11 @@ export function Studio({ brand = BRAND }: StudioProps) {
                 {file ? file.name : brand.uploadLabel}
               </span>
               <span className="mt-1 text-xs opacity-60">
-                {file ? friendlySize(file.size) : "JPG, PNG, WebP or HEIC · max 15 MB"}
+                {file ? friendlySize(file.size) : "JPG, PNG or WebP · max 15 MB"}
               </span>
               <input
                 type="file"
-                accept="image/*"
+                accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp"
                 className="hidden"
                 aria-label={brand.uploadLabel}
                 onChange={(event) => {

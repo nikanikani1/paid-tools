@@ -61,10 +61,11 @@ export async function POST(req: Request) {
     );
   }
   const mime = photo.type || "";
-  const looksImage = mime.startsWith("image/") || /\.(jpe?g|png|webp|heic|heif)$/i.test(photo.name || "");
+  const allowedMime = new Set(["image/jpeg", "image/jpg", "image/png", "image/webp"]);
+  const looksImage = allowedMime.has(mime.toLowerCase()) || /\.(jpe?g|png|webp)$/i.test(photo.name || "");
   if (!looksImage) {
     return NextResponse.json(
-      { error: "unsupported_type", message: "Use a JPG, PNG, WebP or HEIC image." },
+      { error: "unsupported_type", message: "Use a JPG, PNG or WebP image. HEIC/HEIF is not supported yet; export as JPG first." },
       { status: 400 },
     );
   }

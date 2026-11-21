@@ -30,6 +30,8 @@ export type BrandConfig = {
   ink: string;
   legalName: string;
   supportEmail: string;
+  /** Public GSC URL-prefix verification token (not a secret). */
+  gscVerification: string;
 };
 
 const LANDSCAPE: BrandConfig = {
@@ -59,6 +61,7 @@ const LANDSCAPE: BrandConfig = {
   ink: "#1c241d",
   legalName: "YardCanvas",
   supportEmail: "wanghaotiannika@gmail.com",
+  gscVerification: "XPzFurBEt-JHxT-OLRkg2B8lq45g3Rrz005yy3zmw9I",
 };
 
 const HAIR: BrandConfig = {
@@ -88,6 +91,7 @@ const HAIR: BrandConfig = {
   ink: "#2a1b20",
   legalName: "HueMirror",
   supportEmail: "wanghaotiannika@gmail.com",
+  gscVerification: "mxUs6IFcDaRwnt78w7OK1e5Tcv_7RooPq3-2EbmTL0k",
 };
 
 /** Build-time brand selection. Deploy the same app twice with a different env. */

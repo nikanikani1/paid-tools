@@ -38,7 +38,7 @@ const FAQ = [
   },
   {
     q: "Can the whole clinic order together?",
-    a: "Yes. Clinics and group practices with ten or more practitioners use the team flow: one style guide across every provider, one invoice, and a single turnaround. That keeps the clinic directory visually consistent, which matters more in healthcare than in most industries.",
+    a: "No. There is no team or clinic-wide order flow: no shared style guide across providers, no bulk intake and no single invoice. Each practitioner can order their own individual pack with their own photos.",
   },
   {
     q: "Which expression works best for a medical headshot?",
@@ -132,12 +132,12 @@ export default function DoctorHeadshotsPage() {
           <p>
             On a practice website the portrait sits next to a biography, credentials and sometimes a location. This is
             the one place where a slightly tighter crop and a warmer background can work well, and where consistency
-            across practitioners is most visible. Group practices with several providers should standardise the whole
-            set — the{" "}
+            across practitioners is most visible. Group practices cannot run one shared style guide yet — there is no
+            team flow, only individual orders — so the{" "}
             <Link href="/team-headshots" className="text-orange-700 underline underline-offset-2">
-              team flow
+              team headshots page
             </Link>{" "}
-            runs one style guide across every provider.
+            is a preview of the planned workflow.
           </p>
           <h3>Conference bios and publications</h3>
           <p>
@@ -181,8 +181,9 @@ export default function DoctorHeadshotsPage() {
             </li>
           </ul>
           <p>
-            If you are ordering for a department, collect the photos in one batch and use one style guide. Mixed
-            lighting across a team directory is more noticeable than any single imperfect portrait.
+            There is no department or clinic-wide ordering flow yet, so each practitioner orders individually with their
+            own photos. Mixed lighting across a directory is more noticeable than any single imperfect portrait, which
+            is why a shared team style guide is on the planning list — but it is not something you can buy today.
           </p>
         </Prose>
       </Section>
@@ -222,7 +223,7 @@ export default function DoctorHeadshotsPage() {
 
       <RelatedLinks
         links={[
-          { href: "/team-headshots", label: "Team headshots", body: "One style guide for a whole clinic, invoicing included." },
+          { href: "/team-headshots", label: "Team plans (preview)", body: "Not available yet — no shared clinic flow; individual packs only." },
           { href: "/ai-professional-headshot", label: "AI professional headshot", body: "Formal business presets and licensing." },
           { href: "/privacy", label: "Privacy", body: "Processors, retention and deletion." },
           { href: "/pricing", label: "Pricing", body: "$9 Sample Pack on sale; larger packages coming soon." },

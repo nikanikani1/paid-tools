@@ -332,8 +332,8 @@ export default function HomePage() {
           },
           {
             href: "/team-headshots",
-            label: "Team headshots",
-            body: "Ten or more people, one style guide, invoicing included.",
+            label: "Team plans (preview)",
+            body: "Team plans are not available yet — that page is a preview; individual packs are one-person products.",
           },
           {
             href: "/real-estate-agent-headshots",

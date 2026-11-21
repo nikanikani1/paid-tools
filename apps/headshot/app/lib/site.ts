@@ -76,7 +76,7 @@ export const NAV_LINKS: { href: string; label: string }[] = [
   { href: "/how-it-works", label: "How it works" },
   { href: "/ai-headshot-generator", label: "AI generator" },
   { href: "/ai-professional-headshot", label: "Professional" },
-  { href: "/team-headshots", label: "For teams" },
+  { href: "/team-headshots", label: "Team preview" },
   { href: "/about", label: "About" },
 ];
 
@@ -98,8 +98,8 @@ export const USE_CASES: { href: string; title: string; body: string }[] = [
   },
   {
     href: "/team-headshots",
-    title: "Team headshots",
-    body: "Ten or more people, one style guide. Consistent backgrounds and crops so your website finally looks like one company.",
+    title: "Team plans (preview)",
+    body: "Team plans are not available yet — that page is a preview of a planned workflow. Individual packs are one-person products.",
   },
   {
     href: "/real-estate-agent-headshots",
@@ -123,7 +123,7 @@ export const FOOTER_LINKS: { href: string; label: string }[] = [
   { href: "/free-ai-headshot-generator", label: "Free vs paid headshot tools" },
   { href: "/ai-professional-headshot", label: "AI professional headshot" },
   { href: "/linkedin-headshot", label: "LinkedIn headshot" },
-  { href: "/team-headshots", label: "Team headshots" },
+  { href: "/team-headshots", label: "Team preview (not available)" },
   { href: "/real-estate-agent-headshots", label: "Real estate agent headshots" },
   { href: "/doctor-headshots", label: "Doctor headshots" },
   { href: "/pricing", label: "Pricing" },

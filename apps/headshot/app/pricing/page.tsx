@@ -236,12 +236,12 @@ export default function PricingPage() {
             images as stock photography, training a competing model on them, or using them to imply an endorsement you
             do not have.
           </p>
-          <h3>Team and volume pricing</h3>
+          <h3>Teams: not available yet</h3>
           <p>
-            Orders of ten or more people are handled through the{" "}
-            <Link href="/team-headshots">team headshots</Link> flow, with a single style guide and one invoice. Volume
-            pricing for large sets is being finalised together with the larger packages; the only self-serve package on
-            sale today is the Sample Pack.
+            There is no team product yet — no seat pricing, no team intake, no shared style guide and no company
+            invoicing. Team orders are not accepted. The Sample Pack and any future larger package are personal,
+            one-person products. The{" "}
+            <Link href="/team-headshots">team headshots page</Link> is a preview and explains the current status.
           </p>
         </Prose>
       </Section>

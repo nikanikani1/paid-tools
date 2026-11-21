@@ -1,13 +1,60 @@
 # SEO 周复盘 — 2026-11-22
 
 站点：StemSplit.ai（stemextractor.com）/ PortraitLab（headshotsnap.com）
-数据：
-- Semrush：2026-11-20 快照（可用）
-- GSC：**本次不可用**。浏览器访问 `search.google.com` 连续 `ERR_CONNECTION_TIMED_OUT`；以下是 2026-11-18 最后一次可用数据，标为“旧数据”，不当作本周结果。
+数据：GSC `2026-11-11～11-19`（VPN 恢复后重拉，更新于 3.5 小时前）；Semrush `2026-11-20` 快照。
 
-## 1. Semrush 本周 vs 11/18
+## 1. GSC 当前（A/B）
 
-| 指标 | A 11/18 | A 11/22 | B 11/18 | B 11/22 |
+| 指标 | A 11/18 旧 | A 11/22 当前 | B 11/18 旧 | B 11/22 当前 |
+|---|---:|---:|---:|---:|
+| 点击 | 0 | **0** | 0 | **0** |
+| 曝光 | 82 | **270** | 6 | **49** |
+| CTR | 0% | **0%** | 0% | **0%** |
+| 平均排名 | 67.4 | **58.1** | 61.0 | **50.0** |
+| 查询数 | 33 | **101** | 3 | **8** |
+
+结论：**曝光和平均排名明显改善，但点击仍为 0**；内容开始进池，标题/意图/排名还不够拿到点击。
+
+### A 热门查询（0 点击）
+
+| 查询 | 曝光 |
+|---|---:|
+| acapella extractor | 14 |
+| stem extractor | 9 |
+| how to strip songs of vocals | 6 |
+| how to remove vocals on a song | 6 |
+| how to separate vocals from a song | 6 |
+| vocal stem | 5 |
+
+### A 热门页面（0 点击）
+
+| 页面 | 曝光 |
+|---|---:|
+| `/remove-vocals-from-song` | 59 |
+| `/ai-vocal-remover` | 50 |
+| `/` | 35 |
+| `/acapella-maker` | 35 |
+| `/separate-stems` | 30 |
+| `/vocal-remover-online` | 29 |
+| `http://stemextractor.com/` | 14 |
+
+### B 热门查询/页面
+
+- 查询：`professional headshot ai` 8、`ai professional headshots` 7、`ai professional headshot` 5、`ai generated professional headshot` 4、`doctor headshots` 2；
+- 页面：`/ai-professional-headshot` 37、`/about` 4、`http://headshotsnap.com/doctor-headshots` 4、`http://headshotsnap.com/` 3、`/linkedin-headshot` 2、`/how-it-works` 2、`/team-headshots` 2。
+
+## 2. 索引（GSC 当前）
+
+| 站点 | 已编入索引 | 未编入索引 | 未收录原因 |
+|---|---:|---:|---|
+| A | **18** | **6** | 404×2、重定向×2、备用规范页×1、已发现未收录×1 |
+| B | **17** | **4** | 备用规范页×2、重定向×1、已发现未收录×1 |
+
+人工处置：两站均 **未检测到任何问题**（2026-11-22 复核）。
+
+## 3. Semrush 当前 vs 11/18
+
+| 指标 | A 11/18 | A 11/20 | B 11/18 | B 11/20 |
 |---|---:|---:|---:|---:|
 | Authority Score | 0 | **0** | 2 | **2** |
 | 自然流量 | 0 | **0** | 不可用 | 不可用 |
@@ -16,9 +63,9 @@
 | 反向链接 | 12 | **119（+107）** | 2,673 | **2.8K** |
 | AI 可见度 | — | **0** | — | **0** |
 
-### A 站当前 5 个自然关键词（Semrush 11/20）
+### A 当前 5 个自然关键词
 
-| 关键词 | 排名 | 量 | KD | 落地页 |
+| 关键词 | 排名 | 量 | KD | 页面 |
 |---|---:|---:|---:|---|
 | vocal remover extension | 76 | 210 | 24 | `/vocal-remover-online` |
 | ai instrument remover | 77 | 40 | 1 | `/ai-vocal-remover` |
@@ -26,97 +73,54 @@
 | how to strip vocals from a track | 61 | 590 | 72 | `/remove-vocals-from-song` |
 | lead vocal separator | 68 | 40 | 54 | `/ai-vocal-remover` |
 
-- 5 个词全部在 61–94 位，流量仍为 0；
-- `vocal remover extension` 量 210/KD24 是唯一低 KD 词，但“extension”可能指浏览器扩展，搜索意图和在线工具不完全一致，**不要为了这个词硬改页面**；
-- 上一轮改的 `remove vocals from a song`、`acapella extractor`、`stems separator` 还没有进入 Semrush 前 100，符合“新页面需要数周”的预期。
+### A 外链异常（本周新风险）
 
-### B 站
-
-- Semrush 前 100 无自然关键词；
-- 自然流量不可用；
-- 引荐域名/反向链接继续增长（2,326→2.4K；2,673→2.8K），仍来自已知垃圾目录/PBN 网络。
-
-## 2. 本周异常：A 站外链突然增加
-
-A 站从 9 个引荐域名/12 条链接，跳到 **89 个引荐域名/119 条链接**，新增链接集中在这几天：
+A 从 **9 引荐域名 / 12 链接** 跳到 **89 / 119**；新增集中在这几天：
 
 - `sitewiki.org`：30 条；
-- `linkalchemy.xyz`：2 条（nofollow）；
-- `12235232.xyz` ~ `12235237.xyz` 等编号域名：每条 1 个 nofollow；
-- 首次发现时间：2 天前～36 分钟前。
+- `linkalchemy.xyz`：2 条 nofollow；
+- `12235232.xyz`～`12235237.xyz` 等编号域名：每条 1 个 nofollow；
+- 首次发现：2 天前～数十分钟前。
 
-判断：
+判断：更像自动目录/PBN 网络；**不确认是负 SEO 还是历史遗留，不直接 disavow**。GSC 人工处置目前仍无异常。
 
-- 这不是自然媒体报道，更像**目录/PBN/自动外链网络**；
-- 与 B 站此前 2.3K 垃圾外链同属一类风险；
-- 目前不能确认是负 SEO 攻击还是域名历史遗留；**不要直接 disavow**；
-- GSC 人工处置本次无法查（网络不可用）；11/18 最后一次检查两站均为“未检测到任何问题”。
+B 仍是 2.4K 引荐域名/2.8K 链接的已知垃圾网络，数量继续增长，但无人工处置。
 
-## 3. 索引与 GSC（旧数据，需补测）
+## 4. 本轮已做（不涉及 A/B 正文改动）
 
-最后一次可用（11/18）：
+- 恢复 GSC，完成 A/B 当前 Performance、Coverage、Manual Actions 数据；
+- 新域名 GSC：`getyardcanvas.com` / `gethuemirror.com` 已用 HTML 标记验证，sitemap 已提交并读取成功（8 URL）；
+- 新站把 6 个风格页（Japanese/Cottage/Low-water、Copper/Black/Pastel）上线，sitemap 各 8 URL；
+- 新站 Analytics（`/api/events` 落 R2，已实测 accepted/r2=1）、OG 图、HEIC 提示修正、旧 workers.dev 301；
+- R2 lifecycle 增加 `landscape-out-30d`、`haircolor-out-30d`；
+- B 站团队未实现承诺：`/team-headshots` 改 noindex 预览页；导航/pricing/FAQ/contact/authors 的团队/按座/净账期承诺清除；
+- 两站 A/B 页面正文、标题、URL 本轮未改。
 
-| 站点 | 已收录 | 未收录 | 点击 | 曝光 | 平均排名 |
-|---|---:|---:|---:|---:|---:|
-| A | 17 | 0 | 0 | 82 | 67.4 |
-| B | 14 | 5 | 0 | 6 | 61.0 |
+## 5. 下一步行动（按影响）
 
-B 覆盖报告的 5 个未收录是旧快照；11/18 URL 检查显示首页、`/ai-professional-headshot` 已收录，`contact` 非重点。当前真实数字需等 GSC 恢复后重拉。
+### P0
 
-## 4. 行动清单（按影响 × 投入）
+1. **A 外链异常只读审计**：导出 89 个域名/锚文本，分类垃圾网络；查 GSC 人工处置；暂不 disavow。
+2. **B 外链审计**：2.4K 继续只读分类，和 11/18 增量对比。
+3. **A 当前 18 收录/6 未收录**：逐条看 404/重定向/备用规范页，决定修复或忽略；不改线上 URL。
+4. **B 4 未收录**：备用规范页/重定向/已发现未收录，逐条确认；`http://` 版本优先做 301/规范确认。
 
-### P0 — 数据/风险，先做
+### P1
 
-1. **恢复 GSC 访问后重拉 11/16–11/20**
-   - 需要：Performance（查询/页面/设备）、Coverage、Manual Actions；
-   - 验收：导出 CSV / 记录总量，和 11/18 旧数据分开标注。
+5. **A 目标词等 14 天**：上轮 3 页（remove-vocals / acapella / separate-stems）已开始有曝光，不因 0 点击立刻改回。
+6. **A 标题/意图优化**：当前 0 点击；优先 `remove-vocals-from-song`、`acapella-maker` 的标题/摘要，但每次 1–2 页，先给方案。
+7. **B `team-headshots` 仍 noindex**：产品上线前不推广；上轮已清理站内承诺。
+8. **B 医生/团队页暂无高意图词**：不抢跑，继续观察。
+9. **新站风格页请求收录**：GSC URL Inspection 对 6 个 `/styles/*` 逐页请求；先首页+3 页各站。
 
-2. **A 站外链异常只读审计**
-   - 导出 89 个引荐域名 + 锚文本；
-   - 分类：垃圾目录 / PBN / 真实提及；
-   - 查 GSC 人工处置；
-   - **不提交 disavow**，除非确认纯垃圾且出现人工处置/排名异常；
-   - 验收：分类清单 + 是否 disavow 的建议。
+### P2
 
-3. **B 站外链审计延续**
-   - 2.4K 引荐域名保持只读分类；
-   - 不因数量增长就 disavow；
-   - 验收：与 11/18 的增量对比、垃圾网络占比。
+10. 每周记录 A/B GSC 曝光/点击/均位 + Semrush 引荐域名/链接；A 外链若继续跳升升级 P0。
+11. 不购买目录/PBN 外链；不无证据 disavow。
+12. 等新域名有 GSC 数据后再做新站 SEO 判断。
 
-4. **B 站未收录复核**
-   - 等 GSC 恢复后重拉 Coverage，确认当前是 14/5 还是已变化；
-   - 若 `contact` 未收录，不强行优化；
-   - 验收：当前真实收录数 + 未收录 URL 列表。
+## 6. 需要你决策
 
-### P1 — 内容/转化（等数据，不抢跑）
-
-5. **A 站上一轮 3 页不继续改**
-   - `/remove-vocals-from-song`、`/acapella-maker`、`/separate-stems` 已部署；
-   - 至少等 14 天看 GSC 曝光/均排；
-   - 验收：11/18 后第 14 天对比，不因 3 天波动改回。
-
-6. **A 站标题/描述剩余项**
-   - 上一轮审计：23/32 title >60、26/32 description >160；
-   - 每次最多 1–2 页，优先有曝光页；本次无 GSC 数据，暂不动。
-
-7. **B 站 team-headshots 产品承诺**
-   - 页面声称团队流程/20 张/座位价，但产品未实现；
-   - 需产品侧决定：下线 / noindex / 先实现；
-   - 在修好前不做 SEO 推广。
-
-8. **B 站 doctor-headshots**
-   - Semrush `doctor headshots` 仍无量/数据；
-   - 不因页面存在就优化，先等 GSC/Semrush 有需求证据。
-
-### P2 — 监控/外链
-
-9. 每周同一时间记录 Semrush 引荐域名、链接、关键词；A 站外链若继续跳升，升级为 P0。
-10. 把 GSC 不可用、Semrush 数据日期、快照来源写进周报，避免把旧数据当本周。
-11. 不购买目录/PBN 外链；新站老站都按真实提及/目录提交做。
-
-## 5. 本周结论
-
-- **A**：自然流量仍 0；上轮改动未进入前 100；**外链异常跳升是唯一新风险**，先审计、不 disavow。
-- **B**：仍无前 100 关键词；垃圾外链继续增长；GSC 人工处置需复查。
-- **GSC 数据缺口**：本次不能计算真实周环比；下一轮必须补 11/16–11/20 的 Performance/Coverage。
-- **本轮没有改任何线上内容**；所有改动等批准。
+- A/B 的标题/摘要改动是否需要我下一步直接做（每次 1–2 页）。
+- A/B 是否考虑域名级 disavow；目前证据不足，我建议继续观察。
+- B 团队产品是否上线；上线前保持 noindex。

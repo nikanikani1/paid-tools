@@ -5,6 +5,7 @@ import { SiteChrome } from "@/components/SiteChrome";
 import { Studio } from "@/components/Studio";
 import { DemoGallery } from "@/components/DemoGallery";
 import { StickyCta } from "@/components/StickyCta";
+import { stylePageHref } from "@/lib/style-pages";
 import {
   breadcrumbJsonLd,
   buildMetadata,
@@ -244,7 +245,7 @@ export default function HomePage() {
                     {style.description}
                   </p>
                   <Link
-                    href="#studio"
+                    href={stylePageHref(style.id)}
                     className="sans mt-4 text-sm font-semibold underline underline-offset-4"
                     style={{ color: "var(--brand)" }}
                   >

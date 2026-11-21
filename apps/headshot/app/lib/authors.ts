@@ -38,7 +38,7 @@ export const AUTHORS: Author[] = [
       { href: "/free-ai-headshot-generator", label: "Free vs paid headshot tools comparison" },
       { href: "/ai-professional-headshot", label: "AI professional headshot" },
       { href: "/linkedin-headshot", label: "LinkedIn headshot guidance" },
-      { href: "/team-headshots", label: "Team headshots for 10+ people" },
+      { href: "/team-headshots", label: "Team headshots (preview — not available yet)" },
       { href: "/real-estate-agent-headshots", label: "Real estate agent headshots" },
       { href: "/doctor-headshots", label: "Doctor and clinic headshots" },
       { href: "/how-it-works", label: "How the pipeline works" },

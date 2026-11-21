@@ -21,10 +21,10 @@ const CHANNELS = [
     use: "Missing downloads, failed generation, redo requests, licence questions. Include the order ID from your receipt.",
   },
   {
-    channel: "Billing & invoices",
+    channel: "Billing & receipts",
     email: CONTACT.billing,
     response: "Within 2 business days",
-    use: "Receipts, refunds, team invoices with a purchase order, tax ID or billing-address changes.",
+    use: "Receipts, refunds, billing questions about your own order, tax ID or billing-address changes.",
   },
   {
     channel: "Privacy & data deletion",
@@ -54,7 +54,7 @@ const CHANNELS = [
     channel: "Press & partnerships",
     email: CONTACT.press,
     response: "Within 3 business days",
-    use: "Press enquiries, integrations and team/volume partnerships.",
+    use: "Press enquiries, integrations and partnership requests.",
   },
 ];
 
@@ -218,15 +218,16 @@ export default function ContactPage() {
 
       <Section
         eyebrow="Teams"
-        title="Team and volume orders"
-        intro={<p>Team orders of ten or more people are quoted and invoiced separately.</p>}
+        title="Teams: not available yet"
+        intro={<p>There is no team product, no team intake and no team invoicing yet.</p>}
       >
         <Prose>
           <p>
-            If you need one style guide across a whole team, a single invoice with net-30 terms and a purchase order
-            reference, email the billing inbox with the headcount and the style you want. The{" "}
-            <Link href="/team-headshots">team headshots page</Link> covers what a rollout looks like. We do not publish a
-            self-serve team checkout, so an email is the fastest path.
+            Team plans are not available. We cannot accept a team order, quote a seat price, raise a company invoice or
+            agree net-30 terms — the{" "}
+            <Link href="/team-headshots">team headshots page</Link> is a preview of a planned workflow, not a product.
+            Individual orders pay by card at checkout and each person buys their own pack. The billing inbox can help
+            with receipts and billing details for an individual order.
           </p>
           <p>
             Are you looking for the editor behind a page rather than support? The{" "}

@@ -14,7 +14,6 @@ const ROUTES: Route[] = [
   { path: "/pricing", priority: 0.9, changeFrequency: "weekly" },
   { path: "/ai-professional-headshot", priority: 0.8, changeFrequency: "monthly" },
   { path: "/linkedin-headshot", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/team-headshots", priority: 0.8, changeFrequency: "monthly" },
   { path: "/real-estate-agent-headshots", priority: 0.7, changeFrequency: "monthly" },
   { path: "/doctor-headshots", priority: 0.7, changeFrequency: "monthly" },
   { path: "/how-it-works", priority: 0.6, changeFrequency: "monthly" },
