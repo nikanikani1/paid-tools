@@ -3,6 +3,7 @@ import "./globals.css";
 import { Analytics } from "./components/Analytics";
 import { ScrollReveal } from "./components/ScrollReveal";
 import { SiteFooter, SiteHeader } from "./components/site-chrome";
+import { MobileCta } from "./components/mobile-cta";
 import { SITE_NAME, SITE_URL } from "./lib/site";
 
 export const metadata: Metadata = {
@@ -58,12 +59,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>
-      <body>
+      <body className="pb-20 md:pb-0">
         <ScrollReveal />
         <Analytics site="headshot" />
         <SiteHeader />
         {children}
         <SiteFooter />
+        <MobileCta />
       </body>
     </html>
   );

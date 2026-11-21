@@ -68,3 +68,9 @@ Waffo live 产品：
 - Assets: `apps/photo-studio/public/samples/landscape/*.jpg`, `.../hair/*.jpg`, optimized to 800–900 px JPEG.
 - Source/licence note: [SAMPLES.md](<D:/ai-workspace/paid-tools/docs/SAMPLES.md>).
 - Verified live: both homepages 200 and contain “Demo — not a customer result”; all six demo images 200.
+
+## 6. Style cards (2026-11-21)
+
+- YardCanvas: Modern / Japanese / Cottage / Low-water 各一张真实生成预览，来自同一 demo yard 输入。
+- HueMirror: Warm blonde / Copper / Blue-black / Pastel 各一张真实生成预览，来自同一 AI demo selfie。
+- Style cards 标注 `AI preview`，底部说明“style previews use the same demo input and are AI-generated; not customer work”。

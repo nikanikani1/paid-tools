@@ -37,3 +37,9 @@
 - 页面标注：`Demo — not a customer result` + 免责声明；不得包装成客户案例。
 - 替换 demo 输入时必须同步更新本文件和页面 alt/免责声明。
 
+
+## 新站风格样例（2026-11-21）
+
+- YardCanvas：`landscape/japanese.jpg`、`cottage.jpg`、`lowwater.jpg` 由同一张 `yard-before.jpg` 经 `flux-kontext-pro` 生成，分别用 Japanese / Cottage / Low-water 提示词；`modern-1.jpg` 为 Modern。
+- HueMirror：`hair/copper.jpg`、`black.jpg`、`pastel.jpg` 由同一张 AI demo selfie 生成；`blonde-1.jpg` 为 Warm blonde。
+- 用途：风格卡/首页演示；页面标 `AI preview`，不冒充客户案例。

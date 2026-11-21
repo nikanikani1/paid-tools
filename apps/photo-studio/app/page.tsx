@@ -66,7 +66,7 @@ const FAQS: FaqItem[] =
         },
         {
           q: "What exactly do I get for $9?",
-          a: "One run that returns four landscape concept images in the style you selected, downloadable as JPGs from the result panel. The $9 is a one-time payment for one photo and one style run — there is no subscription, no auto-renewal and no hidden credit system.",
+          a: "One run that returns four landscape concept images in the style you selected, downloadable as PNGs from the result panel. The $9 is a one-time payment for one photo and one style run — there is no subscription, no auto-renewal and no hidden credit system.",
         },
         {
           q: "Can I use these images for a real renovation?",
@@ -92,7 +92,7 @@ const FAQS: FaqItem[] =
         },
         {
           q: "What exactly do I get for $4.90?",
-          a: "One run that returns four hair-colour looks in the shade family you selected, with different lighting and dimension, downloadable as JPGs from the result panel. It is a one-time $4.90 payment for one selfie and one shade run — no subscription and no auto-renewal.",
+          a: "One run that returns four hair-colour looks in the shade family you selected, with different lighting and dimension, downloadable as PNGs from the result panel. It is a one-time $4.90 payment for one selfie and one shade run — no subscription and no auto-renewal.",
         },
         {
           q: "Can I show the result to my hairstylist?",
@@ -160,7 +160,7 @@ export default function HomePage() {
                 ))}
               </ul>
               <p className="sans mt-5 text-xs leading-relaxed opacity-60" style={{ color: "var(--ink)" }}>
-                Delivered as JPG downloads in the result panel. One pack covers one photo and one style run; there is
+                Delivered as PNG downloads in the result panel. One pack covers one photo and one style run; there is
                 no subscription and no auto-renewal.
               </p>
             </div>
@@ -217,28 +217,46 @@ export default function HomePage() {
           </h2>
           <p className="sans mt-4 max-w-3xl leading-relaxed opacity-75" style={{ color: "var(--ink)" }}>
             {BRAND.kind === "landscape"
-              ? "Each style uses the same photo, the same camera angle and the same house; only the planting, paving and lighting change. That makes the comparison useful instead of confusing."
-              : "Each shade family is rendered in four lighting situations, keeping your face and haircut unchanged. That makes it easier to judge whether a colour is too warm, too cool or too loud for what you actually want."}
+              ? "Each style uses the same demo photo and camera angle; the direction changes planting, paving and garden structures. That makes the comparison useful instead of confusing."
+              : "Each shade family is rendered in four lighting situations; the edit is instructed to keep your face and haircut fixed. That makes it easier to judge whether a colour is too warm, too cool or too loud for what you actually want."}
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {BRAND.styles.map((style) => (
-              <div key={style.id} className="flex flex-col rounded-2xl border border-black/10 bg-white/60 p-5">
-                <h3 className="font-serif text-lg font-bold" style={{ color: "var(--ink)" }}>
-                  {style.label}
-                </h3>
-                <p className="sans mt-2 flex-1 text-sm leading-relaxed opacity-70" style={{ color: "var(--ink)" }}>
-                  {style.description}
-                </p>
-                <Link
-                  href="#studio"
-                  className="sans mt-4 text-sm font-semibold underline underline-offset-4"
-                  style={{ color: "var(--brand)" }}
-                >
-                  Try this style
-                </Link>
+              <div key={style.id} className="flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/60">
+                <img
+                  src={style.image}
+                  alt={`AI-generated ${style.label} style preview on the demo photo`}
+                  width={900}
+                  height={600}
+                  loading="lazy"
+                  className={`w-full object-cover ${BRAND.kind === "landscape" ? "aspect-[3/2]" : "aspect-square"}`}
+                />
+                <div className="flex flex-1 flex-col p-4">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="font-serif text-lg font-bold" style={{ color: "var(--ink)" }}>
+                      {style.label}
+                    </h3>
+                    <span className="sans text-[9px] uppercase tracking-wide opacity-45" style={{ color: "var(--ink)" }}>
+                      AI preview
+                    </span>
+                  </div>
+                  <p className="sans mt-2 flex-1 text-sm leading-relaxed opacity-70" style={{ color: "var(--ink)" }}>
+                    {style.description}
+                  </p>
+                  <Link
+                    href="#studio"
+                    className="sans mt-4 text-sm font-semibold underline underline-offset-4"
+                    style={{ color: "var(--brand)" }}
+                  >
+                    Try this style
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
+          <p className="sans mt-4 text-[11px] leading-relaxed opacity-50" style={{ color: "var(--ink)" }}>
+            Style previews use the same demo input and are AI-generated; they are not customer work.
+          </p>
         </section>
 
         <section className="border-y border-black/10 py-14" style={{ backgroundColor: "var(--brand-soft)" }}>
@@ -251,7 +269,7 @@ export default function HomePage() {
                 {BRAND.price} once. No subscription, no free trial.
               </h2>
               <p className="sans mt-4 leading-relaxed opacity-75" style={{ color: "var(--ink)" }}>
-                {BRAND.unitLabel} for one photo and one style run, delivered as JPG downloads. There is no free trial
+                {BRAND.unitLabel} for one photo and one style run, delivered as PNG downloads. There is no free trial
                 and no hidden credit system: you pay once, the pack is added to your order, and you use it for the
                 run.
               </p>

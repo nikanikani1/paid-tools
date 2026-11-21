@@ -193,6 +193,11 @@ export default function HomePage() {
               </span>
             ))}
           </div>
+          <div className="mt-4">
+            <Link href="#stems" className="text-sm font-medium text-cyan-300 underline underline-offset-4 hover:text-cyan-200">
+              Hear a real 4-stem separation ↓
+            </Link>
+          </div>
         </div>
       </section>
 

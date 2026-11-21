@@ -58,7 +58,7 @@ export default function HomePage() {
         data={breadcrumbJsonLd([{ name: "Home", path: "/" }])}
       />
 
-      <section data-reveal className="mx-auto grid max-w-6xl items-start gap-10 px-6 pb-10 pt-12 md:grid-cols-2">
+      <section id="start" data-reveal className="mx-auto grid max-w-6xl items-start gap-10 px-6 pb-10 pt-12 md:grid-cols-2">
         <div>
           <p className="sans mb-4 inline-flex rounded-full border border-orange-300 bg-orange-50 px-3 py-1 text-xs uppercase tracking-wide text-orange-800">
             Professional headshots · AI generated · Sample Pack $9 / 5 images
@@ -78,11 +78,45 @@ export default function HomePage() {
             <li>✓ Redo within 48 h</li>
             <li>✓ Deleted after 30 days</li>
           </ul>
+          <Link
+            href="#samples"
+            className="sans mt-4 inline-block text-sm font-semibold text-orange-800 underline underline-offset-4 hover:text-orange-900"
+          >
+            See the AI sample gallery ↓
+          </Link>
         </div>
-        <GeneratorForm heading="Start with the $9 Sample Pack" defaultPlan={5} />
+        <div>
+          <GeneratorForm heading="Start with the $9 Sample Pack" defaultPlan={5} />
+          <div className="sans">
+            <div className="mt-3 grid grid-cols-3 gap-2">
+              {[
+                { src: "/samples/corporate-woman.jpg", alt: "AI sample: corporate headshot on grey studio background" },
+                { src: "/samples/corporate-man.jpg", alt: "AI sample: executive headshot on graphite background" },
+                { src: "/samples/creative-woman.jpg", alt: "AI sample: creative headshot in warm window light" },
+              ].map((sample) => (
+                <img
+                  key={sample.src}
+                  src={sample.src}
+                  alt={sample.alt}
+                  width={896}
+                  height={1088}
+                  loading="eager"
+                  className="aspect-[4/5] w-full rounded-xl border border-stone-300 object-cover"
+                />
+              ))}
+            </div>
+            <div className="mt-2 flex items-center justify-between gap-3">
+              <p className="text-[10px] text-stone-500">AI samples — not customer photos.</p>
+              <Link href="#samples" className="text-[11px] font-semibold text-orange-800 underline underline-offset-2">
+                See gallery ↓
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
 
       <Section
+        id="samples"
         eyebrow="See examples"
         title="What professional headshots look like from a selfie set"
         intro={

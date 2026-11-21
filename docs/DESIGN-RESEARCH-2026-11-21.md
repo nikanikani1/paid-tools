@@ -32,3 +32,9 @@
 - 假评分 / 假用户数 / 假 logo：没有真实数据，不能上。
 - “Free trial”：产品是付费生成，不能为了转化写免费。
 - 复杂社区/登录：当前 MVP 不提供账号体系，先不假装有。
+
+## 老站同步（2026-11-21）
+
+- **StemSplit.ai**：首屏新增 “Hear a real 4-stem separation” 跳转；移动端固定 `$2.90 Trial Pack` CTA。音频演示仍由 StemPlayer/StemGrid 承担（不是图片 before/after）。
+- **PortraitLab**：首屏表单下方新增 3 张 AI sample 缩略图 + “See gallery”；移动端固定 `$9 Sample Pack` CTA；示例区加 `#samples` 锚点。
+- 两站继续保留 “AI sample / not customer photos” 标注。

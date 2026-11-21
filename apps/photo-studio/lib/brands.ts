@@ -6,6 +6,7 @@ export type BrandStyle = {
   id: string;
   label: string;
   description: string;
+  image: string;
 };
 
 export type BrandConfig = {
@@ -45,12 +46,12 @@ const LANDSCAPE: BrandConfig = {
   planId: "landscape-pack",
   price: "$9",
   unitLabel: "4 landscape concepts",
-  features: ["4 concepts from one photo", "House and hardscape preserved", "JPG downloads", "One-time payment"],
+  features: ["4 concepts from one photo", "House and hardscape preserved", "PNG downloads", "One-time payment"],
   styles: [
-    { id: "modern", label: "Modern / clean", description: "Straight lines, gravel, architectural planting" },
-    { id: "japanese", label: "Japanese garden", description: "Maples, moss, stone, quiet structure" },
-    { id: "cottage", label: "Cottage garden", description: "Layered perennials, soft edges, warm colour" },
-    { id: "lowwater", label: "Low-water / native", description: "Dry-climate grasses, gravel, low irrigation" },
+    { id: "modern", label: "Modern / clean", description: "Straight lines, gravel, architectural planting", image: "/samples/landscape/modern-1.jpg" },
+    { id: "japanese", label: "Japanese garden", description: "Maples, moss, stone, quiet structure", image: "/samples/landscape/japanese.jpg" },
+    { id: "cottage", label: "Cottage garden", description: "Layered perennials, soft edges, warm colour", image: "/samples/landscape/cottage.jpg" },
+    { id: "lowwater", label: "Low-water / native", description: "Dry-climate grasses, gravel, low irrigation", image: "/samples/landscape/lowwater.jpg" },
   ],
   accent: "#2f6f4e",
   accentSoft: "#e8f0e8",
@@ -76,10 +77,10 @@ const HAIR: BrandConfig = {
   unitLabel: "4 hair-colour looks",
   features: ["4 looks from one selfie", "Face-preserving edit", "Natural + fashion shades", "One-time payment"],
   styles: [
-    { id: "blonde", label: "Warm blonde", description: "Honey, sand and soft golden tones" },
-    { id: "copper", label: "Copper / auburn", description: "Warm red, copper and burnt orange" },
-    { id: "black", label: "Blue-black", description: "Cool, deep black with a soft shine" },
-    { id: "pastel", label: "Pastel / fashion", description: "Rose, lilac or mint — clearly editorial" },
+    { id: "blonde", label: "Warm blonde", description: "Honey, sand and soft golden tones", image: "/samples/hair/blonde-1.jpg" },
+    { id: "copper", label: "Copper / auburn", description: "Warm red, copper and burnt orange", image: "/samples/hair/copper.jpg" },
+    { id: "black", label: "Blue-black", description: "Cool, deep black with a soft shine", image: "/samples/hair/black.jpg" },
+    { id: "pastel", label: "Pastel / fashion", description: "Rose, lilac or mint — clearly editorial", image: "/samples/hair/pastel.jpg" },
   ],
   accent: "#9d3f5c",
   accentSoft: "#f7e8ee",
