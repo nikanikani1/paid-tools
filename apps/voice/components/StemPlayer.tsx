@@ -62,6 +62,14 @@ export function StemPlayer() {
     }
   }
 
+  async function playOnce(a: HTMLAudioElement): Promise<void> {
+    // A blocked/never-settling play() promise must not freeze the UI forever.
+    await Promise.race([
+      a.play(),
+      new Promise<void>((_, reject) => setTimeout(() => reject(new Error("play timeout")), 4000)),
+    ]);
+  }
+
   function startTimer() {
     stopTimer();
     timer.current = setInterval(() => {
@@ -79,17 +87,31 @@ export function StemPlayer() {
     setError(null);
     originalRef.current?.pause();
     const start = time || 0;
-    const ids = activeIds.length ? activeIds : (["vocals"] as TrackId[]);
+    if (!activeIds.length) {
+      setError("Enable at least one stem first.");
+      return;
+    }
     try {
-      await Promise.all(
-        ids.map(async (id) => {
+      // Play ALL four elements, even the muted ones, so toggling a stem later
+      // is only a mute/unmute and never a pause/play race. Play each element
+      // independently: one blocked track must not stop the others.
+      const results = await Promise.allSettled(
+        (["vocals", "drums", "bass", "other"] as TrackId[]).map(async (id) => {
           const a = trackRefs.current[id];
-          if (!a) return;
-          a.muted = false;
-          if (Math.abs(a.currentTime - start) > 0.2) a.currentTime = start;
-          await a.play();
+          if (!a) throw new Error(`missing ${id}`);
+          a.muted = !enabled[id];
+          if (Math.abs(a.currentTime - start) > 0.2) {
+            try {
+              a.currentTime = start;
+            } catch {
+              /* metadata not ready; play() will load it */
+            }
+          }
+          await playOnce(a);
         }),
       );
+      const played = results.some((result) => result.status === "fulfilled");
+      if (!played) throw new Error("all tracks blocked");
       setMode("stems");
       setPlaying(true);
       startTimer();
@@ -106,7 +128,7 @@ export function StemPlayer() {
     if (!a) return;
     try {
       a.currentTime = time || 0;
-      await a.play();
+      await playOnce(a);
       setMode("original");
       setPlaying(true);
       startTimer();
@@ -131,16 +153,30 @@ export function StemPlayer() {
   }
 
   function toggleTrack(id: TrackId) {
-    const next = { ...enabled, [id]: !enabled[id] };
-    setEnabled(next);
+    const nextEnabled = !enabled[id];
+    setEnabled({ ...enabled, [id]: nextEnabled });
+    setError(null);
     const audio = trackRefs.current[id];
     if (!audio) return;
-    if (!next[id]) audio.pause();
-    else if (playing && mode === "stems") {
-      const master = trackRefs.current[activeIds[0] ?? "vocals"];
-      if (master) audio.currentTime = master.currentTime;
-      void audio.play().catch(() => undefined);
+
+    // While playing, every element keeps running and we toggle only `muted`.
+    // This avoids the pause()/play() race that could leave a re-enabled stem
+    // silent (especially on Safari/iOS). When paused, the next play() starts
+    // all four elements again.
+    audio.muted = !nextEnabled;
+    if (!playing || mode !== "stems" || !nextEnabled) return;
+
+    const master = trackRefs.current[activeIds[0] ?? "vocals"];
+    try {
+      if (master && Math.abs(audio.currentTime - master.currentTime) > 0.2) {
+        audio.currentTime = master.currentTime;
+      }
+    } catch {
+      /* metadata not ready; play() below will load it */
     }
+    void playOnce(audio).catch(() => {
+      setError("Audio did not resume. Tap play again; the browser may have blocked the track.");
+    });
   }
 
   function seek(value: number) {
@@ -273,7 +309,7 @@ export function StemPlayer() {
             trackRefs.current[track.id] = el;
           }}
           src={track.src}
-          preload="none"
+          preload="auto"
           crossOrigin="anonymous"
         />
       ))}
