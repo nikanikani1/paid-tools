@@ -72,3 +72,20 @@
 - 确认续费价格，不只首年；
 - 打开 WHOIS 隐私；
 - 两个域名用同一个注册商/账号，方便管理。
+
+## 实际落地（2026-11-21）
+
+- 用户在 Dynadot 购买了 `getyardcanvas.com`、`gethuemirror.com`；
+- Cloudflare zones 均已 active，NS：`felipe.ns.cloudflare.com`、`marjory.ns.cloudflare.com`；
+- 已删除 Dynadot 导入的 3 条停放 A 记录；
+- 已绑定 Workers 自定义域：
+  - `getyardcanvas.com` / `www.getyardcanvas.com` → `paid-tools-landscape`
+  - `gethuemirror.com` / `www.gethuemirror.com` → `paid-tools-haircolor`
+- 两站 HTTPS 200；`www` 301 到主域；
+- canonical 已指向新域名；
+- Waffo product success URL 已改为 `/success`；
+- Waffo webhook 已注册新域名：
+  - `https://getyardcanvas.com/api/webhooks/waffo`
+  - `https://gethuemirror.com/api/webhooks/waffo`
+- `NEXT_PUBLIC_SITE_URL` Worker secrets 已更新为新域名；
+- 仍待办：Cloudflare Email Routing（branded support 邮箱）、GSC 域名资源、R2 lifecycle 新前缀。
